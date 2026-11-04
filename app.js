@@ -1,4 +1,4 @@
-const APP_VERSION = '0.5.0', APP_DATE = '2026-11-04';
+const APP_VERSION = '0.6.0', APP_DATE = '2026-11-04';
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const KEY = 'totasi-english-v1';
@@ -6,7 +6,24 @@ const FRESH_STATE = () => ({ call: '', cards: {}, days: [], input: 'type', autop
 let S = FRESH_STATE(), ITEMS = [], session = null;
 let screen = { name: 'home', render: () => home() }, returnTo = null, curE = null;
 const TAB_OF = { home: 'home', done: 'home', menu: 'menu', records: 'records', settings: 'settings', dict: 'settings' };
-const setScreen = (name, render) => { screen = { name, render }; vcUI(); document.querySelectorAll('#tabs button').forEach(b => b.setAttribute('aria-current', b.dataset.tab === TAB_OF[name] ? 'page' : 'false')); };
+const TAB_ORDER = ['home', 'menu', 'records', 'settings'];
+const setScreen = (name, render) => {
+  screen = { name, render }; vcUI(); vcSync();
+  const cur = TAB_OF[name];
+  document.querySelectorAll('#tabs button').forEach(b => b.setAttribute('aria-current', b.dataset.tab === cur ? 'page' : 'false'));
+  if (cur) $('#tabs').style.setProperty('--i', TAB_ORDER.indexOf(cur));
+  try {
+    const guarded = history.state && history.state.guard;
+    if (name === 'home' && guarded) history.back();
+    else if (name !== 'home' && !guarded) history.pushState({ guard: 1 }, '');
+  } catch {}
+};
+/* 안드로이드 뒤로 가기 버튼과 제스처를 앱 안의 뒤로 가기로 연결한다. */
+window.addEventListener('popstate', () => {
+  if (screen.name === 'home') return;
+  vcDo('back');
+  try { if (screen.name !== 'home' && !(history.state && history.state.guard)) history.pushState({ guard: 1 }, ''); } catch {}
+});
 
 function load() { try { const v = JSON.parse(localStorage.getItem(KEY)); if (v) S = Object.assign(FRESH_STATE(), v); } catch {} }
 function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch {} }
@@ -95,11 +112,25 @@ function listen(onText, onFail) {
 
 /* ---------- 화면 ---------- */
 const ICON = {
-  x: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>',
-  sound: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10v4h3.5L12 18V6L7.500 10z"/><path d="M15.500 9a4.500 4.500 0 0 1 0 6M18 6.500a8 8 0 0 1 0 11"/></svg>',
-  go: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>',
+  back: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>',
+  sound: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11 5.2 6.800 8.800H4a1 1 0 0 0-1 1v4.400a1 1 0 0 0 1 1h2.800l4.200 3.600a.6.6 0 0 0 1-.5V5.700a.6.6 0 0 0-1-.5z"/><path d="M15.300 8.700a1 1 0 0 1 1.400 0 4.700 4.700 0 0 1 0 6.600 1 1 0 0 1-1.400-1.400 2.700 2.700 0 0 0 0-3.800 1 1 0 0 1 0-1.400zM18 6a1 1 0 0 1 1.400 0 8.500 8.500 0 0 1 0 12A1 1 0 0 1 18 16.600a6.500 6.500 0 0 0 0-9.200A1 1 0 0 1 18 6z"/></svg>',
+  go: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>',
 };
-const panel = html => { $('#body').innerHTML = html; $('#panel').scrollTop = 0; window.scrollTo(0, 0); };
+const SHAPE = {
+  home: 'M12 3 3.200 10.400a1.200 1.200 0 0 0 .8 2.100H5V19a2 2 0 0 0 2 2h3v-5.500a2 2 0 0 1 4 0V21h3a2 2 0 0 0 2-2v-6.500h1a1.200 1.200 0 0 0 .8-2.100z',
+  book: 'M5 5.500A2.500 2.500 0 0 1 7.500 3H19a1 1 0 0 1 1 1v13H7.500A2.500 2.500 0 0 0 5 19.500zM7.500 18.500H20V20a1 1 0 0 1-1 1H7.500a1.250 1.250 0 0 1 0-2.500z',
+  bolt: 'M13.500 2 4.800 13.200a.8.8 0 0 0 .6 1.300H11l-1.200 7.300a.4.4 0 0 0 .7.3l8.800-11.300a.8.8 0 0 0-.6-1.300H13l1.200-7.200a.4.4 0 0 0-.7-.3z',
+  chat: 'M12 3c5 0 9 3.400 9 7.700s-4 7.700-9 7.700c-1 0-2-.1-2.900-.4L5 20.500c-.6.3-1.200-.2-1-.8l1-3.200C3.700 15 3 13 3 10.700 3 6.400 7 3 12 3z',
+  mic: 'M12 2a4 4 0 0 1 4 4v6a4 4 0 0 1-8 0V6a4 4 0 0 1 4-4zM5 11a1 1 0 0 1 1 1 6 6 0 0 0 12 0 1 1 0 1 1 2 0 8 8 0 0 1-7 7.900V22a1 1 0 1 1-2 0v-2.100A8 8 0 0 1 4 12a1 1 0 0 1 1-1z',
+  chart: 'M5 12a2 2 0 0 1 2 2v5a2 2 0 0 1-4 0v-5a2 2 0 0 1 2-2zM12 3a2 2 0 0 1 2 2v14a2 2 0 0 1-4 0V5a2 2 0 0 1 2-2zM19 8a2 2 0 0 1 2 2v9a2 2 0 0 1-4 0v-9a2 2 0 0 1 2-2z',
+  gear: 'M10.300 2h3.400l.5 2.600 1.900.8 2.200-1.500 2.400 2.400-1.500 2.200.8 1.900 2.600.5v3.400l-2.600.5-.8 1.900 1.500 2.200-2.400 2.400-2.200-1.500-1.900.8-.5 2.600h-3.400l-.5-2.600-1.900-.8-2.200 1.500-2.400-2.400 1.500-2.200-.8-1.900-2.600-.5v-3.400l2.600-.5.8-1.900-1.500-2.200 2.400-2.400 2.200 1.500 1.900-.8zM12 8.500a3.500 3.500 0 1 0 0 7 3.500 3.500 0 0 0 0-7z',
+  flame: 'M12.500 2c.6 3.500-1 5-2.500 6.700C8.600 10.300 7.500 9.500 7.500 8c-2 2-3 4.200-3 6.500C4.500 18.800 7.900 22 12 22s7.500-3.200 7.500-7.500c0-5.500-4-8.500-7-12.500z',
+  check: 'M12 2a10 10 0 1 1 0 20 10 10 0 0 1 0-20zm4.700 7.300a1 1 0 0 0-1.400 0L11 13.600l-2.300-2.300a1 1 0 0 0-1.400 1.400l3 3a1 1 0 0 0 1.400 0l5-5a1 1 0 0 0 0-1.400z',
+  list: 'M6 3h12a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm2 5a1 1 0 0 0 0 2h8a1 1 0 1 0 0-2zm0 4.500a1 1 0 0 0 0 2h8a1 1 0 1 0 0-2z',
+};
+const i3d = (name, color) => `<svg class="i3d" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" fill="url(#g-${color})" d="${SHAPE[name]}"/><path fill-rule="evenodd" fill="url(#g-shine)" d="${SHAPE[name]}"/></svg>`;
+const BACK = `<button class="btn alt icon" id="quit" aria-label="뒤로">${ICON.back}</button>`;
+const panel = html => { const b = $('#body'); b.innerHTML = html; b.classList.remove('enter'); void b.offsetWidth; b.classList.add('enter'); const slot = $('#dockSlot'), d = b.querySelector(':scope > .dock'); slot.innerHTML = ''; if (d) slot.append(d); $('#panel').scrollTop = 0; window.scrollTo(0, 0); };
 const view = v => { document.body.dataset.view = v; };
 let timerId = null;
 const clearQ = () => { clearTimeout(timerId); if (recog) { try { recog.abort(); } catch {} recog = null; } };
@@ -114,7 +145,7 @@ function chooseControl() {
   say('{호칭}, 손으로 누를 거야? 아니면 말로 시킬 거야? 말로 하면 내가 귀 쫑긋하고 들을게!', 'listen');
   panel(`<h1>어떻게 공부할까요?</h1>
     <div class="list"><button class="item" id="ctlTouch"><span><b>화면 터치</b><small>누르고 입력해서 공부해요</small></span>${ICON.go}</button>
-    <button class="item" id="ctlVoice" ${SR ? '' : 'disabled'}><span><b>음성 조작</b><small>영어 명령어로 손 없이 공부해요</small></span>${ICON.go}</button></div>
+    <button class="item" id="ctlVoice" ${SR ? '' : 'disabled'}><span><b>음성 조작</b><small>한국어로 말해서 손 없이 공부해요</small></span>${ICON.go}</button></div>
     ${SR ? '<p class="note">음성 조작을 고르면 마이크 권한을 물어봐요. 설정에서 언제든 바꿀 수 있어요.</p>' : '<p class="err">이 브라우저에서는 음성 조작을 쓸 수 없어요. 안드로이드 Chrome에서 열어 주세요.</p>'}`);
   S.voiceAsked = true; save();
   $('#ctlTouch').onclick = () => home();
@@ -135,15 +166,23 @@ function home() {
   const [line, f] = homeLine(now); say(line, f);
   const m = curMode(), plan = SRS.buildSession(ITEMS, S.cards, m, now), r = plan.filter(x => x.kind === 'review').length;
   panel(`
-    <div class="plan">
-      <h1>${plan.length ? (r && plan.length - r ? `오늘은 복습 ${r}개,<br>새 표현 ${plan.length - r}개 어때요?` : r ? `오늘은 복습 ${r}개를<br>같이 해 볼까요?` : `오늘은 새 표현 ${plan.length}개를<br>배워 볼까요?`) : '오늘 할 학습을 모두 끝냈어요'}</h1>
+    <section class="plan">
+      <h1>${plan.length ? (r && plan.length - r ? `오늘은 복습 ${r}개,<br>새 표현 ${plan.length - r}개 어때요?` : r ? `오늘은 복습 ${r}개를<br>같이 해 볼까요?` : `오늘은 새 표현 ${plan.length}개를<br>배워 볼까요?`) : '오늘 할 학습을<br>모두 끝냈어요'}</h1>
       <div class="times" role="group" aria-label="학습 시간">${SRS.MODES.map(x => `<button data-min="${x.min}" aria-pressed="${x.min === m.min}">${x.min}분</button>`).join('')}</div>
       <button class="btn wide cta" id="startBtn" ${plan.length ? '' : 'disabled'}>${m.min === 60 ? '60분 빡공 시작' : `${m.min}분 학습 시작`}</button>
+    </section>
+    <div class="stats">
+      <div class="stat">${i3d('flame', 'coral')}<b>${streak(now)}일</b><span>연속 학습</span></div>
+      <div class="stat">${i3d('check', 'mint')}<b>${due}개</b><span>오늘 복습</span></div>
+      <div class="stat">${i3d('book', 'blue')}<b>${learned}/${ITEMS.length}</b><span>배운 표현</span></div>
     </div>
-    <div class="stats"><div class="stat"><b>${streak(now)}일</b><span>연속 학습</span></div><div class="stat"><b>${due}개</b><span>오늘 복습</span></div><div class="stat"><b>${learned}/${ITEMS.length}</b><span>배운 표현</span></div></div>
-    <div class="list">
-      <button class="item" id="vcToggle" role="switch" aria-checked="${S.voice}" ${SR ? '' : 'disabled'}><span><b>음성 조작</b><small>${SR ? '영어 명령어로 손 없이 공부해요' : '이 브라우저에서는 쓸 수 없어요'}</small></span><i class="switchy"></i></button>
+    <div class="tiles">
+      <button class="tile" id="goSpeed" ${learned ? '' : 'disabled'}>${i3d('bolt', 'amber')}<b>순발력 연습</b><small>${learned ? '바로바로 말하기' : '표현을 배우면 열려요'}</small></button>
+      <button class="tile" id="goMake" ${learned ? '' : 'disabled'}>${i3d('chat', 'violet')}<b>내 문장 만들기</b><small>${learned ? 'AI가 고쳐 줘요' : '표현을 배우면 열려요'}</small></button>
+      <button class="tile" id="vcToggle" role="switch" aria-checked="${S.voice}" ${SR ? '' : 'disabled'}>${i3d('mic', 'coral')}<b>음성 조작</b><small>${!SR ? '쓸 수 없는 브라우저예요' : S.voice ? '켜짐, 말로 조작해요' : '꺼짐, 눌러서 켜기'}</small></button>
+      <button class="tile" id="goDict">${i3d('list', 'blue')}<b>명령어 사전</b><small>말할 수 있는 표현</small></button>
     </div>`);
+  $('#goSpeed').onclick = startSpeed; $('#goMake').onclick = () => make(); $('#goDict').onclick = dictionary;
   document.querySelectorAll('[data-min]').forEach(b => b.onclick = () => { S.minutes = +b.dataset.min; save(); home(); });
   $('#startBtn').onclick = () => start(m);
   $('#vcToggle').onclick = () => { setVoice(!S.voice); home(); };
@@ -163,9 +202,9 @@ function startSpeed() {
 }
 function header() {
   const s = session, pct = Math.round(s.i / s.q.length * 100);
-  return `<div class="top"><button class="close" id="quit" aria-label="그만하기">${ICON.x}</button><div class="bar" role="progressbar" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100" aria-label="진행률"><i style="width:${pct}%"></i></div><span class="count">${s.i + 1}/${s.q.length}</span></div>`;
+  return `<div class="top"><div class="bar" role="progressbar" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100" aria-label="진행률"><i style="width:${pct}%"></i></div><span class="count">${s.i + 1}/${s.q.length}</span></div>`;
 }
-function wireQuit() { $('#quit').onclick = finish; }
+function wireQuit() { $('#quit').onclick = () => vcDo('back'); }
 function next() {
   const s = session; clearQ();
   if (s.i >= s.q.length || (Date.now() >= s.ends && s.i > 0)) return finish();
@@ -180,7 +219,7 @@ function intro(e) {
     <div class="box"><div class="en" lang="en">${esc(it.en)}</div><p class="note">${esc(it.ko)}</p></div>
     <p class="note">${esc(it.note.replaceAll('{호칭}', S.call))}</p>
     <div class="grow"></div>
-    <div class="dock"><button class="btn alt icon" id="play" aria-label="듣기">${ICON.sound}</button><button class="btn" id="go">문제 풀기</button></div>`);
+    <div class="dock">${BACK}<button class="btn alt icon" id="play" aria-label="듣기">${ICON.sound}</button><button class="btn" id="go">문제 풀기</button></div>`);
   wireQuit(); if (S.autoplay) speak(it.en);
   $('#play').onclick = () => speak(it.en);
   $('#go').onclick = () => { e.shown = true; quiz(e); };
@@ -198,7 +237,7 @@ function quiz(e) {
     ${prompt}
     ${speedy ? `<div class="timer" aria-hidden="true"><i style="animation-duration:${secs}s"></i></div>` : ''}
     <div id="ansBox" class="sheet"></div><div class="grow"></div>
-    <div class="dock"><button class="btn ghost small" id="hint">${st === 'blank' ? '첫 글자 보기' : '첫 단어 보기'}</button><button class="btn ghost small" id="pass">모르겠어요</button></div>`);
+    <div class="dock">${BACK}<button class="btn ghost small" id="hint">${st === 'blank' ? '첫 글자 보기' : '첫 단어 보기'}</button><button class="btn ghost small" id="pass">모르겠어요</button></div>`);
   wireQuit();
   $('#hint').onclick = () => {
     $('#hint').disabled = true; say(pick(LINES.hint), 'listen');
@@ -301,8 +340,8 @@ function showResult(e, result, given, timedOut) {
     <div class="box"><div lang="en" style="font-weight:600">${esc(it.expression)}</div><p class="note">${esc(it.meaning)}</p></div>
     ${when ? `<p class="note" id="when">${when}</p>` : ''}
     <div class="grow"></div>
-    ${graded && ok ? `<div class="dock"><button class="btn alt icon" id="play" aria-label="다시 듣기">${ICON.sound}</button><button class="btn alt" id="rHard">어려워요</button><button class="btn" id="nx">보통</button><button class="btn alt" id="rEasy">쉬워요</button></div>`
-      : `<div class="dock"><button class="btn alt icon" id="play" aria-label="다시 듣기">${ICON.sound}</button><button class="btn" id="nx">다음</button></div>`}`);
+    ${graded && ok ? `<div class="sheet plain"><p class="note">이번 문제는 어땠어요? 그냥 다음을 누르면 보통으로 기록돼요.</p><div class="seg"><button id="rHard">어려웠어요</button><button id="rEasy">쉬웠어요</button></div></div>` : ''}
+    <div class="dock">${BACK}<button class="btn alt icon" id="play" aria-label="다시 듣기">${ICON.sound}</button><button class="btn" id="nx">다음</button></div>`);
   wireQuit(); if (S.autoplay) speak(it.en);
   $('#play').onclick = () => speak(it.en);
   const go = () => { s.i++; next(); };
@@ -325,15 +364,15 @@ function finish() {
 
 /* ---------- 학습 메뉴: 새 학습 모드는 여기에 한 줄 추가한다 ---------- */
 const STUDY_MENU = [
-  { id: 'goToday', title: '오늘의 학습', desc: '복습과 새 표현을 시간에 맞춰 공부해요', run: () => home() },
-  { id: 'goSpeed', title: '순발력 연습', desc: '제한 시간 안에 문장을 바로 말해요', needsLearned: true, run: () => startSpeed() },
-  { id: 'goMake', title: '내 문장 만들기', desc: '내 얘기를 하면 AI가 고쳐 줘요', needsLearned: true, run: () => make() },
+  { id: 'goToday', icon: ['book', 'blue'], title: '오늘의 학습', desc: '복습과 새 표현을 시간에 맞춰 공부해요', run: () => home() },
+  { id: 'goSpeed', icon: ['bolt', 'amber'], title: '순발력 연습', desc: '제한 시간 안에 문장을 바로 말해요', needsLearned: true, run: () => startSpeed() },
+  { id: 'goMake', icon: ['chat', 'violet'], title: '내 문장 만들기', desc: '내 얘기를 하면 AI가 고쳐 줘요', needsLearned: true, run: () => make() },
 ];
 function menu() {
   clearQ(); view('home'); session = null; setScreen('menu', menu); returnTo = null;
   say('{호칭}, 오늘은 뭐 할까? 나는 다 좋아!', 'great');
   const learned = ITEMS.length - newCount();
-  panel(`<h1>학습</h1><div class="list">${STUDY_MENU.map(m => { const off = m.needsLearned && !learned; return `<button class="item" id="${m.id}" ${off ? 'disabled' : ''}><span><b>${m.title}</b><small>${off ? '표현을 먼저 배우면 열려요' : m.desc}</small></span>${ICON.go}</button>`; }).join('')}</div>`);
+  panel(`<h1 class="vh">학습</h1><div class="list">${STUDY_MENU.map(m => { const off = m.needsLearned && !learned; return `<button class="item" id="${m.id}" ${off ? 'disabled' : ''}>${i3d(m.icon[0], m.icon[1])}<span><b>${m.title}</b><small>${off ? '표현을 먼저 배우면 열려요' : m.desc}</small></span>${ICON.go}</button>`; }).join('')}</div>`);
   STUDY_MENU.forEach(m => { $('#' + m.id).onclick = m.run; });
 }
 function records() {
@@ -342,7 +381,7 @@ function records() {
   say(S.days.length ? `{호칭}, 벌써 ${S.days.length}일이나 같이 공부했어!` : '{호칭}, 아직 기록이 없어! 오늘 첫 칸을 채우자!', 'great');
   const days = Array.from({ length: 14 }, (_, i) => SRS.addDays(now, i - 13)).map(t => `<i class="day ${S.days.includes(dayKey(t)) ? 'on' : ''}" title="${dayKey(t)}"></i>`).join('');
   const total = ITEMS.length, bar = (label, v) => `<div class="meter"><span>${label}</span><div class="bar"><i style="width:${total ? Math.round(v / total * 100) : 0}%"></i></div><b>${v}</b></div>`;
-  panel(`<h1>기록</h1>
+  panel(`<h1 class="vh">기록</h1>
     <div class="stats"><div class="stat"><b>${streak(now)}일</b><span>연속 학습</span></div><div class="stat"><b>${S.days.length}일</b><span>총 학습일</span></div><div class="stat"><b>${cards.length}/${total}</b><span>배운 표현</span></div></div>
     <div class="sheet"><h2>최근 14일</h2><div class="days" role="img" aria-label="최근 14일 중 ${S.days.filter(d => d >= dayKey(SRS.addDays(now, -13))).length}일 학습">${days}</div></div>
     <div class="sheet"><h2>표현 단계</h2>${bar('빈칸', n('blank'))}${bar('문장 배열', n('arrange'))}${bar('통문장', n('sentence'))}</div>
@@ -382,13 +421,13 @@ function make(preset) {
   if (!item) return home();
   say(`{호칭}, 이 표현으로 {호칭} 얘기를 들려줘! 아무 얘기나 좋아!`, 'great');
   const hasKey = !!getKey();
-  panel(`<div class="top"><button class="close" id="quit" aria-label="닫기">${ICON.x}</button><span class="count grow">내 문장 만들기</span><button class="link" id="other" style="padding:0">다른 표현</button></div>
+  panel(`<div class="top"><span class="count grow">내 문장 만들기</span><button class="link" id="other" style="padding:0">다른 표현</button></div>
     <div class="expr" lang="en">${esc(item.expression)}</div><p class="ko sub">${esc(item.meaning)}</p>
     ${hasKey ? `${S.voice ? '<p class="note">내 이야기를 영어 문장으로 말해 보세요.</p>' : `<textarea class="field" id="mine" lang="en" aria-label="내 문장" placeholder="영어로 내 이야기를 적어 보세요" autocapitalize="sentences" spellcheck="false"></textarea><p class="err" id="mErr" hidden></p>${SR ? '<button class="btn alt wide" id="mMic">말로 입력하기</button>' : ''}`}
       <p class="note">이번 달 AI 사용 $${aiSpent().toFixed(3)} / $${S.aiLimit.toFixed(2)}</p>` : `<div class="box"><p>AI 교정을 쓰려면 API 키가 필요해요.</p><p class="note">키는 이 기기에만 저장돼요.</p></div>`}
     <div class="grow"></div>
-    <div class="dock">${hasKey ? (S.voice ? '' : '<button class="btn" id="send">고쳐 줘</button>') : '<button class="btn" id="toSet">설정에서 키 넣기</button>'}</div>`);
-  $('#quit').onclick = menu; $('#other').onclick = () => make();
+    <div class="dock">${BACK}${hasKey ? (S.voice ? '' : '<button class="btn" id="send">고쳐 줘</button>') : '<button class="btn" id="toSet">설정에서 키 넣기</button>'}</div>`);
+  $('#quit').onclick = () => vcDo('back'); $('#other').onclick = () => make();
   if (!hasKey) { $('#toSet').onclick = settings; return; }
   curE = { item };
   if (S.voice) return;
@@ -417,9 +456,9 @@ async function checkMine(item, text) {
     <div class="en" lang="en">${esc(j.corrected || text)}</div>
     ${j.reply ? `<div class="box"><p class="note">토타시의 질문</p><p lang="en">${esc(j.reply)}</p></div>` : ''}
     <div class="grow"></div>
-    <div class="dock"><button class="btn alt icon" id="play" aria-label="듣기">${ICON.sound}</button><button class="btn" id="nx">다음 문장</button></div>`);
+    <div class="dock">${BACK}<button class="btn alt icon" id="play" aria-label="듣기">${ICON.sound}</button><button class="btn" id="nx">다음 문장</button></div>`);
   $('#play').onclick = () => speak(j.corrected || text);
-  $('#nx').onclick = () => make();
+  $('#nx').onclick = () => make(); $('#quit').onclick = () => vcDo('back');
   speak(j.corrected || text);
 }
 
@@ -428,7 +467,7 @@ function settings() {
   clearQ(); view('home'); setScreen('settings', settings); returnTo = null;
   say('{호칭}, 뭐 바꿀 거야? 내 이름은 안 돼!', 'idle');
   const key = getKey();
-  panel(`<h1>설정</h1>
+  panel(`<h1 class="vh">설정</h1>
     <div class="sheet"><h2>호칭</h2><div class="seg"><button id="cUn" aria-pressed="${S.call === '언니'}">언니</button><button id="cOp" aria-pressed="${S.call === '오빠'}">오빠</button></div></div>
     <div class="list">
       <button class="item" id="auto" role="switch" aria-checked="${S.autoplay}"><span><b>문장 자동 듣기</b><small>새 표현과 정답 화면에서 읽어 줘요</small></span><i class="switchy"></i></button>
@@ -491,14 +530,16 @@ function settings() {
 /* ---------- 명령어 사전 ---------- */
 function dictionary() {
   if (screen.name !== 'dict') returnTo = screen.render;
-  clearQ(); view('home'); setScreen('dict', dictionary);
-  say('{호칭}, 이 말들을 영어로 해 주면 내가 다 알아들어! 눌러 보면 발음도 들려줄게!', 'great');
+  clearQ(); view('study'); setScreen('dict', dictionary);
+  say('{호칭}, 평소엔 한국어로 말해 줘! 답할 때만 내가 영어로 들을게!', 'great');
   const groups = [...new Set(VOICE.COMMANDS.map(c => c.group))];
   const shown = p => p.replace(/^i'm\b/, "I'm").replace(/^i /, 'I ').replace(/ i /g, ' I ');
-  panel(`<div class="top"><button class="close" id="quit" aria-label="닫기">${ICON.x}</button><h1 style="font-size:19px">명령어 사전</h1></div>
-    <p class="note">음성 조작을 켜면 아래 영어 표현을 그대로 말하면 돼요. 앞뒤에 please나 okay를 붙여도 알아들어요. 표현을 누르면 발음을 들을 수 있어요.</p>
-    ${groups.map(g => `<div class="sheet" style="gap:0"><h2>${g}</h2>${VOICE.COMMANDS.filter(c => c.group === g).map(c => `<div class="cmd"><b>${c.label}</b><div class="chips" lang="en">${c.say.map(p => `<button class="chip" data-p="${esc(p)}">${esc(shown(p))}</button>`).join('')}</div></div>`).join('')}</div>`).join('')}`);
-  $('#body').querySelectorAll('[data-p]').forEach(b => b.onclick = () => speak(b.dataset.p));
+  const chips = (list, lang) => list.map(p => `<button class="chip" data-p="${esc(p)}" data-l="${lang}" lang="${lang}">${esc(lang === 'en' ? shown(p) : p)}</button>`).join('');
+  panel(`<h1>명령어 사전</h1>
+    <p class="note">평소에는 한국어 명령을 듣고, 문제에 답하거나 내 문장을 말할 때만 영어로 들어요. 그때는 영어 표시가 붙은 표현을 쓰면 돼요. 표현을 누르면 읽어 줘요.</p>
+    ${groups.map(g => `<div class="sheet"><h2>${g}</h2>${VOICE.COMMANDS.filter(c => c.group === g).map(c => `<div class="cmd"><b>${c.label}</b>${c.ko.length ? `<div class="chips">${chips(c.ko, 'ko')}</div>` : ''}${c.en.length ? `<div class="chips"><span class="tag">답할 때 영어</span>${chips(c.en, 'en')}</div>` : ''}</div>`).join('')}</div>`).join('')}
+    <div class="dock">${BACK}</div>`);
+  $('#body').querySelectorAll('[data-p]').forEach(b => b.onclick = () => speak(b.dataset.p, b.dataset.l === 'ko' ? { lang: 'ko-KR', rate: 1 } : {}));
   $('#quit').onclick = () => vcDo('back');
 }
 
@@ -509,12 +550,13 @@ function vcUI() {
   const el = $('#vc'); if (!el) return;
   el.hidden = !S.voice; if (!S.voice) return;
   el.className = VC.rest ? 'rest' : VC.paused ? 'talk' : 'on';
-  const state = VC.rest ? (VC.note || '쉬는 중이에요. 다시 들으려면 눌러 주세요.') : VC.paused ? '토타시가 읽는 중…' : '듣고 있어요';
+  const state = VC.rest ? (VC.note || '쉬는 중이에요. 다시 들으려면 눌러 주세요.') : VC.paused ? '토타시가 읽는 중…' : VOICE.langOf(screen.name) === 'en' ? '영어로 듣는 중' : '한국어로 듣는 중';
   const hint = (VOICE.HINTS[screen.name] || []).map(h => `"${h}"`).join(' · ');
   el.innerHTML = `<i class="dot"></i><div class="txt">${esc(state)}<small>${VC.heard && !VC.rest ? `"${esc(VC.heard)}"` : VC.rest ? '' : esc(hint)}</small></div><button id="vcBtn">${VC.rest ? '다시 듣기' : '명령어'}</button>`;
   $('#vcBtn').onclick = () => { if (VC.rest) vcWakeUp(); else if (screen.name !== 'dict') dictionary(); };
 }
 function vcWakeUp() { VC.rest = false; VC.note = ''; VC.fails = 0; VC.last = Date.now(); vcHold(); vcStart(); vcUI(); }
+function vcSync() { if (S.voice && VC.running && VC.lang !== VOICE.langOf(screen.name)) { vcStop(); clearTimeout(VC.timer); VC.timer = setTimeout(vcStart, 200); } }
 function vcStop() { clearTimeout(VC.timer); if (VC.rec) { const r = VC.rec; VC.rec = null; VC.running = false; try { r.abort(); } catch {} } }
 function vcRest(note) { VC.rest = true; VC.note = note || ''; vcStop(); vcRelease(); vcUI(); }
 function vcPause() { if (!S.voice) return; VC.paused = true; vcStop(); vcUI(); }
@@ -525,7 +567,7 @@ function vcStart() {
   if (!S.voice || !SR || VC.running || VC.paused || VC.rest || document.hidden) return;
   if (Date.now() - VC.last > REST_AFTER) return vcRest('한동안 말이 없어서 쉬는 중이에요. 다시 들으려면 눌러 주세요.');
   try {
-    const r = new SR(); r.lang = 'en-US'; r.continuous = false; r.interimResults = false; r.maxAlternatives = 5;
+    VC.lang = VOICE.langOf(screen.name); const r = new SR(); r.lang = VC.lang === 'en' ? 'en-US' : 'ko-KR'; r.continuous = false; r.interimResults = false; r.maxAlternatives = 5;
     r.onresult = e => { VC.last = Date.now(); VC.fails = 0; vcHeard(Array.from(e.results[e.results.length - 1]).map(x => x.transcript)); };
     r.onerror = e => {
       if (e.error === 'not-allowed' || e.error === 'service-not-allowed') return vcRest('마이크 권한을 허용한 뒤 눌러 주세요.');
@@ -547,7 +589,7 @@ function vcHeard(alts) {
   if (r.type === 'answer') return answer(curE, r.ok ? 'exact' : 'wrong', r.text);
   if (r.type === 'sentence') return submitSentence(curE, r.alts);
   if (r.type === 'free') return checkMine(curE.item, r.text);
-  if (r.type === 'unavailable') return say('{호칭}, 그건 이 화면에서는 못 해! "commands"라고 하면 사전 보여 줄게!', 'think');
+  if (r.type === 'unavailable') return say(VOICE.langOf(screen.name) === 'en' ? '{호칭}, 지금은 영어로 답하는 중이야! 답부터 말해 줘!' : '{호칭}, 그건 이 화면에서는 못 해! "명령어"라고 하면 사전 보여 줄게!', 'think');
 }
 function vcDo(action) {
   const click = id => { const b = $(id); if (b && !b.disabled) b.click(); };
@@ -568,10 +610,9 @@ function vcDo(action) {
       if (['make', 'makeres'].includes(screen.name)) return menu();
       if (['settings', 'done', 'menu', 'records'].includes(screen.name)) return home();
       if (screen.name === 'quiz' && curE.kind === 'new' && !curE.retry) return intro(curE);
-      if (screen.name === 'home') return;
-      say('{호칭}, 공부 중에는 뒤로 못 가! 그만하려면 "stop"이라고 해 줘!', 'think');
+      if (session) return finish();
     },
-    homeGo() { session = null; home(); }, menu() { menu(); }, records() { records(); },
+    homeGo() { clearQ(); if (session && session.right + session.wrong) return finish(); session = null; home(); }, menu() { menu(); }, records() { records(); },
     settings() { settings(); }, dict() { dictionary(); },
     down() { scroll(1); }, up() { scroll(-1); },
     status() {
@@ -579,7 +620,7 @@ function vcDo(action) {
       say(t, 'idle'); speak(t, { lang: 'ko-KR', rate: 1 });
     },
     pet() { say(pick(['{호칭}, 안녕! 나 여기 있어!', '헤헤, {호칭} 목소리 좋다!', '나도 {호칭} 좋아!']), 'great', 'boing'); },
-    voiceOff() { setVoice(false); say('알았어, {호칭}! 이제 손으로 눌러 줘!', 'idle'); screen.render(); },
+    voiceOff() { setVoice(false); screen.render(); say('알았어, {호칭}! 이제 손으로 눌러 줘!', 'idle'); },
   };
   if (acts[action]) acts[action]();
 }
@@ -589,7 +630,8 @@ document.addEventListener('visibilitychange', () => {
 });
 
 /* ---------- 시작 ---------- */
-document.querySelectorAll('#tabs button').forEach(b => { b.onclick = () => ({ home, menu, records, settings })[b.dataset.tab](); });
+const TAB_ICON = { home: ['home', 'blue'], menu: ['book', 'violet'], records: ['chart', 'mint'], settings: ['gear', 'gray'] };
+document.querySelectorAll('#tabs button').forEach(b => { b.insertAdjacentHTML('afterbegin', i3d(...TAB_ICON[b.dataset.tab])); b.onclick = () => ({ home, menu, records, settings })[b.dataset.tab](); });
 $('#toto').onclick = () => { if (!session) say(pick(LINES.poke), 'great', 'boing'); else bounce('boing'); };
 (async function boot() {
   load(); draw();

@@ -1,64 +1,78 @@
-/* 음성 명령 사전과 해석. 화면과 분리해 테스트할 수 있게 둔다. */
+/* 음성 명령 사전과 해석. 평소에는 한국어로 듣고, 답을 말하는 화면에서만 영어로 듣는다. */
 (function (root) {
   const ALL = ['home', 'intro', 'quiz', 'result', 'done', 'settings', 'dict', 'make', 'makeres', 'menu', 'records'];
   const TABS = ['home', 'done', 'settings', 'dict', 'menu', 'records'];
   const STUDY = ['intro', 'quiz', 'result'];
+  const langOf = screen => screen === 'quiz' || screen === 'make' ? 'en' : 'ko';
   const COMMANDS = [
-    { group: '학습 진행', action: 'next', label: '다음으로 넘어가기, 문제 풀기', on: ['intro', 'result', 'done', 'makeres'], say: ['next', 'next one', 'next question', 'next please', 'continue', 'go on', 'move on', 'keep going', 'go ahead', "let's go", 'quiz me', 'test me', 'start quiz', 'start the quiz', "i'm ready", 'ready'] },
-    { group: '학습 진행', action: 'easy', label: '쉬웠어요, 복습 늦추기', on: ['result'], say: ['easy', 'that was easy', 'too easy', 'so easy', 'very easy'] },
-    { group: '학습 진행', action: 'hard', label: '어려웠어요, 복습 앞당기기', on: ['result'], say: ['hard', 'difficult', 'that was hard', 'too hard', 'so hard', 'very hard'] },
-    { group: '학습 진행', action: 'hint', label: '첫 글자 힌트 보기', on: ['quiz'], say: ['hint', 'give me a hint', 'one hint', 'clue', 'give me a clue', 'first letter', 'help me', 'what is the first letter'] },
-    { group: '학습 진행', action: 'pass', label: '모르겠어요, 정답 보기', on: ['quiz'], say: ["i don't know", 'i do not know', 'i dont know', 'dunno', 'no idea', 'pass', 'skip', 'skip it', 'skip this', 'give up', 'i give up', 'show me the answer', 'show the answer', 'show answer', 'tell me the answer', "what's the answer"] },
-    { group: '학습 진행', action: 'quit', label: '오늘 공부 끝내기', on: STUDY, say: ['stop', 'finish', 'quit', 'end', "i'm done", 'i am done', "that's all", "that's enough", 'stop studying', 'finish studying', 'end session', 'take a break', "let's stop", "let's finish"] },
-    { group: '듣기', action: 'listen', label: '문장 다시 듣기', on: STUDY, say: ['listen', 'play', 'play it', 'play again', 'say it', 'say it again', 'say that again', 'repeat', 'repeat that', 'repeat please', 'again', 'one more time', 'read it', 'read it again', 'pardon', 'sorry what', 'what did you say'] },
-    { group: '듣기', action: 'slow', label: '천천히 듣기', on: STUDY, say: ['slowly', 'slower', 'slow', 'slow down', 'say it slowly', 'speak slowly', 'read it slowly', 'more slowly'] },
-    { group: '듣기', action: 'meaning', label: '한국어 뜻 듣기', on: STUDY, say: ['meaning', 'the meaning', "what's the meaning", 'what does it mean', 'what does that mean', 'translate', 'translation', 'korean', 'in korean', 'say it in korean'] },
-    { group: '학습 시작', action: 'start', label: '추천 시간으로 시작', on: ['home'], say: ['start', 'begin', 'study', 'start studying', "let's start", "let's study", "let's begin", 'start now'] },
-    { group: '학습 시작', action: 'm0', label: '5분 공부', on: ['home'], say: ['five minutes', '5 minutes', 'five', '5', 'five minute', '5 minute', 'quick study'] },
-    { group: '학습 시작', action: 'm1', label: '10분 공부', on: ['home'], say: ['ten minutes', '10 minutes', 'ten', '10', 'ten minute', '10 minute'] },
-    { group: '학습 시작', action: 'm2', label: '20분 공부', on: ['home'], say: ['twenty minutes', '20 minutes', 'twenty', '20', 'twenty minute', '20 minute'] },
-    { group: '학습 시작', action: 'm3', label: '30분 공부', on: ['home'], say: ['thirty minutes', '30 minutes', 'thirty', '30', 'half an hour', 'thirty minute', '30 minute'] },
-    { group: '학습 시작', action: 'm4', label: '60분 빡공', on: ['home'], say: ['sixty minutes', '60 minutes', 'sixty', '60', 'one hour', 'an hour', '1 hour', 'hard mode', 'boost mode'] },
-    { group: '학습 시작', action: 'speed', label: '순발력 연습', on: ['home', 'menu'], say: ['speed practice', 'speed drill', 'speed mode', 'speed training', 'quick practice'] },
-    { group: '학습 시작', action: 'make', label: '내 문장 만들기', on: ['home', 'menu'], say: ['my sentence', 'make a sentence', 'write a sentence', 'sentence practice', 'ai practice'] },
-    { group: '화면 이동', action: 'back', label: '뒤로 가기', on: ALL, say: ['go back', 'back', 'previous', 'return', 'go to the previous screen', 'close', 'close it'] },
-    { group: '화면 이동', action: 'homeGo', label: '처음 화면으로', on: ALL, say: ['home', 'go home', 'home screen', 'main menu', 'main screen', 'go to home', 'go to the home screen'] },
-    { group: '화면 이동', action: 'menu', label: '학습 메뉴 열기', on: TABS, say: ['study menu', 'learning menu', 'menu', 'open menu', 'show menu', 'modes', 'study modes'] },
-    { group: '화면 이동', action: 'records', label: '기록 보기', on: TABS, say: ['records', 'my records', 'history', 'show records', 'statistics', 'stats', 'my progress'] },
-    { group: '화면 이동', action: 'settings', label: '설정 열기', on: TABS, say: ['settings', 'open settings', 'options', 'show settings'] },
-    { group: '화면 이동', action: 'dict', label: '명령어 사전 열기', on: ALL, say: ['commands', 'command list', 'show commands', 'help', 'what can i say', 'dictionary', 'command dictionary', 'open dictionary'] },
-    { group: '화면 이동', action: 'down', label: '아래로 스크롤', on: ALL, say: ['scroll down', 'down', 'page down', 'go down'] },
-    { group: '화면 이동', action: 'up', label: '위로 스크롤', on: ALL, say: ['scroll up', 'up', 'page up', 'go up'] },
-    { group: '토타시', action: 'status', label: '진행 상황 듣기', on: ALL, say: ['progress', 'how many left', 'how much left', 'how am i doing', 'status', 'how many reviews'] },
-    { group: '토타시', action: 'pet', label: '토타시와 인사하기', on: ALL, say: ['hello', 'hi', 'hi totasi', 'hello totasi', 'good girl', 'good job', 'thank you', 'thanks', 'i love you', 'good morning', 'good night'] },
-    { group: '음성 조작', action: 'voiceOff', label: '음성 조작 끄기', on: ALL, say: ['stop listening', 'voice off', 'mic off', 'microphone off', 'turn off the mic', 'turn off the microphone', 'turn off voice control'] },
+    { group: '학습 진행', action: 'next', label: '다음으로, 문제 풀기', on: ['intro', 'result', 'done', 'makeres'], ko: ['다음', '다음 문제', '다음으로', '넘어가', '넘어가자', '계속', '계속하기', '넥스트', '오케이', '보통', '문제 풀기', '문제 풀자', '풀기'], en: [] },
+    { group: '학습 진행', action: 'easy', label: '쉬웠어요', on: ['result'], ko: ['쉬워', '쉬워요', '쉬웠어', '쉬웠어요', '쉬움'], en: [] },
+    { group: '학습 진행', action: 'hard', label: '어려웠어요', on: ['result'], ko: ['어려워', '어려워요', '어려웠어', '어려웠어요', '어려움'], en: [] },
+    { group: '학습 진행', action: 'hint', label: '힌트 보기', on: ['quiz'], ko: [], en: ['hint', 'give me a hint', 'clue', 'first letter', 'first word', 'help me'] },
+    { group: '학습 진행', action: 'pass', label: '모르겠어요', on: ['quiz'], ko: [], en: ["i don't know", 'i do not know', 'i dont know', 'dunno', 'no idea', 'pass', 'skip', 'skip it', 'give up', 'i give up', 'show me the answer', 'show the answer'] },
+    { group: '학습 진행', action: 'quit', label: '오늘 공부 끝내기', on: STUDY, ko: ['그만', '그만하기', '그만할래', '끝내기', '끝낼래', '공부 끝', '오늘 끝', '종료', '나가기'], en: ['stop', 'finish', 'quit', "i'm done", 'stop studying'] },
+    { group: '듣기', action: 'listen', label: '다시 듣기', on: STUDY, ko: ['듣기', '들려줘', '다시', '다시 들려줘', '다시 듣기', '한 번 더', '읽어줘', '다시 읽어줘', '재생'], en: ['listen', 'say it again', 'repeat', 'one more time', 'read it', 'read it again', 'pardon'] },
+    { group: '듣기', action: 'slow', label: '천천히 듣기', on: STUDY, ko: ['천천히', '천천히 들려줘', '느리게', '천천히 읽어줘'], en: ['slowly', 'slower', 'say it slowly', 'slow down'] },
+    { group: '듣기', action: 'meaning', label: '한국어 뜻 듣기', on: STUDY, ko: ['뜻', '뜻이 뭐야', '무슨 뜻', '한국어로', '해석', '번역'], en: ['meaning', "what's the meaning", 'translate', 'translation', 'in korean'] },
+    { group: '학습 시작', action: 'start', label: '선택한 시간으로 시작', on: ['home'], ko: ['시작', '시작하기', '공부 시작', '학습 시작', '공부하자', '오늘의 학습'], en: [] },
+    { group: '학습 시작', action: 'm0', label: '5분 공부', on: ['home'], ko: ['5분', '오분', '5분 공부'], en: [] },
+    { group: '학습 시작', action: 'm1', label: '10분 공부', on: ['home'], ko: ['10분', '십분', '10분 공부'], en: [] },
+    { group: '학습 시작', action: 'm2', label: '20분 공부', on: ['home'], ko: ['20분', '이십분', '20분 공부'], en: [] },
+    { group: '학습 시작', action: 'm3', label: '30분 공부', on: ['home'], ko: ['30분', '삼십분', '30분 공부'], en: [] },
+    { group: '학습 시작', action: 'm4', label: '60분 빡공', on: ['home'], ko: ['60분', '육십분', '한 시간', '빡공', '빡공 모드'], en: [] },
+    { group: '학습 시작', action: 'speed', label: '순발력 연습', on: ['home', 'menu'], ko: ['순발력', '순발력 연습', '스피드'], en: [] },
+    { group: '학습 시작', action: 'make', label: '내 문장 만들기', on: ['home', 'menu'], ko: ['내 문장', '내 문장 만들기', '문장 만들기'], en: [] },
+    { group: '화면 이동', action: 'back', label: '뒤로 가기', on: ALL, ko: ['뒤로', '뒤로 가기', '뒤로 가', '이전', '이전 화면', '돌아가기', '돌아가'], en: ['go back', 'back'] },
+    { group: '화면 이동', action: 'homeGo', label: '홈으로', on: ALL, ko: ['홈', '홈으로', '홈 화면', '처음으로', '처음 화면', '메인'], en: ['go home'] },
+    { group: '화면 이동', action: 'menu', label: '학습 탭', on: TABS, ko: ['학습 메뉴', '학습 탭', '학습 화면', '메뉴'], en: [] },
+    { group: '화면 이동', action: 'records', label: '기록 탭', on: TABS, ko: ['기록', '기록 보기', '내 기록', '통계'], en: [] },
+    { group: '화면 이동', action: 'settings', label: '설정 탭', on: TABS, ko: ['설정', '설정 열기'], en: [] },
+    { group: '화면 이동', action: 'dict', label: '명령어 사전', on: ALL, ko: ['명령어', '명령어 사전', '사전', '도움말', '뭐라고 말해'], en: ['commands', 'help'] },
+    { group: '화면 이동', action: 'down', label: '아래로 스크롤', on: ALL, ko: ['아래로', '내려', '내려줘', '스크롤 내려'], en: [] },
+    { group: '화면 이동', action: 'up', label: '위로 스크롤', on: ALL, ko: ['위로', '올려', '올려줘', '스크롤 올려'], en: [] },
+    { group: '토타시', action: 'status', label: '진행 상황 듣기', on: ALL, ko: ['진행 상황', '몇 개 남았어', '얼마나 남았어', '몇 문제 남았어'], en: [] },
+    { group: '토타시', action: 'pet', label: '토타시와 인사하기', on: ALL, ko: ['안녕', '토타시야', '잘했어', '고마워', '사랑해', '귀여워'], en: [] },
+    { group: '음성 조작', action: 'voiceOff', label: '음성 조작 끄기', on: ALL, ko: ['음성 끄기', '음성 조작 끄기', '마이크 끄기', '그만 들어'], en: ['stop listening', 'voice off', 'mic off'] },
   ];
   const HINTS = {
-    home: ['start', 'ten minutes', 'commands'], intro: ['next', 'listen', 'slowly'], quiz: ['hint', "I don't know", 'listen'],
-    result: ['next', 'easy', 'hard'], make: ['go back'], makeres: ['next'], done: ['home'], settings: ['home', 'commands'], menu: ['speed practice', 'my sentence'], records: ['home', 'study menu'], dict: ['go back', 'scroll down'],
+    home: ['시작', '10분', '명령어'], intro: ['다음', '다시', '천천히'], quiz: ['hint', "I don't know", 'listen'], result: ['다음', '쉬워', '어려워'],
+    make: ['go back'], makeres: ['다음'], done: ['홈'], settings: ['홈', '명령어'], dict: ['뒤로', '내려'], menu: ['순발력', '내 문장'], records: ['홈', '학습 메뉴'],
   };
-  const norm = s => String(s || '').toLowerCase().replace(/[’]/g, "'").replace(/[^a-z0-9' ]+/g, ' ').replace(/\s+/g, ' ').trim();
-  const LOOKUP = new Map();
-  COMMANDS.forEach(c => c.say.forEach(p => LOOKUP.set(norm(p), c)));
+  const normEn = s => String(s || '').toLowerCase().replace(/[’]/g, "'").replace(/[^a-z0-9' ]+/g, ' ').replace(/\s+/g, ' ').trim();
+  const normKo = s => String(s || '').replace(/[^가-힣0-9a-zA-Z]+/g, '').toLowerCase();
+  const EN = new Map(), KO = new Map();
+  COMMANDS.forEach(c => { c.en.forEach(p => EN.set(normEn(p), c)); c.ko.forEach(p => KO.set(normKo(p), c)); });
   const LEAD = /^(hey|okay|ok|please|totasi|toto|um|uh|so|and|well) /, TRAIL = / (please|now|thanks|thank you|totasi)$/;
-  function findCommand(text) {
-    let t = norm(text);
-    if (LOOKUP.has(t)) return LOOKUP.get(t);
-    for (let i = 0; i < 4; i++) {
-      const n = t.replace(LEAD, '').replace(TRAIL, '');
-      if (n === t) break;
-      t = n;
-      if (LOOKUP.has(t)) return LOOKUP.get(t);
-    }
+  function findEn(text) {
+    let t = normEn(text);
+    if (EN.has(t)) return EN.get(t);
+    for (let i = 0; i < 4; i++) { const n = t.replace(LEAD, '').replace(TRAIL, ''); if (n === t) break; t = n; if (EN.has(t)) return EN.get(t); }
     return null;
   }
-  const wordsOf = s => norm(s).split(' ').filter(Boolean);
-  /* 짧은 잡음을 오답 처리하지 않도록, 빈칸 단어가 없으면 세 단어 이상일 때만 답으로 본다. */
+  /* 한국어는 말끝이 다양하니, 짧은 말 안에 명령어가 들어 있으면 이 화면에서 쓸 수 있는 가장 긴 명령으로 본다. */
+  function findKo(text, screen) {
+    let t = normKo(text);
+    if (t.length > 4 && t.startsWith('토타시야')) t = t.slice(4);
+    if (KO.has(t)) return { c: KO.get(t), exact: true };
+    if (t.length > 16) return null;
+    let best = null, len = 0, other = null;
+    KO.forEach((c, p) => { if (p.length >= 2 && t.includes(p)) { if (!c.on.includes(screen)) { other = other || c; return; } if (p.length > len) { best = c; len = p.length; } } });
+    return best ? { c: best } : other ? { c: other } : null;
+  }
+  const wordsOf = s => normEn(s).split(' ').filter(Boolean);
   function interpret(alts, screen, blank, stage) {
-    const list = (alts || []).filter(Boolean), b = blank && blank.toLowerCase(), sent = screen === 'quiz' && stage && stage !== 'blank';
-    if (screen === 'quiz' && !sent && b && list.some(a => norm(a) === b)) return { type: 'answer', ok: true, text: b };
+    const list = (alts || []).filter(Boolean);
+    if (langOf(screen) === 'ko') {
+      for (const a of list) {
+        const f = findKo(a, screen);
+        if (f) return f.c.on.includes(screen) ? { type: 'cmd', action: f.c.action, text: a } : { type: 'unavailable', action: f.c.action, text: a };
+      }
+      return { type: 'unknown', text: list[0] || '' };
+    }
+    const b = blank && blank.toLowerCase(), sent = screen === 'quiz' && stage && stage !== 'blank';
+    if (screen === 'quiz' && !sent && b && list.some(a => normEn(a) === b)) return { type: 'answer', ok: true, text: b };
     for (const a of list) {
-      const c = findCommand(a);
+      const c = findEn(a);
       if (c) return c.on.includes(screen) ? { type: 'cmd', action: c.action, text: a } : { type: 'unavailable', action: c.action, text: a };
     }
     if (sent && wordsOf(list[0]).length >= 2) return { type: 'sentence', alts: list, text: list[0] };
@@ -70,6 +84,6 @@
     }
     return { type: 'unknown', text: list[0] || '' };
   }
-  const api = { COMMANDS, HINTS, findCommand, interpret };
+  const api = { COMMANDS, HINTS, langOf, findEn, findKo, interpret };
   if (typeof module !== 'undefined') module.exports = api; else root.VOICE = api;
 })(this);
