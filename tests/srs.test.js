@@ -45,7 +45,7 @@ const m=(r,sp)=>[...Array(20)].map((_,i)=>({section:'단어',ok:i<r})).concat([.
 a.ok(S.examScore(m(17,3)).passed);a.ok(!S.examScore(m(16,3)).passed);a.ok(!S.examScore(m(20,2)).passed);a.equal(S.examScore(m(17,3)).pct,80)}
 {const E=require('../data/examples.json'),ids=new Set(items.map(i=>i.id));
 for(const k in E){a.ok(ids.has(k),'key '+k);a.ok(E[k].length>=8,k);a.equal(new Set(E[k]).size,E[k].length,k)}
-for(const i of items.filter(i=>i.opic==='IL'))a.ok(E[i.id],'il '+i.id);
+for(const i of items.filter(i=>['IL','IM1'].includes(i.opic)))a.ok(E[i.id],'example '+i.id);
 const L=[...Array(8)].map((_,i)=>'s'+i);let rec=[];
 for(let n=0;n<40;n++){const r=S.pickExamples(L,rec,3);a.equal(r.picks.length,3);a.equal(new Set(r.picks).size,3);a.ok(r.picks.every(p=>!rec.includes(p)),'recent');rec=r.recent;a.ok(rec.length<=5)}
 a.equal(S.pickExamples(['a','b'],[0],3).picks.length,2);a.equal(S.pickExamples(['a','b','c'],[0,1],3).picks.length,3);a.equal(S.pickExamples([...Array(20)].map((_,i)=>i),[],3).recent.length,3)}
