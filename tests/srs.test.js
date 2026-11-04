@@ -20,3 +20,6 @@ a.equal(S.stageOf(undefined),'blank');a.equal(S.stageOf({reps:1}),'arrange');a.e
 const c1=S.grade(undefined,true,now);a.equal(S.rate(c1,'easy',now).days,3);a.equal(S.rate({days:6},'hard',now).days,3);
 for(const i of items){a.ok(g(i.en,i.en,i.expression).ok,i.id);a.ok(g(i.en.toLowerCase().replace(/[,.?]/g,''),i.en,i.expression).perfect,i.id)}
 console.log('sentence ok')}
+a.equal(items.length,300);a.equal(new Set(items.map(i=>i.id)).size,300);a.equal(new Set(items.map(i=>i.en)).size,300);
+for(const i of items){const g=S.gradeSentence(i.en,i.en,i.expression);a.ok(g.ok,'self '+i.id);a.ok(S.splitBlank(i.en,i.blank),'blank '+i.id);a.ok(i.ko&&i.meaning&&i.note,'fields '+i.id)}
+console.log('300 ok');

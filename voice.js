@@ -10,6 +10,10 @@
     { group: '학습 진행', action: 'hard', label: '어려웠어요', on: ['result'], ko: ['어려워', '어려워요', '어려웠어', '어려웠어요', '어려움'], en: [] },
     { group: '학습 진행', action: 'hint', label: '힌트 보기', on: ['quiz'], ko: [], en: ['hint', 'give me a hint', 'clue', 'first letter', 'first word', 'help me'] },
     { group: '학습 진행', action: 'pass', label: '모르겠어요', on: ['quiz'], ko: [], en: ["i don't know", 'i do not know', 'i dont know', 'dunno', 'no idea', 'pass', 'skip', 'skip it', 'give up', 'i give up', 'show me the answer', 'show the answer'] },
+    { group: '학습 진행', action: 'c0', label: '1번 고르기', on: ['quiz'], ko: [], en: ['one', 'number one', 'first one', 'the first one'] },
+    { group: '학습 진행', action: 'c1', label: '2번 고르기', on: ['quiz'], ko: [], en: ['two', 'number two', 'second one', 'the second one'] },
+    { group: '학습 진행', action: 'c2', label: '3번 고르기', on: ['quiz'], ko: [], en: ['three', 'number three', 'third one', 'the third one'] },
+    { group: '학습 진행', action: 'c3', label: '4번 고르기', on: ['quiz'], ko: [], en: ['four', 'number four', 'fourth one', 'the fourth one'] },
     { group: '학습 진행', action: 'quit', label: '오늘 공부 끝내기', on: STUDY, ko: ['그만', '그만하기', '그만할래', '끝내기', '끝낼래', '공부 끝', '오늘 끝', '종료', '나가기'], en: ['stop', 'finish', 'quit', "i'm done", 'stop studying'] },
     { group: '듣기', action: 'listen', label: '다시 듣기', on: STUDY, ko: ['듣기', '들려줘', '다시', '다시 들려줘', '다시 듣기', '한 번 더', '읽어줘', '다시 읽어줘', '재생'], en: ['listen', 'say it again', 'repeat', 'one more time', 'read it', 'read it again', 'pardon'] },
     { group: '듣기', action: 'slow', label: '천천히 듣기', on: STUDY, ko: ['천천히', '천천히 들려줘', '느리게', '천천히 읽어줘'], en: ['slowly', 'slower', 'say it slowly', 'slow down'] },
@@ -21,6 +25,9 @@
     { group: '학습 시작', action: 'm3', label: '30분 공부', on: ['home'], ko: ['30분', '삼십분', '30분 공부'], en: [] },
     { group: '학습 시작', action: 'm4', label: '60분 빡공', on: ['home'], ko: ['60분', '육십분', '한 시간', '빡공', '빡공 모드'], en: [] },
     { group: '학습 시작', action: 'speed', label: '순발력 연습', on: ['home', 'menu'], ko: ['순발력', '순발력 연습', '스피드'], en: [] },
+    { group: '학습 시작', action: 'dictation', label: '듣고 받아쓰기', on: ['menu'], ko: ['받아쓰기', '듣고 받아쓰기'], en: [] },
+    { group: '학습 시작', action: 'shadow', label: '따라 말하기', on: ['menu'], ko: ['따라 말하기', '따라 하기', '쉐도잉'], en: [] },
+    { group: '학습 시작', action: 'choose', label: '표현 고르기', on: ['menu'], ko: ['표현 고르기', '고르기'], en: [] },
     { group: '학습 시작', action: 'make', label: '내 문장 만들기', on: ['home', 'menu'], ko: ['내 문장', '내 문장 만들기', '문장 만들기'], en: [] },
     { group: '화면 이동', action: 'back', label: '뒤로 가기', on: ALL, ko: ['뒤로', '뒤로 가기', '뒤로 가', '이전', '이전 화면', '돌아가기', '돌아가'], en: ['go back', 'back'] },
     { group: '화면 이동', action: 'homeGo', label: '홈으로', on: ALL, ko: ['홈', '홈으로', '홈 화면', '처음으로', '처음 화면', '메인'], en: ['go home'] },
@@ -36,7 +43,7 @@
   ];
   const HINTS = {
     home: ['시작', '10분', '명령어'], intro: ['다음', '다시', '천천히'], quiz: ['hint', "I don't know", 'listen'], result: ['다음', '쉬워', '어려워'],
-    make: ['go back'], makeres: ['다음'], done: ['홈'], settings: ['홈', '명령어'], dict: ['뒤로', '내려'], menu: ['순발력', '내 문장'], records: ['홈', '학습 메뉴'],
+    make: ['go back'], makeres: ['다음'], done: ['홈'], settings: ['홈', '명령어'], dict: ['뒤로', '내려'], menu: ['받아쓰기', '따라 말하기', '고르기'], records: ['홈', '학습 메뉴'],
   };
   const normEn = s => String(s || '').toLowerCase().replace(/[’]/g, "'").replace(/[^a-z0-9' ]+/g, ' ').replace(/\s+/g, ' ').trim();
   const normKo = s => String(s || '').replace(/[^가-힣0-9a-zA-Z]+/g, '').toLowerCase();

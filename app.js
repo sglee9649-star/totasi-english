@@ -1,4 +1,4 @@
-const APP_VERSION = '0.6.0', APP_DATE = '2026-11-04';
+const APP_VERSION = '0.7.0', APP_DATE = '2026-11-04';
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const KEY = 'totasi-english-v1';
@@ -126,6 +126,7 @@ const SHAPE = {
   gear: 'M10.300 2h3.400l.5 2.600 1.900.8 2.200-1.500 2.400 2.400-1.500 2.200.8 1.900 2.600.5v3.400l-2.600.5-.8 1.900 1.500 2.200-2.400 2.400-2.200-1.500-1.900.8-.5 2.600h-3.400l-.5-2.600-1.900-.8-2.200 1.500-2.400-2.400 1.500-2.200-.8-1.900-2.600-.5v-3.400l2.600-.5.8-1.900-1.500-2.200 2.400-2.400 2.200 1.500 1.900-.8zM12 8.500a3.500 3.500 0 1 0 0 7 3.500 3.500 0 0 0 0-7z',
   flame: 'M12.500 2c.6 3.500-1 5-2.500 6.700C8.600 10.300 7.500 9.500 7.500 8c-2 2-3 4.200-3 6.500C4.500 18.800 7.900 22 12 22s7.500-3.200 7.500-7.500c0-5.500-4-8.500-7-12.500z',
   check: 'M12 2a10 10 0 1 1 0 20 10 10 0 0 1 0-20zm4.700 7.300a1 1 0 0 0-1.400 0L11 13.600l-2.300-2.300a1 1 0 0 0-1.400 1.400l3 3a1 1 0 0 0 1.400 0l5-5a1 1 0 0 0 0-1.400z',
+  pencil: 'M16.5 3.5a2.1 2.1 0 0 1 3 0l1 1a2.1 2.1 0 0 1 0 3L9 19l-5 1 1-5z',
   list: 'M6 3h12a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm2 5a1 1 0 0 0 0 2h8a1 1 0 1 0 0-2zm0 4.500a1 1 0 0 0 0 2h8a1 1 0 1 0 0-2z',
 };
 const i3d = (name, color) => `<svg class="i3d" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" fill="url(#g-${color})" d="${SHAPE[name]}"/><path fill-rule="evenodd" fill="url(#g-shine)" d="${SHAPE[name]}"/></svg>`;
@@ -194,12 +195,13 @@ function start(mode) {
   session = { mode, q, i: 0, right: 0, wrong: 0, fresh: 0, review: 0, ends: now + mode.min * 6e4 };
   next();
 }
-function startSpeed() {
+function startPractice(stage, title) {
   const pool = ITEMS.filter(i => S.cards[i.id]).sort(() => Math.random() - .5).slice(0, 10);
   if (!pool.length) return;
-  session = { speed: true, q: pool.map(item => ({ item, kind: 'review', stage: 'sentence', free: true })), i: 0, right: 0, wrong: 0, fresh: 0, review: 0, ends: Infinity };
+  session = { speed: stage === 'sentence', title, q: pool.map(item => ({ item, kind: 'review', stage, free: true })), i: 0, right: 0, wrong: 0, fresh: 0, review: 0, ends: Infinity };
   next();
 }
+const startSpeed = () => startPractice('sentence', '순발력 연습');
 function header() {
   const s = session, pct = Math.round(s.i / s.q.length * 100);
   return `<div class="top"><div class="bar" role="progressbar" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100" aria-label="진행률"><i style="width:${pct}%"></i></div><span class="count">${s.i + 1}/${s.q.length}</span></div>`;
@@ -227,19 +229,22 @@ function intro(e) {
 function quiz(e) {
   clearQ(); view('study'); curE = e; setScreen('quiz', () => quiz(e));
   const it = e.item, st = e.stage || 'blank', speedy = session && session.speed;
-  say(speedy ? '{호칭}, 빨리빨리! 시간 간다!' : st === 'blank' ? pick(LINES.ask) : st === 'arrange' ? '순서대로 맞춰 봐! 나는 맨날 헷갈려!' : '{호칭}, 이번엔 문장 통째로 말해 봐! 할 수 있어!', 'think');
-  const tag = speedy ? '순발력 연습' : e.retry ? '다시 한 번' : e.kind === 'new' ? '새 표현' : st === 'blank' ? '복습 · 빈칸' : st === 'arrange' ? '복습 · 문장 배열' : '복습 · 통문장';
+  say(speedy ? '{호칭}, 빨리빨리! 시간 간다!' : st === 'dictation' ? '{호칭}, 귀 쫑긋! 잘 듣고 그대로 적어 봐!' : st === 'shadow' ? '{호칭}, 잘 듣고 똑같이 따라 해 봐!' : st === 'choose' ? '이 말을 영어로 하면 뭘까? 골라 봐!' : st === 'blank' ? pick(LINES.ask) : st === 'arrange' ? '순서대로 맞춰 봐! 나는 맨날 헷갈려!' : '{호칭}, 이번엔 문장 통째로 말해 봐! 할 수 있어!', 'think');
+  const tag = e.free ? session.title : e.retry ? '다시 한 번' : e.kind === 'new' ? '새 표현' : st === 'blank' ? '복습 · 빈칸' : st === 'arrange' ? '복습 · 문장 배열' : '복습 · 통문장';
   let prompt;
   if (st === 'blank') { const [a, , c] = SRS.splitBlank(it.en, it.blank); prompt = `<p class="ko sub">${esc(it.ko)}</p><div class="en" lang="en">${esc(a)}<span class="gap" id="gap">&nbsp;</span>${esc(c)}</div>`; }
+  else if (st === 'dictation') prompt = `<p class="ko">잘 듣고 그대로 적어 보세요</p>`;
+  else if (st === 'shadow') prompt = `<div class="en" lang="en">${esc(it.en)}</div><p class="ko sub">${esc(it.ko)}</p>`;
   else prompt = `<p class="ko">${esc(it.ko)}</p>`;
   const secs = speedy ? Math.round(6 + SRS.chipsOf(it.en).length * .6) : 0;
   panel(`${header()}<span class="tag ${e.kind === 'new' ? 'new' : ''}">${tag}</span>
     ${prompt}
     ${speedy ? `<div class="timer" aria-hidden="true"><i style="animation-duration:${secs}s"></i></div>` : ''}
     <div id="ansBox" class="sheet"></div><div class="grow"></div>
-    <div class="dock">${BACK}<button class="btn ghost small" id="hint">${st === 'blank' ? '첫 글자 보기' : '첫 단어 보기'}</button><button class="btn ghost small" id="pass">모르겠어요</button></div>`);
+    <div class="dock">${BACK}${st === 'dictation' || st === 'shadow' ? `<button class="btn alt icon" id="play" aria-label="다시 듣기">${ICON.sound}</button>` : st === 'choose' ? '' : `<button class="btn ghost small" id="hint">${st === 'blank' ? '첫 글자 보기' : '첫 단어 보기'}</button>`}<button class="btn ghost small" id="pass">모르겠어요</button></div>`);
   wireQuit();
-  $('#hint').onclick = () => {
+  if ($('#play')) $('#play').onclick = () => speak(it.en);
+  if ($('#hint')) $('#hint').onclick = () => {
     $('#hint').disabled = true; say(pick(LINES.hint), 'listen');
     if (st === 'blank') $('#gap').textContent = it.blank[0] + '…';
     else { const n = document.createElement('p'); n.className = 'note'; n.lang = 'en'; n.textContent = `${it.en.split(' ')[0]} …`; $('#ansBox').prepend(n); }
@@ -247,7 +252,8 @@ function quiz(e) {
   $('#pass').onclick = () => answer(e, 'wrong', '');
   drawAns(e);
   if (speedy) timerId = setTimeout(() => answer(e, 'wrong', '', true), secs * 1000);
-  if (S.voice && !speedy) { if (st === 'blank') { const [a, , c] = SRS.splitBlank(it.en, it.blank); speak(`${a} blank ${c}`); } else speak(it.ko, { lang: 'ko-KR', rate: 1 }); }
+  if (st === 'dictation' || st === 'shadow') speak(it.en);
+  else if (S.voice && !speedy) { if (st === 'blank') { const [a, , c] = SRS.splitBlank(it.en, it.blank); speak(`${a} blank ${c}`); } else speak(it.ko, { lang: 'ko-KR', rate: 1 }); }
 }
 let recog = null;
 const inputSeg = () => `<div class="seg" role="group" aria-label="답변 방법"><button id="mType" aria-pressed="${S.input !== 'voice'}">타이핑</button><button id="mVoice" aria-pressed="${S.input === 'voice'}">말하기</button></div>`;
@@ -259,15 +265,16 @@ function drawAns(e) {
   if (recog) { try { recog.abort(); } catch {} recog = null; }
   const box = $('#ansBox'), it = e.item, st = e.stage || 'blank', speedy = session && session.speed;
   const chips = SRS.chipsOf(it.en);
+  if (st === 'choose') return drawChoose(e, box);
   if (st === 'arrange' && !S.voice) return drawArrange(e, box, chips);
   if (S.voice) {
     box.innerHTML = st === 'blank' ? `<p class="note">빈칸 단어나 문장 전체를 영어로 말해 보세요.</p>` : `${st === 'arrange' ? `<div class="pool" lang="en">${chips.slice().sort(() => Math.random() - .5).map(w => `<span class="word">${esc(w)}</span>`).join('')}</div>` : ''}<p class="note">문장 전체를 영어로 말해 보세요.</p>`;
     return;
   }
   const sent = st !== 'blank', ph = sent ? '영어 문장 입력' : '영어 단어 입력';
-  if (S.input === 'voice' && SR) {
-    box.innerHTML = `${inputSeg()}<button class="btn wide mic" id="mic">눌러서 말하기</button><p class="note" id="heard">${sent ? '문장 전체를 말해 보세요.' : '빈칸 단어가 들어간 문장을 말해 보세요.'}</p>`;
-    wireSeg(e);
+  if ((S.input === 'voice' || st === 'shadow') && SR) {
+    box.innerHTML = `${st === 'shadow' ? '' : inputSeg()}<button class="btn wide mic" id="mic">눌러서 말하기</button><p class="note" id="heard">${sent ? '문장 전체를 말해 보세요.' : '빈칸 단어가 들어간 문장을 말해 보세요.'}</p>`;
+    if (st !== 'shadow') wireSeg(e);
     const go = () => {
       const m = $('#mic'); m.classList.add('on'); m.textContent = '듣고 있어요…'; m.disabled = true;
       if (!speedy) say('{호칭}, 말해 봐! 나 귀 쫑긋하고 듣고 있어!', 'listen');
@@ -289,6 +296,15 @@ function drawAns(e) {
     if (sent) submitSentence(e, [v]); else answer(e, SRS.check(v, it.blank), v);
   };
   $('#ans').focus({ preventScroll: true });
+}
+function drawChoose(e, box) {
+  const it = e.item;
+  if (!e.opts) {
+    const same = ITEMS.filter(i => i.topic === it.topic && i.id !== it.id && i.expression !== it.expression).sort(() => Math.random() - .5).slice(0, 3);
+    e.opts = [it, ...same].sort(() => Math.random() - .5);
+  }
+  box.innerHTML = `<div class="opts" lang="en">${e.opts.map((o, n) => `<button class="opt" id="opt${n}"><i>${n + 1}</i><span>${esc(o.en)}</span></button>`).join('')}</div>`;
+  e.opts.forEach((o, n) => { $('#opt' + n).onclick = () => answer(e, o.id === it.id ? 'exact' : 'wrong', o.en); });
 }
 function drawArrange(e, box, chips) {
   const order = chips.map((w, i) => ({ w, i })).sort(() => Math.random() - .5), picked = [];
@@ -318,7 +334,7 @@ function answer(e, result, given, timedOut) {
     markToday(now); save();
     if (e.kind === 'new') s.fresh++; else s.review++;
     if (!ok) s.q.splice(Math.min(s.i + 4, s.q.length), 0, { item: it, kind: 'review', stage: e.stage, retry: true });
-  } else if (e.free) { markToday(now); save(); }
+  } else if (e.free) { s.review++; markToday(now); save(); }
   say(pick(ok ? LINES.correct : LINES.wrong), ok ? pick(['correct', 'great']) : 'wrong', ok ? 'boing' : 'sad');
   showResult(e, result, given, timedOut);
 }
@@ -326,7 +342,7 @@ function showResult(e, result, given, timedOut) {
   setScreen('result', () => showResult(e, result, given, timedOut));
   const s = session, it = e.item, ok = result !== 'wrong', card = S.cards[it.id], graded = !e.retry && !e.free;
   let sentence;
-  if ((e.stage || 'blank') === 'sentence' && given) {
+  if (['sentence', 'dictation', 'shadow'].includes(e.stage) && given) {
     const r = SRS.gradeSentence(given, it.en, it.expression);
     sentence = it.en.split(' ').map(w => { const mine = SRS.gradeSentence(w, w, '').missing.every(r.has); return mine ? esc(w) : `<mark class="miss">${esc(w)}</mark>`; }).join(' ');
   } else { const [a, b, c] = SRS.splitBlank(it.en, it.blank); sentence = `${esc(a)}<mark>${esc(b)}</mark>${esc(c)}`; }
@@ -355,7 +371,7 @@ function finish() {
   view('home'); setScreen('done', home);
   const n = s.right + s.wrong;
   say(s.wrong === 0 ? '전부 맞았어! {호칭} 천재야? 나 오늘 자랑하고 다닐래!' : '{호칭}, 오늘도 같이 해 줘서 고마워! 틀린 건 내가 꼭 다시 물어볼게!', 'done', 'boing');
-  panel(`<h1>${s.speed ? '순발력 연습 끝!' : '오늘 공부 끝!'}</h1>
+  panel(`<h1>${s.title ? `${s.title} 끝!` : '오늘 공부 끝!'}</h1>
     <div class="stats"><div class="stat"><b>${s.right}/${n}</b><span>맞힌 문제</span></div><div class="stat"><b>${s.review}개</b><span>복습</span></div><div class="stat"><b>${s.fresh}개</b><span>새 표현</span></div></div>
     <p class="note">연속 학습 ${streak(Date.now())}일째예요.</p><div class="grow"></div>
     <button class="btn wide cta" id="back">처음으로</button>`);
@@ -366,6 +382,9 @@ function finish() {
 const STUDY_MENU = [
   { id: 'goToday', icon: ['book', 'blue'], title: '오늘의 학습', desc: '복습과 새 표현을 시간에 맞춰 공부해요', run: () => home() },
   { id: 'goSpeed', icon: ['bolt', 'amber'], title: '순발력 연습', desc: '제한 시간 안에 문장을 바로 말해요', needsLearned: true, run: () => startSpeed() },
+  { id: 'goDictation', icon: ['pencil', 'blue'], title: '듣고 받아쓰기', desc: '문장을 듣고 그대로 적어요', needsLearned: true, run: () => startPractice('dictation', '받아쓰기') },
+  { id: 'goShadow', icon: ['mic', 'coral'], title: '따라 말하기', desc: '원문을 듣고 똑같이 말해요', needsLearned: true, run: () => startPractice('shadow', '따라 말하기') },
+  { id: 'goChoose', icon: ['check', 'mint'], title: '표현 고르기', desc: '한국어에 맞는 영어 문장을 골라요', needsLearned: true, run: () => startPractice('choose', '표현 고르기') },
   { id: 'goMake', icon: ['chat', 'violet'], title: '내 문장 만들기', desc: '내 얘기를 하면 AI가 고쳐 줘요', needsLearned: true, run: () => make() },
 ];
 function menu() {
@@ -587,6 +606,7 @@ function vcHeard(alts) {
   VC.heard = r.text || ''; vcUI();
   if (r.type === 'cmd') return vcDo(r.action);
   if (r.type === 'answer') return answer(curE, r.ok ? 'exact' : 'wrong', r.text);
+  if (r.type === 'sentence' && curE.stage === 'choose') { const n = (curE.opts || []).find(o => r.alts.some(t => SRS.gradeSentence(t, o.en, o.expression).ok)); if (n) answer(curE, n.id === curE.item.id ? 'exact' : 'wrong', n.en); return; }
   if (r.type === 'sentence') return submitSentence(curE, r.alts);
   if (r.type === 'free') return checkMine(curE.item, r.text);
   if (r.type === 'unavailable') return say(VOICE.langOf(screen.name) === 'en' ? '{호칭}, 지금은 영어로 답하는 중이야! 답부터 말해 줘!' : '{호칭}, 그건 이 화면에서는 못 해! "명령어"라고 하면 사전 보여 줄게!', 'think');
@@ -594,14 +614,16 @@ function vcHeard(alts) {
 function vcDo(action) {
   const click = id => { const b = $(id); if (b && !b.disabled) b.click(); };
   const sentence = () => curE && curE.item.en;
-  const line = () => { if (screen.name === 'quiz' && (curE.stage || 'blank') !== 'blank') return curE.item.ko; if (screen.name === 'quiz') { const [a, , c] = SRS.splitBlank(curE.item.en, curE.item.blank); return `${a} blank ${c}`; } return sentence(); };
+  const line = () => { if (screen.name === 'quiz' && ['arrange', 'sentence', 'choose'].includes(curE.stage)) return curE.item.ko; if (screen.name === 'quiz' && (curE.stage || 'blank') === 'blank') { const [a, , c] = SRS.splitBlank(curE.item.en, curE.item.blank); return `${a} blank ${c}`; } return sentence(); };
   const scroll = d => { const p = $('#panel'), by = innerHeight * .7 * d; if (p.scrollHeight > p.clientHeight) p.scrollBy({ top: by }); else window.scrollBy({ top: by }); };
   const acts = {
     next() { click(screen.name === 'intro' ? '#go' : screen.name === 'done' ? '#back' : '#nx'); },
     easy() { $('#rEasy') ? click('#rEasy') : click('#nx'); }, hard() { $('#rHard') ? click('#rHard') : click('#nx'); },
+    c0() { click('#opt0'); }, c1() { click('#opt1'); }, c2() { click('#opt2'); }, c3() { click('#opt3'); },
+    dictation() { startPractice('dictation', '받아쓰기'); }, shadow() { startPractice('shadow', '따라 말하기'); }, choose() { startPractice('choose', '표현 고르기'); },
     speed() { if (ITEMS.length > newCount()) startSpeed(); else say('{호칭}, 표현부터 배우고 하자!', 'think'); }, make() { if (ITEMS.length > newCount()) make(); else say('{호칭}, 표현부터 배우고 하자!', 'think'); },
     hint() { click('#hint'); }, pass() { click('#pass'); }, quit() { finish(); },
-    listen() { const q = screen.name === 'quiz' && (curE.stage || 'blank') !== 'blank'; speak(line(), q ? { lang: 'ko-KR', rate: 1 } : {}); }, slow() { const q = screen.name === 'quiz' && (curE.stage || 'blank') !== 'blank'; speak(line(), q ? { lang: 'ko-KR', rate: .8 } : { rate: .65 }); },
+    listen() { const q = screen.name === 'quiz' && ['arrange', 'sentence', 'choose'].includes(curE.stage); speak(line(), q ? { lang: 'ko-KR', rate: 1 } : {}); }, slow() { const q = screen.name === 'quiz' && ['arrange', 'sentence', 'choose'].includes(curE.stage); speak(line(), q ? { lang: 'ko-KR', rate: .8 } : { rate: .65 }); },
     meaning() { speak(curE.item.ko, { lang: 'ko-KR', rate: 1 }); },
     start() { click('#startBtn'); },
     m0() { S.minutes = 5; start(SRS.MODES[0]); }, m1() { S.minutes = 10; start(SRS.MODES[1]); }, m2() { S.minutes = 20; start(SRS.MODES[2]); }, m3() { S.minutes = 30; start(SRS.MODES[3]); }, m4() { S.minutes = 60; start(SRS.MODES[4]); },
