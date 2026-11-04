@@ -25,3 +25,7 @@ a.equal(I(['um'],'quiz','window','sentence').type,'unknown');
 a.equal(I(['easy'],'result','').action,'easy');
 for(const i of items)a.ok(!V.findCommand(i.en),'sentence collides '+i.id);
 console.log('stage ok');
+const fs=require('fs'),ver=/APP_VERSION = '([\d.]+)'/.exec(fs.readFileSync(__dirname+'/../app.js','utf8'))[1];
+a.ok(fs.readFileSync(__dirname+'/../sw.js','utf8').includes("totasi-english-"+ver),'sw version');
+a.equal(I(['records'],'home','').action,'records');a.equal(I(['speed practice'],'menu','').action,'speed');
+console.log('version ok',ver);

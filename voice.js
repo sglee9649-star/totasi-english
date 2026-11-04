@@ -1,6 +1,7 @@
 /* 음성 명령 사전과 해석. 화면과 분리해 테스트할 수 있게 둔다. */
 (function (root) {
-  const ALL = ['home', 'intro', 'quiz', 'result', 'done', 'settings', 'dict', 'make', 'makeres'];
+  const ALL = ['home', 'intro', 'quiz', 'result', 'done', 'settings', 'dict', 'make', 'makeres', 'menu', 'records'];
+  const TABS = ['home', 'done', 'settings', 'dict', 'menu', 'records'];
   const STUDY = ['intro', 'quiz', 'result'];
   const COMMANDS = [
     { group: '학습 진행', action: 'next', label: '다음으로 넘어가기, 문제 풀기', on: ['intro', 'result', 'done', 'makeres'], say: ['next', 'next one', 'next question', 'next please', 'continue', 'go on', 'move on', 'keep going', 'go ahead', "let's go", 'quiz me', 'test me', 'start quiz', 'start the quiz', "i'm ready", 'ready'] },
@@ -18,11 +19,13 @@
     { group: '학습 시작', action: 'm2', label: '20분 공부', on: ['home'], say: ['twenty minutes', '20 minutes', 'twenty', '20', 'twenty minute', '20 minute'] },
     { group: '학습 시작', action: 'm3', label: '30분 공부', on: ['home'], say: ['thirty minutes', '30 minutes', 'thirty', '30', 'half an hour', 'thirty minute', '30 minute'] },
     { group: '학습 시작', action: 'm4', label: '60분 빡공', on: ['home'], say: ['sixty minutes', '60 minutes', 'sixty', '60', 'one hour', 'an hour', '1 hour', 'hard mode', 'boost mode'] },
-    { group: '학습 시작', action: 'speed', label: '순발력 연습', on: ['home'], say: ['speed practice', 'speed drill', 'speed mode', 'speed training', 'quick practice'] },
-    { group: '학습 시작', action: 'make', label: '내 문장 만들기', on: ['home'], say: ['my sentence', 'make a sentence', 'write a sentence', 'sentence practice', 'ai practice'] },
+    { group: '학습 시작', action: 'speed', label: '순발력 연습', on: ['home', 'menu'], say: ['speed practice', 'speed drill', 'speed mode', 'speed training', 'quick practice'] },
+    { group: '학습 시작', action: 'make', label: '내 문장 만들기', on: ['home', 'menu'], say: ['my sentence', 'make a sentence', 'write a sentence', 'sentence practice', 'ai practice'] },
     { group: '화면 이동', action: 'back', label: '뒤로 가기', on: ALL, say: ['go back', 'back', 'previous', 'return', 'go to the previous screen', 'close', 'close it'] },
     { group: '화면 이동', action: 'homeGo', label: '처음 화면으로', on: ALL, say: ['home', 'go home', 'home screen', 'main menu', 'main screen', 'go to home', 'go to the home screen'] },
-    { group: '화면 이동', action: 'settings', label: '설정 열기', on: ['home'], say: ['settings', 'open settings', 'options', 'show settings'] },
+    { group: '화면 이동', action: 'menu', label: '학습 메뉴 열기', on: TABS, say: ['study menu', 'learning menu', 'menu', 'open menu', 'show menu', 'modes', 'study modes'] },
+    { group: '화면 이동', action: 'records', label: '기록 보기', on: TABS, say: ['records', 'my records', 'history', 'show records', 'statistics', 'stats', 'my progress'] },
+    { group: '화면 이동', action: 'settings', label: '설정 열기', on: TABS, say: ['settings', 'open settings', 'options', 'show settings'] },
     { group: '화면 이동', action: 'dict', label: '명령어 사전 열기', on: ALL, say: ['commands', 'command list', 'show commands', 'help', 'what can i say', 'dictionary', 'command dictionary', 'open dictionary'] },
     { group: '화면 이동', action: 'down', label: '아래로 스크롤', on: ALL, say: ['scroll down', 'down', 'page down', 'go down'] },
     { group: '화면 이동', action: 'up', label: '위로 스크롤', on: ALL, say: ['scroll up', 'up', 'page up', 'go up'] },
@@ -32,7 +35,7 @@
   ];
   const HINTS = {
     home: ['start', 'ten minutes', 'commands'], intro: ['next', 'listen', 'slowly'], quiz: ['hint', "I don't know", 'listen'],
-    result: ['next', 'easy', 'hard'], make: ['go back'], makeres: ['next'], done: ['home'], settings: ['go back'], dict: ['go back', 'scroll down'],
+    result: ['next', 'easy', 'hard'], make: ['go back'], makeres: ['next'], done: ['home'], settings: ['home', 'commands'], menu: ['speed practice', 'my sentence'], records: ['home', 'study menu'], dict: ['go back', 'scroll down'],
   };
   const norm = s => String(s || '').toLowerCase().replace(/[’]/g, "'").replace(/[^a-z0-9' ]+/g, ' ').replace(/\s+/g, ' ').trim();
   const LOOKUP = new Map();

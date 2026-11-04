@@ -1,10 +1,12 @@
+const APP_VERSION = '0.5.0', APP_DATE = '2026-11-04';
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const KEY = 'totasi-english-v1';
 const FRESH_STATE = () => ({ call: '', cards: {}, days: [], input: 'type', autoplay: true, voice: false, voiceAsked: false, minutes: 10, aiMonth: '', aiCost: 0, aiLimit: 1 });
 let S = FRESH_STATE(), ITEMS = [], session = null;
 let screen = { name: 'home', render: () => home() }, returnTo = null, curE = null;
-const setScreen = (name, render) => { screen = { name, render }; vcUI(); };
+const TAB_OF = { home: 'home', done: 'home', menu: 'menu', records: 'records', settings: 'settings', dict: 'settings' };
+const setScreen = (name, render) => { screen = { name, render }; vcUI(); document.querySelectorAll('#tabs button').forEach(b => b.setAttribute('aria-current', b.dataset.tab === TAB_OF[name] ? 'page' : 'false')); };
 
 function load() { try { const v = JSON.parse(localStorage.getItem(KEY)); if (v) S = Object.assign(FRESH_STATE(), v); } catch {} }
 function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch {} }
@@ -102,7 +104,7 @@ const view = v => { document.body.dataset.view = v; };
 let timerId = null;
 const clearQ = () => { clearTimeout(timerId); if (recog) { try { recog.abort(); } catch {} recog = null; } };
 function welcome() {
-  view('home');
+  view('setup');
   say('안녕! 나 토타시야! 오늘부터 같이 영어 공부하는 거지? 내가 뭐라고 부르면 돼?', 'great');
   panel(`<h1>토타시가 뭐라고 부를까요?</h1><div class="row"><button class="btn cta" id="cUn">언니</button><button class="btn cta" id="cOp">오빠</button></div><p class="note">설정에서 언제든 바꿀 수 있어요.</p>`);
   const pickCall = c => { S.call = c; save(); chooseControl(); };
@@ -140,17 +142,11 @@ function home() {
     </div>
     <div class="stats"><div class="stat"><b>${streak(now)}일</b><span>연속 학습</span></div><div class="stat"><b>${due}개</b><span>오늘 복습</span></div><div class="stat"><b>${learned}/${ITEMS.length}</b><span>배운 표현</span></div></div>
     <div class="list">
-      <button class="item" id="goSpeed" ${learned ? '' : 'disabled'}><span><b>순발력 연습</b><small>${learned ? '제한 시간 안에 문장을 바로 말해요' : '표현을 배우면 열려요'}</small></span>${ICON.go}</button>
-      <button class="item" id="goMake" ${learned ? '' : 'disabled'}><span><b>내 문장 만들기</b><small>${learned ? '배운 표현으로 내 얘기를 하면 AI가 고쳐 줘요' : '표현을 배우면 열려요'}</small></span>${ICON.go}</button>
       <button class="item" id="vcToggle" role="switch" aria-checked="${S.voice}" ${SR ? '' : 'disabled'}><span><b>음성 조작</b><small>${SR ? '영어 명령어로 손 없이 공부해요' : '이 브라우저에서는 쓸 수 없어요'}</small></span><i class="switchy"></i></button>
-      <button class="item" id="goDict"><span><b>명령어 사전</b></span>${ICON.go}</button>
-      <button class="item" id="goSet"><span><b>설정</b><small>호칭, AI 연결, 백업</small></span>${ICON.go}</button>
     </div>`);
   document.querySelectorAll('[data-min]').forEach(b => b.onclick = () => { S.minutes = +b.dataset.min; save(); home(); });
   $('#startBtn').onclick = () => start(m);
   $('#vcToggle').onclick = () => { setVoice(!S.voice); home(); };
-  $('#goSpeed').onclick = startSpeed; $('#goMake').onclick = make;
-  $('#goDict').onclick = dictionary; $('#goSet').onclick = settings;
 }
 function start(mode) {
   const now = Date.now(), q = SRS.buildSession(ITEMS, S.cards, mode, now);
@@ -327,6 +323,32 @@ function finish() {
   $('#back').onclick = home;
 }
 
+/* ---------- 학습 메뉴: 새 학습 모드는 여기에 한 줄 추가한다 ---------- */
+const STUDY_MENU = [
+  { id: 'goToday', title: '오늘의 학습', desc: '복습과 새 표현을 시간에 맞춰 공부해요', run: () => home() },
+  { id: 'goSpeed', title: '순발력 연습', desc: '제한 시간 안에 문장을 바로 말해요', needsLearned: true, run: () => startSpeed() },
+  { id: 'goMake', title: '내 문장 만들기', desc: '내 얘기를 하면 AI가 고쳐 줘요', needsLearned: true, run: () => make() },
+];
+function menu() {
+  clearQ(); view('home'); session = null; setScreen('menu', menu); returnTo = null;
+  say('{호칭}, 오늘은 뭐 할까? 나는 다 좋아!', 'great');
+  const learned = ITEMS.length - newCount();
+  panel(`<h1>학습</h1><div class="list">${STUDY_MENU.map(m => { const off = m.needsLearned && !learned; return `<button class="item" id="${m.id}" ${off ? 'disabled' : ''}><span><b>${m.title}</b><small>${off ? '표현을 먼저 배우면 열려요' : m.desc}</small></span>${ICON.go}</button>`; }).join('')}</div>`);
+  STUDY_MENU.forEach(m => { $('#' + m.id).onclick = m.run; });
+}
+function records() {
+  clearQ(); view('home'); session = null; setScreen('records', records); returnTo = null;
+  const now = Date.now(), cards = Object.values(S.cards), n = st => cards.filter(c => SRS.stageOf(c) === st).length;
+  say(S.days.length ? `{호칭}, 벌써 ${S.days.length}일이나 같이 공부했어!` : '{호칭}, 아직 기록이 없어! 오늘 첫 칸을 채우자!', 'great');
+  const days = Array.from({ length: 14 }, (_, i) => SRS.addDays(now, i - 13)).map(t => `<i class="day ${S.days.includes(dayKey(t)) ? 'on' : ''}" title="${dayKey(t)}"></i>`).join('');
+  const total = ITEMS.length, bar = (label, v) => `<div class="meter"><span>${label}</span><div class="bar"><i style="width:${total ? Math.round(v / total * 100) : 0}%"></i></div><b>${v}</b></div>`;
+  panel(`<h1>기록</h1>
+    <div class="stats"><div class="stat"><b>${streak(now)}일</b><span>연속 학습</span></div><div class="stat"><b>${S.days.length}일</b><span>총 학습일</span></div><div class="stat"><b>${cards.length}/${total}</b><span>배운 표현</span></div></div>
+    <div class="sheet"><h2>최근 14일</h2><div class="days" role="img" aria-label="최근 14일 중 ${S.days.filter(d => d >= dayKey(SRS.addDays(now, -13))).length}일 학습">${days}</div></div>
+    <div class="sheet"><h2>표현 단계</h2>${bar('빈칸', n('blank'))}${bar('문장 배열', n('arrange'))}${bar('통문장', n('sentence'))}</div>
+    <div class="sheet"><h2>이번 달 AI 사용</h2><p class="note">$${aiSpent().toFixed(3)} / 한도 $${S.aiLimit.toFixed(2)}</p></div>`);
+}
+
 /* ---------- 내 문장 만들기 (AI) ---------- */
 const AI_KEY = 'totasi-english-key', AI_MODEL = 'claude-haiku-5-5', PRICE_IN = .1 / 1e6, PRICE_OUT = .5 / 1e6;
 const getKey = () => { try { return localStorage.getItem(AI_KEY) || ''; } catch { return ''; } };
@@ -366,7 +388,7 @@ function make(preset) {
       <p class="note">이번 달 AI 사용 $${aiSpent().toFixed(3)} / $${S.aiLimit.toFixed(2)}</p>` : `<div class="box"><p>AI 교정을 쓰려면 API 키가 필요해요.</p><p class="note">키는 이 기기에만 저장돼요.</p></div>`}
     <div class="grow"></div>
     <div class="dock">${hasKey ? (S.voice ? '' : '<button class="btn" id="send">고쳐 줘</button>') : '<button class="btn" id="toSet">설정에서 키 넣기</button>'}</div>`);
-  $('#quit').onclick = home; $('#other').onclick = () => make();
+  $('#quit').onclick = menu; $('#other').onclick = () => make();
   if (!hasKey) { $('#toSet').onclick = settings; return; }
   curE = { item };
   if (S.voice) return;
@@ -406,7 +428,7 @@ function settings() {
   clearQ(); view('home'); setScreen('settings', settings); returnTo = null;
   say('{호칭}, 뭐 바꿀 거야? 내 이름은 안 돼!', 'idle');
   const key = getKey();
-  panel(`<div class="top"><button class="close" id="quit" aria-label="닫기">${ICON.x}</button><h1 style="font-size:19px">설정</h1></div>
+  panel(`<h1>설정</h1>
     <div class="sheet"><h2>호칭</h2><div class="seg"><button id="cUn" aria-pressed="${S.call === '언니'}">언니</button><button id="cOp" aria-pressed="${S.call === '오빠'}">오빠</button></div></div>
     <div class="list">
       <button class="item" id="auto" role="switch" aria-checked="${S.autoplay}"><span><b>문장 자동 듣기</b><small>새 표현과 정답 화면에서 읽어 줘요</small></span><i class="switchy"></i></button>
@@ -424,8 +446,8 @@ function settings() {
     <div class="sheet"><h2>백업</h2><p class="note">학습 기록은 이 기기에 저장돼요. 기기를 옮기거나 지우기 전에 파일로 보관해 주세요.</p>
       <div class="row"><button class="btn alt small" id="exp">백업 파일 저장</button><button class="btn alt small" id="imp">백업 불러오기</button></div>
       <input type="file" id="file" accept="application/json,.json" hidden aria-label="백업 파일"><p class="note" id="msg" role="status"></p></div>
-    <button class="btn ghost small danger" id="wipe">모든 학습 기록 지우기</button>`);
-  $('#quit').onclick = home;
+    <button class="btn ghost small danger" id="wipe">모든 학습 기록 지우기</button>
+    <p class="note" id="ver" style="text-align:center">토타시 영어 버전 ${APP_VERSION} · ${APP_DATE}</p>`);
   const setCall = c => { S.call = c; save(); settings(); };
   $('#cUn').onclick = () => setCall('언니'); $('#cOp').onclick = () => setCall('오빠');
   $('#auto').onclick = () => { S.autoplay = !S.autoplay; save(); settings(); };
@@ -535,7 +557,7 @@ function vcDo(action) {
   const acts = {
     next() { click(screen.name === 'intro' ? '#go' : screen.name === 'done' ? '#back' : '#nx'); },
     easy() { $('#rEasy') ? click('#rEasy') : click('#nx'); }, hard() { $('#rHard') ? click('#rHard') : click('#nx'); },
-    speed() { click('#goSpeed'); }, make() { click('#goMake'); },
+    speed() { if (ITEMS.length > newCount()) startSpeed(); else say('{호칭}, 표현부터 배우고 하자!', 'think'); }, make() { if (ITEMS.length > newCount()) make(); else say('{호칭}, 표현부터 배우고 하자!', 'think'); },
     hint() { click('#hint'); }, pass() { click('#pass'); }, quit() { finish(); },
     listen() { const q = screen.name === 'quiz' && (curE.stage || 'blank') !== 'blank'; speak(line(), q ? { lang: 'ko-KR', rate: 1 } : {}); }, slow() { const q = screen.name === 'quiz' && (curE.stage || 'blank') !== 'blank'; speak(line(), q ? { lang: 'ko-KR', rate: .8 } : { rate: .65 }); },
     meaning() { speak(curE.item.ko, { lang: 'ko-KR', rate: 1 }); },
@@ -543,12 +565,13 @@ function vcDo(action) {
     m0() { S.minutes = 5; start(SRS.MODES[0]); }, m1() { S.minutes = 10; start(SRS.MODES[1]); }, m2() { S.minutes = 20; start(SRS.MODES[2]); }, m3() { S.minutes = 30; start(SRS.MODES[3]); }, m4() { S.minutes = 60; start(SRS.MODES[4]); },
     back() {
       if (screen.name === 'dict') { const f = returnTo || home; returnTo = null; return f(); }
-      if (['settings', 'done', 'make', 'makeres'].includes(screen.name)) return home();
+      if (['make', 'makeres'].includes(screen.name)) return menu();
+      if (['settings', 'done', 'menu', 'records'].includes(screen.name)) return home();
       if (screen.name === 'quiz' && curE.kind === 'new' && !curE.retry) return intro(curE);
       if (screen.name === 'home') return;
       say('{호칭}, 공부 중에는 뒤로 못 가! 그만하려면 "stop"이라고 해 줘!', 'think');
     },
-    homeGo() { session = null; home(); },
+    homeGo() { session = null; home(); }, menu() { menu(); }, records() { records(); },
     settings() { settings(); }, dict() { dictionary(); },
     down() { scroll(1); }, up() { scroll(-1); },
     status() {
@@ -566,6 +589,7 @@ document.addEventListener('visibilitychange', () => {
 });
 
 /* ---------- 시작 ---------- */
+document.querySelectorAll('#tabs button').forEach(b => { b.onclick = () => ({ home, menu, records, settings })[b.dataset.tab](); });
 $('#toto').onclick = () => { if (!session) say(pick(LINES.poke), 'great', 'boing'); else bounce('boing'); };
 (async function boot() {
   load(); draw();
