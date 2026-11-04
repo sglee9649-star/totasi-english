@@ -57,6 +57,7 @@ p{margin:0}
 .row{display:flex;gap:8px;flex-wrap:wrap}.row>.btn{flex:1 1 90px;min-width:0}
 .dock{display:flex;gap:8px;position:sticky;bottom:calc(10px + env(safe-area-inset-bottom,0px));background:var(--surface);box-shadow:0 -10px 12px -2px var(--surface);padding-top:2px;z-index:2}
 .dock .btn{flex:1;min-width:0}
+#rHard,#rEasy,#nx{padding-inline:6px;white-space:nowrap}
 .icon{flex:none!important;width:52px;padding:0;display:grid;place-items:center}
 .icon svg{width:22px;height:22px}
 
