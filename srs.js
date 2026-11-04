@@ -45,6 +45,36 @@
     const nFresh = Math.min(mode.fresh, fresh.length, room - nWords);
     return [...review.map(item => ({ item, kind: 'review' })), ...freshW.slice(0, nWords).map(item => ({ item, kind: 'new' })), ...fresh.slice(0, nFresh).map(item => ({ item, kind: 'new' }))];
   }
+  const PROMOTION = { expr: .8, word: .8, settled: .6, maxDue: 5, retryMs: 12 * 36e5, passRate: .8, minSpeak: 3 };
+  function promotionStatus(items, words, cards, level, now) {
+    const ex = items.filter(i => i.opic === level), wd = words.filter(i => i.opic === level), all = ex.concat(wd);
+    const lEx = ex.filter(i => cards[i.id]).length, lWd = wd.filter(i => cards[i.id]).length;
+    const learned = all.filter(i => cards[i.id]), settled = learned.filter(i => (cards[i.id].reps || 0) >= 2).length;
+    const due = items.concat(words).filter(i => cards[i.id] && cards[i.id].due <= now).length;
+    const need = (t, r) => Math.ceil(t * r - 1e-9);
+    const checks = [
+      { id: 'expr', label: '표현 배우기', value: lEx, target: need(ex.length, PROMOTION.expr), ok: lEx >= need(ex.length, PROMOTION.expr) },
+      { id: 'word', label: '단어 배우기', value: lWd, target: need(wd.length, PROMOTION.word), ok: lWd >= need(wd.length, PROMOTION.word) },
+      { id: 'settled', label: '복습 두 번 이상 맞히기', value: settled, target: need(learned.length, PROMOTION.settled), ok: learned.length > 0 && settled >= need(learned.length, PROMOTION.settled) },
+      { id: 'due', label: `밀린 복습 ${PROMOTION.maxDue}개 이하`, value: due, target: PROMOTION.maxDue, ok: due <= PROMOTION.maxDue },
+    ];
+    return { ready: checks.every(c => c.ok), checks };
+  }
+  const EXAM_SECS = { wordChoice: 20, choose: 20, blank: 30, wordBlank: 30, arrange: 45, sentence: 40 };
+  function buildExam(items, words, level, rnd) {
+    const r = rnd || Math.random, shuf = l => l.map(v => [r(), v]).sort((a, b) => a[0] - b[0]).map(x => x[1]);
+    const ex = shuf(items.filter(i => i.opic === level)), wd = shuf(words.filter(i => i.opic === level));
+    const hasW = wd.length >= 8, out = [], take = (pool, n, stage, section) => { for (let k = 0; k < n; k++) { const item = pool.shift(); if (item) out.push({ item, kind: 'exam', stage, section, exam: true }); } };
+    if (hasW) { take(wd, 3, 'wordChoice', '단어'); take(wd, 5, 'wordBlank', '단어'); }
+    else { take(ex, 3, 'choose', '표현'); take(ex, 5, 'blank', '표현'); }
+    take(ex, 3, 'choose', '표현'); take(ex, 4, 'blank', '표현'); take(ex, 5, 'arrange', '어순'); take(ex, 5, 'sentence', '말하기');
+    return out;
+  }
+  function examScore(marks) {
+    const right = marks.filter(m => m.ok).length, speak = marks.filter(m => m.section === '말하기'), sp = speak.filter(m => m.ok).length;
+    const pct = marks.length ? Math.round(right / marks.length * 100) : 0;
+    return { right, total: marks.length, pct, speakRight: sp, passed: marks.length > 0 && right / marks.length >= PROMOTION.passRate && sp >= PROMOTION.minSpeak };
+  }
   const clean = s => String(s || '').toLowerCase().replace(/[’]/g, "'").replace(/[^a-z' ]+/g, ' ').trim();
   function dist(a, b) {
     const d = Array.from({ length: a.length + 1 }, (_, i) => [i]);
@@ -93,6 +123,6 @@
     return all.sort((a, b) => (b.r.ok - a.r.ok) || (a.r.missing.length - b.r.missing.length))[0];
   }
   const chipsOf = en => en.replace(/[.,?!]/g, '').split(/\s+/).map((w, i) => i === 0 ? w.replace(/^[A-Z](?=[a-z])/, c => c.toLowerCase()) : w);
-  const api = { wordStage, LEVELS, LEVEL_DESC, levelProgress, nextLevel, canStudyLevel, MODES, grade, buildSession, check, splitBlank, startOfDay, addDays, stageOf, rate, gradeSentence, bestSentence, chipsOf };
+  const api = { PROMOTION, promotionStatus, EXAM_SECS, buildExam, examScore, wordStage, LEVELS, LEVEL_DESC, levelProgress, nextLevel, canStudyLevel, MODES, grade, buildSession, check, splitBlank, startOfDay, addDays, stageOf, rate, gradeSentence, bestSentence, chipsOf };
   if (typeof module !== 'undefined') module.exports = api; else root.SRS = api;
 })(this);

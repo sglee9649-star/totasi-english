@@ -121,6 +121,19 @@ body[data-view=study] #tabs,body[data-view=setup] #tabs{display:none}
 .lvrow:disabled{opacity:.5;cursor:default}
 .lvrow:disabled .lvbadge{background:rgba(120,135,170,.45);box-shadow:none}
 
+.examrow.on{outline:2px solid var(--ok);outline-offset:-2px}
+.examrow .i3d{width:26px;height:26px}
+.checks{display:flex;flex-direction:column}
+.check{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:15px}
+.check:last-child{border-bottom:0}
+.check .i3d{width:22px;height:22px}
+.check span{flex:1;min-width:0}
+.check b{font-weight:650;font-variant-numeric:tabular-nums}
+.check:not(.ok) span{color:var(--ink2)}
+.scoreline{display:flex;align-items:baseline;flex-wrap:wrap;gap:10px}
+.scoreline b{font-size:38px;font-weight:700;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.scoreline span{font-size:14px;color:var(--ink2)}
+
 /* 목록과 묶음 */
 .list{display:flex;flex-direction:column;border-radius:20px;overflow:hidden}
 .item{display:flex;align-items:center;gap:13px;width:100%;background:none;border:0;border-bottom:1px solid var(--line);padding:13px 15px;text-align:left;min-height:64px;transition:transform .14s}

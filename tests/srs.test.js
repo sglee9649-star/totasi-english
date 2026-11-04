@@ -28,8 +28,19 @@ const cnt=l=>items.filter(i=>i.opic===l).length;a.deepEqual(S.LEVELS.map(cnt),[2
  const all={};items.filter(i=>i.opic==='IL').forEach(i=>all[i.id]={due:now+1e9,reps:1});a.equal(S.buildSession(items,all,S.MODES[1],now,'IL').length,0);a.ok(S.levelProgress(items,all,'IL').done);
  a.equal(S.nextLevel('AL'),null);a.equal(S.nextLevel('IL'),'IM1');a.ok(S.canStudyLevel('NL','IL'));a.ok(!S.canStudyLevel('IM1','IL'))}
 {const W=require('../data/words.json').map(w=>({id:w.id,opic:w.opic,word:w.word,en:w.en,blank:w.word}));
-a.equal(W.length,150);a.equal(new Set(W.map(w=>w.word)).size,150);for(const w of W)a.ok(S.splitBlank(w.en,w.blank),w.id);
+a.equal(W.length,300);a.equal(new Set(W.map(w=>w.word)).size,300);for(const w of W)a.ok(S.splitBlank(w.en,w.blank),w.id);
 a.equal(S.wordStage(undefined),'wordChoice');a.equal(S.wordStage({reps:2}),'wordBlank');a.equal(S.wordStage({reps:3}),'wordRecall');
 let q=S.buildSession(items,{},S.MODES[1],now,'IL',W);a.equal(q.length,10);a.ok(q[0].item.word);a.ok(!q[9].item.word);
 const dueAll={};W.forEach(w=>dueAll[w.id]={due:now-1,reps:1});q=S.buildSession(items,dueAll,S.MODES[0],now,'IL',W);a.equal(q.length,12);a.ok(q.every(x=>x.kind==='review'));}
+{const W=require('../data/words.json').map(w=>({id:w.id,opic:w.opic,blank:w.word}));
+const cardsFor=(ex,wd,reps,due)=>{const c={};items.filter(i=>i.opic==='IL').slice(0,ex).forEach(i=>c[i.id]={reps,due});W.filter(i=>i.opic==='IL').slice(0,wd).forEach(i=>c[i.id]={reps,due});return c};
+const far=now+1e10;let st=S.promotionStatus(items,W,cardsFor(48,120,2,far),'IL',now);a.ok(st.ready,JSON.stringify(st));
+st=S.promotionStatus(items,W,cardsFor(47,120,2,far),'IL',now);a.ok(!st.ready);a.equal(st.checks[0].ok,false);
+st=S.promotionStatus(items,W,cardsFor(48,119,2,far),'IL',now);a.equal(st.checks[1].ok,false);
+st=S.promotionStatus(items,W,cardsFor(48,120,1,far),'IL',now);a.equal(st.checks[2].ok,false);
+const six=cardsFor(48,120,2,far);Object.keys(six).slice(0,6).forEach(k=>six[k].due=now-1);a.equal(S.promotionStatus(items,W,six,'IL',now).checks[3].ok,false);
+const e=S.buildExam(items,W,'IL');a.equal(e.length,25);a.equal(new Set(e.map(x=>x.item.id)).size,25);a.equal(e.filter(x=>x.section==='말하기').length,5);a.equal(e.filter(x=>x.section==='단어').length,8);
+a.ok(e.every(x=>S.EXAM_SECS[x.stage]));a.equal(S.buildExam(items,W,'IM2').length,25);
+const m=(r,sp)=>[...Array(20)].map((_,i)=>({section:'단어',ok:i<r})).concat([...Array(5)].map((_,i)=>({section:'말하기',ok:i<sp})));
+a.ok(S.examScore(m(17,3)).passed);a.ok(!S.examScore(m(16,3)).passed);a.ok(!S.examScore(m(20,2)).passed);a.equal(S.examScore(m(17,3)).pct,80)}
 console.log('410 ok');
