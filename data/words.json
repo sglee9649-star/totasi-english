@@ -1,0 +1,1502 @@
+[
+{
+"id": "w-il-001",
+"opic": "IL",
+"word": "appointment",
+"pos": "noun",
+"ko": "예약, 약속",
+"en": "I have a dentist appointment at three.",
+"enKo": "세 시에 치과 예약이 있어요.",
+"topic": "daily"
+},
+{
+"id": "w-il-002",
+"opic": "IL",
+"word": "neighbor",
+"pos": "noun",
+"ko": "이웃",
+"en": "My neighbor is very friendly.",
+"enKo": "제 이웃은 정말 친절해요.",
+"topic": "daily"
+},
+{
+"id": "w-il-003",
+"opic": "IL",
+"word": "weather",
+"pos": "noun",
+"ko": "날씨",
+"en": "The weather is nice today.",
+"enKo": "오늘 날씨가 좋아요.",
+"topic": "daily"
+},
+{
+"id": "w-il-004",
+"opic": "IL",
+"word": "laundry",
+"pos": "noun",
+"ko": "빨래",
+"en": "I have to do the laundry tonight.",
+"enKo": "오늘 밤에 빨래를 해야 해요.",
+"topic": "daily"
+},
+{
+"id": "w-il-005",
+"opic": "IL",
+"word": "dishes",
+"pos": "noun",
+"ko": "설거지거리, 접시",
+"en": "I'll wash the dishes after dinner.",
+"enKo": "저녁 먹고 설거지할게요.",
+"topic": "daily"
+},
+{
+"id": "w-il-006",
+"opic": "IL",
+"word": "hobby",
+"pos": "noun",
+"ko": "취미",
+"en": "My hobby is taking photos.",
+"enKo": "제 취미는 사진 찍기예요.",
+"topic": "daily"
+},
+{
+"id": "w-il-007",
+"opic": "IL",
+"word": "habit",
+"pos": "noun",
+"ko": "습관",
+"en": "Reading is a good habit.",
+"enKo": "독서는 좋은 습관이에요.",
+"topic": "daily"
+},
+{
+"id": "w-il-008",
+"opic": "IL",
+"word": "furniture",
+"pos": "noun",
+"ko": "가구",
+"en": "We bought new furniture last week.",
+"enKo": "지난주에 새 가구를 샀어요.",
+"topic": "daily"
+},
+{
+"id": "w-il-009",
+"opic": "IL",
+"word": "rent",
+"pos": "noun",
+"ko": "집세, 월세",
+"en": "The rent is too high here.",
+"enKo": "여기는 월세가 너무 비싸요.",
+"topic": "daily"
+},
+{
+"id": "w-il-010",
+"opic": "IL",
+"word": "bill",
+"pos": "noun",
+"ko": "요금 고지서, 계산서",
+"en": "I forgot to pay the bill.",
+"enKo": "요금 내는 걸 잊었어요.",
+"topic": "daily"
+},
+{
+"id": "w-il-011",
+"opic": "IL",
+"word": "cousin",
+"pos": "noun",
+"ko": "사촌",
+"en": "My cousin lives in Canada.",
+"enKo": "제 사촌은 캐나다에 살아요.",
+"topic": "daily"
+},
+{
+"id": "w-il-012",
+"opic": "IL",
+"word": "stomach",
+"pos": "noun",
+"ko": "배, 위",
+"en": "My stomach hurts a lot.",
+"enKo": "배가 많이 아파요.",
+"topic": "daily"
+},
+{
+"id": "w-il-013",
+"opic": "IL",
+"word": "headache",
+"pos": "noun",
+"ko": "두통",
+"en": "I have a terrible headache.",
+"enKo": "두통이 심해요.",
+"topic": "daily"
+},
+{
+"id": "w-il-014",
+"opic": "IL",
+"word": "medicine",
+"pos": "noun",
+"ko": "약",
+"en": "Did you take your medicine?",
+"enKo": "약 먹었어요?",
+"topic": "daily"
+},
+{
+"id": "w-il-015",
+"opic": "IL",
+"word": "exercise",
+"pos": "noun",
+"ko": "운동",
+"en": "Exercise makes me feel better.",
+"enKo": "운동을 하면 기분이 좋아져요.",
+"topic": "daily"
+},
+{
+"id": "w-il-016",
+"opic": "IL",
+"word": "snack",
+"pos": "noun",
+"ko": "간식",
+"en": "I ate a snack before dinner.",
+"enKo": "저녁 전에 간식을 먹었어요.",
+"topic": "daily"
+},
+{
+"id": "w-il-017",
+"opic": "IL",
+"word": "ingredient",
+"pos": "noun",
+"ko": "재료",
+"en": "Salt is the main ingredient here.",
+"enKo": "여기서는 소금이 주재료예요.",
+"topic": "daily"
+},
+{
+"id": "w-il-018",
+"opic": "IL",
+"word": "recipe",
+"pos": "noun",
+"ko": "조리법",
+"en": "Can you share the recipe?",
+"enKo": "조리법 알려 줄 수 있어요?",
+"topic": "daily"
+},
+{
+"id": "w-il-019",
+"opic": "IL",
+"word": "garbage",
+"pos": "noun",
+"ko": "쓰레기",
+"en": "Please take out the garbage.",
+"enKo": "쓰레기 좀 내다 주세요.",
+"topic": "daily"
+},
+{
+"id": "w-il-020",
+"opic": "IL",
+"word": "traffic",
+"pos": "noun",
+"ko": "교통량",
+"en": "The traffic was terrible this morning.",
+"enKo": "오늘 아침 차가 정말 막혔어요.",
+"topic": "daily"
+},
+{
+"id": "w-il-021",
+"opic": "IL",
+"word": "passenger",
+"pos": "noun",
+"ko": "승객",
+"en": "Every passenger must wear a seat belt.",
+"enKo": "모든 승객은 안전벨트를 매야 해요.",
+"topic": "travel"
+},
+{
+"id": "w-il-022",
+"opic": "IL",
+"word": "platform",
+"pos": "noun",
+"ko": "승강장",
+"en": "The train leaves from platform five.",
+"enKo": "기차는 5번 승강장에서 출발해요.",
+"topic": "travel"
+},
+{
+"id": "w-il-023",
+"opic": "IL",
+"word": "receipt",
+"pos": "noun",
+"ko": "영수증",
+"en": "Could I have the receipt, please?",
+"enKo": "영수증 주시겠어요?",
+"topic": "travel"
+},
+{
+"id": "w-il-024",
+"opic": "IL",
+"word": "luggage",
+"pos": "noun",
+"ko": "짐, 수하물",
+"en": "My luggage is very heavy.",
+"enKo": "제 짐이 정말 무거워요.",
+"topic": "travel"
+},
+{
+"id": "w-il-025",
+"opic": "IL",
+"word": "passport",
+"pos": "noun",
+"ko": "여권",
+"en": "Don't forget your passport.",
+"enKo": "여권 잊지 마세요.",
+"topic": "travel"
+},
+{
+"id": "w-il-026",
+"opic": "IL",
+"word": "destination",
+"pos": "noun",
+"ko": "목적지",
+"en": "Paris is our final destination.",
+"enKo": "파리가 우리의 최종 목적지예요.",
+"topic": "travel"
+},
+{
+"id": "w-il-027",
+"opic": "IL",
+"word": "departure",
+"pos": "noun",
+"ko": "출발",
+"en": "The departure time has changed.",
+"enKo": "출발 시간이 바뀌었어요.",
+"topic": "travel"
+},
+{
+"id": "w-il-028",
+"opic": "IL",
+"word": "souvenir",
+"pos": "noun",
+"ko": "기념품",
+"en": "I bought a souvenir for my mom.",
+"enKo": "엄마 드릴 기념품을 샀어요.",
+"topic": "travel"
+},
+{
+"id": "w-il-029",
+"opic": "IL",
+"word": "sightseeing",
+"pos": "noun",
+"ko": "관광",
+"en": "We went sightseeing all day.",
+"enKo": "하루 종일 관광했어요.",
+"topic": "travel"
+},
+{
+"id": "w-il-030",
+"opic": "IL",
+"word": "exchange",
+"pos": "verb",
+"ko": "교환하다, 환전하다",
+"en": "Can I exchange this for a larger size?",
+"enKo": "이거 더 큰 사이즈로 교환할 수 있어요?",
+"topic": "travel"
+},
+{
+"id": "w-il-031",
+"opic": "IL",
+"word": "crowded",
+"pos": "adjective",
+"ko": "붐비는",
+"en": "The subway was really crowded.",
+"enKo": "지하철이 정말 붐볐어요.",
+"topic": "travel"
+},
+{
+"id": "w-il-032",
+"opic": "IL",
+"word": "delayed",
+"pos": "adjective",
+"ko": "지연된",
+"en": "Our flight was delayed by two hours.",
+"enKo": "비행기가 두 시간 지연됐어요.",
+"topic": "travel"
+},
+{
+"id": "w-il-033",
+"opic": "IL",
+"word": "available",
+"pos": "adjective",
+"ko": "이용 가능한",
+"en": "Is this room available tonight?",
+"enKo": "이 방 오늘 밤에 이용할 수 있나요?",
+"topic": "travel"
+},
+{
+"id": "w-il-034",
+"opic": "IL",
+"word": "expensive",
+"pos": "adjective",
+"ko": "비싼",
+"en": "This hotel is too expensive.",
+"enKo": "이 호텔은 너무 비싸요.",
+"topic": "travel"
+},
+{
+"id": "w-il-035",
+"opic": "IL",
+"word": "reasonable",
+"pos": "adjective",
+"ko": "적당한, 합리적인",
+"en": "The price seems reasonable to me.",
+"enKo": "가격이 적당한 것 같아요.",
+"topic": "travel"
+},
+{
+"id": "w-il-036",
+"opic": "IL",
+"word": "direction",
+"pos": "noun",
+"ko": "방향",
+"en": "We walked in the wrong direction.",
+"enKo": "우리는 잘못된 방향으로 걸었어요.",
+"topic": "travel"
+},
+{
+"id": "w-il-037",
+"opic": "IL",
+"word": "corner",
+"pos": "noun",
+"ko": "모퉁이",
+"en": "The bank is on the corner.",
+"enKo": "은행은 모퉁이에 있어요.",
+"topic": "travel"
+},
+{
+"id": "w-il-038",
+"opic": "IL",
+"word": "entrance",
+"pos": "noun",
+"ko": "입구",
+"en": "Let's meet at the main entrance.",
+"enKo": "정문 입구에서 만나요.",
+"topic": "travel"
+},
+{
+"id": "w-il-039",
+"opic": "IL",
+"word": "fare",
+"pos": "noun",
+"ko": "요금, 운임",
+"en": "How much is the bus fare?",
+"enKo": "버스 요금이 얼마예요?",
+"topic": "travel"
+},
+{
+"id": "w-il-040",
+"opic": "IL",
+"word": "border",
+"pos": "noun",
+"ko": "국경",
+"en": "We crossed the border by train.",
+"enKo": "기차로 국경을 넘었어요.",
+"topic": "travel"
+},
+{
+"id": "w-il-041",
+"opic": "IL",
+"word": "colleague",
+"pos": "noun",
+"ko": "직장 동료",
+"en": "My colleague helped me today.",
+"enKo": "오늘 동료가 도와줬어요.",
+"topic": "work"
+},
+{
+"id": "w-il-042",
+"opic": "IL",
+"word": "manager",
+"pos": "noun",
+"ko": "관리자, 매니저",
+"en": "I talked to my manager this morning.",
+"enKo": "오늘 아침에 매니저와 이야기했어요.",
+"topic": "work"
+},
+{
+"id": "w-il-043",
+"opic": "IL",
+"word": "customer",
+"pos": "noun",
+"ko": "고객",
+"en": "The customer asked for a refund.",
+"enKo": "고객이 환불을 요청했어요.",
+"topic": "work"
+},
+{
+"id": "w-il-044",
+"opic": "IL",
+"word": "salary",
+"pos": "noun",
+"ko": "월급",
+"en": "My salary is paid on the 25th.",
+"enKo": "월급은 25일에 들어와요.",
+"topic": "work"
+},
+{
+"id": "w-il-045",
+"opic": "IL",
+"word": "interview",
+"pos": "noun",
+"ko": "면접",
+"en": "I have a job interview tomorrow.",
+"enKo": "내일 취업 면접이 있어요.",
+"topic": "work"
+},
+{
+"id": "w-il-046",
+"opic": "IL",
+"word": "experience",
+"pos": "noun",
+"ko": "경험",
+"en": "She has a lot of experience.",
+"enKo": "그녀는 경험이 많아요.",
+"topic": "work"
+},
+{
+"id": "w-il-047",
+"opic": "IL",
+"word": "task",
+"pos": "noun",
+"ko": "업무, 과제",
+"en": "This task is not difficult.",
+"enKo": "이 업무는 어렵지 않아요.",
+"topic": "work"
+},
+{
+"id": "w-il-048",
+"opic": "IL",
+"word": "report",
+"pos": "noun",
+"ko": "보고서",
+"en": "I need to finish this report today.",
+"enKo": "오늘 이 보고서를 끝내야 해요.",
+"topic": "work"
+},
+{
+"id": "w-il-049",
+"opic": "IL",
+"word": "department",
+"pos": "noun",
+"ko": "부서",
+"en": "Which department do you work in?",
+"enKo": "어느 부서에서 일하세요?",
+"topic": "work"
+},
+{
+"id": "w-il-050",
+"opic": "IL",
+"word": "branch",
+"pos": "noun",
+"ko": "지점",
+"en": "Our company opened a new branch.",
+"enKo": "우리 회사가 새 지점을 열었어요.",
+"topic": "work"
+},
+{
+"id": "w-il-051",
+"opic": "IL",
+"word": "contract",
+"pos": "noun",
+"ko": "계약서",
+"en": "Please read the contract carefully.",
+"enKo": "계약서를 꼼꼼히 읽어 주세요.",
+"topic": "work"
+},
+{
+"id": "w-il-052",
+"opic": "IL",
+"word": "training",
+"pos": "noun",
+"ko": "교육, 연수",
+"en": "We have training on Friday.",
+"enKo": "금요일에 교육이 있어요.",
+"topic": "work"
+},
+{
+"id": "w-il-053",
+"opic": "IL",
+"word": "overtime",
+"pos": "noun",
+"ko": "초과 근무",
+"en": "I worked overtime again last night.",
+"enKo": "어젯밤에 또 야근했어요.",
+"topic": "work"
+},
+{
+"id": "w-il-054",
+"opic": "IL",
+"word": "vacation",
+"pos": "noun",
+"ko": "휴가",
+"en": "I'm taking a vacation next month.",
+"enKo": "다음 달에 휴가를 가요.",
+"topic": "work"
+},
+{
+"id": "w-il-055",
+"opic": "IL",
+"word": "promotion",
+"pos": "noun",
+"ko": "승진",
+"en": "She got a promotion this year.",
+"enKo": "그녀는 올해 승진했어요.",
+"topic": "work"
+},
+{
+"id": "w-il-056",
+"opic": "IL",
+"word": "result",
+"pos": "noun",
+"ko": "결과",
+"en": "We're happy with the result.",
+"enKo": "결과에 만족해요.",
+"topic": "work"
+},
+{
+"id": "w-il-057",
+"opic": "IL",
+"word": "goal",
+"pos": "noun",
+"ko": "목표",
+"en": "Our goal is to finish by June.",
+"enKo": "우리 목표는 6월까지 끝내는 거예요.",
+"topic": "work"
+},
+{
+"id": "w-il-058",
+"opic": "IL",
+"word": "attend",
+"pos": "verb",
+"ko": "참석하다",
+"en": "I can't attend the meeting today.",
+"enKo": "오늘 회의에 참석할 수 없어요.",
+"topic": "work"
+},
+{
+"id": "w-il-059",
+"opic": "IL",
+"word": "prepare",
+"pos": "verb",
+"ko": "준비하다",
+"en": "I need to prepare for my presentation.",
+"enKo": "발표 준비를 해야 해요.",
+"topic": "work"
+},
+{
+"id": "w-il-060",
+"opic": "IL",
+"word": "remind",
+"pos": "verb",
+"ko": "다시 알려 주다",
+"en": "Please remind me tomorrow morning.",
+"enKo": "내일 아침에 다시 알려 주세요.",
+"topic": "work"
+},
+{
+"id": "w-il-061",
+"opic": "IL",
+"word": "confirm",
+"pos": "verb",
+"ko": "확인하다",
+"en": "Could you confirm the time?",
+"enKo": "시간을 확인해 주시겠어요?",
+"topic": "work"
+},
+{
+"id": "w-il-062",
+"opic": "IL",
+"word": "borrow",
+"pos": "verb",
+"ko": "빌리다",
+"en": "Can I borrow your pen?",
+"enKo": "펜 좀 빌릴 수 있을까요?",
+"topic": "work"
+},
+{
+"id": "w-il-063",
+"opic": "IL",
+"word": "lend",
+"pos": "verb",
+"ko": "빌려주다",
+"en": "Could you lend me some money?",
+"enKo": "돈 좀 빌려줄 수 있어요?",
+"topic": "daily"
+},
+{
+"id": "w-il-064",
+"opic": "IL",
+"word": "spend",
+"pos": "verb",
+"ko": "보내다, 쓰다",
+"en": "I spend too much time on my phone.",
+"enKo": "휴대폰에 시간을 너무 많이 써요.",
+"topic": "daily"
+},
+{
+"id": "w-il-065",
+"opic": "IL",
+"word": "save",
+"pos": "verb",
+"ko": "모으다, 아끼다",
+"en": "I'm trying to save money this year.",
+"enKo": "올해는 돈을 모으려고 해요.",
+"topic": "daily"
+},
+{
+"id": "w-il-066",
+"opic": "IL",
+"word": "decide",
+"pos": "verb",
+"ko": "결정하다",
+"en": "I can't decide what to eat.",
+"enKo": "뭘 먹을지 결정을 못 하겠어요.",
+"topic": "daily"
+},
+{
+"id": "w-il-067",
+"opic": "IL",
+"word": "expect",
+"pos": "verb",
+"ko": "기대하다, 예상하다",
+"en": "I didn't expect to see you here.",
+"enKo": "여기서 만날 줄 몰랐어요.",
+"topic": "daily"
+},
+{
+"id": "w-il-068",
+"opic": "IL",
+"word": "explain",
+"pos": "verb",
+"ko": "설명하다",
+"en": "Can you explain this to me?",
+"enKo": "이걸 설명해 줄 수 있어요?",
+"topic": "conversation"
+},
+{
+"id": "w-il-069",
+"opic": "IL",
+"word": "describe",
+"pos": "verb",
+"ko": "묘사하다",
+"en": "Can you describe the man?",
+"enKo": "그 남자를 묘사해 줄 수 있어요?",
+"topic": "conversation"
+},
+{
+"id": "w-il-070",
+"opic": "IL",
+"word": "guess",
+"pos": "verb",
+"ko": "추측하다",
+"en": "Can you guess my age?",
+"enKo": "제 나이를 맞혀 볼래요?",
+"topic": "conversation"
+},
+{
+"id": "w-il-071",
+"opic": "IL",
+"word": "imagine",
+"pos": "verb",
+"ko": "상상하다",
+"en": "I can't imagine life without coffee.",
+"enKo": "커피 없는 삶은 상상이 안 돼요.",
+"topic": "conversation"
+},
+{
+"id": "w-il-072",
+"opic": "IL",
+"word": "promise",
+"pos": "verb",
+"ko": "약속하다",
+"en": "I promise to call you tonight.",
+"enKo": "오늘 밤에 전화하겠다고 약속해요.",
+"topic": "conversation"
+},
+{
+"id": "w-il-073",
+"opic": "IL",
+"word": "apologize",
+"pos": "verb",
+"ko": "사과하다",
+"en": "I want to apologize for yesterday.",
+"enKo": "어제 일을 사과하고 싶어요.",
+"topic": "conversation"
+},
+{
+"id": "w-il-074",
+"opic": "IL",
+"word": "complain",
+"pos": "verb",
+"ko": "불평하다",
+"en": "He always likes to complain about work.",
+"enKo": "그는 늘 일에 대해 불평하기를 좋아해요.",
+"topic": "conversation"
+},
+{
+"id": "w-il-075",
+"opic": "IL",
+"word": "agree",
+"pos": "verb",
+"ko": "동의하다",
+"en": "I don't agree with him.",
+"enKo": "저는 그에게 동의하지 않아요.",
+"topic": "conversation"
+},
+{
+"id": "w-il-076",
+"opic": "IL",
+"word": "refuse",
+"pos": "verb",
+"ko": "거절하다",
+"en": "It was hard to refuse her offer.",
+"enKo": "그녀의 제안을 거절하기 어려웠어요.",
+"topic": "conversation"
+},
+{
+"id": "w-il-077",
+"opic": "IL",
+"word": "suggest",
+"pos": "verb",
+"ko": "제안하다",
+"en": "What do you suggest we do?",
+"enKo": "우리가 뭘 하면 좋을까요?",
+"topic": "conversation"
+},
+{
+"id": "w-il-078",
+"opic": "IL",
+"word": "mention",
+"pos": "verb",
+"ko": "언급하다",
+"en": "Did he mention the party?",
+"enKo": "그가 파티 얘기를 했어요?",
+"topic": "conversation"
+},
+{
+"id": "w-il-079",
+"opic": "IL",
+"word": "notice",
+"pos": "verb",
+"ko": "알아차리다",
+"en": "I didn't notice your new haircut.",
+"enKo": "새 머리 스타일을 못 알아봤어요.",
+"topic": "conversation"
+},
+{
+"id": "w-il-080",
+"opic": "IL",
+"word": "forget",
+"pos": "verb",
+"ko": "잊다",
+"en": "Don't forget to lock the door.",
+"enKo": "문 잠그는 거 잊지 마세요.",
+"topic": "daily"
+},
+{
+"id": "w-il-081",
+"opic": "IL",
+"word": "remember",
+"pos": "verb",
+"ko": "기억하다",
+"en": "I can't remember his name.",
+"enKo": "그의 이름이 기억나지 않아요.",
+"topic": "daily"
+},
+{
+"id": "w-il-082",
+"opic": "IL",
+"word": "repair",
+"pos": "verb",
+"ko": "수리하다",
+"en": "They came to repair the sink.",
+"enKo": "그들이 싱크대를 수리하러 왔어요.",
+"topic": "daily"
+},
+{
+"id": "w-il-083",
+"opic": "IL",
+"word": "order",
+"pos": "verb",
+"ko": "주문하다",
+"en": "Let's order some pizza tonight.",
+"enKo": "오늘 밤에 피자 주문하자.",
+"topic": "daily"
+},
+{
+"id": "w-il-084",
+"opic": "IL",
+"word": "share",
+"pos": "verb",
+"ko": "나누다, 공유하다",
+"en": "We can share this dessert.",
+"enKo": "이 디저트는 나눠 먹어도 돼요.",
+"topic": "daily"
+},
+{
+"id": "w-il-085",
+"opic": "IL",
+"word": "choose",
+"pos": "verb",
+"ko": "고르다",
+"en": "It's hard to choose just one.",
+"enKo": "하나만 고르기 어려워요.",
+"topic": "daily"
+},
+{
+"id": "w-il-086",
+"opic": "IL",
+"word": "compare",
+"pos": "verb",
+"ko": "비교하다",
+"en": "Let's compare the two prices.",
+"enKo": "두 가격을 비교해 봐요.",
+"topic": "travel"
+},
+{
+"id": "w-il-087",
+"opic": "IL",
+"word": "reserve",
+"pos": "verb",
+"ko": "예약하다",
+"en": "I'd like to reserve a table.",
+"enKo": "테이블을 예약하고 싶어요.",
+"topic": "travel"
+},
+{
+"id": "w-il-088",
+"opic": "IL",
+"word": "arrive",
+"pos": "verb",
+"ko": "도착하다",
+"en": "What time do we arrive in Seoul?",
+"enKo": "서울에 몇 시에 도착해요?",
+"topic": "travel"
+},
+{
+"id": "w-il-089",
+"opic": "IL",
+"word": "return",
+"pos": "verb",
+"ko": "돌려주다, 돌아가다",
+"en": "I need to return these shoes.",
+"enKo": "이 신발을 반품해야 해요.",
+"topic": "travel"
+},
+{
+"id": "w-il-090",
+"opic": "IL",
+"word": "carry",
+"pos": "verb",
+"ko": "들고 다니다",
+"en": "Can you carry this bag for me?",
+"enKo": "이 가방 좀 들어 줄래요?",
+"topic": "travel"
+},
+{
+"id": "w-il-091",
+"opic": "IL",
+"word": "climb",
+"pos": "verb",
+"ko": "오르다",
+"en": "We plan to climb the mountain tomorrow.",
+"enKo": "내일 산을 오를 계획이에요.",
+"topic": "travel"
+},
+{
+"id": "w-il-092",
+"opic": "IL",
+"word": "tired",
+"pos": "adjective",
+"ko": "피곤한",
+"en": "I feel so tired after work.",
+"enKo": "퇴근 후에는 너무 피곤해요.",
+"topic": "daily"
+},
+{
+"id": "w-il-093",
+"opic": "IL",
+"word": "excited",
+"pos": "adjective",
+"ko": "신이 난",
+"en": "I'm excited about the concert.",
+"enKo": "콘서트가 정말 기대돼요.",
+"topic": "daily"
+},
+{
+"id": "w-il-094",
+"opic": "IL",
+"word": "nervous",
+"pos": "adjective",
+"ko": "긴장한",
+"en": "I get nervous before exams.",
+"enKo": "시험 전에는 긴장돼요.",
+"topic": "daily"
+},
+{
+"id": "w-il-095",
+"opic": "IL",
+"word": "embarrassed",
+"pos": "adjective",
+"ko": "창피한",
+"en": "I felt embarrassed in front of everyone.",
+"enKo": "모두 앞에서 창피했어요.",
+"topic": "daily"
+},
+{
+"id": "w-il-096",
+"opic": "IL",
+"word": "disappointed",
+"pos": "adjective",
+"ko": "실망한",
+"en": "She was disappointed with the food.",
+"enKo": "그녀는 음식에 실망했어요.",
+"topic": "daily"
+},
+{
+"id": "w-il-097",
+"opic": "IL",
+"word": "comfortable",
+"pos": "adjective",
+"ko": "편안한",
+"en": "This sofa is really comfortable.",
+"enKo": "이 소파는 정말 편해요.",
+"topic": "daily"
+},
+{
+"id": "w-il-098",
+"opic": "IL",
+"word": "convenient",
+"pos": "adjective",
+"ko": "편리한",
+"en": "Living near the station is convenient.",
+"enKo": "역 근처에 살면 편리해요.",
+"topic": "daily"
+},
+{
+"id": "w-il-099",
+"opic": "IL",
+"word": "quiet",
+"pos": "adjective",
+"ko": "조용한",
+"en": "My neighborhood is very quiet.",
+"enKo": "우리 동네는 정말 조용해요.",
+"topic": "daily"
+},
+{
+"id": "w-il-100",
+"opic": "IL",
+"word": "noisy",
+"pos": "adjective",
+"ko": "시끄러운",
+"en": "This restaurant is too noisy.",
+"enKo": "이 식당은 너무 시끄러워요.",
+"topic": "daily"
+},
+{
+"id": "w-il-101",
+"opic": "IL",
+"word": "fresh",
+"pos": "adjective",
+"ko": "신선한",
+"en": "These vegetables are very fresh.",
+"enKo": "이 채소는 아주 신선해요.",
+"topic": "daily"
+},
+{
+"id": "w-il-102",
+"opic": "IL",
+"word": "delicious",
+"pos": "adjective",
+"ko": "맛있는",
+"en": "The soup was delicious.",
+"enKo": "수프가 정말 맛있었어요.",
+"topic": "daily"
+},
+{
+"id": "w-il-103",
+"opic": "IL",
+"word": "healthy",
+"pos": "adjective",
+"ko": "건강한",
+"en": "I try to eat healthy food.",
+"enKo": "건강한 음식을 먹으려고 해요.",
+"topic": "daily"
+},
+{
+"id": "w-il-104",
+"opic": "IL",
+"word": "serious",
+"pos": "adjective",
+"ko": "심각한, 진지한",
+"en": "Is it a serious problem?",
+"enKo": "심각한 문제인가요?",
+"topic": "conversation"
+},
+{
+"id": "w-il-105",
+"opic": "IL",
+"word": "similar",
+"pos": "adjective",
+"ko": "비슷한",
+"en": "Our ideas are very similar.",
+"enKo": "우리 생각은 아주 비슷해요.",
+"topic": "conversation"
+},
+{
+"id": "w-il-106",
+"opic": "IL",
+"word": "different",
+"pos": "adjective",
+"ko": "다른",
+"en": "This one looks different.",
+"enKo": "이건 달라 보여요.",
+"topic": "conversation"
+},
+{
+"id": "w-il-107",
+"opic": "IL",
+"word": "important",
+"pos": "adjective",
+"ko": "중요한",
+"en": "This meeting is very important.",
+"enKo": "이 회의는 아주 중요해요.",
+"topic": "work"
+},
+{
+"id": "w-il-108",
+"opic": "IL",
+"word": "difficult",
+"pos": "adjective",
+"ko": "어려운",
+"en": "English grammar is difficult for me.",
+"enKo": "저에게 영어 문법은 어려워요.",
+"topic": "conversation"
+},
+{
+"id": "w-il-109",
+"opic": "IL",
+"word": "simple",
+"pos": "adjective",
+"ko": "간단한",
+"en": "The answer is quite simple.",
+"enKo": "답은 꽤 간단해요.",
+"topic": "conversation"
+},
+{
+"id": "w-il-110",
+"opic": "IL",
+"word": "strange",
+"pos": "adjective",
+"ko": "이상한",
+"en": "I heard a strange sound.",
+"enKo": "이상한 소리를 들었어요.",
+"topic": "conversation"
+},
+{
+"id": "w-il-111",
+"opic": "IL",
+"word": "lucky",
+"pos": "adjective",
+"ko": "운이 좋은",
+"en": "You're so lucky to have him.",
+"enKo": "그가 있어서 정말 운이 좋네요.",
+"topic": "conversation"
+},
+{
+"id": "w-il-112",
+"opic": "IL",
+"word": "polite",
+"pos": "adjective",
+"ko": "예의 바른",
+"en": "Your son is very polite.",
+"enKo": "아드님이 정말 예의 바르네요.",
+"topic": "conversation"
+},
+{
+"id": "w-il-113",
+"opic": "IL",
+"word": "honest",
+"pos": "adjective",
+"ko": "솔직한",
+"en": "I want you to be honest.",
+"enKo": "솔직하게 말해 주면 좋겠어요.",
+"topic": "conversation"
+},
+{
+"id": "w-il-114",
+"opic": "IL",
+"word": "responsible",
+"pos": "adjective",
+"ko": "책임감 있는",
+"en": "She is very responsible at work.",
+"enKo": "그녀는 직장에서 책임감이 강해요.",
+"topic": "work"
+},
+{
+"id": "w-il-115",
+"opic": "IL",
+"word": "ready",
+"pos": "adjective",
+"ko": "준비된",
+"en": "Are you ready to order?",
+"enKo": "주문하시겠어요?",
+"topic": "travel"
+},
+{
+"id": "w-il-116",
+"opic": "IL",
+"word": "recently",
+"pos": "adverb",
+"ko": "최근에",
+"en": "I recently moved to Busan.",
+"enKo": "최근에 부산으로 이사했어요.",
+"topic": "daily"
+},
+{
+"id": "w-il-117",
+"opic": "IL",
+"word": "usually",
+"pos": "adverb",
+"ko": "보통",
+"en": "We usually eat at home.",
+"enKo": "우리는 보통 집에서 먹어요.",
+"topic": "daily"
+},
+{
+"id": "w-il-118",
+"opic": "IL",
+"word": "sometimes",
+"pos": "adverb",
+"ko": "가끔",
+"en": "I sometimes cook on weekends.",
+"enKo": "주말에 가끔 요리해요.",
+"topic": "daily"
+},
+{
+"id": "w-il-119",
+"opic": "IL",
+"word": "probably",
+"pos": "adverb",
+"ko": "아마",
+"en": "It will probably rain tonight.",
+"enKo": "오늘 밤에 아마 비가 올 거예요.",
+"topic": "conversation"
+},
+{
+"id": "w-il-120",
+"opic": "IL",
+"word": "actually",
+"pos": "adverb",
+"ko": "사실은",
+"en": "Actually, I've never been there.",
+"enKo": "사실 거기 가 본 적이 없어요.",
+"topic": "conversation"
+},
+{
+"id": "w-il-121",
+"opic": "IL",
+"word": "especially",
+"pos": "adverb",
+"ko": "특히",
+"en": "I love fruit, especially apples.",
+"enKo": "과일을 좋아하는데, 특히 사과요.",
+"topic": "conversation"
+},
+{
+"id": "w-il-122",
+"opic": "IL",
+"word": "finally",
+"pos": "adverb",
+"ko": "마침내",
+"en": "I finally passed the test.",
+"enKo": "마침내 시험에 합격했어요.",
+"topic": "conversation"
+},
+{
+"id": "w-il-123",
+"opic": "IL",
+"word": "almost",
+"pos": "adverb",
+"ko": "거의",
+"en": "I almost missed the bus.",
+"enKo": "버스를 놓칠 뻔했어요.",
+"topic": "daily"
+},
+{
+"id": "w-il-124",
+"opic": "IL",
+"word": "already",
+"pos": "adverb",
+"ko": "이미",
+"en": "I already had lunch.",
+"enKo": "이미 점심을 먹었어요.",
+"topic": "daily"
+},
+{
+"id": "w-il-125",
+"opic": "IL",
+"word": "instead",
+"pos": "adverb",
+"ko": "대신에",
+"en": "Let's take a taxi instead.",
+"enKo": "대신 택시를 타자.",
+"topic": "travel"
+},
+{
+"id": "w-il-126",
+"opic": "IL",
+"word": "abroad",
+"pos": "adverb",
+"ko": "해외에",
+"en": "I want to study abroad.",
+"enKo": "해외에서 공부하고 싶어요.",
+"topic": "travel"
+},
+{
+"id": "w-il-127",
+"opic": "IL",
+"word": "nearby",
+"pos": "adverb",
+"ko": "근처에",
+"en": "Is there a bank nearby?",
+"enKo": "근처에 은행이 있나요?",
+"topic": "travel"
+},
+{
+"id": "w-il-128",
+"opic": "IL",
+"word": "opinion",
+"pos": "noun",
+"ko": "의견",
+"en": "What's your opinion on this?",
+"enKo": "이것에 대한 의견이 뭐예요?",
+"topic": "conversation"
+},
+{
+"id": "w-il-129",
+"opic": "IL",
+"word": "reason",
+"pos": "noun",
+"ko": "이유",
+"en": "Tell me the reason why.",
+"enKo": "이유를 말해 주세요.",
+"topic": "conversation"
+},
+{
+"id": "w-il-130",
+"opic": "IL",
+"word": "advice",
+"pos": "noun",
+"ko": "조언",
+"en": "Can I ask for your advice?",
+"enKo": "조언을 구해도 될까요?",
+"topic": "conversation"
+},
+{
+"id": "w-il-131",
+"opic": "IL",
+"word": "mistake",
+"pos": "noun",
+"ko": "실수",
+"en": "Everyone makes a mistake sometimes.",
+"enKo": "누구나 가끔 실수해요.",
+"topic": "conversation"
+},
+{
+"id": "w-il-132",
+"opic": "IL",
+"word": "chance",
+"pos": "noun",
+"ko": "기회",
+"en": "Give me one more chance.",
+"enKo": "한 번만 더 기회를 주세요.",
+"topic": "conversation"
+},
+{
+"id": "w-il-133",
+"opic": "IL",
+"word": "choice",
+"pos": "noun",
+"ko": "선택",
+"en": "It was a difficult choice.",
+"enKo": "어려운 선택이었어요.",
+"topic": "conversation"
+},
+{
+"id": "w-il-134",
+"opic": "IL",
+"word": "difference",
+"pos": "noun",
+"ko": "차이",
+"en": "What's the difference between them?",
+"enKo": "그것들의 차이가 뭐예요?",
+"topic": "conversation"
+},
+{
+"id": "w-il-135",
+"opic": "IL",
+"word": "example",
+"pos": "noun",
+"ko": "예시",
+"en": "Can you show me an example?",
+"enKo": "예시를 보여 줄 수 있어요?",
+"topic": "conversation"
+},
+{
+"id": "w-il-136",
+"opic": "IL",
+"word": "problem",
+"pos": "noun",
+"ko": "문제",
+"en": "That's not a big problem.",
+"enKo": "그건 큰 문제가 아니에요.",
+"topic": "conversation"
+},
+{
+"id": "w-il-137",
+"opic": "IL",
+"word": "memory",
+"pos": "noun",
+"ko": "기억, 추억",
+"en": "This is my favorite memory.",
+"enKo": "이건 제가 가장 좋아하는 추억이에요.",
+"topic": "conversation"
+},
+{
+"id": "w-il-138",
+"opic": "IL",
+"word": "gift",
+"pos": "noun",
+"ko": "선물",
+"en": "This gift is for you.",
+"enKo": "이 선물은 당신을 위한 거예요.",
+"topic": "conversation"
+},
+{
+"id": "w-il-139",
+"opic": "IL",
+"word": "festival",
+"pos": "noun",
+"ko": "축제",
+"en": "We went to a music festival.",
+"enKo": "음악 축제에 다녀왔어요.",
+"topic": "daily"
+},
+{
+"id": "w-il-140",
+"opic": "IL",
+"word": "museum",
+"pos": "noun",
+"ko": "박물관",
+"en": "The museum is closed on Mondays.",
+"enKo": "박물관은 월요일에 문을 닫아요.",
+"topic": "travel"
+},
+{
+"id": "w-il-141",
+"opic": "IL",
+"word": "sidewalk",
+"pos": "noun",
+"ko": "인도",
+"en": "Walk on the sidewalk, please.",
+"enKo": "인도로 걸어 주세요.",
+"topic": "travel"
+},
+{
+"id": "w-il-142",
+"opic": "IL",
+"word": "schedule",
+"pos": "noun",
+"ko": "일정",
+"en": "My schedule is full this week.",
+"enKo": "이번 주 일정이 꽉 찼어요.",
+"topic": "work"
+},
+{
+"id": "w-il-143",
+"opic": "IL",
+"word": "wallet",
+"pos": "noun",
+"ko": "지갑",
+"en": "I left my wallet at home.",
+"enKo": "지갑을 집에 두고 왔어요.",
+"topic": "daily"
+},
+{
+"id": "w-il-144",
+"opic": "IL",
+"word": "umbrella",
+"pos": "noun",
+"ko": "우산",
+"en": "Take an umbrella with you.",
+"enKo": "우산 가져가세요.",
+"topic": "daily"
+},
+{
+"id": "w-il-145",
+"opic": "IL",
+"word": "apartment",
+"pos": "noun",
+"ko": "아파트",
+"en": "My apartment is near the park.",
+"enKo": "제 아파트는 공원 근처에 있어요.",
+"topic": "daily"
+},
+{
+"id": "w-il-146",
+"opic": "IL",
+"word": "deadline",
+"pos": "noun",
+"ko": "마감일",
+"en": "The deadline is next Friday.",
+"enKo": "마감일은 다음 주 금요일이에요.",
+"topic": "work"
+},
+{
+"id": "w-il-147",
+"opic": "IL",
+"word": "discount",
+"pos": "noun",
+"ko": "할인",
+"en": "Can I get a discount?",
+"enKo": "할인받을 수 있을까요?",
+"topic": "travel"
+},
+{
+"id": "w-il-148",
+"opic": "IL",
+"word": "invite",
+"pos": "verb",
+"ko": "초대하다",
+"en": "I want to invite you to dinner.",
+"enKo": "저녁 식사에 초대하고 싶어요.",
+"topic": "conversation"
+},
+{
+"id": "w-il-149",
+"opic": "IL",
+"word": "improve",
+"pos": "verb",
+"ko": "향상시키다",
+"en": "I want to improve my English.",
+"enKo": "영어 실력을 늘리고 싶어요.",
+"topic": "conversation"
+},
+{
+"id": "w-il-150",
+"opic": "IL",
+"word": "worried",
+"pos": "adjective",
+"ko": "걱정하는",
+"en": "I'm worried about the test.",
+"enKo": "시험이 걱정돼요.",
+"topic": "daily"
+}
+]

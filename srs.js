@@ -3,11 +3,11 @@
   const DAY = 864e5, TEN_MIN = 6e5;
   const STEPS = [1, 3, 7, 16, 35, 80, 180];
   const MODES = [
-    { min: 5, limit: 12, fresh: 2 },
-    { min: 10, limit: 24, fresh: 5 },
-    { min: 20, limit: 48, fresh: 10 },
-    { min: 30, limit: 72, fresh: 15 },
-    { min: 60, limit: 144, fresh: 25 },
+    { min: 5, limit: 12, fresh: 2, freshWords: 3 },
+    { min: 10, limit: 24, fresh: 5, freshWords: 5 },
+    { min: 20, limit: 48, fresh: 8, freshWords: 10 },
+    { min: 30, limit: 72, fresh: 12, freshWords: 15 },
+    { min: 60, limit: 144, fresh: 20, freshWords: 30 },
   ];
   const startOfDay = t => { const d = new Date(t); d.setHours(0, 0, 0, 0); return d.getTime(); };
   const addDays = (t, n) => { const d = new Date(startOfDay(t)); d.setDate(d.getDate() + n); return d.getTime(); };
@@ -33,12 +33,17 @@
   }
   const nextLevel = level => LEVELS[LEVELS.indexOf(level) + 1] || null;
   const canStudyLevel = (level, current) => LEVELS.indexOf(level) <= LEVELS.indexOf(current);
-  function buildSession(items, cards, mode, now, level) {
-    const due = items.filter(i => cards[i.id] && cards[i.id].due <= now).sort((a, b) => cards[a.id].due - cards[b.id].due);
-    const fresh = items.filter(i => !cards[i.id] && (!level || i.opic === level)).slice().sort((a, b) => a.level - b.level || a.id.slice(-2).localeCompare(b.id.slice(-2)));
+  function buildSession(items, cards, mode, now, level, words) {
+    const wordList = words || [], pool = items.concat(wordList);
+    const due = pool.filter(i => cards[i.id] && cards[i.id].due <= now).sort((a, b) => cards[a.id].due - cards[b.id].due);
+    const inLevel = i => !cards[i.id] && (!level || i.opic === level);
+    const order = (a, b) => (a.level || 0) - (b.level || 0) || a.id.slice(-2).localeCompare(b.id.slice(-2));
+    const fresh = items.filter(inLevel).slice().sort(order), freshW = wordList.filter(inLevel);
     const review = due.slice(0, mode.limit);
-    const nFresh = Math.min(mode.fresh, fresh.length, mode.limit - review.length);
-    return [...review.map(item => ({ item, kind: 'review' })), ...fresh.slice(0, nFresh).map(item => ({ item, kind: 'new' }))];
+    const room = mode.limit - review.length;
+    const nWords = Math.min(mode.freshWords || 0, freshW.length, room);
+    const nFresh = Math.min(mode.fresh, fresh.length, room - nWords);
+    return [...review.map(item => ({ item, kind: 'review' })), ...freshW.slice(0, nWords).map(item => ({ item, kind: 'new' })), ...fresh.slice(0, nFresh).map(item => ({ item, kind: 'new' }))];
   }
   const clean = s => String(s || '').toLowerCase().replace(/[’]/g, "'").replace(/[^a-z' ]+/g, ' ').trim();
   function dist(a, b) {
@@ -63,6 +68,7 @@
     return [en.slice(0, at), en.slice(at, at + m[2].length), en.slice(at + m[2].length)];
   }
   /* 복습 단계: 빈칸 → 문장 배열 → 통문장 말하기 */
+  const wordStage = card => { const r = card ? card.reps || 0 : 0; return r <= 0 ? 'wordChoice' : r <= 2 ? 'wordBlank' : 'wordRecall'; };
   const stageOf = card => { const r = card ? card.reps || 0 : 0; return r <= 0 ? 'blank' : r <= 2 ? 'arrange' : 'sentence'; };
   function rate(card, how, now) {
     const c = Object.assign({}, card); if (!c.days) return c;
@@ -87,6 +93,6 @@
     return all.sort((a, b) => (b.r.ok - a.r.ok) || (a.r.missing.length - b.r.missing.length))[0];
   }
   const chipsOf = en => en.replace(/[.,?!]/g, '').split(/\s+/).map((w, i) => i === 0 ? w.replace(/^[A-Z](?=[a-z])/, c => c.toLowerCase()) : w);
-  const api = { LEVELS, LEVEL_DESC, levelProgress, nextLevel, canStudyLevel, MODES, grade, buildSession, check, splitBlank, startOfDay, addDays, stageOf, rate, gradeSentence, bestSentence, chipsOf };
+  const api = { wordStage, LEVELS, LEVEL_DESC, levelProgress, nextLevel, canStudyLevel, MODES, grade, buildSession, check, splitBlank, startOfDay, addDays, stageOf, rate, gradeSentence, bestSentence, chipsOf };
   if (typeof module !== 'undefined') module.exports = api; else root.SRS = api;
 })(this);

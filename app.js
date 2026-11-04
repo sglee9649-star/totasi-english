@@ -1,9 +1,9 @@
-const APP_VERSION = '0.8.0', APP_DATE = '2026-11-04';
+const APP_VERSION = '0.9.0', APP_DATE = '2026-11-04';
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const KEY = 'totasi-english-v1';
 const FRESH_STATE = () => ({ call: '', cards: {}, days: [], input: 'type', autoplay: true, voice: false, voiceAsked: false, schema: 2, level: { current: 'IL', passed: [], history: [] }, studyLevel: '', minutes: 10, aiMonth: '', aiCost: 0, aiLimit: 1 });
-let S = FRESH_STATE(), ITEMS = [], session = null;
+let S = FRESH_STATE(), ITEMS = [], WORDS = [], session = null;
 let screen = { name: 'home', render: () => home() }, returnTo = null, curE = null;
 const TAB_OF = { home: 'home', done: 'home', menu: 'menu', records: 'records', settings: 'settings', dict: 'settings' };
 const TAB_ORDER = ['home', 'menu', 'records', 'settings'];
@@ -73,9 +73,10 @@ const LINES = {
   poke: ['간지러워, {호칭}!', '헤헤, 나 또 쓰다듬어 줘!', '공부하다 말고 나 만지는 거야?'],
 };
 
+const POS_KO = { noun: '명사', verb: '동사', adjective: '형용사', adverb: '부사' };
 /* ---------- 집계 ---------- */
 const dayKey = t => { const d = new Date(t); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
-const dueCount = now => ITEMS.filter(i => S.cards[i.id] && S.cards[i.id].due <= now).length;
+const dueCount = now => ITEMS.concat(WORDS).filter(i => S.cards[i.id] && S.cards[i.id].due <= now).length;
 const newCount = () => ITEMS.filter(i => !S.cards[i.id]).length;
 function streak(now) {
   const set = new Set(S.days); let t = now, n = 0;
@@ -172,19 +173,20 @@ function home() {
   clearQ(); view('home'); session = null; setScreen('home', home); returnTo = null;
   const now = Date.now(), due = dueCount(now), fresh = newCount(), learned = ITEMS.length - fresh;
   const [line, f] = homeLine(now); say(line, f);
-  const m = curMode(), plan = SRS.buildSession(ITEMS, S.cards, m, now, curLevel()), r = plan.filter(x => x.kind === 'review').length;
-  const lv = curLevel(), pg = SRS.levelProgress(ITEMS, S.cards, lv), nx = SRS.nextLevel(S.level.current);
+  const m = curMode(), plan = SRS.buildSession(ITEMS, S.cards, m, now, curLevel(), WORDS), r = plan.filter(x => x.kind === 'review').length, nW = plan.filter(x => x.kind === 'new' && x.item.isWord).length, nE = plan.length - r - nW;
+  const planText = [r && `복습 ${r}개`, nE && `새 표현 ${nE}개`, nW && `새 단어 ${nW}개`].filter(Boolean);
+  const lv = curLevel(), pg = SRS.levelProgress(ITEMS, S.cards, lv), pw = SRS.levelProgress(WORDS, S.cards, lv), nx = SRS.nextLevel(S.level.current);
   panel(`
-    <button class="lvcard" id="goLevels" aria-label="레벨 보기: 현재 ${S.level.current}"><span class="lvbadge">${S.level.current}</span><span class="lvinfo"><b>${lv !== S.level.current ? `${lv} 복습 중` : SRS.LEVEL_DESC[lv]}</b><span class="bar"><i style="width:${pg.pct}%"></i></span><small>${lv} 표현 ${pg.learned}/${pg.total}${nx ? ` · 다음 레벨 ${nx}` : ''}</small></span>${ICON.go}</button>
+    <button class="lvcard" id="goLevels" aria-label="레벨 보기: 현재 ${S.level.current}"><span class="lvbadge">${S.level.current}</span><span class="lvinfo"><b>${lv !== S.level.current ? `${lv} 복습 중` : SRS.LEVEL_DESC[lv]}</b><span class="bar"><i style="width:${pg.pct}%"></i></span><small>표현 ${pg.learned}/${pg.total}${pw.total ? ` · 단어 ${pw.learned}/${pw.total}` : ''}${nx ? ` · 다음 ${nx}` : ''}</small></span>${ICON.go}</button>
     <section class="plan">
-      <h1>${plan.length ? (r && plan.length - r ? `오늘은 복습 ${r}개,<br>새 표현 ${plan.length - r}개 어때요?` : r ? `오늘은 복습 ${r}개를<br>같이 해 볼까요?` : `오늘은 새 표현 ${plan.length}개를<br>배워 볼까요?`) : (SRS.levelProgress(ITEMS, S.cards, curLevel()).done ? '이 레벨의 표현을<br>모두 배웠어요' : '오늘 할 학습을<br>모두 끝냈어요')}</h1>
+      <h1>${plan.length ? `오늘의 학습<small>${planText.join(' · ')}</small>` : (SRS.levelProgress(ITEMS, S.cards, curLevel()).done ? '이 레벨의 표현을<br>모두 배웠어요' : '오늘 할 학습을<br>모두 끝냈어요')}</h1>
       <div class="times" role="group" aria-label="학습 시간">${SRS.MODES.map(x => `<button data-min="${x.min}" aria-pressed="${x.min === m.min}">${x.min}분</button>`).join('')}</div>
       <button class="btn wide cta" id="startBtn" ${plan.length ? '' : 'disabled'}>${m.min === 60 ? '60분 빡공 시작' : `${m.min}분 학습 시작`}</button>
     </section>
     <div class="stats">
       <div class="stat">${i3d('flame', 'coral')}<b>${streak(now)}일</b><span>연속 학습</span></div>
       <div class="stat">${i3d('check', 'mint')}<b>${due}개</b><span>오늘 복습</span></div>
-      <div class="stat">${i3d('book', 'blue')}<b>${learned}/${ITEMS.length}</b><span>배운 표현</span></div>
+      <div class="stat">${i3d('book', 'blue')}<b>${learned + Object.keys(S.cards).filter(k => k.startsWith('w-')).length}개</b><span>배운 항목</span></div>
     </div>
     <div class="tiles">
       <button class="tile" id="goSpeed" ${learned ? '' : 'disabled'}>${i3d('bolt', 'amber')}<b>순발력 연습</b><small>${learned ? '바로바로 말하기' : '표현을 배우면 열려요'}</small></button>
@@ -198,10 +200,18 @@ function home() {
   $('#startBtn').onclick = () => start(m);
   $('#vcToggle').onclick = () => { setVoice(!S.voice); home(); };
 }
+const setStages = q => q.forEach(e => { e.stage = e.item.isWord ? SRS.wordStage(S.cards[e.item.id]) : e.kind === 'new' ? 'blank' : SRS.stageOf(S.cards[e.item.id]); });
+function startWords() {
+  const m = curMode(), now = Date.now(), q = SRS.buildSession([], S.cards, { limit: m.limit, fresh: 0, freshWords: Math.max(m.freshWords, 10) }, now, curLevel(), WORDS);
+  if (!q.length) { say(WORDS.some(w => w.opic === curLevel()) ? '{호칭}, 이 레벨 단어는 오늘 다 했어! 대단해!' : '{호칭}, 이 레벨 단어는 곧 들어와! 조금만 기다려 줘!', 'think'); return; }
+  setStages(q);
+  session = { mode: m, q, i: 0, right: 0, wrong: 0, fresh: 0, review: 0, ends: now + m.min * 6e4, title: '단어 학습' };
+  next();
+}
 function start(mode) {
-  const now = Date.now(), q = SRS.buildSession(ITEMS, S.cards, mode, now, curLevel());
+  const now = Date.now(), q = SRS.buildSession(ITEMS, S.cards, mode, now, curLevel(), WORDS);
   if (!q.length) { say('{호칭}, 오늘 할 건 다 끝났어! 내일 또 같이 하자!', 'done', 'boing'); return; }
-  q.forEach(e => { e.stage = e.kind === 'new' ? 'blank' : SRS.stageOf(S.cards[e.item.id]); });
+  setStages(q);
   session = { mode, q, i: 0, right: 0, wrong: 0, fresh: 0, review: 0, ends: now + mode.min * 6e4 };
   next();
 }
@@ -226,7 +236,7 @@ function next() {
 function intro(e) {
   view('study'); curE = e; setScreen('intro', () => intro(e));
   const it = e.item; say(pick(LINES.fresh), 'great');
-  panel(`${header()}<span class="tag new">새 표현</span>
+  panel(`${header()}<span class="tag new">${it.isWord ? '새 단어' : '새 표현'}</span>
     <div class="expr" lang="en">${esc(it.expression)}</div><p class="ko sub">${esc(it.meaning)}</p>
     <div class="box"><div class="en" lang="en">${esc(it.en)}</div><p class="note">${esc(it.ko)}</p></div>
     <p class="note">${esc(it.note.replaceAll('{호칭}', S.call))}</p>
@@ -236,13 +246,16 @@ function intro(e) {
   $('#play').onclick = () => speak(it.en);
   $('#go').onclick = () => { e.shown = true; quiz(e); };
 }
+const BLANKISH = ['blank', 'wordBlank', 'wordRecall'];
 function quiz(e) {
   clearQ(); view('study'); curE = e; setScreen('quiz', () => quiz(e));
   const it = e.item, st = e.stage || 'blank', speedy = session && session.speed;
-  say(speedy ? '{호칭}, 빨리빨리! 시간 간다!' : st === 'dictation' ? '{호칭}, 귀 쫑긋! 잘 듣고 그대로 적어 봐!' : st === 'shadow' ? '{호칭}, 잘 듣고 똑같이 따라 해 봐!' : st === 'choose' ? '이 말을 영어로 하면 뭘까? 골라 봐!' : st === 'blank' ? pick(LINES.ask) : st === 'arrange' ? '순서대로 맞춰 봐! 나는 맨날 헷갈려!' : '{호칭}, 이번엔 문장 통째로 말해 봐! 할 수 있어!', 'think');
-  const tag = e.free ? session.title : e.retry ? '다시 한 번' : e.kind === 'new' ? '새 표현' : st === 'blank' ? '복습 · 빈칸' : st === 'arrange' ? '복습 · 문장 배열' : '복습 · 통문장';
+  say(speedy ? '{호칭}, 빨리빨리! 시간 간다!' : st === 'dictation' ? '{호칭}, 귀 쫑긋! 잘 듣고 그대로 적어 봐!' : st === 'shadow' ? '{호칭}, 잘 듣고 똑같이 따라 해 봐!' : st === 'choose' ? '이 말을 영어로 하면 뭘까? 골라 봐!' : st === 'wordChoice' ? '이 단어 뜻이 뭘까? 골라 봐!' : st === 'wordBlank' ? '빈칸에 들어갈 단어는 뭘까?' : st === 'wordRecall' ? '{호칭}, 뜻을 보고 단어를 떠올려 봐!' : st === 'blank' ? pick(LINES.ask) : st === 'arrange' ? '순서대로 맞춰 봐! 나는 맨날 헷갈려!' : '{호칭}, 이번엔 문장 통째로 말해 봐! 할 수 있어!', 'think');
+  const tag = e.free ? session.title : e.retry ? '다시 한 번' : it.isWord ? (e.kind === 'new' ? '새 단어' : '단어 복습') : e.kind === 'new' ? '새 표현' : st === 'blank' ? '복습 · 빈칸' : st === 'arrange' ? '복습 · 문장 배열' : '복습 · 통문장';
   let prompt;
-  if (st === 'blank') { const [a, , c] = SRS.splitBlank(it.en, it.blank); prompt = `<p class="ko sub">${esc(it.ko)}</p><div class="en" lang="en">${esc(a)}<span class="gap" id="gap">&nbsp;</span>${esc(c)}</div>`; }
+  if (st === 'wordChoice') prompt = `<div class="expr" lang="en">${esc(it.blank)}</div><p class="note">${esc(it.note)}</p>`;
+  else if (st === 'wordRecall') prompt = `<p class="ko">${esc(it.meaning)}</p><p class="ko sub">${esc(it.ko)}</p>`;
+  else if (st === 'blank' || st === 'wordBlank') { const [a, , c] = SRS.splitBlank(it.en, it.blank); prompt = `<p class="ko sub">${esc(it.ko)}</p><div class="en" lang="en">${esc(a)}<span class="gap" id="gap">&nbsp;</span>${esc(c)}</div>`; }
   else if (st === 'dictation') prompt = `<p class="ko">잘 듣고 그대로 적어 보세요</p>`;
   else if (st === 'shadow') prompt = `<div class="en" lang="en">${esc(it.en)}</div><p class="ko sub">${esc(it.ko)}</p>`;
   else prompt = `<p class="ko">${esc(it.ko)}</p>`;
@@ -251,19 +264,20 @@ function quiz(e) {
     ${prompt}
     ${speedy ? `<div class="timer" aria-hidden="true"><i style="animation-duration:${secs}s"></i></div>` : ''}
     <div id="ansBox" class="sheet"></div><div class="grow"></div>
-    <div class="dock">${BACK}${st === 'dictation' || st === 'shadow' ? `<button class="btn alt icon" id="play" aria-label="다시 듣기">${ICON.sound}</button>` : st === 'choose' ? '' : `<button class="btn ghost small" id="hint">${st === 'blank' ? '첫 글자 보기' : '첫 단어 보기'}</button>`}<button class="btn ghost small" id="pass">모르겠어요</button></div>`);
+    <div class="dock">${BACK}${st === 'dictation' || st === 'shadow' ? `<button class="btn alt icon" id="play" aria-label="다시 듣기">${ICON.sound}</button>` : st === 'choose' || st === 'wordChoice' ? '' : `<button class="btn alt" id="hint">${BLANKISH.includes(st) ? '첫 글자 보기' : '첫 단어 보기'}</button>`}<button class="btn alt" id="pass">모르겠어요</button></div>`);
   wireQuit();
   if ($('#play')) $('#play').onclick = () => speak(it.en);
   if ($('#hint')) $('#hint').onclick = () => {
     $('#hint').disabled = true; say(pick(LINES.hint), 'listen');
-    if (st === 'blank') $('#gap').textContent = it.blank[0] + '…';
-    else { const n = document.createElement('p'); n.className = 'note'; n.lang = 'en'; n.textContent = `${it.en.split(' ')[0]} …`; $('#ansBox').prepend(n); }
+    if ($('#gap')) $('#gap').textContent = it.blank[0] + '…';
+    else { const n = document.createElement('p'); n.className = 'note'; n.lang = 'en'; n.textContent = BLANKISH.includes(st) ? `${it.blank[0]} …` : `${it.en.split(' ')[0]} …`; $('#ansBox').prepend(n); }
   };
   $('#pass').onclick = () => answer(e, 'wrong', '');
   drawAns(e);
   if (speedy) timerId = setTimeout(() => answer(e, 'wrong', '', true), secs * 1000);
   if (st === 'dictation' || st === 'shadow') speak(it.en);
-  else if (S.voice && !speedy) { if (st === 'blank') { const [a, , c] = SRS.splitBlank(it.en, it.blank); speak(`${a} blank ${c}`); } else speak(it.ko, { lang: 'ko-KR', rate: 1 }); }
+  else if (st === 'wordChoice') speak(it.blank);
+  else if (S.voice && !speedy) { if (st === 'blank' || st === 'wordBlank') { const [a, , c] = SRS.splitBlank(it.en, it.blank); speak(`${a} blank ${c}`); } else speak(it.ko, { lang: 'ko-KR', rate: 1 }); }
 }
 let recog = null;
 const inputSeg = () => `<div class="seg" role="group" aria-label="답변 방법"><button id="mType" aria-pressed="${S.input !== 'voice'}">타이핑</button><button id="mVoice" aria-pressed="${S.input === 'voice'}">말하기</button></div>`;
@@ -276,12 +290,13 @@ function drawAns(e) {
   const box = $('#ansBox'), it = e.item, st = e.stage || 'blank', speedy = session && session.speed;
   const chips = SRS.chipsOf(it.en);
   if (st === 'choose') return drawChoose(e, box);
+  if (st === 'wordChoice') return drawWordChoice(e, box);
   if (st === 'arrange' && !S.voice) return drawArrange(e, box, chips);
   if (S.voice) {
-    box.innerHTML = st === 'blank' ? `<p class="note">빈칸 단어나 문장 전체를 영어로 말해 보세요.</p>` : `${st === 'arrange' ? `<div class="pool" lang="en">${chips.slice().sort(() => Math.random() - .5).map(w => `<span class="word">${esc(w)}</span>`).join('')}</div>` : ''}<p class="note">문장 전체를 영어로 말해 보세요.</p>`;
+    box.innerHTML = BLANKISH.includes(st) ? `<p class="note">${st === 'wordRecall' ? '단어를 영어로 말해 보세요.' : '빈칸 단어나 문장 전체를 영어로 말해 보세요.'}</p>` : `${st === 'arrange' ? `<div class="pool" lang="en">${chips.slice().sort(() => Math.random() - .5).map(w => `<span class="word">${esc(w)}</span>`).join('')}</div>` : ''}<p class="note">문장 전체를 영어로 말해 보세요.</p>`;
     return;
   }
-  const sent = st !== 'blank', ph = sent ? '영어 문장 입력' : '영어 단어 입력';
+  const sent = !BLANKISH.includes(st), ph = sent ? '영어 문장 입력' : '영어 단어 입력';
   if ((S.input === 'voice' || st === 'shadow') && SR) {
     box.innerHTML = `${st === 'shadow' ? '' : inputSeg()}<button class="btn wide mic" id="mic">눌러서 말하기</button><p class="note" id="heard">${sent ? '문장 전체를 말해 보세요.' : '빈칸 단어가 들어간 문장을 말해 보세요.'}</p>`;
     if (st !== 'shadow') wireSeg(e);
@@ -306,6 +321,16 @@ function drawAns(e) {
     if (sent) submitSentence(e, [v]); else answer(e, SRS.check(v, it.blank), v);
   };
   $('#ans').focus({ preventScroll: true });
+}
+function drawWordChoice(e, box) {
+  const it = e.item;
+  if (!e.opts) {
+    const others = WORDS.filter(w => w.id !== it.id && w.meaning !== it.meaning), same = others.filter(w => w.opic === it.opic && w.pos === it.pos).sort(() => Math.random() - .5).slice(0, 3);
+    const fill = others.filter(w => !same.includes(w)).sort(() => Math.random() - .5).slice(0, 3 - same.length);
+    e.opts = [it, ...same, ...fill].sort(() => Math.random() - .5);
+  }
+  box.innerHTML = `<div class="opts">${e.opts.map((o, n) => `<button class="opt" id="opt${n}"><i>${n + 1}</i><span>${esc(o.meaning)}</span></button>`).join('')}</div>`;
+  e.opts.forEach((o, n) => { $('#opt' + n).onclick = () => answer(e, o.id === it.id ? 'exact' : 'wrong', o.meaning); });
 }
 function drawChoose(e, box) {
   const it = e.item;
@@ -391,6 +416,7 @@ function finish() {
 /* ---------- 학습 메뉴: 새 학습 모드는 여기에 한 줄 추가한다 ---------- */
 const STUDY_MENU = [
   { id: 'goToday', icon: ['book', 'blue'], title: '오늘의 학습', desc: '복습과 새 표현을 시간에 맞춰 공부해요', run: () => home() },
+  { id: 'goWords', icon: ['list', 'amber'], title: '단어 학습', desc: '레벨에 맞는 단어만 공부해요', run: () => startWords() },
   { id: 'goSpeed', icon: ['bolt', 'amber'], title: '순발력 연습', desc: '제한 시간 안에 문장을 바로 말해요', needsLearned: true, run: () => startSpeed() },
   { id: 'goDictation', icon: ['pencil', 'blue'], title: '듣고 받아쓰기', desc: '문장을 듣고 그대로 적어요', needsLearned: true, run: () => startPractice('dictation', '받아쓰기') },
   { id: 'goShadow', icon: ['mic', 'coral'], title: '따라 말하기', desc: '원문을 듣고 똑같이 말해요', needsLearned: true, run: () => startPractice('shadow', '따라 말하기') },
@@ -411,9 +437,9 @@ function levels() {
   say(`{호칭}, 우리 지금 ${S.level.current}이야! 낮은 레벨은 언제든 다시 볼 수 있어!`, 'great');
   const cur = S.level.current, ci = SRS.LEVELS.indexOf(cur), study = curLevel();
   const row = (l, i) => {
-    const p = SRS.levelProgress(ITEMS, S.cards, l), open = i <= ci;
+    const p = SRS.levelProgress(ITEMS, S.cards, l), pw = SRS.levelProgress(WORDS, S.cards, l), open = i <= ci;
     const st = i > ci ? '잠김' : l === study ? '공부 중' : i < ci ? (S.level.passed.includes(l) ? '완료' : '복습 가능') : '현재 레벨';
-    return `<button class="lvrow ${l === cur ? 'cur' : ''}" data-lv="${l}" ${open ? '' : 'disabled'}><span class="lvbadge">${l}</span><span class="lvinfo"><b>${SRS.LEVEL_DESC[l]}</b><small>표현 ${p.learned}/${p.total} · ${st}</small></span></button>`;
+    return `<button class="lvrow ${l === cur ? 'cur' : ''}" data-lv="${l}" ${open ? '' : 'disabled'}><span class="lvbadge">${l}</span><span class="lvinfo"><b>${SRS.LEVEL_DESC[l]}</b><small>표현 ${p.learned}/${p.total}${pw.total ? ` · 단어 ${pw.learned}/${pw.total}` : ''} · ${st}</small></span></button>`;
   };
   const hist = (S.level.history || []).slice().reverse().map(h => `<p class="note">${esc(h.from)} → ${esc(h.to)} · ${esc(dayKey(h.at))}${h.score != null ? ` · ${esc(h.score)}점` : ''}</p>`).join('');
   panel(`<h1>레벨</h1>
@@ -427,12 +453,12 @@ function levels() {
 }
 function records() {
   clearQ(); view('home'); session = null; setScreen('records', records); returnTo = null;
-  const now = Date.now(), cards = Object.values(S.cards), n = st => cards.filter(c => SRS.stageOf(c) === st).length;
+  const now = Date.now(), wordN = Object.keys(S.cards).filter(k => k.startsWith('w-')).length, cards = Object.entries(S.cards).filter(([k]) => !k.startsWith('w-')).map(([, c]) => c), n = st => cards.filter(c => SRS.stageOf(c) === st).length;
   say(S.days.length ? `{호칭}, 벌써 ${S.days.length}일이나 같이 공부했어!` : '{호칭}, 아직 기록이 없어! 오늘 첫 칸을 채우자!', 'great');
   const days = Array.from({ length: 14 }, (_, i) => SRS.addDays(now, i - 13)).map(t => `<i class="day ${S.days.includes(dayKey(t)) ? 'on' : ''}" title="${dayKey(t)}"></i>`).join('');
   const total = ITEMS.length, bar = (label, v) => `<div class="meter"><span>${label}</span><div class="bar"><i style="width:${total ? Math.round(v / total * 100) : 0}%"></i></div><b>${v}</b></div>`;
   panel(`<h1 class="vh">기록</h1>
-    <div class="stats"><div class="stat"><b>${streak(now)}일</b><span>연속 학습</span></div><div class="stat"><b>${S.days.length}일</b><span>총 학습일</span></div><div class="stat"><b>${cards.length}/${total}</b><span>배운 표현</span></div></div>
+    <div class="stats"><div class="stat"><b>${streak(now)}일</b><span>연속 학습</span></div><div class="stat"><b>${cards.length}개</b><span>배운 표현</span></div><div class="stat"><b>${wordN}개</b><span>배운 단어</span></div></div>
     <div class="sheet"><h2>최근 14일</h2><div class="days" role="img" aria-label="최근 14일 중 ${S.days.filter(d => d >= dayKey(SRS.addDays(now, -13))).length}일 학습">${days}</div></div>
     <button class="lvcard" id="goLevels"><span class="lvbadge">${S.level.current}</span><span class="lvinfo"><b>레벨 경로 보기</b><small>${SRS.LEVEL_DESC[S.level.current]}</small></span>${ICON.go}</button>
     <div class="sheet"><h2>표현 단계</h2>${bar('빈칸', n('blank'))}${bar('문장 배열', n('arrange'))}${bar('통문장', n('sentence'))}</div>
@@ -596,19 +622,20 @@ function dictionary() {
 }
 
 /* ---------- 음성 조작 ---------- */
+const vcLang = () => VOICE.langOf(screen.name, screen.name === 'quiz' && curE ? curE.stage : '');
 const VC = { running: false, paused: false, rest: false, rec: null, timer: null, last: 0, fails: 0, heard: '', note: '', wake: null };
 const REST_AFTER = 5 * 6e4;
 function vcUI() {
   const el = $('#vc'); if (!el) return;
   el.hidden = !S.voice; if (!S.voice) return;
   el.className = VC.rest ? 'rest' : VC.paused ? 'talk' : 'on';
-  const state = VC.rest ? (VC.note || '쉬는 중이에요. 다시 들으려면 눌러 주세요.') : VC.paused ? '토타시가 읽는 중…' : VOICE.langOf(screen.name) === 'en' ? '영어로 듣는 중' : '한국어로 듣는 중';
+  const state = VC.rest ? (VC.note || '쉬는 중이에요. 다시 들으려면 눌러 주세요.') : VC.paused ? '토타시가 읽는 중…' : vcLang() === 'en' ? '영어로 듣는 중' : '한국어로 듣는 중';
   const hint = (VOICE.HINTS[screen.name] || []).map(h => `"${h}"`).join(' · ');
   el.innerHTML = `<i class="dot"></i><div class="txt">${esc(state)}<small>${VC.heard && !VC.rest ? `"${esc(VC.heard)}"` : VC.rest ? '' : esc(hint)}</small></div><button id="vcBtn">${VC.rest ? '다시 듣기' : '명령어'}</button>`;
   $('#vcBtn').onclick = () => { if (VC.rest) vcWakeUp(); else if (screen.name !== 'dict') dictionary(); };
 }
 function vcWakeUp() { VC.rest = false; VC.note = ''; VC.fails = 0; VC.last = Date.now(); vcHold(); vcStart(); vcUI(); }
-function vcSync() { if (S.voice && VC.running && VC.lang !== VOICE.langOf(screen.name)) { vcStop(); clearTimeout(VC.timer); VC.timer = setTimeout(vcStart, 200); } }
+function vcSync() { if (S.voice && VC.running && VC.lang !== vcLang()) { vcStop(); clearTimeout(VC.timer); VC.timer = setTimeout(vcStart, 200); } }
 function vcStop() { clearTimeout(VC.timer); if (VC.rec) { const r = VC.rec; VC.rec = null; VC.running = false; try { r.abort(); } catch {} } }
 function vcRest(note) { VC.rest = true; VC.note = note || ''; vcStop(); vcRelease(); vcUI(); }
 function vcPause() { if (!S.voice) return; VC.paused = true; vcStop(); vcUI(); }
@@ -619,7 +646,7 @@ function vcStart() {
   if (!S.voice || !SR || VC.running || VC.paused || VC.rest || document.hidden) return;
   if (Date.now() - VC.last > REST_AFTER) return vcRest('한동안 말이 없어서 쉬는 중이에요. 다시 들으려면 눌러 주세요.');
   try {
-    VC.lang = VOICE.langOf(screen.name); const r = new SR(); r.lang = VC.lang === 'en' ? 'en-US' : 'ko-KR'; r.continuous = false; r.interimResults = false; r.maxAlternatives = 5;
+    VC.lang = vcLang(); const r = new SR(); r.lang = VC.lang === 'en' ? 'en-US' : 'ko-KR'; r.continuous = false; r.interimResults = false; r.maxAlternatives = 5;
     r.onresult = e => { VC.last = Date.now(); VC.fails = 0; vcHeard(Array.from(e.results[e.results.length - 1]).map(x => x.transcript)); };
     r.onerror = e => {
       if (e.error === 'not-allowed' || e.error === 'service-not-allowed') return vcRest('마이크 권한을 허용한 뒤 눌러 주세요.');
@@ -642,21 +669,21 @@ function vcHeard(alts) {
   if (r.type === 'sentence' && curE.stage === 'choose') { const n = (curE.opts || []).find(o => r.alts.some(t => SRS.gradeSentence(t, o.en, o.expression).ok)); if (n) answer(curE, n.id === curE.item.id ? 'exact' : 'wrong', n.en); return; }
   if (r.type === 'sentence') return submitSentence(curE, r.alts);
   if (r.type === 'free') return checkMine(curE.item, r.text);
-  if (r.type === 'unavailable') return say(VOICE.langOf(screen.name) === 'en' ? '{호칭}, 지금은 영어로 답하는 중이야! 답부터 말해 줘!' : '{호칭}, 그건 이 화면에서는 못 해! "명령어"라고 하면 사전 보여 줄게!', 'think');
+  if (r.type === 'unavailable') return say(vcLang() === 'en' ? '{호칭}, 지금은 영어로 답하는 중이야! 답부터 말해 줘!' : '{호칭}, 그건 이 화면에서는 못 해! "명령어"라고 하면 사전 보여 줄게!', 'think');
 }
 function vcDo(action) {
   const click = id => { const b = $(id); if (b && !b.disabled) b.click(); };
   const sentence = () => curE && curE.item.en;
-  const line = () => { if (screen.name === 'quiz' && ['arrange', 'sentence', 'choose'].includes(curE.stage)) return curE.item.ko; if (screen.name === 'quiz' && (curE.stage || 'blank') === 'blank') { const [a, , c] = SRS.splitBlank(curE.item.en, curE.item.blank); return `${a} blank ${c}`; } return sentence(); };
+  const line = () => { if (screen.name === 'quiz' && curE.stage === 'wordChoice') return curE.item.blank; if (screen.name === 'quiz' && ['arrange', 'sentence', 'choose', 'wordRecall'].includes(curE.stage)) return curE.item.ko; if (screen.name === 'quiz' && ['blank', 'wordBlank'].includes(curE.stage || 'blank')) { const [a, , c] = SRS.splitBlank(curE.item.en, curE.item.blank); return `${a} blank ${c}`; } return sentence(); };
   const scroll = d => { const p = $('#panel'), by = innerHeight * .7 * d; if (p.scrollHeight > p.clientHeight) p.scrollBy({ top: by }); else window.scrollBy({ top: by }); };
   const acts = {
     next() { click(screen.name === 'intro' ? '#go' : screen.name === 'done' ? '#back' : '#nx'); },
     easy() { $('#rEasy') ? click('#rEasy') : click('#nx'); }, hard() { $('#rHard') ? click('#rHard') : click('#nx'); },
     c0() { click('#opt0'); }, c1() { click('#opt1'); }, c2() { click('#opt2'); }, c3() { click('#opt3'); },
-    dictation() { startPractice('dictation', '받아쓰기'); }, shadow() { startPractice('shadow', '따라 말하기'); }, choose() { startPractice('choose', '표현 고르기'); },
+    words() { startWords(); }, dictation() { startPractice('dictation', '받아쓰기'); }, shadow() { startPractice('shadow', '따라 말하기'); }, choose() { startPractice('choose', '표현 고르기'); },
     speed() { if (ITEMS.length > newCount()) startSpeed(); else say('{호칭}, 표현부터 배우고 하자!', 'think'); }, make() { if (ITEMS.length > newCount()) make(); else say('{호칭}, 표현부터 배우고 하자!', 'think'); },
     hint() { click('#hint'); }, pass() { click('#pass'); }, quit() { finish(); },
-    listen() { const q = screen.name === 'quiz' && ['arrange', 'sentence', 'choose'].includes(curE.stage); speak(line(), q ? { lang: 'ko-KR', rate: 1 } : {}); }, slow() { const q = screen.name === 'quiz' && ['arrange', 'sentence', 'choose'].includes(curE.stage); speak(line(), q ? { lang: 'ko-KR', rate: .8 } : { rate: .65 }); },
+    listen() { const q = screen.name === 'quiz' && ['arrange', 'sentence', 'choose', 'wordRecall'].includes(curE.stage); speak(line(), q ? { lang: 'ko-KR', rate: 1 } : {}); }, slow() { const q = screen.name === 'quiz' && ['arrange', 'sentence', 'choose', 'wordRecall'].includes(curE.stage); speak(line(), q ? { lang: 'ko-KR', rate: .8 } : { rate: .65 }); },
     meaning() { speak(curE.item.ko, { lang: 'ko-KR', rate: 1 }); },
     start() { click('#startBtn'); },
     m0() { S.minutes = 5; start(SRS.MODES[0]); }, m1() { S.minutes = 10; start(SRS.MODES[1]); }, m2() { S.minutes = 20; start(SRS.MODES[2]); }, m3() { S.minutes = 30; start(SRS.MODES[3]); }, m4() { S.minutes = 60; start(SRS.MODES[4]); },
@@ -694,6 +721,7 @@ $('#toto').onclick = () => { if (!session) say(pick(LINES.poke), 'great', 'boing
   try { navigator.storage && navigator.storage.persist && navigator.storage.persist(); } catch {}
   try {
     ITEMS = await (await fetch('data/expressions.json')).json();
+    try { WORDS = (await (await fetch('data/words.json')).json()).map(w => ({ id: w.id, opic: w.opic, topic: w.topic, pos: w.pos, isWord: true, expression: w.word, meaning: w.ko, en: w.en, ko: w.enKo, blank: w.word, note: POS_KO[w.pos] || '' })); } catch {}
   } catch { say('{호칭}, 표현 파일을 못 찾았어… 인터넷에 연결한 뒤 다시 열어 줘!', 'wrong'); panel('<p class="err">학습 데이터를 불러오지 못했어요. 인터넷에 연결한 뒤 앱을 다시 열어 주세요.</p>'); return; }
   if (!S.call) welcome(); else { if (S.voice && SR) { VC.last = Date.now(); vcHold(); } home(); vcStart(); }
   if ('serviceWorker' in navigator) { const had = !!navigator.serviceWorker.controller; navigator.serviceWorker.addEventListener('controllerchange', () => { if (had && !session) location.reload(); }); try { await navigator.serviceWorker.register('sw.js'); } catch {} }

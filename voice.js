@@ -3,17 +3,17 @@
   const ALL = ['home', 'intro', 'quiz', 'result', 'done', 'settings', 'dict', 'make', 'makeres', 'menu', 'records', 'levels'];
   const TABS = ['home', 'done', 'settings', 'dict', 'menu', 'records', 'levels'];
   const STUDY = ['intro', 'quiz', 'result'];
-  const langOf = screen => screen === 'quiz' || screen === 'make' ? 'en' : 'ko';
+  const langOf = (screen, stage) => (screen === 'quiz' && stage !== 'wordChoice') || screen === 'make' ? 'en' : 'ko';
   const COMMANDS = [
     { group: '학습 진행', action: 'next', label: '다음으로, 문제 풀기', on: ['intro', 'result', 'done', 'makeres'], ko: ['다음', '다음 문제', '다음으로', '넘어가', '넘어가자', '계속', '계속하기', '넥스트', '오케이', '보통', '문제 풀기', '문제 풀자', '풀기'], en: [] },
     { group: '학습 진행', action: 'easy', label: '쉬웠어요', on: ['result'], ko: ['쉬워', '쉬워요', '쉬웠어', '쉬웠어요', '쉬움'], en: [] },
     { group: '학습 진행', action: 'hard', label: '어려웠어요', on: ['result'], ko: ['어려워', '어려워요', '어려웠어', '어려웠어요', '어려움'], en: [] },
     { group: '학습 진행', action: 'hint', label: '힌트 보기', on: ['quiz'], ko: [], en: ['hint', 'give me a hint', 'clue', 'first letter', 'first word', 'help me'] },
     { group: '학습 진행', action: 'pass', label: '모르겠어요', on: ['quiz'], ko: [], en: ["i don't know", 'i do not know', 'i dont know', 'dunno', 'no idea', 'pass', 'skip', 'skip it', 'give up', 'i give up', 'show me the answer', 'show the answer'] },
-    { group: '학습 진행', action: 'c0', label: '1번 고르기', on: ['quiz'], ko: [], en: ['one', 'number one', 'first one', 'the first one'] },
-    { group: '학습 진행', action: 'c1', label: '2번 고르기', on: ['quiz'], ko: [], en: ['two', 'number two', 'second one', 'the second one'] },
-    { group: '학습 진행', action: 'c2', label: '3번 고르기', on: ['quiz'], ko: [], en: ['three', 'number three', 'third one', 'the third one'] },
-    { group: '학습 진행', action: 'c3', label: '4번 고르기', on: ['quiz'], ko: [], en: ['four', 'number four', 'fourth one', 'the fourth one'] },
+    { group: '학습 진행', action: 'c0', label: '1번 고르기', on: ['quiz'], ko: ['1번', '일번', '첫 번째'], en: ['one', 'number one', 'first one', 'the first one'] },
+    { group: '학습 진행', action: 'c1', label: '2번 고르기', on: ['quiz'], ko: ['2번', '이번', '두 번째'], en: ['two', 'number two', 'second one', 'the second one'] },
+    { group: '학습 진행', action: 'c2', label: '3번 고르기', on: ['quiz'], ko: ['3번', '삼번', '세 번째'], en: ['three', 'number three', 'third one', 'the third one'] },
+    { group: '학습 진행', action: 'c3', label: '4번 고르기', on: ['quiz'], ko: ['4번', '사번', '네 번째'], en: ['four', 'number four', 'fourth one', 'the fourth one'] },
     { group: '학습 진행', action: 'quit', label: '오늘 공부 끝내기', on: STUDY, ko: ['그만', '그만하기', '그만할래', '끝내기', '끝낼래', '공부 끝', '오늘 끝', '종료', '나가기'], en: ['stop', 'finish', 'quit', "i'm done", 'stop studying'] },
     { group: '듣기', action: 'listen', label: '다시 듣기', on: STUDY, ko: ['듣기', '들려줘', '다시', '다시 들려줘', '다시 듣기', '한 번 더', '읽어줘', '다시 읽어줘', '재생'], en: ['listen', 'say it again', 'repeat', 'one more time', 'read it', 'read it again', 'pardon'] },
     { group: '듣기', action: 'slow', label: '천천히 듣기', on: STUDY, ko: ['천천히', '천천히 들려줘', '느리게', '천천히 읽어줘'], en: ['slowly', 'slower', 'say it slowly', 'slow down'] },
@@ -25,6 +25,7 @@
     { group: '학습 시작', action: 'm3', label: '30분 공부', on: ['home'], ko: ['30분', '삼십분', '30분 공부'], en: [] },
     { group: '학습 시작', action: 'm4', label: '60분 빡공', on: ['home'], ko: ['60분', '육십분', '한 시간', '빡공', '빡공 모드'], en: [] },
     { group: '학습 시작', action: 'speed', label: '순발력 연습', on: ['home', 'menu'], ko: ['순발력', '순발력 연습', '스피드'], en: [] },
+    { group: '학습 시작', action: 'words', label: '단어 학습', on: ['home', 'menu'], ko: ['단어', '단어 학습', '단어 공부'], en: [] },
     { group: '학습 시작', action: 'dictation', label: '듣고 받아쓰기', on: ['menu'], ko: ['받아쓰기', '듣고 받아쓰기'], en: [] },
     { group: '학습 시작', action: 'shadow', label: '따라 말하기', on: ['menu'], ko: ['따라 말하기', '따라 하기', '쉐도잉'], en: [] },
     { group: '학습 시작', action: 'choose', label: '표현 고르기', on: ['menu'], ko: ['표현 고르기', '고르기'], en: [] },
@@ -70,14 +71,14 @@
   const wordsOf = s => normEn(s).split(' ').filter(Boolean);
   function interpret(alts, screen, blank, stage) {
     const list = (alts || []).filter(Boolean);
-    if (langOf(screen) === 'ko') {
+    if (langOf(screen, stage) === 'ko') {
       for (const a of list) {
         const f = findKo(a, screen);
         if (f) return f.c.on.includes(screen) ? { type: 'cmd', action: f.c.action, text: a } : { type: 'unavailable', action: f.c.action, text: a };
       }
       return { type: 'unknown', text: list[0] || '' };
     }
-    const b = blank && blank.toLowerCase(), sent = screen === 'quiz' && stage && stage !== 'blank';
+    const b = blank && blank.toLowerCase(), sent = screen === 'quiz' && stage && !['blank', 'wordBlank', 'wordRecall'].includes(stage);
     if (screen === 'quiz' && !sent && b && list.some(a => normEn(a) === b)) return { type: 'answer', ok: true, text: b };
     for (const a of list) {
       const c = findEn(a);
