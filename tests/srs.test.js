@@ -11,3 +11,12 @@ let q=S.buildSession(items,{},S.MODES[0],now);a.equal(q.length,2);a.ok(q.every(x
 const due={};items.forEach(i=>due[i.id]={due:now-1,reps:1,lapses:0});q=S.buildSession(items,due,S.MODES[0],now);a.equal(q.length,12);a.ok(q.every(x=>x.kind==='review'));
 const few={[items[0].id]:{due:now-1}};q=S.buildSession(items,few,S.MODES[1],now);a.equal(q.length,6);a.equal(q[0].kind,'review');
 console.log('ok');
+{const g=(i,e,x)=>S.gradeSentence(i,e,x);
+a.ok(g('I am looking for subway station','I\'m looking for the subway station.',"I'm looking for ~").ok);
+a.ok(g("Can I get a window seat",'Can I get a window seat?','Can I get ~?').perfect);
+a.ok(!g('I want subway station',"I'm looking for the subway station.","I'm looking for ~").ok);
+a.ok(!g('',"Oh, that makes sense.",'That makes sense').ok);
+a.equal(S.stageOf(undefined),'blank');a.equal(S.stageOf({reps:1}),'arrange');a.equal(S.stageOf({reps:3}),'sentence');
+const c1=S.grade(undefined,true,now);a.equal(S.rate(c1,'easy',now).days,3);a.equal(S.rate({days:6},'hard',now).days,3);
+for(const i of items){a.ok(g(i.en,i.en,i.expression).ok,i.id);a.ok(g(i.en.toLowerCase().replace(/[,.?]/g,''),i.en,i.expression).perfect,i.id)}
+console.log('sentence ok')}

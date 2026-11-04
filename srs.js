@@ -54,6 +54,31 @@
     const at = m.index + m[1].length;
     return [en.slice(0, at), en.slice(at, at + m[2].length), en.slice(at + m[2].length)];
   }
-  const api = { MODES, grade, buildSession, check, splitBlank, startOfDay, addDays };
+  /* 복습 단계: 빈칸 → 문장 배열 → 통문장 말하기 */
+  const stageOf = card => { const r = card ? card.reps || 0 : 0; return r <= 0 ? 'blank' : r <= 2 ? 'arrange' : 'sentence'; };
+  function rate(card, how, now) {
+    const c = Object.assign({}, card); if (!c.days) return c;
+    c.days = how === 'easy' ? Math.round(c.days * 1.5) + 1 : how === 'hard' ? Math.max(1, Math.round(c.days * .5)) : c.days;
+    c.due = addDays(now, c.days); return c;
+  }
+  const CONTRACT = { "i'm": 'i am', "i'd": 'i would', "i'll": 'i will', "i've": 'i have', "it's": 'it is', "what's": 'what is', "that's": 'that is', "there's": 'there is', "let's": 'let us', "don't": 'do not', "can't": 'can not', cannot: 'can not', "doesn't": 'does not', "you're": 'you are', "we're": 'we are' };
+  const SOFT = new Set(['a', 'an', 'the', 'oh', 'hmm', 'um', 'uh', 'sorry', 'wait', 'please', 'so', 'well', 'okay', 'ok', 'some', 'my', 'this', 'that']);
+  const toks = s => clean(s).split(/\s+/).filter(Boolean).flatMap(w => (CONTRACT[w] || w).split(' '));
+  const near = (a, b) => a === b || (a.length >= 5 && dist(a, b) === 1);
+  const keyWords = expr => toks(String(expr).replace(/~\s*ing|~|\.\.\./g, ' ')).filter(w => !SOFT.has(w));
+  /* 핵심 표현이 들어 있고 내용 단어의 70% 이상이 있으면 정답. 관사 같은 작은 단어는 넘어간다. */
+  function gradeSentence(input, en, expression) {
+    const got = toks(input), want = toks(en), has = w => got.some(g => near(g, w));
+    const content = want.filter(w => !SOFT.has(w)), keys = keyWords(expression);
+    const missing = content.filter(w => !has(w)), keyOk = keys.every(has);
+    const cover = content.length ? (content.length - missing.length) / content.length : 1;
+    return { ok: keyOk && cover >= .7 && got.length > 0, perfect: !missing.length && want.every(has), missing, has };
+  }
+  function bestSentence(alts, en, expression) {
+    const all = alts.map(text => ({ text, r: gradeSentence(text, en, expression) }));
+    return all.sort((a, b) => (b.r.ok - a.r.ok) || (a.r.missing.length - b.r.missing.length))[0];
+  }
+  const chipsOf = en => en.replace(/[.,?!]/g, '').split(/\s+/).map((w, i) => i === 0 ? w.replace(/^[A-Z](?=[a-z])/, c => c.toLowerCase()) : w);
+  const api = { MODES, grade, buildSession, check, splitBlank, startOfDay, addDays, stageOf, rate, gradeSentence, bestSentence, chipsOf };
   if (typeof module !== 'undefined') module.exports = api; else root.SRS = api;
 })(this);

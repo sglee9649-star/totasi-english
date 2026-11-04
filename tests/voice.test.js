@@ -20,3 +20,8 @@ const seen=new Map();V.COMMANDS.forEach(c=>c.say.forEach(p=>{a.ok(!seen.has(p),'
 console.log('ok',V.COMMANDS.length,'actions',seen.size,'phrases');
 // 빈칸 단어와 겹치는 명령어 표시
 console.log(items.filter(i=>seen.has(i.blank)).map(i=>i.id+':'+i.blank).join(' '));
+a.equal(I(['Can I get a window seat'],'quiz','window','sentence').type,'sentence');
+a.equal(I(['um'],'quiz','window','sentence').type,'unknown');
+a.equal(I(['easy'],'result','').action,'easy');
+for(const i of items)a.ok(!V.findCommand(i.en),'sentence collides '+i.id);
+console.log('stage ok');

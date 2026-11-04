@@ -3,3 +3,4 @@
 - 로컬 실행: `python3 -m http.server` 후 http://localhost:8000
 - 로직 테스트: `node tests/srs.test.js`
 - 파일을 바꾸면 `sw.js`의 CACHE 버전을 올려 주세요.
+- AI 교정은 Claude API(claude-haiku-5-5)를 브라우저에서 직접 호출하며, 키는 각 기기 설정에 저장됩니다.
