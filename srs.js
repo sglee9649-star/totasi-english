@@ -75,6 +75,14 @@
     const pct = marks.length ? Math.round(right / marks.length * 100) : 0;
     return { right, total: marks.length, pct, speakRight: sp, passed: marks.length > 0 && right / marks.length >= PROMOTION.passRate && sp >= PROMOTION.minSpeak };
   }
+  /* 최근 본 예시를 피해 무작위로 고른다. 예시가 적어도 항상 고를 수 있게 제외 수를 조절한다. */
+  function pickExamples(list, recent, count, rnd) {
+    const r = rnd || Math.random, n = Math.min(count, list.length), keep = Math.max(0, Math.min(9, list.length - n));
+    const seen = (recent || []).filter(i => i >= 0 && i < list.length).slice(-keep), block = keep ? seen : [];
+    const open = list.map((_, i) => i).filter(i => !block.includes(i));
+    const picks = open.map(i => [r(), i]).sort((a, b) => a[0] - b[0]).slice(0, n).map(x => x[1]);
+    return { picks, recent: block.concat(picks).slice(-Math.max(keep, n)) };
+  }
   const clean = s => String(s || '').toLowerCase().replace(/[’]/g, "'").replace(/[^a-z' ]+/g, ' ').trim();
   function dist(a, b) {
     const d = Array.from({ length: a.length + 1 }, (_, i) => [i]);
@@ -123,6 +131,6 @@
     return all.sort((a, b) => (b.r.ok - a.r.ok) || (a.r.missing.length - b.r.missing.length))[0];
   }
   const chipsOf = en => en.replace(/[.,?!]/g, '').split(/\s+/).map((w, i) => i === 0 ? w.replace(/^[A-Z](?=[a-z])/, c => c.toLowerCase()) : w);
-  const api = { PROMOTION, promotionStatus, EXAM_SECS, buildExam, examScore, wordStage, LEVELS, LEVEL_DESC, levelProgress, nextLevel, canStudyLevel, MODES, grade, buildSession, check, splitBlank, startOfDay, addDays, stageOf, rate, gradeSentence, bestSentence, chipsOf };
+  const api = { pickExamples, PROMOTION, promotionStatus, EXAM_SECS, buildExam, examScore, wordStage, LEVELS, LEVEL_DESC, levelProgress, nextLevel, canStudyLevel, MODES, grade, buildSession, check, splitBlank, startOfDay, addDays, stageOf, rate, gradeSentence, bestSentence, chipsOf };
   if (typeof module !== 'undefined') module.exports = api; else root.SRS = api;
 })(this);

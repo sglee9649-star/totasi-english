@@ -29,6 +29,10 @@
     { group: '학습 시작', action: 'dictation', label: '듣고 받아쓰기', on: ['menu'], ko: ['받아쓰기', '듣고 받아쓰기'], en: [] },
     { group: '학습 시작', action: 'shadow', label: '따라 말하기', on: ['menu'], ko: ['따라 말하기', '따라 하기', '쉐도잉'], en: [] },
     { group: '학습 시작', action: 'choose', label: '표현 고르기', on: ['menu'], ko: ['표현 고르기', '고르기'], en: [] },
+    { group: '내 문장', action: 'exOther', label: '다른 예시 보기', on: ['make'], ko: [], en: ['other examples', 'different examples', 'new examples', 'more examples', 'change examples'] },
+    { group: '내 문장', action: 'ex0', label: '첫 번째 예시 고르기', on: ['make'], ko: [], en: ['example one', 'first example'] },
+    { group: '내 문장', action: 'ex1', label: '두 번째 예시 고르기', on: ['make'], ko: [], en: ['example two', 'second example'] },
+    { group: '내 문장', action: 'ex2', label: '세 번째 예시 고르기', on: ['make'], ko: [], en: ['example three', 'third example'] },
     { group: '학습 시작', action: 'make', label: '내 문장 만들기', on: ['home', 'menu'], ko: ['내 문장', '내 문장 만들기', '문장 만들기'], en: [] },
     { group: '화면 이동', action: 'back', label: '뒤로 가기', on: ALL, ko: ['뒤로', '뒤로 가기', '뒤로 가', '이전', '이전 화면', '돌아가기', '돌아가'], en: ['go back', 'back'] },
     { group: '화면 이동', action: 'homeGo', label: '홈으로', on: ALL, ko: ['홈', '홈으로', '홈 화면', '처음으로', '처음 화면', '메인'], en: ['go home'] },
@@ -46,7 +50,7 @@
   ];
   const HINTS = {
     home: ['시작', '10분', '명령어'], intro: ['다음', '다시', '천천히'], quiz: ['hint', "I don't know", 'listen'], result: ['다음', '쉬워', '어려워'],
-    make: ['go back'], makeres: ['다음'], done: ['홈'], settings: ['홈', '명령어'], dict: ['뒤로', '내려'], menu: ['받아쓰기', '따라 말하기', '고르기'], records: ['홈', '레벨'], levels: ['뒤로', '승급 심사'], examIntro: ['시작', '뒤로'], examResult: ['다음'],
+    make: ['other examples', 'example one', 'go back'], makeres: ['다음'], done: ['홈'], settings: ['홈', '명령어'], dict: ['뒤로', '내려'], menu: ['받아쓰기', '따라 말하기', '고르기'], records: ['홈', '레벨'], levels: ['뒤로', '승급 심사'], examIntro: ['시작', '뒤로'], examResult: ['다음'],
   };
   const normEn = s => String(s || '').toLowerCase().replace(/[’]/g, "'").replace(/[^a-z0-9' ]+/g, ' ').replace(/\s+/g, ' ').trim();
   const normKo = s => String(s || '').replace(/[^가-힣0-9a-zA-Z]+/g, '').toLowerCase();
