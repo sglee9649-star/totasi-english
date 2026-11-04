@@ -1,7 +1,7 @@
 /* 음성 명령 사전과 해석. 평소에는 한국어로 듣고, 답을 말하는 화면에서만 영어로 듣는다. */
 (function (root) {
-  const ALL = ['home', 'intro', 'quiz', 'result', 'done', 'settings', 'dict', 'make', 'makeres', 'menu', 'records'];
-  const TABS = ['home', 'done', 'settings', 'dict', 'menu', 'records'];
+  const ALL = ['home', 'intro', 'quiz', 'result', 'done', 'settings', 'dict', 'make', 'makeres', 'menu', 'records', 'levels'];
+  const TABS = ['home', 'done', 'settings', 'dict', 'menu', 'records', 'levels'];
   const STUDY = ['intro', 'quiz', 'result'];
   const langOf = screen => screen === 'quiz' || screen === 'make' ? 'en' : 'ko';
   const COMMANDS = [
@@ -32,6 +32,7 @@
     { group: '화면 이동', action: 'back', label: '뒤로 가기', on: ALL, ko: ['뒤로', '뒤로 가기', '뒤로 가', '이전', '이전 화면', '돌아가기', '돌아가'], en: ['go back', 'back'] },
     { group: '화면 이동', action: 'homeGo', label: '홈으로', on: ALL, ko: ['홈', '홈으로', '홈 화면', '처음으로', '처음 화면', '메인'], en: ['go home'] },
     { group: '화면 이동', action: 'menu', label: '학습 탭', on: TABS, ko: ['학습 메뉴', '학습 탭', '학습 화면', '메뉴'], en: [] },
+    { group: '화면 이동', action: 'levels', label: '레벨 보기', on: TABS, ko: ['레벨', '내 레벨', '레벨 보기', '레벨 경로'], en: [] },
     { group: '화면 이동', action: 'records', label: '기록 탭', on: TABS, ko: ['기록', '기록 보기', '내 기록', '통계'], en: [] },
     { group: '화면 이동', action: 'settings', label: '설정 탭', on: TABS, ko: ['설정', '설정 열기'], en: [] },
     { group: '화면 이동', action: 'dict', label: '명령어 사전', on: ALL, ko: ['명령어', '명령어 사전', '사전', '도움말', '뭐라고 말해'], en: ['commands', 'help'] },
@@ -43,7 +44,7 @@
   ];
   const HINTS = {
     home: ['시작', '10분', '명령어'], intro: ['다음', '다시', '천천히'], quiz: ['hint', "I don't know", 'listen'], result: ['다음', '쉬워', '어려워'],
-    make: ['go back'], makeres: ['다음'], done: ['홈'], settings: ['홈', '명령어'], dict: ['뒤로', '내려'], menu: ['받아쓰기', '따라 말하기', '고르기'], records: ['홈', '학습 메뉴'],
+    make: ['go back'], makeres: ['다음'], done: ['홈'], settings: ['홈', '명령어'], dict: ['뒤로', '내려'], menu: ['받아쓰기', '따라 말하기', '고르기'], records: ['홈', '레벨'], levels: ['뒤로', '시작'],
   };
   const normEn = s => String(s || '').toLowerCase().replace(/[’]/g, "'").replace(/[^a-z0-9' ]+/g, ' ').replace(/\s+/g, ' ').trim();
   const normKo = s => String(s || '').replace(/[^가-힣0-9a-zA-Z]+/g, '').toLowerCase();

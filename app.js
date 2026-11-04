@@ -1,8 +1,8 @@
-const APP_VERSION = '0.7.0', APP_DATE = '2026-11-04';
+const APP_VERSION = '0.8.0', APP_DATE = '2026-11-04';
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const KEY = 'totasi-english-v1';
-const FRESH_STATE = () => ({ call: '', cards: {}, days: [], input: 'type', autoplay: true, voice: false, voiceAsked: false, minutes: 10, aiMonth: '', aiCost: 0, aiLimit: 1 });
+const FRESH_STATE = () => ({ call: '', cards: {}, days: [], input: 'type', autoplay: true, voice: false, voiceAsked: false, schema: 2, level: { current: 'IL', passed: [], history: [] }, studyLevel: '', minutes: 10, aiMonth: '', aiCost: 0, aiLimit: 1 });
 let S = FRESH_STATE(), ITEMS = [], session = null;
 let screen = { name: 'home', render: () => home() }, returnTo = null, curE = null;
 const TAB_OF = { home: 'home', done: 'home', menu: 'menu', records: 'records', settings: 'settings', dict: 'settings' };
@@ -25,7 +25,13 @@ window.addEventListener('popstate', () => {
   try { if (screen.name !== 'home' && !(history.state && history.state.guard)) history.pushState({ guard: 1 }, ''); } catch {}
 });
 
-function load() { try { const v = JSON.parse(localStorage.getItem(KEY)); if (v) S = Object.assign(FRESH_STATE(), v); } catch {} }
+function migrate(raw) {
+  if (raw && !raw.schema) { try { localStorage.setItem(KEY + '-backup-schema1', JSON.stringify(raw)); } catch {} }
+  S = Object.assign(FRESH_STATE(), raw || {});
+  if (!S.level || !S.level.current) S.level = { current: 'IL', passed: [], history: [] };
+  S.schema = 2;
+}
+function load() { try { const v = JSON.parse(localStorage.getItem(KEY)); if (v) { const old = !v.schema; migrate(v); if (old) save(); } } catch {} }
 function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch {} }
 
 /* ---------- 토타시 ---------- */
@@ -160,15 +166,18 @@ function homeLine(now) {
   if (S.days.includes(dayKey(now))) return ['오늘 복습은 다 했어! {호칭} 진짜 멋있다! 더 할 거야?', 'great'];
   return [S.days.length ? '{호칭} 왔다! 오늘은 얼마나 할 거야?' : '{호칭}, 첫날이다! 나 벌써 두근두근해!', 'great'];
 }
+const curLevel = () => S.studyLevel && SRS.canStudyLevel(S.studyLevel, S.level.current) ? S.studyLevel : S.level.current;
 const curMode = () => SRS.MODES.find(m => m.min === S.minutes) || SRS.MODES[1];
 function home() {
   clearQ(); view('home'); session = null; setScreen('home', home); returnTo = null;
   const now = Date.now(), due = dueCount(now), fresh = newCount(), learned = ITEMS.length - fresh;
   const [line, f] = homeLine(now); say(line, f);
-  const m = curMode(), plan = SRS.buildSession(ITEMS, S.cards, m, now), r = plan.filter(x => x.kind === 'review').length;
+  const m = curMode(), plan = SRS.buildSession(ITEMS, S.cards, m, now, curLevel()), r = plan.filter(x => x.kind === 'review').length;
+  const lv = curLevel(), pg = SRS.levelProgress(ITEMS, S.cards, lv), nx = SRS.nextLevel(S.level.current);
   panel(`
+    <button class="lvcard" id="goLevels" aria-label="레벨 보기: 현재 ${S.level.current}"><span class="lvbadge">${S.level.current}</span><span class="lvinfo"><b>${lv !== S.level.current ? `${lv} 복습 중` : SRS.LEVEL_DESC[lv]}</b><span class="bar"><i style="width:${pg.pct}%"></i></span><small>${lv} 표현 ${pg.learned}/${pg.total}${nx ? ` · 다음 레벨 ${nx}` : ''}</small></span>${ICON.go}</button>
     <section class="plan">
-      <h1>${plan.length ? (r && plan.length - r ? `오늘은 복습 ${r}개,<br>새 표현 ${plan.length - r}개 어때요?` : r ? `오늘은 복습 ${r}개를<br>같이 해 볼까요?` : `오늘은 새 표현 ${plan.length}개를<br>배워 볼까요?`) : '오늘 할 학습을<br>모두 끝냈어요'}</h1>
+      <h1>${plan.length ? (r && plan.length - r ? `오늘은 복습 ${r}개,<br>새 표현 ${plan.length - r}개 어때요?` : r ? `오늘은 복습 ${r}개를<br>같이 해 볼까요?` : `오늘은 새 표현 ${plan.length}개를<br>배워 볼까요?`) : (SRS.levelProgress(ITEMS, S.cards, curLevel()).done ? '이 레벨의 표현을<br>모두 배웠어요' : '오늘 할 학습을<br>모두 끝냈어요')}</h1>
       <div class="times" role="group" aria-label="학습 시간">${SRS.MODES.map(x => `<button data-min="${x.min}" aria-pressed="${x.min === m.min}">${x.min}분</button>`).join('')}</div>
       <button class="btn wide cta" id="startBtn" ${plan.length ? '' : 'disabled'}>${m.min === 60 ? '60분 빡공 시작' : `${m.min}분 학습 시작`}</button>
     </section>
@@ -183,13 +192,14 @@ function home() {
       <button class="tile" id="vcToggle" role="switch" aria-checked="${S.voice}" ${SR ? '' : 'disabled'}>${i3d('mic', 'coral')}<b>음성 조작</b><small>${!SR ? '쓸 수 없는 브라우저예요' : S.voice ? '켜짐, 말로 조작해요' : '꺼짐, 눌러서 켜기'}</small></button>
       <button class="tile" id="goDict">${i3d('list', 'blue')}<b>명령어 사전</b><small>말할 수 있는 표현</small></button>
     </div>`);
+  $('#goLevels').onclick = levels;
   $('#goSpeed').onclick = startSpeed; $('#goMake').onclick = () => make(); $('#goDict').onclick = dictionary;
   document.querySelectorAll('[data-min]').forEach(b => b.onclick = () => { S.minutes = +b.dataset.min; save(); home(); });
   $('#startBtn').onclick = () => start(m);
   $('#vcToggle').onclick = () => { setVoice(!S.voice); home(); };
 }
 function start(mode) {
-  const now = Date.now(), q = SRS.buildSession(ITEMS, S.cards, mode, now);
+  const now = Date.now(), q = SRS.buildSession(ITEMS, S.cards, mode, now, curLevel());
   if (!q.length) { say('{호칭}, 오늘 할 건 다 끝났어! 내일 또 같이 하자!', 'done', 'boing'); return; }
   q.forEach(e => { e.stage = e.kind === 'new' ? 'blank' : SRS.stageOf(S.cards[e.item.id]); });
   session = { mode, q, i: 0, right: 0, wrong: 0, fresh: 0, review: 0, ends: now + mode.min * 6e4 };
@@ -394,6 +404,27 @@ function menu() {
   panel(`<h1 class="vh">학습</h1><div class="list">${STUDY_MENU.map(m => { const off = m.needsLearned && !learned; return `<button class="item" id="${m.id}" ${off ? 'disabled' : ''}>${i3d(m.icon[0], m.icon[1])}<span><b>${m.title}</b><small>${off ? '표현을 먼저 배우면 열려요' : m.desc}</small></span>${ICON.go}</button>`; }).join('')}</div>`);
   STUDY_MENU.forEach(m => { $('#' + m.id).onclick = m.run; });
 }
+function levels() {
+  clearQ(); view('study'); session = null;
+  if (screen.name !== 'levels' && screen.name !== 'dict') returnTo = screen.render;
+  setScreen('levels', levels);
+  say(`{호칭}, 우리 지금 ${S.level.current}이야! 낮은 레벨은 언제든 다시 볼 수 있어!`, 'great');
+  const cur = S.level.current, ci = SRS.LEVELS.indexOf(cur), study = curLevel();
+  const row = (l, i) => {
+    const p = SRS.levelProgress(ITEMS, S.cards, l), open = i <= ci;
+    const st = i > ci ? '잠김' : l === study ? '공부 중' : i < ci ? (S.level.passed.includes(l) ? '완료' : '복습 가능') : '현재 레벨';
+    return `<button class="lvrow ${l === cur ? 'cur' : ''}" data-lv="${l}" ${open ? '' : 'disabled'}><span class="lvbadge">${l}</span><span class="lvinfo"><b>${SRS.LEVEL_DESC[l]}</b><small>표현 ${p.learned}/${p.total} · ${st}</small></span></button>`;
+  };
+  const hist = (S.level.history || []).slice().reverse().map(h => `<p class="note">${esc(h.from)} → ${esc(h.to)} · ${esc(dayKey(h.at))}${h.score != null ? ` · ${esc(h.score)}점` : ''}</p>`).join('');
+  panel(`<h1>레벨</h1>
+    <div class="lvpath">${SRS.LEVELS.map(row).join('')}</div>
+    <p class="note">OPIc 등급 이름을 빌린 앱 자체 연습 지표예요. 실제 OPIc 등급과 다를 수 있어요.</p>
+    <p class="note">현재 레벨을 다 배우면 승급 심사로 다음 레벨에 올라가요. 승급 심사는 다음 업데이트에서 열려요.</p>
+    ${hist ? `<div class="sheet"><h2>승급 이력</h2>${hist}</div>` : ''}
+    <div class="dock">${BACK}<button class="btn" id="lvStudy">${esc(study)} 공부하기</button></div>`);
+  $('#quit').onclick = () => vcDo('back'); $('#lvStudy').onclick = home;
+  document.querySelectorAll('[data-lv]').forEach(b => b.onclick = () => { const l = b.dataset.lv; S.studyLevel = l === cur ? '' : l; save(); levels(); });
+}
 function records() {
   clearQ(); view('home'); session = null; setScreen('records', records); returnTo = null;
   const now = Date.now(), cards = Object.values(S.cards), n = st => cards.filter(c => SRS.stageOf(c) === st).length;
@@ -403,8 +434,10 @@ function records() {
   panel(`<h1 class="vh">기록</h1>
     <div class="stats"><div class="stat"><b>${streak(now)}일</b><span>연속 학습</span></div><div class="stat"><b>${S.days.length}일</b><span>총 학습일</span></div><div class="stat"><b>${cards.length}/${total}</b><span>배운 표현</span></div></div>
     <div class="sheet"><h2>최근 14일</h2><div class="days" role="img" aria-label="최근 14일 중 ${S.days.filter(d => d >= dayKey(SRS.addDays(now, -13))).length}일 학습">${days}</div></div>
+    <button class="lvcard" id="goLevels"><span class="lvbadge">${S.level.current}</span><span class="lvinfo"><b>레벨 경로 보기</b><small>${SRS.LEVEL_DESC[S.level.current]}</small></span>${ICON.go}</button>
     <div class="sheet"><h2>표현 단계</h2>${bar('빈칸', n('blank'))}${bar('문장 배열', n('arrange'))}${bar('통문장', n('sentence'))}</div>
     <div class="sheet"><h2>이번 달 AI 사용</h2><p class="note">$${aiSpent().toFixed(3)} / 한도 $${S.aiLimit.toFixed(2)}</p></div>`);
+  $('#goLevels').onclick = levels;
 }
 
 /* ---------- 내 문장 만들기 (AI) ---------- */
@@ -536,7 +569,7 @@ function settings() {
     try {
       const v = JSON.parse(await f.text());
       if (!v || typeof v.cards !== 'object' || !Array.isArray(v.days)) throw 0;
-      S = Object.assign(FRESH_STATE(), v); save(); settings(); $('#msg').textContent = '백업을 불러왔어요.';
+      migrate(v); save(); settings(); $('#msg').textContent = '백업을 불러왔어요.';
     } catch { $('#msg').textContent = '토타시 영어 백업 파일이 아니에요. 파일을 확인해 주세요.'; }
   };
   $('#wipe').onclick = () => {
@@ -629,12 +662,13 @@ function vcDo(action) {
     m0() { S.minutes = 5; start(SRS.MODES[0]); }, m1() { S.minutes = 10; start(SRS.MODES[1]); }, m2() { S.minutes = 20; start(SRS.MODES[2]); }, m3() { S.minutes = 30; start(SRS.MODES[3]); }, m4() { S.minutes = 60; start(SRS.MODES[4]); },
     back() {
       if (screen.name === 'dict') { const f = returnTo || home; returnTo = null; return f(); }
+      if (screen.name === 'levels') { const f = returnTo || records; returnTo = null; return f(); }
       if (['make', 'makeres'].includes(screen.name)) return menu();
       if (['settings', 'done', 'menu', 'records'].includes(screen.name)) return home();
       if (screen.name === 'quiz' && curE.kind === 'new' && !curE.retry) return intro(curE);
       if (session) return finish();
     },
-    homeGo() { clearQ(); if (session && session.right + session.wrong) return finish(); session = null; home(); }, menu() { menu(); }, records() { records(); },
+    homeGo() { clearQ(); if (session && session.right + session.wrong) return finish(); session = null; home(); }, menu() { menu(); }, records() { records(); }, levels() { levels(); },
     settings() { settings(); }, dict() { dictionary(); },
     down() { scroll(1); }, up() { scroll(-1); },
     status() {

@@ -25,9 +25,17 @@
     c.due = addDays(now, c.days);
     return c;
   }
-  function buildSession(items, cards, mode, now) {
+  const LEVELS = ['NL', 'NM', 'NH', 'IL', 'IM1', 'IM2', 'IM3', 'IH', 'AL'];
+  const LEVEL_DESC = { NL: '단어로 말해요', NM: '외운 문장으로 말해요', NH: '짧은 문장으로 말해요', IL: '쉬운 문장으로 답해요', IM1: '일상 대화를 시작해요', IM2: '대화를 이어 가요', IM3: '경험을 설명해요', IH: '의견과 이유를 말해요', AL: '복잡한 상황을 풀어 가요' };
+  function levelProgress(items, cards, level) {
+    const all = items.filter(i => i.opic === level), learned = all.filter(i => cards[i.id]).length;
+    return { total: all.length, learned, pct: all.length ? Math.round(learned / all.length * 100) : 0, done: all.length > 0 && learned === all.length };
+  }
+  const nextLevel = level => LEVELS[LEVELS.indexOf(level) + 1] || null;
+  const canStudyLevel = (level, current) => LEVELS.indexOf(level) <= LEVELS.indexOf(current);
+  function buildSession(items, cards, mode, now, level) {
     const due = items.filter(i => cards[i.id] && cards[i.id].due <= now).sort((a, b) => cards[a.id].due - cards[b.id].due);
-    const fresh = items.filter(i => !cards[i.id]).slice().sort((a, b) => a.level - b.level || a.id.slice(-2).localeCompare(b.id.slice(-2)));
+    const fresh = items.filter(i => !cards[i.id] && (!level || i.opic === level)).slice().sort((a, b) => a.level - b.level || a.id.slice(-2).localeCompare(b.id.slice(-2)));
     const review = due.slice(0, mode.limit);
     const nFresh = Math.min(mode.fresh, fresh.length, mode.limit - review.length);
     return [...review.map(item => ({ item, kind: 'review' })), ...fresh.slice(0, nFresh).map(item => ({ item, kind: 'new' }))];
@@ -79,6 +87,6 @@
     return all.sort((a, b) => (b.r.ok - a.r.ok) || (a.r.missing.length - b.r.missing.length))[0];
   }
   const chipsOf = en => en.replace(/[.,?!]/g, '').split(/\s+/).map((w, i) => i === 0 ? w.replace(/^[A-Z](?=[a-z])/, c => c.toLowerCase()) : w);
-  const api = { MODES, grade, buildSession, check, splitBlank, startOfDay, addDays, stageOf, rate, gradeSentence, bestSentence, chipsOf };
+  const api = { LEVELS, LEVEL_DESC, levelProgress, nextLevel, canStudyLevel, MODES, grade, buildSession, check, splitBlank, startOfDay, addDays, stageOf, rate, gradeSentence, bestSentence, chipsOf };
   if (typeof module !== 'undefined') module.exports = api; else root.SRS = api;
 })(this);

@@ -8,7 +8,8 @@
 "en": "Can I get a window seat?",
 "ko": "창가 자리로 주시겠어요?",
 "blank": "window",
-"note": "주문이든 좌석이든 이 말이면 돼!"
+"note": "주문이든 좌석이든 이 말이면 돼!",
+"opic": "IL"
 },
 {
 "id": "trv-02",
@@ -19,7 +20,8 @@
 "en": "Where can I find the restroom?",
 "ko": "화장실은 어디에 있나요?",
 "blank": "find",
-"note": "길 찾을 때 제일 많이 써!"
+"note": "길 찾을 때 제일 많이 써!",
+"opic": "IL"
 },
 {
 "id": "trv-03",
@@ -30,7 +32,8 @@
 "en": "How much is this bag?",
 "ko": "이 가방은 얼마예요?",
 "blank": "much",
-"note": "쇼핑할 땐 이거부터!"
+"note": "쇼핑할 땐 이거부터!",
+"opic": "IL"
 },
 {
 "id": "trv-04",
@@ -41,7 +44,8 @@
 "en": "I'd like to check in, please.",
 "ko": "체크인하고 싶어요.",
 "blank": "check",
-"note": "want보다 훨씬 부드러워!"
+"note": "want보다 훨씬 부드러워!",
+"opic": "IL"
 },
 {
 "id": "trv-05",
@@ -52,7 +56,8 @@
 "en": "Is there a pharmacy nearby?",
 "ko": "근처에 약국이 있나요?",
 "blank": "nearby",
-"note": "nearby는 문장 끝에 쏙!"
+"note": "nearby는 문장 끝에 쏙!",
+"opic": "IL"
 },
 {
 "id": "trv-06",
@@ -63,7 +68,8 @@
 "en": "Could you recommend a good restaurant?",
 "ko": "괜찮은 식당을 추천해 주시겠어요?",
 "blank": "recommend",
-"note": "현지 맛집은 이걸로 물어보자!"
+"note": "현지 맛집은 이걸로 물어보자!",
+"opic": "IM1"
 },
 {
 "id": "trv-07",
@@ -74,7 +80,8 @@
 "en": "I'm looking for the subway station.",
 "ko": "지하철역을 찾고 있어요.",
 "blank": "looking",
-"note": "가게에서도 길에서도 다 통해!"
+"note": "가게에서도 길에서도 다 통해!",
+"opic": "IM1"
 },
 {
 "id": "trv-08",
@@ -85,7 +92,8 @@
 "en": "Does this bus go to the airport?",
 "ko": "이 버스가 공항으로 가나요?",
 "blank": "go",
-"note": "타기 전에 꼭 물어보기!"
+"note": "타기 전에 꼭 물어보기!",
+"opic": "IM1"
 },
 {
 "id": "trv-09",
@@ -96,7 +104,8 @@
 "en": "I have a reservation under Kim.",
 "ko": "Kim 이름으로 예약했어요.",
 "blank": "reservation",
-"note": "이름 앞에는 under를 써!"
+"note": "이름 앞에는 under를 써!",
+"opic": "IM1"
 },
 {
 "id": "trv-10",
@@ -107,7 +116,8 @@
 "en": "Could I have the sauce on the side?",
 "ko": "소스는 따로 주시겠어요?",
 "blank": "side",
-"note": "소스 따로! 나도 이게 좋아!"
+"note": "소스 따로! 나도 이게 좋아!",
+"opic": "IM1"
 },
 {
 "id": "trv-11",
@@ -118,7 +128,8 @@
 "en": "I missed my connecting flight.",
 "ko": "연결 항공편을 놓쳤어요.",
 "blank": "missed",
-"note": "급할 때 바로 나와야 해!"
+"note": "급할 때 바로 나와야 해!",
+"opic": "IM1"
 },
 {
 "id": "trv-12",
@@ -129,7 +140,8 @@
 "en": "Is it okay if I check out a little late?",
 "ko": "조금 늦게 체크아웃해도 괜찮을까요?",
 "blank": "okay",
-"note": "허락 구할 때 정중해 보여!"
+"note": "허락 구할 때 정중해 보여!",
+"opic": "IH"
 },
 {
 "id": "trv-13",
@@ -140,7 +152,8 @@
 "en": "There seems to be a problem with my room.",
 "ko": "제 방에 문제가 있는 것 같아요.",
 "blank": "problem",
-"note": "화내지 않고 말하는 방법이야!"
+"note": "화내지 않고 말하는 방법이야!",
+"opic": "IH"
 },
 {
 "id": "day-01",
@@ -151,7 +164,8 @@
 "en": "I'm into baking these days.",
 "ko": "요즘 베이킹에 빠져 있어요.",
 "blank": "into",
-"note": "취미 얘기할 때 딱이야!"
+"note": "취미 얘기할 때 딱이야!",
+"opic": "IL"
 },
 {
 "id": "day-02",
@@ -162,7 +176,8 @@
 "en": "I feel like eating something spicy.",
 "ko": "매운 게 먹고 싶어요.",
 "blank": "feel",
-"note": "like 뒤에는 ing!"
+"note": "like 뒤에는 ing!",
+"opic": "IL"
 },
 {
 "id": "day-03",
@@ -173,7 +188,8 @@
 "en": "I used to play the piano.",
 "ko": "예전에는 피아노를 쳤어요.",
 "blank": "used",
-"note": "지금은 안 한다는 느낌이 들어가!"
+"note": "지금은 안 한다는 느낌이 들어가!",
+"opic": "IL"
 },
 {
 "id": "day-04",
@@ -184,7 +200,8 @@
 "en": "I'm about to leave home.",
 "ko": "막 집에서 나가려던 참이에요.",
 "blank": "about",
-"note": "늦은 약속 전에 자주 쓰겠다, 히히!"
+"note": "늦은 약속 전에 자주 쓰겠다, 히히!",
+"opic": "IL"
 },
 {
 "id": "day-05",
@@ -195,7 +212,8 @@
 "en": "Do you want to grab some coffee?",
 "ko": "커피 한잔할래요?",
 "blank": "grab",
-"note": "grab은 가볍게 먹거나 마실 때 써!"
+"note": "grab은 가볍게 먹거나 마실 때 써!",
+"opic": "IL"
 },
 {
 "id": "day-06",
@@ -206,7 +224,8 @@
 "en": "I'm not really a morning person.",
 "ko": "저는 아침형 인간은 아니에요.",
 "blank": "person",
-"note": "나도 아침엔 못 일어나!"
+"note": "나도 아침엔 못 일어나!",
+"opic": "IM1"
 },
 {
 "id": "day-07",
@@ -217,7 +236,8 @@
 "en": "It depends on the weather.",
 "ko": "날씨에 따라 달라요.",
 "blank": "depends",
-"note": "대답이 애매할 때 최고야!"
+"note": "대답이 애매할 때 최고야!",
+"opic": "IM1"
 },
 {
 "id": "day-08",
@@ -228,7 +248,8 @@
 "en": "I can't help laughing at that video.",
 "ko": "그 영상을 보면 웃지 않을 수가 없어요.",
 "blank": "help",
-"note": "도와줄 수 없다는 뜻이 아니야!"
+"note": "도와줄 수 없다는 뜻이 아니야!",
+"opic": "IM1"
 },
 {
 "id": "day-09",
@@ -239,7 +260,8 @@
 "en": "I've been sleeping badly lately.",
 "ko": "요즘 계속 잠을 잘 못 자요.",
 "blank": "lately",
-"note": "근황 말할 때 정말 많이 써!"
+"note": "근황 말할 때 정말 많이 써!",
+"opic": "IM1"
 },
 {
 "id": "day-10",
@@ -250,7 +272,8 @@
 "en": "Don't worry, it's not a big deal.",
 "ko": "걱정 마세요, 별일 아니에요.",
 "blank": "deal",
-"note": "상대 마음을 풀어주는 말!"
+"note": "상대 마음을 풀어주는 말!",
+"opic": "IM1"
 },
 {
 "id": "day-11",
@@ -261,7 +284,8 @@
 "en": "I ran into an old friend yesterday.",
 "ko": "어제 옛 친구를 우연히 만났어요.",
 "blank": "ran",
-"note": "진짜 달린 건 아니야!"
+"note": "진짜 달린 건 아니야!",
+"opic": "IM1"
 },
 {
 "id": "day-12",
@@ -272,7 +296,8 @@
 "en": "I'm thinking of moving next year.",
 "ko": "내년에 이사할까 생각 중이에요.",
 "blank": "thinking",
-"note": "아직 확정 아닐 때 써!"
+"note": "아직 확정 아닐 때 써!",
+"opic": "IH"
 },
 {
 "id": "day-13",
@@ -283,7 +308,8 @@
 "en": "I should have brought an umbrella.",
 "ko": "우산을 가져왔어야 했어요.",
 "blank": "should",
-"note": "후회할 땐 이 말!"
+"note": "후회할 땐 이 말!",
+"opic": "IH"
 },
 {
 "id": "wrk-01",
@@ -294,7 +320,8 @@
 "en": "I'll get back to you tomorrow.",
 "ko": "내일 다시 연락드릴게요.",
 "blank": "back",
-"note": "바로 답 못 할 때 좋아!"
+"note": "바로 답 못 할 때 좋아!",
+"opic": "IL"
 },
 {
 "id": "wrk-02",
@@ -305,7 +332,8 @@
 "en": "I'm working on the report now.",
 "ko": "지금 보고서를 작업하고 있어요.",
 "blank": "working",
-"note": "진행 상황 말할 때 필수!"
+"note": "진행 상황 말할 때 필수!",
+"opic": "IL"
 },
 {
 "id": "wrk-03",
@@ -316,7 +344,8 @@
 "en": "Could you send me the file?",
 "ko": "그 파일을 보내주시겠어요?",
 "blank": "send",
-"note": "회사에서 매일 쓰겠다!"
+"note": "회사에서 매일 쓰겠다!",
+"opic": "IL"
 },
 {
 "id": "wrk-04",
@@ -327,7 +356,8 @@
 "en": "Let's go over the schedule.",
 "ko": "일정을 함께 살펴봐요.",
 "blank": "over",
-"note": "회의 시작할 때 쓰기 좋아!"
+"note": "회의 시작할 때 쓰기 좋아!",
+"opic": "IM1"
 },
 {
 "id": "wrk-05",
@@ -338,7 +368,8 @@
 "en": "I have a question about the budget.",
 "ko": "예산에 대해 질문이 있어요.",
 "blank": "question",
-"note": "about 뒤에 궁금한 걸 넣어!"
+"note": "about 뒤에 궁금한 걸 넣어!",
+"opic": "IM1"
 },
 {
 "id": "wrk-06",
@@ -349,7 +380,8 @@
 "en": "Can we move the meeting to Friday?",
 "ko": "회의를 금요일로 옮길 수 있을까요?",
 "blank": "move",
-"note": "일정 바꿀 땐 move!"
+"note": "일정 바꿀 땐 move!",
+"opic": "IM1"
 },
 {
 "id": "wrk-07",
@@ -360,7 +392,8 @@
 "en": "I'll take care of the invoice.",
 "ko": "청구서는 제가 처리할게요.",
 "blank": "care",
-"note": "믿음직해 보이는 말이야!"
+"note": "믿음직해 보이는 말이야!",
+"opic": "IM1"
 },
 {
 "id": "wrk-08",
@@ -371,7 +404,8 @@
 "en": "Sorry, I'm running late for the meeting.",
 "ko": "죄송해요, 회의에 조금 늦을 것 같아요.",
 "blank": "late",
-"note": "늦으면 일단 먼저 알리기!"
+"note": "늦으면 일단 먼저 알리기!",
+"opic": "IM1"
 },
 {
 "id": "wrk-09",
@@ -382,7 +416,8 @@
 "en": "Could you walk me through the process?",
 "ko": "그 과정을 차근차근 설명해 주시겠어요?",
 "blank": "walk",
-"note": "같이 걷자는 말이 아니야!"
+"note": "같이 걷자는 말이 아니야!",
+"opic": "IM1"
 },
 {
 "id": "wrk-10",
@@ -393,7 +428,8 @@
 "en": "From my perspective, this plan is too risky.",
 "ko": "제 관점에서는 이 계획이 너무 위험해요.",
 "blank": "perspective",
-"note": "의견을 부드럽게 꺼낼 수 있어!"
+"note": "의견을 부드럽게 꺼낼 수 있어!",
+"opic": "IH"
 },
 {
 "id": "wrk-11",
@@ -404,7 +440,8 @@
 "en": "Let's touch base next week.",
 "ko": "다음 주에 잠깐 상황을 공유해요.",
 "blank": "touch",
-"note": "짧게 확인하자는 말이야!"
+"note": "짧게 확인하자는 말이야!",
+"opic": "IH"
 },
 {
 "id": "wrk-12",
@@ -415,7 +452,8 @@
 "en": "I'd appreciate it if you could review this today.",
 "ko": "오늘 이것을 검토해 주시면 감사하겠습니다.",
 "blank": "appreciate",
-"note": "정중한 부탁 끝판왕!"
+"note": "정중한 부탁 끝판왕!",
+"opic": "IH"
 },
 {
 "id": "tlk-01",
@@ -426,7 +464,8 @@
 "en": "Sorry, what do you mean?",
 "ko": "죄송해요, 무슨 뜻이에요?",
 "blank": "mean",
-"note": "모르면 그냥 물어봐도 돼!"
+"note": "모르면 그냥 물어봐도 돼!",
+"opic": "IL"
 },
 {
 "id": "tlk-02",
@@ -437,7 +476,8 @@
 "en": "I'm fine, how about you?",
 "ko": "저는 괜찮아요, 당신은요?",
 "blank": "about",
-"note": "대화를 넘겨주는 마법의 말!"
+"note": "대화를 넘겨주는 마법의 말!",
+"opic": "IL"
 },
 {
 "id": "tlk-03",
@@ -448,7 +488,8 @@
 "en": "Could you say that again, please?",
 "ko": "다시 말씀해 주시겠어요?",
 "blank": "again",
-"note": "못 들었으면 다시 부탁해!"
+"note": "못 들었으면 다시 부탁해!",
+"opic": "IL"
 },
 {
 "id": "tlk-04",
@@ -459,7 +500,8 @@
 "en": "Oh, that makes sense.",
 "ko": "아, 이해가 돼요.",
 "blank": "sense",
-"note": "맞장구로 정말 좋아!"
+"note": "맞장구로 정말 좋아!",
+"opic": "IL"
 },
 {
 "id": "tlk-05",
@@ -470,7 +512,8 @@
 "en": "Hmm, let me think for a second.",
 "ko": "음, 잠깐 생각 좀 해볼게요.",
 "blank": "think",
-"note": "말문 막히면 일단 이거야!"
+"note": "말문 막히면 일단 이거야!",
+"opic": "IL"
 },
 {
 "id": "tlk-06",
@@ -481,7 +524,8 @@
 "en": "How do you say this in English?",
 "ko": "이건 영어로 뭐라고 해요?",
 "blank": "say",
-"note": "모르는 단어가 나와도 대화는 계속!"
+"note": "모르는 단어가 나와도 대화는 계속!",
+"opic": "IM1"
 },
 {
 "id": "tlk-07",
@@ -492,7 +536,8 @@
 "en": "What I mean is we need more time.",
 "ko": "제 말은 시간이 더 필요하다는 거예요.",
 "blank": "mean",
-"note": "다시 설명할 때 써봐!"
+"note": "다시 설명할 때 써봐!",
+"opic": "IM1"
 },
 {
 "id": "tlk-08",
@@ -503,7 +548,8 @@
 "en": "By the way, did you have lunch?",
 "ko": "그런데 점심 먹었어요?",
 "blank": "way",
-"note": "화제 바꿀 때 편해!"
+"note": "화제 바꿀 때 편해!",
+"opic": "IM1"
 },
 {
 "id": "tlk-09",
@@ -514,7 +560,8 @@
 "en": "That reminds me of my first trip.",
 "ko": "그러니까 제 첫 여행이 생각나요.",
 "blank": "reminds",
-"note": "내 얘기로 이어가기 좋아!"
+"note": "내 얘기로 이어가기 좋아!",
+"opic": "IM1"
 },
 {
 "id": "tlk-10",
@@ -525,7 +572,8 @@
 "en": "What's it like to live abroad?",
 "ko": "해외에 사는 건 어때요?",
 "blank": "like",
-"note": "질문 하나면 대화가 길어져!"
+"note": "질문 하나면 대화가 길어져!",
+"opic": "IM1"
 },
 {
 "id": "tlk-11",
@@ -536,7 +584,8 @@
 "en": "I see what you mean, but I disagree.",
 "ko": "무슨 말인지 알겠지만 저는 생각이 달라요.",
 "blank": "see",
-"note": "반대할 때도 예쁘게 말하자!"
+"note": "반대할 때도 예쁘게 말하자!",
+"opic": "IH"
 },
 {
 "id": "tlk-12",
@@ -547,7 +596,8 @@
 "en": "Wait, it's on the tip of my tongue.",
 "ko": "잠깐만요, 말이 혀끝에서 맴돌아요.",
 "blank": "tongue",
-"note": "나 맨날 이래, {호칭}!"
+"note": "나 맨날 이래, {호칭}!",
+"opic": "IH"
 },
 {
 "id": "trv-14",
@@ -558,7 +608,8 @@
 "en": "Can I pay by card?",
 "ko": "카드로 결제할 수 있나요?",
 "blank": "pay",
-"note": "계산할 때 필수야!"
+"note": "계산할 때 필수야!",
+"opic": "IL"
 },
 {
 "id": "trv-15",
@@ -569,7 +620,8 @@
 "en": "Do you have this in a smaller size?",
 "ko": "이거 더 작은 사이즈 있나요?",
 "blank": "smaller",
-"note": "옷 살 때 딱이야!"
+"note": "옷 살 때 딱이야!",
+"opic": "IL"
 },
 {
 "id": "trv-16",
@@ -580,7 +632,8 @@
 "en": "What time does the museum open?",
 "ko": "박물관은 몇 시에 여나요?",
 "blank": "open",
-"note": "가기 전에 물어보자!"
+"note": "가기 전에 물어보자!",
+"opic": "IL"
 },
 {
 "id": "trv-17",
@@ -591,7 +644,8 @@
 "en": "What time does the store close?",
 "ko": "그 가게는 몇 시에 닫나요?",
 "blank": "close",
-"note": "닫기 전에 가야 해!"
+"note": "닫기 전에 가야 해!",
+"opic": "IL"
 },
 {
 "id": "trv-18",
@@ -602,7 +656,8 @@
 "en": "How far is the beach from here?",
 "ko": "여기서 해변까지 얼마나 먼가요?",
 "blank": "far",
-"note": "걸어갈 수 있나 궁금할 때!"
+"note": "걸어갈 수 있나 궁금할 때!",
+"opic": "IL"
 },
 {
 "id": "trv-19",
@@ -613,7 +668,8 @@
 "en": "How long does it take to get there?",
 "ko": "거기 가는 데 얼마나 걸려요?",
 "blank": "long",
-"note": "시간 계산은 중요해!"
+"note": "시간 계산은 중요해!",
+"opic": "IL"
 },
 {
 "id": "trv-20",
@@ -624,7 +680,8 @@
 "en": "I'll have the chicken salad.",
 "ko": "치킨 샐러드로 할게요.",
 "blank": "have",
-"note": "주문할 때 제일 쉬워!"
+"note": "주문할 때 제일 쉬워!",
+"opic": "IL"
 },
 {
 "id": "trv-21",
@@ -635,7 +692,8 @@
 "en": "Can I see the menu, please?",
 "ko": "메뉴 좀 볼 수 있을까요?",
 "blank": "menu",
-"note": "식당 들어가면 첫마디!"
+"note": "식당 들어가면 첫마디!",
+"opic": "IL"
 },
 {
 "id": "trv-22",
@@ -646,7 +704,8 @@
 "en": "Could I get the check, please?",
 "ko": "계산서 좀 주시겠어요?",
 "blank": "check",
-"note": "다 먹었으면 이 말!"
+"note": "다 먹었으면 이 말!",
+"opic": "IL"
 },
 {
 "id": "trv-23",
@@ -657,7 +716,8 @@
 "en": "Thanks, I'm just looking.",
 "ko": "감사하지만 그냥 구경하는 중이에요.",
 "blank": "looking",
-"note": "점원이 말 걸면 이렇게!"
+"note": "점원이 말 걸면 이렇게!",
+"opic": "IL"
 },
 {
 "id": "trv-24",
@@ -668,7 +728,8 @@
 "en": "Can you take a picture of us?",
 "ko": "저희 사진 좀 찍어 주시겠어요?",
 "blank": "picture",
-"note": "여행 사진은 소중해!"
+"note": "여행 사진은 소중해!",
+"opic": "IM1"
 },
 {
 "id": "trv-25",
@@ -679,7 +740,8 @@
 "en": "Is this seat taken?",
 "ko": "이 자리 누가 있나요?",
 "blank": "taken",
-"note": "앉기 전에 물어보자!"
+"note": "앉기 전에 물어보자!",
+"opic": "IM1"
 },
 {
 "id": "trv-26",
@@ -690,7 +752,8 @@
 "en": "Where is the nearest bank?",
 "ko": "가장 가까운 은행은 어디예요?",
 "blank": "nearest",
-"note": "nearest면 가장 가까운 거야!"
+"note": "nearest면 가장 가까운 거야!",
+"opic": "IM1"
 },
 {
 "id": "trv-27",
@@ -701,7 +764,8 @@
 "en": "I'm here for vacation.",
 "ko": "휴가차 왔어요.",
 "blank": "vacation",
-"note": "입국 심사 때 쓰자!"
+"note": "입국 심사 때 쓰자!",
+"opic": "IM1"
 },
 {
 "id": "trv-28",
@@ -712,7 +776,8 @@
 "en": "I'm staying at a hotel downtown.",
 "ko": "시내 호텔에 묵고 있어요.",
 "blank": "staying",
-"note": "숙소 말할 때 써!"
+"note": "숙소 말할 때 써!",
+"opic": "IM1"
 },
 {
 "id": "trv-29",
@@ -723,7 +788,8 @@
 "en": "One ticket to Tokyo, please.",
 "ko": "도쿄행 표 한 장 주세요.",
 "blank": "ticket",
-"note": "기차역에서 바로 쓰자!"
+"note": "기차역에서 바로 쓰자!",
+"opic": "IM1"
 },
 {
 "id": "trv-30",
@@ -734,7 +800,8 @@
 "en": "Can I have some water?",
 "ko": "물 좀 주시겠어요?",
 "blank": "water",
-"note": "목마르면 말해!"
+"note": "목마르면 말해!",
+"opic": "IM1"
 },
 {
 "id": "trv-31",
@@ -745,7 +812,8 @@
 "en": "Is breakfast included in the price?",
 "ko": "가격에 조식이 포함되어 있나요?",
 "blank": "included",
-"note": "호텔에서 꼭 물어봐!"
+"note": "호텔에서 꼭 물어봐!",
+"opic": "IM1"
 },
 {
 "id": "trv-32",
@@ -756,7 +824,8 @@
 "en": "Do you take credit cards?",
 "ko": "신용카드 받으시나요?",
 "blank": "take",
-"note": "결제 전에 확인!"
+"note": "결제 전에 확인!",
+"opic": "IM1"
 },
 {
 "id": "trv-33",
@@ -767,7 +836,8 @@
 "en": "Could you speak more slowly, please?",
 "ko": "좀 더 천천히 말씀해 주시겠어요?",
 "blank": "slowly",
-"note": "빨라서 못 알아들을 때!"
+"note": "빨라서 못 알아들을 때!",
+"opic": "IM1"
 },
 {
 "id": "trv-34",
@@ -778,7 +848,8 @@
 "en": "Could you tell me how to get to the station?",
 "ko": "역에 어떻게 가는지 알려 주시겠어요?",
 "blank": "tell",
-"note": "길 물을 때 정중해!"
+"note": "길 물을 때 정중해!",
+"opic": "IM2"
 },
 {
 "id": "trv-35",
@@ -789,7 +860,8 @@
 "en": "Is it within walking distance?",
 "ko": "걸어갈 수 있는 거리인가요?",
 "blank": "walking",
-"note": "택시비 아끼자!"
+"note": "택시비 아끼자!",
+"opic": "IM2"
 },
 {
 "id": "trv-36",
@@ -800,7 +872,8 @@
 "en": "Which line goes to the city center?",
 "ko": "어느 노선이 시내로 가나요?",
 "blank": "line",
-"note": "지하철 탈 때 써!"
+"note": "지하철 탈 때 써!",
+"opic": "IM2"
 },
 {
 "id": "trv-37",
@@ -811,7 +884,8 @@
 "en": "Where do I transfer for the airport?",
 "ko": "공항에 가려면 어디서 갈아타나요?",
 "blank": "transfer",
-"note": "환승은 transfer!"
+"note": "환승은 transfer!",
+"opic": "IM2"
 },
 {
 "id": "trv-38",
@@ -822,7 +896,8 @@
 "en": "I'd like to change my flight.",
 "ko": "항공편을 변경하고 싶어요.",
 "blank": "change",
-"note": "일정이 바뀌면 이 말!"
+"note": "일정이 바뀌면 이 말!",
+"opic": "IM2"
 },
 {
 "id": "trv-39",
@@ -833,7 +908,8 @@
 "en": "I'd like to cancel my reservation.",
 "ko": "예약을 취소하고 싶어요.",
 "blank": "cancel",
-"note": "미리 말하면 좋아!"
+"note": "미리 말하면 좋아!",
+"opic": "IM2"
 },
 {
 "id": "trv-40",
@@ -844,7 +920,8 @@
 "en": "Could I get a refund for this?",
 "ko": "이거 환불받을 수 있을까요?",
 "blank": "refund",
-"note": "영수증도 챙겨!"
+"note": "영수증도 챙겨!",
+"opic": "IM2"
 },
 {
 "id": "trv-41",
@@ -855,7 +932,8 @@
 "en": "I lost my passport.",
 "ko": "여권을 잃어버렸어요.",
 "blank": "lost",
-"note": "큰일 날 때 바로 말해!"
+"note": "큰일 날 때 바로 말해!",
+"opic": "IM2"
 },
 {
 "id": "trv-42",
@@ -866,7 +944,8 @@
 "en": "My luggage didn't arrive.",
 "ko": "제 짐이 도착하지 않았어요.",
 "blank": "arrive",
-"note": "공항에서 침착하게!"
+"note": "공항에서 침착하게!",
+"opic": "IM2"
 },
 {
 "id": "trv-43",
@@ -877,7 +956,8 @@
 "en": "Do you have a table for two?",
 "ko": "두 명 자리 있나요?",
 "blank": "table",
-"note": "식당 입구에서 써!"
+"note": "식당 입구에서 써!",
+"opic": "IM2"
 },
 {
 "id": "trv-44",
@@ -888,7 +968,8 @@
 "en": "What do you recommend here?",
 "ko": "여기서는 뭘 추천하세요?",
 "blank": "recommend",
-"note": "메뉴 고민될 때!"
+"note": "메뉴 고민될 때!",
+"opic": "IM2"
 },
 {
 "id": "trv-45",
@@ -899,7 +980,8 @@
 "en": "Is this very spicy?",
 "ko": "이거 많이 매운가요?",
 "blank": "spicy",
-"note": "나는 매운 거 못 먹어!"
+"note": "나는 매운 거 못 먹어!",
+"opic": "IM2"
 },
 {
 "id": "trv-46",
@@ -910,7 +992,8 @@
 "en": "I'm allergic to peanuts.",
 "ko": "땅콩 알레르기가 있어요.",
 "blank": "allergic",
-"note": "건강에 중요한 말!"
+"note": "건강에 중요한 말!",
+"opic": "IM2"
 },
 {
 "id": "trv-47",
@@ -921,7 +1004,8 @@
 "en": "Could we get this to go?",
 "ko": "이거 포장해 주시겠어요?",
 "blank": "go",
-"note": "남은 음식도 챙기자!"
+"note": "남은 음식도 챙기자!",
+"opic": "IM2"
 },
 {
 "id": "trv-48",
@@ -932,7 +1016,8 @@
 "en": "Is there a discount for students?",
 "ko": "학생 할인이 있나요?",
 "blank": "discount",
-"note": "알뜰하게 물어보자!"
+"note": "알뜰하게 물어보자!",
+"opic": "IM2"
 },
 {
 "id": "trv-49",
@@ -943,7 +1028,8 @@
 "en": "Can I try this on?",
 "ko": "이거 입어 봐도 될까요?",
 "blank": "try",
-"note": "탈의실 가기 전에!"
+"note": "탈의실 가기 전에!",
+"opic": "IM3"
 },
 {
 "id": "trv-50",
@@ -954,7 +1040,8 @@
 "en": "Could you give me a ride to the hotel?",
 "ko": "호텔까지 태워 주시겠어요?",
 "blank": "ride",
-"note": "고마운 사람에게 부탁해!"
+"note": "고마운 사람에게 부탁해!",
+"opic": "IM3"
 },
 {
 "id": "trv-51",
@@ -965,7 +1052,8 @@
 "en": "Please take me to this address.",
 "ko": "이 주소로 가 주세요.",
 "blank": "address",
-"note": "택시 타면 바로 말해!"
+"note": "택시 타면 바로 말해!",
+"opic": "IM3"
 },
 {
 "id": "trv-52",
@@ -976,7 +1064,8 @@
 "en": "Is the tip included in the bill?",
 "ko": "계산서에 팁이 포함되어 있나요?",
 "blank": "tip",
-"note": "나라마다 달라!"
+"note": "나라마다 달라!",
+"opic": "IM3"
 },
 {
 "id": "trv-53",
@@ -987,7 +1076,8 @@
 "en": "Could I have another towel?",
 "ko": "수건 하나 더 주시겠어요?",
 "blank": "another",
-"note": "호텔에서 많이 써!"
+"note": "호텔에서 많이 써!",
+"opic": "IM3"
 },
 {
 "id": "trv-54",
@@ -998,7 +1088,8 @@
 "en": "The air conditioner isn't working.",
 "ko": "에어컨이 작동하지 않아요.",
 "blank": "working",
-"note": "고장 나면 프런트에 말해!"
+"note": "고장 나면 프런트에 말해!",
+"opic": "IM3"
 },
 {
 "id": "trv-55",
@@ -1009,7 +1100,8 @@
 "en": "What's the Wi-Fi password here?",
 "ko": "여기 와이파이 비밀번호가 뭐예요?",
 "blank": "password",
-"note": "나도 인터넷 좋아해!"
+"note": "나도 인터넷 좋아해!",
+"opic": "IM3"
 },
 {
 "id": "trv-56",
@@ -1020,7 +1112,8 @@
 "en": "Can I leave my bags here until noon?",
 "ko": "정오까지 여기 짐을 맡겨도 될까요?",
 "blank": "leave",
-"note": "짐 없이 놀러 가자!"
+"note": "짐 없이 놀러 가자!",
+"opic": "IM3"
 },
 {
 "id": "trv-57",
@@ -1031,7 +1124,8 @@
 "en": "When is the next train?",
 "ko": "다음 기차는 언제예요?",
 "blank": "next",
-"note": "놓쳐도 괜찮아!"
+"note": "놓쳐도 괜찮아!",
+"opic": "IM3"
 },
 {
 "id": "trv-58",
@@ -1042,7 +1136,8 @@
 "en": "Excuse me, I think I'm lost.",
 "ko": "실례합니다, 길을 잃은 것 같아요.",
 "blank": "lost",
-"note": "나도 자주 그래!"
+"note": "나도 자주 그래!",
+"opic": "IM3"
 },
 {
 "id": "trv-59",
@@ -1053,7 +1148,8 @@
 "en": "Do I need to book in advance?",
 "ko": "미리 예약해야 하나요?",
 "blank": "need",
-"note": "궁금하면 물어보자!"
+"note": "궁금하면 물어보자!",
+"opic": "IM3"
 },
 {
 "id": "trv-60",
@@ -1064,7 +1160,8 @@
 "en": "How do I get to the airport from here?",
 "ko": "여기서 공항에 어떻게 가요?",
 "blank": "get",
-"note": "길 찾기 기본!"
+"note": "길 찾기 기본!",
+"opic": "IM3"
 },
 {
 "id": "trv-61",
@@ -1075,7 +1172,8 @@
 "en": "Could you write that down for me?",
 "ko": "그걸 좀 적어 주시겠어요?",
 "blank": "write",
-"note": "못 알아들으면 부탁해!"
+"note": "못 알아들으면 부탁해!",
+"opic": "IM3"
 },
 {
 "id": "trv-62",
@@ -1086,7 +1184,8 @@
 "en": "Would it be possible to get a late checkout?",
 "ko": "늦은 체크아웃이 가능할까요?",
 "blank": "possible",
-"note": "아주 정중한 부탁이야!"
+"note": "아주 정중한 부탁이야!",
+"opic": "IH"
 },
 {
 "id": "trv-63",
@@ -1097,7 +1196,8 @@
 "en": "I was charged twice for the same meal.",
 "ko": "같은 식사 요금이 두 번 청구됐어요.",
 "blank": "charged",
-"note": "계산서는 꼭 확인!"
+"note": "계산서는 꼭 확인!",
+"opic": "IH"
 },
 {
 "id": "trv-64",
@@ -1108,7 +1208,8 @@
 "en": "Sorry, this isn't what I ordered.",
 "ko": "죄송한데 제가 주문한 게 아니에요.",
 "blank": "ordered",
-"note": "부드럽게 말해 보자!"
+"note": "부드럽게 말해 보자!",
+"opic": "IH"
 },
 {
 "id": "trv-65",
@@ -1119,7 +1220,8 @@
 "en": "I'd like to file a complaint about the noise.",
 "ko": "소음에 대해 항의하고 싶어요.",
 "blank": "complaint",
-"note": "화내지 말고 이렇게!"
+"note": "화내지 말고 이렇게!",
+"opic": "IH"
 },
 {
 "id": "trv-66",
@@ -1130,7 +1232,8 @@
 "en": "Is there any way I could get an earlier flight?",
 "ko": "혹시 더 이른 항공편을 탈 방법이 있을까요?",
 "blank": "way",
-"note": "곤란할 때 좋아!"
+"note": "곤란할 때 좋아!",
+"opic": "IH"
 },
 {
 "id": "trv-67",
@@ -1141,7 +1244,8 @@
 "en": "I'd prefer a quiet room if possible.",
 "ko": "가능하면 조용한 방이 좋아요.",
 "blank": "prefer",
-"note": "원하는 걸 정중하게!"
+"note": "원하는 걸 정중하게!",
+"opic": "IH"
 },
 {
 "id": "trv-68",
@@ -1152,7 +1256,8 @@
 "en": "What's included in the tour?",
 "ko": "투어에 뭐가 포함되어 있나요?",
 "blank": "included",
-"note": "나중에 놀라지 않게!"
+"note": "나중에 놀라지 않게!",
+"opic": "IH"
 },
 {
 "id": "trv-69",
@@ -1163,7 +1268,8 @@
 "en": "Are there any extra fees for parking?",
 "ko": "주차에 추가 요금이 있나요?",
 "blank": "fees",
-"note": "숨은 비용 조심!"
+"note": "숨은 비용 조심!",
+"opic": "IH"
 },
 {
 "id": "trv-70",
@@ -1174,7 +1280,8 @@
 "en": "I need to get to the airport by six.",
 "ko": "여섯 시까지 공항에 가야 해요.",
 "blank": "need",
-"note": "급할 때 분명하게!"
+"note": "급할 때 분명하게!",
+"opic": "IH"
 },
 {
 "id": "trv-71",
@@ -1185,7 +1292,8 @@
 "en": "Could you let me know when we arrive?",
 "ko": "도착하면 알려 주시겠어요?",
 "blank": "arrive",
-"note": "버스에서 졸 때 좋아!"
+"note": "버스에서 졸 때 좋아!",
+"opic": "IH"
 },
 {
 "id": "trv-72",
@@ -1196,7 +1304,8 @@
 "en": "It was supposed to arrive this morning.",
 "ko": "원래 오늘 아침에 도착하기로 되어 있었어요.",
 "blank": "supposed",
-"note": "약속이 어긋났을 때!"
+"note": "약속이 어긋났을 때!",
+"opic": "IH"
 },
 {
 "id": "trv-73",
@@ -1207,7 +1316,8 @@
 "en": "Do you happen to know where the exit is?",
 "ko": "혹시 출구가 어디인지 아세요?",
 "blank": "happen",
-"note": "부드럽게 묻는 말!"
+"note": "부드럽게 묻는 말!",
+"opic": "IH"
 },
 {
 "id": "trv-74",
@@ -1218,7 +1328,8 @@
 "en": "I'd like to extend my stay for two nights.",
 "ko": "숙박을 이틀 연장하고 싶어요.",
 "blank": "extend",
-"note": "더 놀고 싶을 때!"
+"note": "더 놀고 싶을 때!",
+"opic": "IH"
 },
 {
 "id": "day-14",
@@ -1229,7 +1340,8 @@
 "en": "How was your weekend?",
 "ko": "주말은 어땠어요?",
 "blank": "weekend",
-"note": "월요일에 딱이야!"
+"note": "월요일에 딱이야!",
+"opic": "IL"
 },
 {
 "id": "day-15",
@@ -1240,7 +1352,8 @@
 "en": "What are you up to these days?",
 "ko": "요즘 뭐 하고 지내요?",
 "blank": "up",
-"note": "친구한테 편하게 물어봐!"
+"note": "친구한테 편하게 물어봐!",
+"opic": "IL"
 },
 {
 "id": "day-16",
@@ -1251,7 +1364,8 @@
 "en": "I'm so tired today.",
 "ko": "오늘 너무 피곤해요.",
 "blank": "tired",
-"note": "그럴 땐 나를 안아!"
+"note": "그럴 땐 나를 안아!",
+"opic": "IL"
 },
 {
 "id": "day-17",
@@ -1262,7 +1376,8 @@
 "en": "I'm looking forward to the weekend.",
 "ko": "주말이 기대돼요.",
 "blank": "forward",
-"note": "기다리는 마음이야!"
+"note": "기다리는 마음이야!",
+"opic": "IL"
 },
 {
 "id": "day-18",
@@ -1273,7 +1388,8 @@
 "en": "I have to go to the dentist.",
 "ko": "치과에 가야 해요.",
 "blank": "dentist",
-"note": "좀 무섭지만 가자!"
+"note": "좀 무섭지만 가자!",
+"opic": "IL"
 },
 {
 "id": "day-19",
@@ -1284,7 +1400,8 @@
 "en": "I don't feel like cooking tonight.",
 "ko": "오늘 밤엔 요리하고 싶지 않아요.",
 "blank": "cooking",
-"note": "그런 날도 있어!"
+"note": "그런 날도 있어!",
+"opic": "IL"
 },
 {
 "id": "day-20",
@@ -1295,7 +1412,8 @@
 "en": "Let's go for a walk.",
 "ko": "산책하러 가자.",
 "blank": "walk",
-"note": "같이 걸으면 좋아!"
+"note": "같이 걸으면 좋아!",
+"opic": "IL"
 },
 {
 "id": "day-21",
@@ -1306,7 +1424,8 @@
 "en": "What do you usually do on weekends?",
 "ko": "보통 주말에 뭐 해요?",
 "blank": "usually",
-"note": "대화 열기 좋아!"
+"note": "대화 열기 좋아!",
+"opic": "IL"
 },
 {
 "id": "day-22",
@@ -1317,7 +1436,8 @@
 "en": "I'm good at cooking.",
 "ko": "저는 요리를 잘해요.",
 "blank": "good",
-"note": "자랑도 영어로!"
+"note": "자랑도 영어로!",
+"opic": "IL"
 },
 {
 "id": "day-23",
@@ -1328,7 +1448,8 @@
 "en": "I'm not good at math.",
 "ko": "저는 수학을 잘 못해요.",
 "blank": "math",
-"note": "나도 숫자 어려워!"
+"note": "나도 숫자 어려워!",
+"opic": "IL"
 },
 {
 "id": "day-24",
@@ -1339,7 +1460,8 @@
 "en": "I'm afraid of heights.",
 "ko": "저는 높은 곳을 무서워해요.",
 "blank": "afraid",
-"note": "나는 세탁기가 무서워!"
+"note": "나는 세탁기가 무서워!",
+"opic": "IM1"
 },
 {
 "id": "day-25",
@@ -1350,7 +1472,8 @@
 "en": "I like watching movies at home.",
 "ko": "집에서 영화 보는 걸 좋아해요.",
 "blank": "watching",
-"note": "취미 말할 때!"
+"note": "취미 말할 때!",
+"opic": "IM1"
 },
 {
 "id": "day-26",
@@ -1361,7 +1484,8 @@
 "en": "I forgot to call my mom.",
 "ko": "엄마한테 전화하는 걸 잊었어요.",
 "blank": "forgot",
-"note": "지금 바로 전화해!"
+"note": "지금 바로 전화해!",
+"opic": "IM1"
 },
 {
 "id": "day-27",
@@ -1372,7 +1496,8 @@
 "en": "I need to buy some groceries.",
 "ko": "장을 좀 봐야 해요.",
 "blank": "groceries",
-"note": "당근도 사 줘!"
+"note": "당근도 사 줘!",
+"opic": "IM1"
 },
 {
 "id": "day-28",
@@ -1383,7 +1508,8 @@
 "en": "Are you free this Saturday?",
 "ko": "이번 토요일에 시간 있어요?",
 "blank": "free",
-"note": "약속 잡을 때 써!"
+"note": "약속 잡을 때 써!",
+"opic": "IM1"
 },
 {
 "id": "day-29",
@@ -1394,7 +1520,8 @@
 "en": "Wow, it's been a while!",
 "ko": "와, 오랜만이에요!",
 "blank": "while",
-"note": "반가울 때 써!"
+"note": "반가울 때 써!",
+"opic": "IM1"
 },
 {
 "id": "day-30",
@@ -1405,7 +1532,8 @@
 "en": "Don't worry, I'm on my way.",
 "ko": "걱정 마세요, 가고 있어요.",
 "blank": "way",
-"note": "사실 아직 집이어도?"
+"note": "사실 아직 집이어도?",
+"opic": "IM1"
 },
 {
 "id": "day-31",
@@ -1416,7 +1544,8 @@
 "en": "That sounds great to me.",
 "ko": "저는 그거 정말 좋은 것 같아요.",
 "blank": "sounds",
-"note": "맞장구 최고!"
+"note": "맞장구 최고!",
+"opic": "IM1"
 },
 {
 "id": "day-32",
@@ -1427,7 +1556,8 @@
 "en": "What's wrong? You look upset.",
 "ko": "무슨 일 있어요? 속상해 보여요.",
 "blank": "wrong",
-"note": "내가 들어 줄게!"
+"note": "내가 들어 줄게!",
+"opic": "IM1"
 },
 {
 "id": "day-33",
@@ -1438,7 +1568,8 @@
 "en": "You look great today.",
 "ko": "오늘 멋져 보여요.",
 "blank": "look",
-"note": "칭찬은 좋은 거야!"
+"note": "칭찬은 좋은 거야!",
+"opic": "IM1"
 },
 {
 "id": "day-34",
@@ -1449,7 +1580,8 @@
 "en": "I can't wait to see you again.",
 "ko": "빨리 다시 만나고 싶어요.",
 "blank": "wait",
-"note": "설렐 때 쓰는 말!"
+"note": "설렐 때 쓰는 말!",
+"opic": "IM2"
 },
 {
 "id": "day-35",
@@ -1460,7 +1592,8 @@
 "en": "I'm in the mood for pizza.",
 "ko": "피자가 당겨요.",
 "blank": "mood",
-"note": "나는 당근이 당겨!"
+"note": "나는 당근이 당겨!",
+"opic": "IM2"
 },
 {
 "id": "day-36",
@@ -1471,7 +1604,8 @@
 "en": "I'm trying to eat less sugar.",
 "ko": "설탕을 줄이려고 노력 중이에요.",
 "blank": "trying",
-"note": "노력하는 언니 오빠 멋져!"
+"note": "노력하는 언니 오빠 멋져!",
+"opic": "IM2"
 },
 {
 "id": "day-37",
@@ -1482,7 +1616,8 @@
 "en": "I ended up staying home all day.",
 "ko": "결국 하루 종일 집에 있게 됐어요.",
 "blank": "ended",
-"note": "계획대로 안 됐을 때!"
+"note": "계획대로 안 됐을 때!",
+"opic": "IM2"
 },
 {
 "id": "day-38",
@@ -1493,7 +1628,8 @@
 "en": "I'm used to waking up early.",
 "ko": "일찍 일어나는 데 익숙해요.",
 "blank": "used",
-"note": "used to랑 달라, 조심!"
+"note": "used to랑 달라, 조심!",
+"opic": "IM2"
 },
 {
 "id": "day-39",
@@ -1504,7 +1640,8 @@
 "en": "I'm getting used to my new neighborhood.",
 "ko": "새 동네에 익숙해지고 있어요.",
 "blank": "getting",
-"note": "조금씩 적응 중!"
+"note": "조금씩 적응 중!",
+"opic": "IM2"
 },
 {
 "id": "day-40",
@@ -1515,7 +1652,8 @@
 "en": "I don't mind, it's up to you.",
 "ko": "저는 상관없어요, 당신이 정해요.",
 "blank": "up",
-"note": "결정을 넘기는 말!"
+"note": "결정을 넘기는 말!",
+"opic": "IM2"
 },
 {
 "id": "day-41",
@@ -1526,7 +1664,8 @@
 "en": "I don't mind waiting a little.",
 "ko": "조금 기다려도 괜찮아요.",
 "blank": "mind",
-"note": "배려 있는 말이야!"
+"note": "배려 있는 말이야!",
+"opic": "IM2"
 },
 {
 "id": "day-42",
@@ -1537,7 +1676,8 @@
 "en": "Would you like to join us for dinner?",
 "ko": "저녁 같이 하실래요?",
 "blank": "join",
-"note": "초대할 때 좋아!"
+"note": "초대할 때 좋아!",
+"opic": "IM2"
 },
 {
 "id": "day-43",
@@ -1548,7 +1688,8 @@
 "en": "How about meeting at seven?",
 "ko": "일곱 시에 만나는 게 어때요?",
 "blank": "meeting",
-"note": "제안할 때 써!"
+"note": "제안할 때 써!",
+"opic": "IM2"
 },
 {
 "id": "day-44",
@@ -1559,7 +1700,8 @@
 "en": "I'd rather stay home tonight.",
 "ko": "오늘 밤엔 차라리 집에 있을래요.",
 "blank": "rather",
-"note": "나도 집이 좋아!"
+"note": "나도 집이 좋아!",
+"opic": "IM2"
 },
 {
 "id": "day-45",
@@ -1570,7 +1712,8 @@
 "en": "It turns out she was right.",
 "ko": "알고 보니 그녀가 맞았어요.",
 "blank": "turns",
-"note": "반전 있을 때!"
+"note": "반전 있을 때!",
+"opic": "IM2"
 },
 {
 "id": "day-46",
@@ -1581,7 +1724,8 @@
 "en": "I'm not sure if it's open today.",
 "ko": "오늘 여는지 잘 모르겠어요.",
 "blank": "sure",
-"note": "확실하지 않을 때!"
+"note": "확실하지 않을 때!",
+"opic": "IM2"
 },
 {
 "id": "day-47",
@@ -1592,7 +1736,8 @@
 "en": "I wish I could go with you.",
 "ko": "같이 갈 수 있으면 좋겠어요.",
 "blank": "wish",
-"note": "아쉬운 마음이야!"
+"note": "아쉬운 마음이야!",
+"opic": "IM2"
 },
 {
 "id": "day-48",
@@ -1603,7 +1748,8 @@
 "en": "I'm worried about my exam.",
 "ko": "시험이 걱정돼요.",
 "blank": "worried",
-"note": "나도 같이 걱정해 줄게!"
+"note": "나도 같이 걱정해 줄게!",
+"opic": "IM2"
 },
 {
 "id": "day-49",
@@ -1614,7 +1760,8 @@
 "en": "I'm proud of my little sister.",
 "ko": "제 여동생이 자랑스러워요.",
 "blank": "proud",
-"note": "나 말하는 거지?"
+"note": "나 말하는 거지?",
+"opic": "IM3"
 },
 {
 "id": "day-50",
@@ -1625,7 +1772,8 @@
 "en": "I'm tired of eating the same thing.",
 "ko": "똑같은 것만 먹는 게 지겨워요.",
 "blank": "same",
-"note": "피곤한 게 아니라 지겨운 거!"
+"note": "피곤한 게 아니라 지겨운 거!",
+"opic": "IM3"
 },
 {
 "id": "day-51",
@@ -1636,7 +1784,8 @@
 "en": "I'm sick of this rainy weather.",
 "ko": "이 비 오는 날씨에 질렸어요.",
 "blank": "sick",
-"note": "아픈 게 아니야!"
+"note": "아픈 게 아니야!",
+"opic": "IM3"
 },
 {
 "id": "day-52",
@@ -1647,7 +1796,8 @@
 "en": "It's hard to wake up in winter.",
 "ko": "겨울에는 일어나기 어려워요.",
 "blank": "hard",
-"note": "이불 밖은 위험해!"
+"note": "이불 밖은 위험해!",
+"opic": "IM3"
 },
 {
 "id": "day-53",
@@ -1658,7 +1808,8 @@
 "en": "It takes an hour to get to work.",
 "ko": "출근하는 데 한 시간이 걸려요.",
 "blank": "takes",
-"note": "시간 말할 때!"
+"note": "시간 말할 때!",
+"opic": "IM3"
 },
 {
 "id": "day-54",
@@ -1669,7 +1820,8 @@
 "en": "I'm running out of money.",
 "ko": "돈이 떨어져 가요.",
 "blank": "money",
-"note": "월급날 언제야?"
+"note": "월급날 언제야?",
+"opic": "IM3"
 },
 {
 "id": "day-55",
@@ -1680,7 +1832,8 @@
 "en": "I just got back from the gym.",
 "ko": "방금 헬스장에서 돌아왔어요.",
 "blank": "back",
-"note": "운동 멋지다!"
+"note": "운동 멋지다!",
+"opic": "IM3"
 },
 {
 "id": "day-56",
@@ -1691,7 +1844,8 @@
 "en": "Do you mind if I open the window?",
 "ko": "창문 열어도 괜찮을까요?",
 "blank": "mind",
-"note": "정중하게 물어봐!"
+"note": "정중하게 물어봐!",
+"opic": "IM3"
 },
 {
 "id": "day-57",
@@ -1702,7 +1856,8 @@
 "en": "What do you think of this color?",
 "ko": "이 색깔 어떻게 생각해요?",
 "blank": "think",
-"note": "의견 물을 때!"
+"note": "의견 물을 때!",
+"opic": "IM3"
 },
 {
 "id": "day-58",
@@ -1713,7 +1868,8 @@
 "en": "Have you ever been to Europe?",
 "ko": "유럽에 가 본 적 있어요?",
 "blank": "ever",
-"note": "경험 묻기 좋아!"
+"note": "경험 묻기 좋아!",
+"opic": "IM3"
 },
 {
 "id": "day-59",
@@ -1724,7 +1880,8 @@
 "en": "I've never tried sushi.",
 "ko": "초밥을 먹어 본 적이 없어요.",
 "blank": "never",
-"note": "처음은 다 그래!"
+"note": "처음은 다 그래!",
+"opic": "IM3"
 },
 {
 "id": "day-60",
@@ -1735,7 +1892,8 @@
 "en": "I'm thinking about getting a dog.",
 "ko": "강아지를 키울까 고민 중이에요.",
 "blank": "dog",
-"note": "나 있잖아, 질투 나!"
+"note": "나 있잖아, 질투 나!",
+"opic": "IM3"
 },
 {
 "id": "day-61",
@@ -1746,7 +1904,8 @@
 "en": "It's no use crying about it.",
 "ko": "그걸로 울어도 소용없어요.",
 "blank": "use",
-"note": "대신 나를 안아!"
+"note": "대신 나를 안아!",
+"opic": "IM3"
 },
 {
 "id": "day-62",
@@ -1757,7 +1916,8 @@
 "en": "I couldn't sleep because of the noise.",
 "ko": "소음 때문에 잠을 못 잤어요.",
 "blank": "sleep",
-"note": "낮잠 자자!"
+"note": "낮잠 자자!",
+"opic": "IM3"
 },
 {
 "id": "day-63",
@@ -1768,7 +1928,8 @@
 "en": "I could use some coffee right now.",
 "ko": "지금 커피가 좀 필요해요.",
 "blank": "use",
-"note": "필요하다는 자연스러운 말!"
+"note": "필요하다는 자연스러운 말!",
+"opic": "IH"
 },
 {
 "id": "day-64",
@@ -1779,7 +1940,8 @@
 "en": "I might as well walk home.",
 "ko": "그냥 집에 걸어가는 게 낫겠어요.",
 "blank": "might",
-"note": "다른 방법이 없을 때!"
+"note": "다른 방법이 없을 때!",
+"opic": "IH"
 },
 {
 "id": "day-65",
@@ -1790,7 +1952,8 @@
 "en": "I can't stand this heat.",
 "ko": "이 더위를 못 참겠어요.",
 "blank": "stand",
-"note": "일어서는 얘기가 아니야!"
+"note": "일어서는 얘기가 아니야!",
+"opic": "IH"
 },
 {
 "id": "day-66",
@@ -1801,7 +1964,8 @@
 "en": "I'm about done with my homework.",
 "ko": "숙제를 거의 끝냈어요.",
 "blank": "done",
-"note": "조금만 더!"
+"note": "조금만 더!",
+"opic": "IH"
 },
 {
 "id": "day-67",
@@ -1812,7 +1976,8 @@
 "en": "I didn't mean to upset you.",
 "ko": "당신을 속상하게 하려던 건 아니었어요.",
 "blank": "upset",
-"note": "사과할 때 좋아!"
+"note": "사과할 때 좋아!",
+"opic": "IH"
 },
 {
 "id": "day-68",
@@ -1823,7 +1988,8 @@
 "en": "I'm having a hard time sleeping.",
 "ko": "잠드는 데 어려움을 겪고 있어요.",
 "blank": "time",
-"note": "힘들면 말해 줘!"
+"note": "힘들면 말해 줘!",
+"opic": "IH"
 },
 {
 "id": "day-69",
@@ -1834,7 +2000,8 @@
 "en": "If I were you, I'd take a break.",
 "ko": "제가 당신이라면 좀 쉴 거예요.",
 "blank": "were",
-"note": "조언할 때 멋져!"
+"note": "조언할 때 멋져!",
+"opic": "IH"
 },
 {
 "id": "day-70",
@@ -1845,7 +2012,8 @@
 "en": "You should have told me earlier.",
 "ko": "더 일찍 말해 줬어야 했는데요.",
 "blank": "told",
-"note": "살짝 서운할 때!"
+"note": "살짝 서운할 때!",
+"opic": "IH"
 },
 {
 "id": "day-71",
@@ -1856,7 +2024,8 @@
 "en": "There's no point in arguing about it.",
 "ko": "그걸로 다퉈 봐야 소용없어요.",
 "blank": "point",
-"note": "화해하자!"
+"note": "화해하자!",
+"opic": "IH"
 },
 {
 "id": "day-72",
@@ -1867,7 +2036,8 @@
 "en": "I wouldn't say it was bad.",
 "ko": "나빴다고까지는 못 하겠어요.",
 "blank": "say",
-"note": "부드러운 표현이야!"
+"note": "부드러운 표현이야!",
+"opic": "IH"
 },
 {
 "id": "day-73",
@@ -1878,7 +2048,8 @@
 "en": "This song reminds me of my school days.",
 "ko": "이 노래를 들으면 학창 시절이 떠올라요.",
 "blank": "song",
-"note": "추억 얘기 좋아!"
+"note": "추억 얘기 좋아!",
+"opic": "IH"
 },
 {
 "id": "day-74",
@@ -1889,7 +2060,8 @@
 "en": "I've been meaning to call you.",
 "ko": "안 그래도 전화하려고 했어요.",
 "blank": "meaning",
-"note": "진짜지?"
+"note": "진짜지?",
+"opic": "IH"
 },
 {
 "id": "wrk-13",
@@ -1900,7 +2072,8 @@
 "en": "Sorry, I'm in a meeting right now.",
 "ko": "죄송해요, 지금 회의 중이에요.",
 "blank": "meeting",
-"note": "조용히 할게!"
+"note": "조용히 할게!",
+"opic": "IL"
 },
 {
 "id": "wrk-14",
@@ -1911,7 +2084,8 @@
 "en": "Can I ask you something quickly?",
 "ko": "잠깐 뭐 좀 여쭤봐도 될까요?",
 "blank": "ask",
-"note": "말 걸 때 좋아!"
+"note": "말 걸 때 좋아!",
+"opic": "IL"
 },
 {
 "id": "wrk-15",
@@ -1922,7 +2096,8 @@
 "en": "I'll check and let you know soon.",
 "ko": "확인하고 곧 알려 드릴게요.",
 "blank": "check",
-"note": "바로 몰라도 괜찮아!"
+"note": "바로 몰라도 괜찮아!",
+"opic": "IL"
 },
 {
 "id": "wrk-16",
@@ -1933,7 +2108,8 @@
 "en": "Do you have a minute to talk?",
 "ko": "잠깐 얘기할 시간 있으세요?",
 "blank": "minute",
-"note": "진짜 1분은 아니야!"
+"note": "진짜 1분은 아니야!",
+"opic": "IL"
 },
 {
 "id": "wrk-17",
@@ -1944,7 +2120,8 @@
 "en": "I work in marketing.",
 "ko": "마케팅 분야에서 일해요.",
 "blank": "marketing",
-"note": "자기소개 기본!"
+"note": "자기소개 기본!",
+"opic": "IL"
 },
 {
 "id": "wrk-18",
@@ -1955,7 +2132,8 @@
 "en": "I'm in charge of the budget.",
 "ko": "제가 예산을 담당하고 있어요.",
 "blank": "charge",
-"note": "내 업무 설명!"
+"note": "내 업무 설명!",
+"opic": "IL"
 },
 {
 "id": "wrk-19",
@@ -1966,7 +2144,8 @@
 "en": "It's due next Friday.",
 "ko": "마감은 다음 주 금요일이에요.",
 "blank": "due",
-"note": "마감은 무서워!"
+"note": "마감은 무서워!",
+"opic": "IL"
 },
 {
 "id": "wrk-20",
@@ -1977,7 +2156,8 @@
 "en": "I'm almost done with this report.",
 "ko": "이 보고서 거의 다 했어요.",
 "blank": "almost",
-"note": "조금만 힘내!"
+"note": "조금만 힘내!",
+"opic": "IL"
 },
 {
 "id": "wrk-21",
@@ -1988,7 +2168,8 @@
 "en": "I'll send it this afternoon.",
 "ko": "오늘 오후에 보내 드릴게요.",
 "blank": "afternoon",
-"note": "약속은 지키자!"
+"note": "약속은 지키자!",
+"opic": "IL"
 },
 {
 "id": "wrk-22",
@@ -1999,7 +2180,8 @@
 "en": "I'm off today, so call me tomorrow.",
 "ko": "오늘 쉬니까 내일 전화 주세요.",
 "blank": "off",
-"note": "쉬는 날 최고!"
+"note": "쉬는 날 최고!",
+"opic": "IL"
 },
 {
 "id": "wrk-23",
@@ -2010,7 +2192,8 @@
 "en": "Who's in charge of this project?",
 "ko": "이 프로젝트 담당자가 누구예요?",
 "blank": "project",
-"note": "담당자 찾기!"
+"note": "담당자 찾기!",
+"opic": "IL"
 },
 {
 "id": "wrk-24",
@@ -2021,7 +2204,8 @@
 "en": "Please let me know your schedule.",
 "ko": "일정을 알려 주세요.",
 "blank": "schedule",
-"note": "메일 끝에 자주 써!"
+"note": "메일 끝에 자주 써!",
+"opic": "IM1"
 },
 {
 "id": "wrk-25",
@@ -2032,7 +2216,8 @@
 "en": "Thanks for your help today.",
 "ko": "오늘 도와주셔서 감사합니다.",
 "blank": "help",
-"note": "고맙다는 말은 많이!"
+"note": "고맙다는 말은 많이!",
+"opic": "IM1"
 },
 {
 "id": "wrk-26",
@@ -2043,7 +2228,8 @@
 "en": "I'm sorry for the late reply.",
 "ko": "답장이 늦어 죄송합니다.",
 "blank": "reply",
-"note": "메일 첫 줄 단골!"
+"note": "메일 첫 줄 단골!",
+"opic": "IM1"
 },
 {
 "id": "wrk-27",
@@ -2054,7 +2240,8 @@
 "en": "I have a meeting at three.",
 "ko": "세 시에 회의가 있어요.",
 "blank": "three",
-"note": "시간 앞에는 at!"
+"note": "시간 앞에는 at!",
+"opic": "IM1"
 },
 {
 "id": "wrk-28",
@@ -2065,7 +2252,8 @@
 "en": "Could you check this document?",
 "ko": "이 문서 확인해 주시겠어요?",
 "blank": "document",
-"note": "검토 부탁할 때!"
+"note": "검토 부탁할 때!",
+"opic": "IM1"
 },
 {
 "id": "wrk-29",
@@ -2076,7 +2264,8 @@
 "en": "Let me get back to you on that.",
 "ko": "그건 다시 말씀드릴게요.",
 "blank": "back",
-"note": "시간을 버는 말!"
+"note": "시간을 버는 말!",
+"opic": "IM1"
 },
 {
 "id": "wrk-30",
@@ -2087,7 +2276,8 @@
 "en": "Can we reschedule our call?",
 "ko": "통화 일정을 다시 잡을 수 있을까요?",
 "blank": "reschedule",
-"note": "일정 변경 필수어!"
+"note": "일정 변경 필수어!",
+"opic": "IM1"
 },
 {
 "id": "wrk-31",
@@ -2098,7 +2288,8 @@
 "en": "I'm tied up with a deadline.",
 "ko": "마감 때문에 바빠요.",
 "blank": "tied",
-"note": "묶여 있는 느낌이야!"
+"note": "묶여 있는 느낌이야!",
+"opic": "IM1"
 },
 {
 "id": "wrk-32",
@@ -2109,7 +2300,8 @@
 "en": "We're running behind schedule.",
 "ko": "일정보다 늦어지고 있어요.",
 "blank": "behind",
-"note": "솔직하게 말해야 해!"
+"note": "솔직하게 말해야 해!",
+"opic": "IM1"
 },
 {
 "id": "wrk-33",
@@ -2120,7 +2312,8 @@
 "en": "We're on track to finish by Friday.",
 "ko": "금요일까지 끝낼 수 있게 잘 진행 중이에요.",
 "blank": "track",
-"note": "좋은 소식이야!"
+"note": "좋은 소식이야!",
+"opic": "IM1"
 },
 {
 "id": "wrk-34",
@@ -2131,7 +2324,8 @@
 "en": "Could you give me an update on the project?",
 "ko": "프로젝트 진행 상황을 알려 주시겠어요?",
 "blank": "update",
-"note": "상사 단골 말!"
+"note": "상사 단골 말!",
+"opic": "IM2"
 },
 {
 "id": "wrk-35",
@@ -2142,7 +2336,8 @@
 "en": "I'll follow up with the client.",
 "ko": "고객에게 후속 확인할게요.",
 "blank": "follow",
-"note": "잊지 않을게!"
+"note": "잊지 않을게!",
+"opic": "IM2"
 },
 {
 "id": "wrk-36",
@@ -2153,7 +2348,8 @@
 "en": "I'll loop you in on the email.",
 "ko": "그 메일에 당신도 포함할게요.",
 "blank": "loop",
-"note": "메일에 넣어 준다는 뜻!"
+"note": "메일에 넣어 준다는 뜻!",
+"opic": "IM2"
 },
 {
 "id": "wrk-37",
@@ -2164,7 +2360,8 @@
 "en": "Let's wrap up this meeting.",
 "ko": "이 회의를 마무리해요.",
 "blank": "wrap",
-"note": "퇴근이 가까워졌어!"
+"note": "퇴근이 가까워졌어!",
+"opic": "IM2"
 },
 {
 "id": "wrk-38",
@@ -2175,7 +2372,8 @@
 "en": "Let's move on to the next topic.",
 "ko": "다음 주제로 넘어가요.",
 "blank": "topic",
-"note": "회의 진행할 때!"
+"note": "회의 진행할 때!",
+"opic": "IM2"
 },
 {
 "id": "wrk-39",
@@ -2186,7 +2384,8 @@
 "en": "What's the deadline for this task?",
 "ko": "이 업무 마감이 언제예요?",
 "blank": "deadline",
-"note": "꼭 물어봐야 해!"
+"note": "꼭 물어봐야 해!",
+"opic": "IM2"
 },
 {
 "id": "wrk-40",
@@ -2197,7 +2396,8 @@
 "en": "I'd like to share my screen.",
 "ko": "제 화면을 공유하고 싶어요.",
 "blank": "screen",
-"note": "화상 회의 필수!"
+"note": "화상 회의 필수!",
+"opic": "IM2"
 },
 {
 "id": "wrk-41",
@@ -2208,7 +2408,8 @@
 "en": "Can you hear me now?",
 "ko": "이제 제 말 들리세요?",
 "blank": "hear",
-"note": "화상 회의 첫마디!"
+"note": "화상 회의 첫마디!",
+"opic": "IM2"
 },
 {
 "id": "wrk-42",
@@ -2219,7 +2420,8 @@
 "en": "I think you're on mute.",
 "ko": "음소거 상태이신 것 같아요.",
 "blank": "mute",
-"note": "이 말 진짜 많이 써!"
+"note": "이 말 진짜 많이 써!",
+"opic": "IM2"
 },
 {
 "id": "wrk-43",
@@ -2230,7 +2432,8 @@
 "en": "Sorry to interrupt, but I have a question.",
 "ko": "말씀 중에 죄송한데 질문이 있어요.",
 "blank": "interrupt",
-"note": "끼어들 때 예의!"
+"note": "끼어들 때 예의!",
+"opic": "IM2"
 },
 {
 "id": "wrk-44",
@@ -2241,7 +2444,8 @@
 "en": "Could you clarify the next steps?",
 "ko": "다음 단계를 명확히 해 주시겠어요?",
 "blank": "clarify",
-"note": "헷갈리면 바로 물어봐!"
+"note": "헷갈리면 바로 물어봐!",
+"opic": "IM2"
 },
 {
 "id": "wrk-45",
@@ -2252,7 +2456,8 @@
 "en": "I agree with your idea.",
 "ko": "당신 생각에 동의해요.",
 "blank": "agree",
-"note": "회의 맞장구!"
+"note": "회의 맞장구!",
+"opic": "IM2"
 },
 {
 "id": "wrk-46",
@@ -2263,7 +2468,8 @@
 "en": "I'm not sure I agree with that.",
 "ko": "그 부분은 동의하기 어려운 것 같아요.",
 "blank": "sure",
-"note": "부드러운 반대야!"
+"note": "부드러운 반대야!",
+"opic": "IM2"
 },
 {
 "id": "wrk-47",
@@ -2274,7 +2480,8 @@
 "en": "I need more time to finish this.",
 "ko": "이걸 끝낼 시간이 더 필요해요.",
 "blank": "time",
-"note": "미리 말하면 괜찮아!"
+"note": "미리 말하면 괜찮아!",
+"opic": "IM2"
 },
 {
 "id": "wrk-48",
@@ -2285,7 +2492,8 @@
 "en": "Can you cover for me tomorrow?",
 "ko": "내일 제 일 좀 대신해 줄 수 있어요?",
 "blank": "cover",
-"note": "동료 찬스!"
+"note": "동료 찬스!",
+"opic": "IM2"
 },
 {
 "id": "wrk-49",
@@ -2296,7 +2504,8 @@
 "en": "I'm out of the office until Monday.",
 "ko": "월요일까지 자리를 비워요.",
 "blank": "office",
-"note": "부재 안내에 써!"
+"note": "부재 안내에 써!",
+"opic": "IM3"
 },
 {
 "id": "wrk-50",
@@ -2307,7 +2516,8 @@
 "en": "I'm working from home today.",
 "ko": "오늘 재택근무해요.",
 "blank": "home",
-"note": "나랑 같이 있는 날!"
+"note": "나랑 같이 있는 날!",
+"opic": "IM3"
 },
 {
 "id": "wrk-51",
@@ -2318,7 +2528,8 @@
 "en": "Please find attached the final report.",
 "ko": "최종 보고서를 첨부합니다.",
 "blank": "attached",
-"note": "메일 표현 끝판왕!"
+"note": "메일 표현 끝판왕!",
+"opic": "IM3"
 },
 {
 "id": "wrk-52",
@@ -2329,7 +2540,8 @@
 "en": "I'm writing to confirm our meeting.",
 "ko": "회의를 확인하려고 메일 드립니다.",
 "blank": "writing",
-"note": "메일 첫 문장!"
+"note": "메일 첫 문장!",
+"opic": "IM3"
 },
 {
 "id": "wrk-53",
@@ -2340,7 +2552,8 @@
 "en": "Let's schedule a call next week.",
 "ko": "다음 주에 통화 일정을 잡아요.",
 "blank": "call",
-"note": "약속 잡을 때!"
+"note": "약속 잡을 때!",
+"opic": "IM3"
 },
 {
 "id": "wrk-54",
@@ -2351,7 +2564,8 @@
 "en": "Does Tuesday work for you?",
 "ko": "화요일 괜찮으세요?",
 "blank": "work",
-"note": "일정 물을 때 최고!"
+"note": "일정 물을 때 최고!",
+"opic": "IM3"
 },
 {
 "id": "wrk-55",
@@ -2362,7 +2576,8 @@
 "en": "I'll take a look at the numbers.",
 "ko": "숫자를 살펴볼게요.",
 "blank": "numbers",
-"note": "봐 준다는 말!"
+"note": "봐 준다는 말!",
+"opic": "IM3"
 },
 {
 "id": "wrk-56",
@@ -2373,7 +2588,8 @@
 "en": "I got stuck on this problem.",
 "ko": "이 문제에서 막혔어요.",
 "blank": "stuck",
-"note": "같이 고민하자!"
+"note": "같이 고민하자!",
+"opic": "IM3"
 },
 {
 "id": "wrk-57",
@@ -2384,7 +2600,8 @@
 "en": "Can you walk me through the numbers again?",
 "ko": "그 숫자들을 다시 설명해 주시겠어요?",
 "blank": "again",
-"note": "다시 물어도 괜찮아!"
+"note": "다시 물어도 괜찮아!",
+"opic": "IM3"
 },
 {
 "id": "wrk-58",
@@ -2395,7 +2612,8 @@
 "en": "We need to figure out the cause.",
 "ko": "원인을 알아내야 해요.",
 "blank": "figure",
-"note": "해결 모드 시작!"
+"note": "해결 모드 시작!",
+"opic": "IM3"
 },
 {
 "id": "wrk-59",
@@ -2406,7 +2624,8 @@
 "en": "I'll handle the presentation.",
 "ko": "발표는 제가 맡을게요.",
 "blank": "handle",
-"note": "멋있어!"
+"note": "멋있어!",
+"opic": "IM3"
 },
 {
 "id": "wrk-60",
@@ -2417,7 +2636,8 @@
 "en": "To be honest, I don't think it will work.",
 "ko": "솔직히 말하면 잘 안 될 것 같아요.",
 "blank": "honest",
-"note": "솔직한 건 좋아!"
+"note": "솔직한 건 좋아!",
+"opic": "IH"
 },
 {
 "id": "wrk-61",
@@ -2428,7 +2648,8 @@
 "en": "Just to be clear, the deadline is Monday.",
 "ko": "분명히 해 두자면 마감은 월요일이에요.",
 "blank": "clear",
-"note": "오해를 막아 줘!"
+"note": "오해를 막아 줘!",
+"opic": "IH"
 },
 {
 "id": "wrk-62",
@@ -2439,7 +2660,8 @@
 "en": "Let's keep in mind that the budget is limited.",
 "ko": "예산이 제한적이라는 걸 염두에 둬요.",
 "blank": "mind",
-"note": "똑똑해 보이는 말!"
+"note": "똑똑해 보이는 말!",
+"opic": "IH"
 },
 {
 "id": "wrk-63",
@@ -2450,7 +2672,8 @@
 "en": "It might be worth trying a new approach.",
 "ko": "새로운 방법을 시도해 볼 만할 것 같아요.",
 "blank": "worth",
-"note": "제안을 부드럽게!"
+"note": "제안을 부드럽게!",
+"opic": "IH"
 },
 {
 "id": "wrk-64",
@@ -2461,7 +2684,8 @@
 "en": "I'd suggest moving the launch date.",
 "ko": "출시일을 옮기는 걸 제안해요.",
 "blank": "suggest",
-"note": "의견 낼 때!"
+"note": "의견 낼 때!",
+"opic": "IH"
 },
 {
 "id": "wrk-65",
@@ -2472,7 +2696,8 @@
 "en": "We should prioritize customer support.",
 "ko": "고객 지원을 우선해야 해요.",
 "blank": "prioritize",
-"note": "뭐가 먼저일까?"
+"note": "뭐가 먼저일까?",
+"opic": "IH"
 },
 {
 "id": "wrk-66",
@@ -2483,7 +2708,8 @@
 "en": "Could we push the deadline back?",
 "ko": "마감을 미룰 수 있을까요?",
 "blank": "push",
-"note": "제발 미뤄 줘!"
+"note": "제발 미뤄 줘!",
+"opic": "IH"
 },
 {
 "id": "wrk-67",
@@ -2494,7 +2720,8 @@
 "en": "Could we bring the meeting forward?",
 "ko": "회의를 앞당길 수 있을까요?",
 "blank": "bring",
-"note": "빨리 끝내고 퇴근!"
+"note": "빨리 끝내고 퇴근!",
+"opic": "IH"
 },
 {
 "id": "wrk-68",
@@ -2505,7 +2732,8 @@
 "en": "I'll get that over to you by noon.",
 "ko": "정오까지 그거 보내 드릴게요.",
 "blank": "over",
-"note": "원어민 느낌 나!"
+"note": "원어민 느낌 나!",
+"opic": "IH"
 },
 {
 "id": "wrk-69",
@@ -2516,7 +2744,8 @@
 "en": "That's outside the scope of this project.",
 "ko": "그건 이 프로젝트 범위를 벗어나요.",
 "blank": "scope",
-"note": "거절도 전문적으로!"
+"note": "거절도 전문적으로!",
+"opic": "IH"
 },
 {
 "id": "wrk-70",
@@ -2527,7 +2756,8 @@
 "en": "I don't have the bandwidth for another project.",
 "ko": "다른 프로젝트를 할 여력이 없어요.",
 "blank": "bandwidth",
-"note": "인터넷 얘기가 아니야!"
+"note": "인터넷 얘기가 아니야!",
+"opic": "IH"
 },
 {
 "id": "wrk-71",
@@ -2538,7 +2768,8 @@
 "en": "Let's take this offline after the meeting.",
 "ko": "이건 회의 끝나고 따로 얘기해요.",
 "blank": "offline",
-"note": "회의가 길어질 때!"
+"note": "회의가 길어질 때!",
+"opic": "IH"
 },
 {
 "id": "wrk-72",
@@ -2549,7 +2780,8 @@
 "en": "What's our next step on this?",
 "ko": "이 건의 다음 단계는 뭔가요?",
 "blank": "step",
-"note": "회의 마무리에 좋아!"
+"note": "회의 마무리에 좋아!",
+"opic": "IH"
 },
 {
 "id": "wrk-73",
@@ -2560,7 +2792,8 @@
 "en": "I'd like your feedback on my draft.",
 "ko": "제 초안에 의견을 듣고 싶어요.",
 "blank": "feedback",
-"note": "성장하는 사람!"
+"note": "성장하는 사람!",
+"opic": "IH"
 },
 {
 "id": "wrk-74",
@@ -2571,7 +2804,8 @@
 "en": "As I mentioned, the price will change.",
 "ko": "말씀드린 대로 가격이 바뀔 거예요.",
 "blank": "mentioned",
-"note": "다시 짚어 줄 때!"
+"note": "다시 짚어 줄 때!",
+"opic": "IH"
 },
 {
 "id": "wrk-75",
@@ -2582,7 +2816,8 @@
 "en": "Based on the data, sales are growing.",
 "ko": "데이터에 따르면 매출이 늘고 있어요.",
 "blank": "data",
-"note": "근거가 있으면 든든해!"
+"note": "근거가 있으면 든든해!",
+"opic": "IH"
 },
 {
 "id": "tlk-13",
@@ -2593,7 +2828,8 @@
 "en": "Really? I didn't know that.",
 "ko": "정말요? 그건 몰랐어요.",
 "blank": "know",
-"note": "맞장구는 짧게!"
+"note": "맞장구는 짧게!",
+"opic": "IL"
 },
 {
 "id": "tlk-14",
@@ -2604,7 +2840,8 @@
 "en": "I see, thanks for telling me.",
 "ko": "그렇군요, 말해 줘서 고마워요.",
 "blank": "see",
-"note": "듣고 있다는 신호야!"
+"note": "듣고 있다는 신호야!",
+"opic": "IL"
 },
 {
 "id": "tlk-15",
@@ -2615,7 +2852,8 @@
 "en": "Me too, I love that place.",
 "ko": "저도요, 그곳을 정말 좋아해요.",
 "blank": "love",
-"note": "공감의 말!"
+"note": "공감의 말!",
+"opic": "IL"
 },
 {
 "id": "tlk-16",
@@ -2626,7 +2864,8 @@
 "en": "That's great to hear!",
 "ko": "그런 소식을 들으니 정말 좋네요!",
 "blank": "hear",
-"note": "같이 기뻐해 주자!"
+"note": "같이 기뻐해 주자!",
+"opic": "IL"
 },
 {
 "id": "tlk-17",
@@ -2637,7 +2876,8 @@
 "en": "Oh, that's too bad.",
 "ko": "아, 정말 안됐네요.",
 "blank": "bad",
-"note": "위로할 때 써!"
+"note": "위로할 때 써!",
+"opic": "IL"
 },
 {
 "id": "tlk-18",
@@ -2648,7 +2888,8 @@
 "en": "You're right about that.",
 "ko": "그 말이 맞아요.",
 "blank": "right",
-"note": "동의할 때!"
+"note": "동의할 때!",
+"opic": "IL"
 },
 {
 "id": "tlk-19",
@@ -2659,7 +2900,8 @@
 "en": "Yes, I think so too.",
 "ko": "네, 저도 그렇게 생각해요.",
 "blank": "think",
-"note": "쉬운데 많이 써!"
+"note": "쉬운데 많이 써!",
+"opic": "IL"
 },
 {
 "id": "tlk-20",
@@ -2670,7 +2912,8 @@
 "en": "Hmm, I don't think so.",
 "ko": "음, 저는 그렇게 생각하지 않아요.",
 "blank": "think",
-"note": "부드럽게 아니라고!"
+"note": "부드럽게 아니라고!",
+"opic": "IL"
 },
 {
 "id": "tlk-21",
@@ -2681,7 +2924,8 @@
 "en": "Sorry, can you say that again?",
 "ko": "죄송한데 다시 말해 주실래요?",
 "blank": "again",
-"note": "못 들으면 물어봐!"
+"note": "못 들으면 물어봐!",
+"opic": "IL"
 },
 {
 "id": "tlk-22",
@@ -2692,7 +2936,8 @@
 "en": "What does this word mean?",
 "ko": "이 단어는 무슨 뜻이에요?",
 "blank": "word",
-"note": "모르는 건 부끄럽지 않아!"
+"note": "모르는 건 부끄럽지 않아!",
+"opic": "IL"
 },
 {
 "id": "tlk-23",
@@ -2703,7 +2948,8 @@
 "en": "How do you spell your name?",
 "ko": "이름 철자가 어떻게 돼요?",
 "blank": "spell",
-"note": "이름 물어볼 때!"
+"note": "이름 물어볼 때!",
+"opic": "IL"
 },
 {
 "id": "tlk-24",
@@ -2714,7 +2960,8 @@
 "en": "Wait a second, let me check.",
 "ko": "잠깐만요, 확인해 볼게요.",
 "blank": "second",
-"note": "시간을 벌어 줘!"
+"note": "시간을 벌어 줘!",
+"opic": "IM1"
 },
 {
 "id": "tlk-25",
@@ -2725,7 +2972,8 @@
 "en": "You know what? I changed my mind.",
 "ko": "있잖아요, 저 마음이 바뀌었어요.",
 "blank": "changed",
-"note": "얘기 꺼내기 좋아!"
+"note": "얘기 꺼내기 좋아!",
+"opic": "IM1"
 },
 {
 "id": "tlk-26",
@@ -2736,7 +2984,8 @@
 "en": "Tell me about your family.",
 "ko": "가족에 대해 말해 주세요.",
 "blank": "family",
-"note": "질문이 막히면 이 말!"
+"note": "질문이 막히면 이 말!",
+"opic": "IM1"
 },
 {
 "id": "tlk-27",
@@ -2747,7 +2996,8 @@
 "en": "You got the job? Good for you!",
 "ko": "취직했어요? 잘됐네요!",
 "blank": "job",
-"note": "축하할 때!"
+"note": "축하할 때!",
+"opic": "IM1"
 },
 {
 "id": "tlk-28",
@@ -2758,7 +3008,8 @@
 "en": "What about your plans for tonight?",
 "ko": "오늘 밤 계획은 어때요?",
 "blank": "plans",
-"note": "대화를 이어 가!"
+"note": "대화를 이어 가!",
+"opic": "IM1"
 },
 {
 "id": "tlk-29",
@@ -2769,7 +3020,8 @@
 "en": "Nice to meet you, too.",
 "ko": "저도 만나서 반가워요.",
 "blank": "meet",
-"note": "첫 만남 인사!"
+"note": "첫 만남 인사!",
+"opic": "IM1"
 },
 {
 "id": "tlk-30",
@@ -2780,7 +3032,8 @@
 "en": "Hey, long time no see!",
 "ko": "안녕, 오랜만이에요!",
 "blank": "see",
-"note": "반가운 인사!"
+"note": "반가운 인사!",
+"opic": "IM1"
 },
 {
 "id": "tlk-31",
@@ -2791,7 +3044,8 @@
 "en": "No worries, take your time.",
 "ko": "괜찮아요, 천천히 하세요.",
 "blank": "worries",
-"note": "편안한 대답!"
+"note": "편안한 대답!",
+"opic": "IM1"
 },
 {
 "id": "tlk-32",
@@ -2802,7 +3056,8 @@
 "en": "Sounds good, see you then.",
 "ko": "좋아요, 그때 봐요.",
 "blank": "good",
-"note": "약속 확정!"
+"note": "약속 확정!",
+"opic": "IM1"
 },
 {
 "id": "tlk-33",
@@ -2813,7 +3068,8 @@
 "en": "You mean next Monday?",
 "ko": "다음 주 월요일이라는 말이에요?",
 "blank": "Monday",
-"note": "확인하는 질문!"
+"note": "확인하는 질문!",
+"opic": "IM1"
 },
 {
 "id": "tlk-34",
@@ -2824,7 +3080,8 @@
 "en": "In other words, we need more practice.",
 "ko": "다시 말해 우리는 연습이 더 필요해요.",
 "blank": "words",
-"note": "쉽게 바꿔 말하기!"
+"note": "쉽게 바꿔 말하기!",
+"opic": "IM1"
 },
 {
 "id": "tlk-35",
@@ -2835,7 +3092,8 @@
 "en": "What I'm trying to say is that I'm sorry.",
 "ko": "제가 말하려는 건 미안하다는 거예요.",
 "blank": "trying",
-"note": "말이 꼬일 때 구원!"
+"note": "말이 꼬일 때 구원!",
+"opic": "IM2"
 },
 {
 "id": "tlk-36",
@@ -2846,7 +3104,8 @@
 "en": "Hmm, how can I put this?",
 "ko": "음, 이걸 어떻게 말하지?",
 "blank": "put",
-"note": "생각할 시간 벌기!"
+"note": "생각할 시간 벌기!",
+"opic": "IM2"
 },
 {
 "id": "tlk-37",
@@ -2857,7 +3116,8 @@
 "en": "What's the word for this in English?",
 "ko": "이걸 영어로 뭐라고 하죠?",
 "blank": "word",
-"note": "단어가 안 떠오를 때!"
+"note": "단어가 안 떠오를 때!",
+"opic": "IM2"
 },
 {
 "id": "tlk-38",
@@ -2868,7 +3128,8 @@
 "en": "It's kind of like a small bus.",
 "ko": "작은 버스 같은 거예요.",
 "blank": "kind",
-"note": "단어 몰라도 설명 가능!"
+"note": "단어 몰라도 설명 가능!",
+"opic": "IM2"
 },
 {
 "id": "tlk-39",
@@ -2879,7 +3140,8 @@
 "en": "It's something you use to open bottles.",
 "ko": "병을 열 때 쓰는 거예요.",
 "blank": "something",
-"note": "설명의 기술!"
+"note": "설명의 기술!",
+"opic": "IM2"
 },
 {
 "id": "tlk-40",
@@ -2890,7 +3152,8 @@
 "en": "Speaking of food, are you hungry?",
 "ko": "음식 얘기가 나와서 말인데, 배고파요?",
 "blank": "Speaking",
-"note": "자연스러운 화제 전환!"
+"note": "자연스러운 화제 전환!",
+"opic": "IM2"
 },
 {
 "id": "tlk-41",
@@ -2901,7 +3164,8 @@
 "en": "Anyway, what were you saying?",
 "ko": "아무튼, 무슨 말 하고 있었죠?",
 "blank": "Anyway",
-"note": "다시 본론으로!"
+"note": "다시 본론으로!",
+"opic": "IM2"
 },
 {
 "id": "tlk-42",
@@ -2912,7 +3176,8 @@
 "en": "Sorry, where was I?",
 "ko": "죄송해요, 어디까지 말했죠?",
 "blank": "where",
-"note": "나도 맨날 까먹어!"
+"note": "나도 맨날 까먹어!",
+"opic": "IM2"
 },
 {
 "id": "tlk-43",
@@ -2923,7 +3188,8 @@
 "en": "That's a good question, let me think.",
 "ko": "좋은 질문이에요, 생각해 볼게요.",
 "blank": "question",
-"note": "시간 벌기 2탄!"
+"note": "시간 벌기 2탄!",
+"opic": "IM2"
 },
 {
 "id": "tlk-44",
@@ -2934,7 +3200,8 @@
 "en": "Yeah, I know what you mean.",
 "ko": "네, 무슨 말인지 알아요.",
 "blank": "know",
-"note": "공감 최고 표현!"
+"note": "공감 최고 표현!",
+"opic": "IM2"
 },
 {
 "id": "tlk-45",
@@ -2945,7 +3212,8 @@
 "en": "I hear you, that must be hard.",
 "ko": "무슨 마음인지 알겠어요, 힘들겠어요.",
 "blank": "hear",
-"note": "진심으로 듣는 말!"
+"note": "진심으로 듣는 말!",
+"opic": "IM2"
 },
 {
 "id": "tlk-46",
@@ -2956,7 +3224,8 @@
 "en": "That must be really exciting.",
 "ko": "정말 신나겠어요.",
 "blank": "exciting",
-"note": "상대 기분 맞히기!"
+"note": "상대 기분 맞히기!",
+"opic": "IM2"
 },
 {
 "id": "tlk-47",
@@ -2967,7 +3236,8 @@
 "en": "No way! Are you serious?",
 "ko": "말도 안 돼요! 진짜예요?",
 "blank": "serious",
-"note": "깜짝 놀랄 때!"
+"note": "깜짝 놀랄 때!",
+"opic": "IM2"
 },
 {
 "id": "tlk-48",
@@ -2978,7 +3248,8 @@
 "en": "Are you kidding? That's amazing!",
 "ko": "농담이죠? 정말 대단해요!",
 "blank": "kidding",
-"note": "놀라움 표현!"
+"note": "놀라움 표현!",
+"opic": "IM2"
 },
 {
 "id": "tlk-49",
@@ -2989,7 +3260,8 @@
 "en": "Well, it depends on the day.",
 "ko": "글쎄요, 날에 따라 달라요.",
 "blank": "day",
-"note": "대답 미루기!"
+"note": "대답 미루기!",
+"opic": "IM2"
 },
 {
 "id": "tlk-50",
@@ -3000,7 +3272,8 @@
 "en": "Not really, I'm a bit busy.",
 "ko": "별로요, 좀 바빠서요.",
 "blank": "busy",
-"note": "부드러운 거절!"
+"note": "부드러운 거절!",
+"opic": "IM3"
 },
 {
 "id": "tlk-51",
@@ -3011,7 +3284,8 @@
 "en": "Yeah, I guess so.",
 "ko": "네, 그런 것 같아요.",
 "blank": "guess",
-"note": "애매한 동의!"
+"note": "애매한 동의!",
+"opic": "IM3"
 },
 {
 "id": "tlk-52",
@@ -3022,7 +3296,8 @@
 "en": "I'm not sure yet, but I'll tell you.",
 "ko": "아직 잘 모르겠지만 알려 줄게요.",
 "blank": "yet",
-"note": "모른다고 해도 돼!"
+"note": "모른다고 해도 돼!",
+"opic": "IM3"
 },
 {
 "id": "tlk-53",
@@ -3033,7 +3308,8 @@
 "en": "So what happened after that?",
 "ko": "그래서 그다음에 무슨 일이 있었어요?",
 "blank": "after",
-"note": "이야기를 이어 주는 말!"
+"note": "이야기를 이어 주는 말!",
+"opic": "IM3"
 },
 {
 "id": "tlk-54",
@@ -3044,7 +3320,8 @@
 "en": "Then what did you do?",
 "ko": "그래서 어떻게 했어요?",
 "blank": "do",
-"note": "궁금해 죽겠어!"
+"note": "궁금해 죽겠어!",
+"opic": "IM3"
 },
 {
 "id": "tlk-55",
@@ -3055,7 +3332,8 @@
 "en": "Interesting, why do you say that?",
 "ko": "흥미롭네요, 왜 그렇게 말해요?",
 "blank": "Interesting",
-"note": "더 깊이 묻기!"
+"note": "더 깊이 묻기!",
+"opic": "IM3"
 },
 {
 "id": "tlk-56",
@@ -3066,7 +3344,8 @@
 "en": "Could you give me an example?",
 "ko": "예를 들어 주시겠어요?",
 "blank": "example",
-"note": "이해가 쉬워져!"
+"note": "이해가 쉬워져!",
+"opic": "IM3"
 },
 {
 "id": "tlk-57",
@@ -3077,7 +3356,8 @@
 "en": "For example, I walk to work.",
 "ko": "예를 들면 저는 걸어서 출근해요.",
 "blank": "example",
-"note": "설명할 때 필수!"
+"note": "설명할 때 필수!",
+"opic": "IM3"
 },
 {
 "id": "tlk-58",
@@ -3088,7 +3368,8 @@
 "en": "How do you like your new job?",
 "ko": "새 직장은 어때요?",
 "blank": "like",
-"note": "근황 질문!"
+"note": "근황 질문!",
+"opic": "IM3"
 },
 {
 "id": "tlk-59",
@@ -3099,7 +3380,8 @@
 "en": "Do you know what I mean?",
 "ko": "무슨 말인지 아시겠어요?",
 "blank": "mean",
-"note": "이해했는지 확인!"
+"note": "이해했는지 확인!",
+"opic": "IM3"
 },
 {
 "id": "tlk-60",
@@ -3110,7 +3392,8 @@
 "en": "Let me explain it another way.",
 "ko": "다른 방식으로 설명해 볼게요.",
 "blank": "explain",
-"note": "다시 도전!"
+"note": "다시 도전!",
+"opic": "IM3"
 },
 {
 "id": "tlk-61",
@@ -3121,7 +3404,8 @@
 "en": "Let me put it this way, it's too expensive.",
 "ko": "이렇게 말해 볼게요, 너무 비싸요.",
 "blank": "way",
-"note": "돌려서 다시 말하기!"
+"note": "돌려서 다시 말하기!",
+"opic": "IM3"
 },
 {
 "id": "tlk-62",
@@ -3132,7 +3416,8 @@
 "en": "Correct me if I'm wrong, but it starts at nine.",
 "ko": "틀리면 말해 주세요, 그런데 아홉 시에 시작하죠.",
 "blank": "Correct",
-"note": "겸손해 보여!"
+"note": "겸손해 보여!",
+"opic": "IH"
 },
 {
 "id": "tlk-63",
@@ -3143,7 +3428,8 @@
 "en": "If I understand correctly, you need it today.",
 "ko": "제가 제대로 이해했다면 오늘 필요하신 거죠.",
 "blank": "understand",
-"note": "똑똑한 확인!"
+"note": "똑똑한 확인!",
+"opic": "IH"
 },
 {
 "id": "tlk-64",
@@ -3154,7 +3440,8 @@
 "en": "Sorry, that's not what I meant.",
 "ko": "죄송해요, 그런 뜻이 아니었어요.",
 "blank": "meant",
-"note": "오해 풀기!"
+"note": "오해 풀기!",
+"opic": "IH"
 },
 {
 "id": "tlk-65",
@@ -3165,7 +3452,8 @@
 "en": "I see your point, but it's risky.",
 "ko": "무슨 말씀인지 알겠지만 위험해요.",
 "blank": "point",
-"note": "토론의 시작!"
+"note": "토론의 시작!",
+"opic": "IH"
 },
 {
 "id": "tlk-66",
@@ -3176,7 +3464,8 @@
 "en": "You have a point there.",
 "ko": "그 말에 일리가 있어요.",
 "blank": "point",
-"note": "인정하는 말!"
+"note": "인정하는 말!",
+"opic": "IH"
 },
 {
 "id": "tlk-67",
@@ -3187,7 +3476,8 @@
 "en": "I couldn't agree more with you.",
 "ko": "전적으로 동의해요.",
 "blank": "agree",
-"note": "강한 동의!"
+"note": "강한 동의!",
+"opic": "IH"
 },
 {
 "id": "tlk-68",
@@ -3198,7 +3488,8 @@
 "en": "Let's just agree to disagree.",
 "ko": "그냥 서로 생각이 다른 걸로 해요.",
 "blank": "disagree",
-"note": "싸우지 말자!"
+"note": "싸우지 말자!",
+"opic": "IH"
 },
 {
 "id": "tlk-69",
@@ -3209,7 +3500,8 @@
 "en": "Now that you mention it, you're right.",
 "ko": "말씀하시니 생각해 보니 맞아요.",
 "blank": "mention",
-"note": "맞장구 고급!"
+"note": "맞장구 고급!",
+"opic": "IH"
 },
 {
 "id": "tlk-70",
@@ -3220,7 +3512,8 @@
 "en": "Come to think of it, I never asked.",
 "ko": "생각해 보니 물어본 적이 없네요.",
 "blank": "Come",
-"note": "갑자기 떠오를 때!"
+"note": "갑자기 떠오를 때!",
+"opic": "IH"
 },
 {
 "id": "tlk-71",
@@ -3231,7 +3524,8 @@
 "en": "Don't worry, it's on me.",
 "ko": "걱정 마세요, 제가 낼게요.",
 "blank": "me",
-"note": "멋있다, 나도 사 줘!"
+"note": "멋있다, 나도 사 줘!",
+"opic": "IH"
 },
 {
 "id": "tlk-72",
@@ -3242,7 +3536,8 @@
 "en": "Okay, I'll take your word for it.",
 "ko": "좋아요, 그 말 믿을게요.",
 "blank": "word",
-"note": "믿어 준다는 표현!"
+"note": "믿어 준다는 표현!",
+"opic": "IH"
 },
 {
 "id": "tlk-73",
@@ -3253,7 +3548,8 @@
 "en": "Sorry, I didn't catch your name.",
 "ko": "죄송해요, 성함을 못 들었어요.",
 "blank": "catch",
-"note": "잡는 게 아니라 듣는 거!"
+"note": "잡는 게 아니라 듣는 거!",
+"opic": "IH"
 },
 {
 "id": "tlk-74",
@@ -3264,7 +3560,8 @@
 "en": "Never mind, it's not important.",
 "ko": "신경 쓰지 마세요, 중요한 건 아니에요.",
 "blank": "important",
-"note": "정말 괜찮을 때!"
+"note": "정말 괜찮을 때!",
+"opic": "IM1"
 },
 {
 "id": "tlk-75",
@@ -3275,7 +3572,8 @@
 "en": "Excuse me, is this your bag?",
 "ko": "실례합니다, 이거 당신 가방인가요?",
 "blank": "bag",
-"note": "말 걸 때 첫마디!"
+"note": "말 걸 때 첫마디!",
+"opic": "IM1"
 },
 {
 "id": "tlk-76",
@@ -3286,7 +3584,8 @@
 "en": "Please go ahead, I can wait.",
 "ko": "먼저 하세요, 저는 기다릴 수 있어요.",
 "blank": "wait",
-"note": "양보는 멋져!"
+"note": "양보는 멋져!",
+"opic": "IM1"
 },
 {
 "id": "tlk-77",
@@ -3297,6 +3596,1327 @@
 "en": "What's it called in your country?",
 "ko": "당신 나라에서는 그걸 뭐라고 부르죠?",
 "blank": "called",
-"note": "단어를 물어보는 말!"
+"note": "단어를 물어보는 말!",
+"opic": "IM3"
+},
+{
+"id": "nl-01",
+"topic": "daily",
+"level": 1,
+"opic": "NL",
+"expression": "Good morning",
+"meaning": "좋은 아침이에요",
+"en": "Good morning, everyone.",
+"ko": "여러분, 좋은 아침이에요.",
+"blank": "morning",
+"note": "아침 인사!"
+},
+{
+"id": "nl-02",
+"topic": "daily",
+"level": 1,
+"opic": "NL",
+"expression": "Good night",
+"meaning": "잘 자요",
+"en": "Good night, see you tomorrow.",
+"ko": "잘 자요, 내일 봐요.",
+"blank": "night",
+"note": "나도 잘 자!"
+},
+{
+"id": "nl-03",
+"topic": "conversation",
+"level": 1,
+"opic": "NL",
+"expression": "Thank you",
+"meaning": "고마워요",
+"en": "Thank you very much.",
+"ko": "정말 고마워요.",
+"blank": "much",
+"note": "제일 좋은 말!"
+},
+{
+"id": "nl-04",
+"topic": "conversation",
+"level": 1,
+"opic": "NL",
+"expression": "You're welcome",
+"meaning": "천만에요",
+"en": "You're welcome, my friend.",
+"ko": "천만에요, 친구.",
+"blank": "welcome",
+"note": "고맙다고 하면 이 말!"
+},
+{
+"id": "nl-05",
+"topic": "conversation",
+"level": 1,
+"opic": "NL",
+"expression": "I'm sorry",
+"meaning": "미안해요",
+"en": "I'm sorry, I'm late.",
+"ko": "미안해요, 늦었어요.",
+"blank": "sorry",
+"note": "사과는 빨리!"
+},
+{
+"id": "nl-06",
+"topic": "conversation",
+"level": 1,
+"opic": "NL",
+"expression": "Yes, please",
+"meaning": "네, 부탁해요",
+"en": "Yes, please, one more.",
+"ko": "네, 하나 더 부탁해요.",
+"blank": "more",
+"note": "더 달라고 해도 돼!"
+},
+{
+"id": "nl-07",
+"topic": "conversation",
+"level": 1,
+"opic": "NL",
+"expression": "No, thank you",
+"meaning": "아니요, 괜찮아요",
+"en": "No, thank you, I'm full.",
+"ko": "아니요, 괜찮아요, 배불러요.",
+"blank": "full",
+"note": "예쁘게 거절해!"
+},
+{
+"id": "nl-08",
+"topic": "daily",
+"level": 1,
+"opic": "NL",
+"expression": "I'm hungry",
+"meaning": "배고파요",
+"en": "I'm hungry now.",
+"ko": "지금 배고파요.",
+"blank": "hungry",
+"note": "나도 당근!"
+},
+{
+"id": "nl-09",
+"topic": "daily",
+"level": 1,
+"opic": "NL",
+"expression": "I'm fine",
+"meaning": "잘 지내요",
+"en": "I'm fine, thank you.",
+"ko": "잘 지내요, 고마워요.",
+"blank": "fine",
+"note": "인사 대답!"
+},
+{
+"id": "nl-10",
+"topic": "daily",
+"level": 1,
+"opic": "NL",
+"expression": "It's cold",
+"meaning": "추워요",
+"en": "It's cold today.",
+"ko": "오늘 추워요.",
+"blank": "cold",
+"note": "나를 안아!"
+},
+{
+"id": "nl-11",
+"topic": "daily",
+"level": 1,
+"opic": "NL",
+"expression": "My name is ~",
+"meaning": "제 이름은 ~예요",
+"en": "My name is Minji.",
+"ko": "제 이름은 민지예요.",
+"blank": "name",
+"note": "내 이름은 토타시!"
+},
+{
+"id": "nl-12",
+"topic": "daily",
+"level": 1,
+"opic": "NL",
+"expression": "I'm from ~",
+"meaning": "저는 ~에서 왔어요",
+"en": "I'm from Korea.",
+"ko": "저는 한국에서 왔어요.",
+"blank": "from",
+"note": "자기소개 기본!"
+},
+{
+"id": "nl-13",
+"topic": "travel",
+"level": 1,
+"opic": "NL",
+"expression": "Where is ~?",
+"meaning": "~은 어디예요?",
+"en": "Where is the bathroom?",
+"ko": "화장실은 어디예요?",
+"blank": "bathroom",
+"note": "급할 때 필수!"
+},
+{
+"id": "nl-14",
+"topic": "travel",
+"level": 1,
+"opic": "NL",
+"expression": "How much?",
+"meaning": "얼마예요?",
+"en": "How much is it?",
+"ko": "그거 얼마예요?",
+"blank": "much",
+"note": "짧고 쉬워!"
+},
+{
+"id": "nl-15",
+"topic": "travel",
+"level": 1,
+"opic": "NL",
+"expression": "This one, please",
+"meaning": "이걸로 주세요",
+"en": "This one, please.",
+"ko": "이걸로 주세요.",
+"blank": "one",
+"note": "손가락으로 가리키며!"
+},
+{
+"id": "nl-16",
+"topic": "travel",
+"level": 1,
+"opic": "NL",
+"expression": "Water, please",
+"meaning": "물 주세요",
+"en": "Water, please.",
+"ko": "물 주세요.",
+"blank": "Water",
+"note": "단어 뒤에 please!"
+},
+{
+"id": "nl-17",
+"topic": "travel",
+"level": 1,
+"opic": "NL",
+"expression": "I want ~",
+"meaning": "~을 원해요",
+"en": "I want a coffee.",
+"ko": "커피를 원해요.",
+"blank": "want",
+"note": "나는 당근 원해!"
+},
+{
+"id": "nl-18",
+"topic": "work",
+"level": 1,
+"opic": "NL",
+"expression": "I'm busy",
+"meaning": "바빠요",
+"en": "I'm busy now.",
+"ko": "지금 바빠요.",
+"blank": "busy",
+"note": "그래도 나랑 놀아!"
+},
+{
+"id": "nl-19",
+"topic": "work",
+"level": 1,
+"opic": "NL",
+"expression": "See you ~",
+"meaning": "~에 봐요",
+"en": "See you on Monday.",
+"ko": "월요일에 봐요.",
+"blank": "Monday",
+"note": "헤어질 때 인사!"
+},
+{
+"id": "nl-20",
+"topic": "work",
+"level": 1,
+"opic": "NL",
+"expression": "Good job",
+"meaning": "잘했어요",
+"en": "Good job, everyone.",
+"ko": "다들 잘했어요.",
+"blank": "job",
+"note": "칭찬은 많이!"
+},
+{
+"id": "nm-01",
+"topic": "daily",
+"level": 1,
+"opic": "NM",
+"expression": "I have a ~",
+"meaning": "저는 ~이 있어요",
+"en": "I have a sister.",
+"ko": "저는 여동생이 있어요.",
+"blank": "sister",
+"note": "그게 나야!"
+},
+{
+"id": "nm-02",
+"topic": "daily",
+"level": 1,
+"opic": "NM",
+"expression": "I like ~",
+"meaning": "~을 좋아해요",
+"en": "I like coffee.",
+"ko": "커피를 좋아해요.",
+"blank": "coffee",
+"note": "나는 당근!"
+},
+{
+"id": "nm-03",
+"topic": "daily",
+"level": 1,
+"opic": "NM",
+"expression": "I don't like ~",
+"meaning": "~을 안 좋아해요",
+"en": "I don't like spicy food.",
+"ko": "매운 음식을 안 좋아해요.",
+"blank": "food",
+"note": "나도 매운 건 싫어!"
+},
+{
+"id": "nm-04",
+"topic": "daily",
+"level": 1,
+"opic": "NM",
+"expression": "I live in ~",
+"meaning": "~에 살아요",
+"en": "I live in Busan.",
+"ko": "부산에 살아요.",
+"blank": "live",
+"note": "사는 곳 말하기!"
+},
+{
+"id": "nm-05",
+"topic": "daily",
+"level": 1,
+"opic": "NM",
+"expression": "I go to ~",
+"meaning": "~에 가요",
+"en": "I go to the gym every day.",
+"ko": "매일 헬스장에 가요.",
+"blank": "gym",
+"note": "매일 대단해!"
+},
+{
+"id": "nm-06",
+"topic": "daily",
+"level": 1,
+"opic": "NM",
+"expression": "What's your name?",
+"meaning": "이름이 뭐예요?",
+"en": "What's your name again?",
+"ko": "이름이 뭐라고 하셨죠?",
+"blank": "name",
+"note": "다시 물어도 돼!"
+},
+{
+"id": "nm-07",
+"topic": "daily",
+"level": 1,
+"opic": "NM",
+"expression": "How are you?",
+"meaning": "어떻게 지내요?",
+"en": "How are you today?",
+"ko": "오늘 어때요?",
+"blank": "today",
+"note": "인사 단골!"
+},
+{
+"id": "nm-08",
+"topic": "conversation",
+"level": 1,
+"opic": "NM",
+"expression": "Do you like ~?",
+"meaning": "~ 좋아해요?",
+"en": "Do you like music?",
+"ko": "음악 좋아해요?",
+"blank": "music",
+"note": "대화 시작!"
+},
+{
+"id": "nm-09",
+"topic": "conversation",
+"level": 1,
+"opic": "NM",
+"expression": "What is this?",
+"meaning": "이게 뭐예요?",
+"en": "What is this called?",
+"ko": "이건 뭐라고 해요?",
+"blank": "called",
+"note": "궁금하면 물어봐!"
+},
+{
+"id": "nm-10",
+"topic": "conversation",
+"level": 1,
+"opic": "NM",
+"expression": "I don't understand",
+"meaning": "이해가 안 돼요",
+"en": "Sorry, I don't understand.",
+"ko": "죄송해요, 이해가 안 돼요.",
+"blank": "understand",
+"note": "솔직하게 말해도 돼!"
+},
+{
+"id": "nm-11",
+"topic": "conversation",
+"level": 1,
+"opic": "NM",
+"expression": "Can you help me?",
+"meaning": "도와주실래요?",
+"en": "Can you help me, please?",
+"ko": "좀 도와주실래요?",
+"blank": "help",
+"note": "도움 요청은 용기!"
+},
+{
+"id": "nm-12",
+"topic": "travel",
+"level": 1,
+"opic": "NM",
+"expression": "I need ~",
+"meaning": "~이 필요해요",
+"en": "I need a taxi.",
+"ko": "택시가 필요해요.",
+"blank": "taxi",
+"note": "필요한 걸 말해!"
+},
+{
+"id": "nm-13",
+"topic": "travel",
+"level": 1,
+"opic": "NM",
+"expression": "Is it far?",
+"meaning": "멀어요?",
+"en": "Is it far from here?",
+"ko": "여기서 멀어요?",
+"blank": "far",
+"note": "길 물을 때!"
+},
+{
+"id": "nm-14",
+"topic": "travel",
+"level": 1,
+"opic": "NM",
+"expression": "I want to go to ~",
+"meaning": "~에 가고 싶어요",
+"en": "I want to go to the park.",
+"ko": "공원에 가고 싶어요.",
+"blank": "park",
+"note": "같이 가!"
+},
+{
+"id": "nm-15",
+"topic": "travel",
+"level": 1,
+"opic": "NM",
+"expression": "Two ~, please",
+"meaning": "~ 두 개 주세요",
+"en": "Two coffees, please.",
+"ko": "커피 두 잔 주세요.",
+"blank": "coffees",
+"note": "숫자 먼저!"
+},
+{
+"id": "nm-16",
+"topic": "travel",
+"level": 1,
+"opic": "NM",
+"expression": "Can I use ~?",
+"meaning": "~ 써도 돼요?",
+"en": "Can I use this chair?",
+"ko": "이 의자 써도 돼요?",
+"blank": "chair",
+"note": "허락 받기!"
+},
+{
+"id": "nm-17",
+"topic": "work",
+"level": 1,
+"opic": "NM",
+"expression": "I work at ~",
+"meaning": "~에서 일해요",
+"en": "I work at a bank.",
+"ko": "은행에서 일해요.",
+"blank": "bank",
+"note": "직장 소개!"
+},
+{
+"id": "nm-18",
+"topic": "work",
+"level": 1,
+"opic": "NM",
+"expression": "I start at ~",
+"meaning": "~에 시작해요",
+"en": "I start at nine.",
+"ko": "아홉 시에 시작해요.",
+"blank": "nine",
+"note": "출근 시간!"
+},
+{
+"id": "nm-19",
+"topic": "work",
+"level": 1,
+"opic": "NM",
+"expression": "I finish at ~",
+"meaning": "~에 끝나요",
+"en": "I finish at six.",
+"ko": "여섯 시에 끝나요.",
+"blank": "six",
+"note": "퇴근 기다려!"
+},
+{
+"id": "nm-20",
+"topic": "work",
+"level": 1,
+"opic": "NM",
+"expression": "I'm at work",
+"meaning": "일하는 중이에요",
+"en": "I'm at work now.",
+"ko": "지금 일하는 중이에요.",
+"blank": "work",
+"note": "이따 놀자!"
+},
+{
+"id": "nh-01",
+"topic": "daily",
+"level": 1,
+"opic": "NH",
+"expression": "I went to ~ yesterday",
+"meaning": "어제 ~에 갔어요",
+"en": "I went to the park yesterday.",
+"ko": "어제 공원에 갔어요.",
+"blank": "went",
+"note": "지난 일은 went!"
+},
+{
+"id": "nh-02",
+"topic": "daily",
+"level": 1,
+"opic": "NH",
+"expression": "I ate ~ for lunch",
+"meaning": "점심으로 ~을 먹었어요",
+"en": "I ate noodles for lunch.",
+"ko": "점심으로 국수를 먹었어요.",
+"blank": "lunch",
+"note": "맛있었어?"
+},
+{
+"id": "nh-03",
+"topic": "daily",
+"level": 1,
+"opic": "NH",
+"expression": "I usually ~",
+"meaning": "보통 ~해요",
+"en": "I usually wake up at seven.",
+"ko": "보통 일곱 시에 일어나요.",
+"blank": "usually",
+"note": "습관 말하기!"
+},
+{
+"id": "nh-04",
+"topic": "daily",
+"level": 1,
+"opic": "NH",
+"expression": "I want to ~",
+"meaning": "~하고 싶어요",
+"en": "I want to learn English.",
+"ko": "영어를 배우고 싶어요.",
+"blank": "learn",
+"note": "같이 하자!"
+},
+{
+"id": "nh-05",
+"topic": "daily",
+"level": 1,
+"opic": "NH",
+"expression": "I can ~",
+"meaning": "~할 수 있어요",
+"en": "I can drive a car.",
+"ko": "운전할 수 있어요.",
+"blank": "drive",
+"note": "나도 태워 줘!"
+},
+{
+"id": "nh-06",
+"topic": "daily",
+"level": 1,
+"opic": "NH",
+"expression": "I can't ~",
+"meaning": "~할 수 없어요",
+"en": "I can't swim well.",
+"ko": "수영을 잘 못해요.",
+"blank": "swim",
+"note": "나는 물 무서워!"
+},
+{
+"id": "nh-07",
+"topic": "daily",
+"level": 1,
+"opic": "NH",
+"expression": "I will ~ tomorrow",
+"meaning": "내일 ~할 거예요",
+"en": "I will clean my room tomorrow.",
+"ko": "내일 방을 청소할 거예요.",
+"blank": "clean",
+"note": "진짜 할 거지?"
+},
+{
+"id": "nh-08",
+"topic": "daily",
+"level": 1,
+"opic": "NH",
+"expression": "I'm going to ~",
+"meaning": "~할 거예요",
+"en": "I'm going to see a movie.",
+"ko": "영화를 볼 거예요.",
+"blank": "movie",
+"note": "나도 데려가!"
+},
+{
+"id": "nh-09",
+"topic": "daily",
+"level": 1,
+"opic": "NH",
+"expression": "There is a ~ near ...",
+"meaning": "... 근처에 ~이 있어요",
+"en": "There is a cafe near my house.",
+"ko": "우리 집 근처에 카페가 있어요.",
+"blank": "cafe",
+"note": "동네 소개!"
+},
+{
+"id": "nh-10",
+"topic": "daily",
+"level": 1,
+"opic": "NH",
+"expression": "My favorite ~ is ...",
+"meaning": "제가 제일 좋아하는 ~은 ...예요",
+"en": "My favorite food is kimchi.",
+"ko": "제가 제일 좋아하는 음식은 김치예요.",
+"blank": "favorite",
+"note": "내 건 당근!"
+},
+{
+"id": "nh-11",
+"topic": "conversation",
+"level": 1,
+"opic": "NH",
+"expression": "What do you do?",
+"meaning": "무슨 일 하세요?",
+"en": "What do you do for work?",
+"ko": "무슨 일 하세요?",
+"blank": "for",
+"note": "처음 만났을 때!"
+},
+{
+"id": "nh-12",
+"topic": "conversation",
+"level": 1,
+"opic": "NH",
+"expression": "Where are you from?",
+"meaning": "어디에서 왔어요?",
+"en": "Where are you from originally?",
+"ko": "원래 어디 출신이에요?",
+"blank": "originally",
+"note": "궁금해!"
+},
+{
+"id": "nh-13",
+"topic": "conversation",
+"level": 1,
+"opic": "NH",
+"expression": "When did you ~?",
+"meaning": "언제 ~했어요?",
+"en": "When did you arrive here?",
+"ko": "여기 언제 도착했어요?",
+"blank": "arrive",
+"note": "지난 일 묻기!"
+},
+{
+"id": "nh-14",
+"topic": "conversation",
+"level": 1,
+"opic": "NH",
+"expression": "Why are you ~?",
+"meaning": "왜 ~해요?",
+"en": "Why are you so happy?",
+"ko": "왜 그렇게 기분이 좋아요?",
+"blank": "happy",
+"note": "좋은 일 있어?"
+},
+{
+"id": "nh-15",
+"topic": "conversation",
+"level": 1,
+"opic": "NH",
+"expression": "Do you want ~?",
+"meaning": "~ 원해요?",
+"en": "Do you want some tea?",
+"ko": "차 좀 드실래요?",
+"blank": "tea",
+"note": "권할 때!"
+},
+{
+"id": "nh-16",
+"topic": "conversation",
+"level": 1,
+"opic": "NH",
+"expression": "Can you ~?",
+"meaning": "~할 수 있어요?",
+"en": "Can you speak Korean?",
+"ko": "한국어 할 수 있어요?",
+"blank": "speak",
+"note": "할 줄 아는지 묻기!"
+},
+{
+"id": "nh-17",
+"topic": "conversation",
+"level": 1,
+"opic": "NH",
+"expression": "I think ~",
+"meaning": "~인 것 같아요",
+"en": "I think it's a good idea.",
+"ko": "좋은 생각인 것 같아요.",
+"blank": "idea",
+"note": "의견 시작!"
+},
+{
+"id": "nh-18",
+"topic": "conversation",
+"level": 1,
+"opic": "NH",
+"expression": "Because ~",
+"meaning": "왜냐하면 ~",
+"en": "Because I was very tired.",
+"ko": "왜냐하면 정말 피곤했거든요.",
+"blank": "Because",
+"note": "이유 말하기!"
+},
+{
+"id": "nh-19",
+"topic": "travel",
+"level": 1,
+"opic": "NH",
+"expression": "I'd like a ~",
+"meaning": "~ 주세요",
+"en": "I'd like a glass of water.",
+"ko": "물 한 잔 주세요.",
+"blank": "glass",
+"note": "공손한 주문!"
+},
+{
+"id": "nh-20",
+"topic": "travel",
+"level": 1,
+"opic": "NH",
+"expression": "Is there a ~ here?",
+"meaning": "여기 ~ 있나요?",
+"en": "Is there a bus stop here?",
+"ko": "여기 버스 정류장 있나요?",
+"blank": "bus",
+"note": "길에서 써!"
+},
+{
+"id": "nh-21",
+"topic": "travel",
+"level": 1,
+"opic": "NH",
+"expression": "What time is ~?",
+"meaning": "~은 몇 시예요?",
+"en": "What time is the next bus?",
+"ko": "다음 버스는 몇 시예요?",
+"blank": "next",
+"note": "시간 묻기!"
+},
+{
+"id": "nh-22",
+"topic": "travel",
+"level": 1,
+"opic": "NH",
+"expression": "Turn left ~",
+"meaning": "~에서 왼쪽으로 도세요",
+"en": "Turn left at the corner.",
+"ko": "모퉁이에서 왼쪽으로 도세요.",
+"blank": "left",
+"note": "길 안내!"
+},
+{
+"id": "nh-23",
+"topic": "travel",
+"level": 1,
+"opic": "NH",
+"expression": "Go straight ~",
+"meaning": "~ 쭉 가세요",
+"en": "Go straight for two blocks.",
+"ko": "두 블록 쭉 가세요.",
+"blank": "straight",
+"note": "쭉 가!"
+},
+{
+"id": "nh-24",
+"topic": "travel",
+"level": 1,
+"opic": "NH",
+"expression": "I booked a ~",
+"meaning": "~을 예약했어요",
+"en": "I booked a room online.",
+"ko": "온라인으로 방을 예약했어요.",
+"blank": "booked",
+"note": "예약 확인!"
+},
+{
+"id": "nh-25",
+"topic": "work",
+"level": 1,
+"opic": "NH",
+"expression": "I have a lot of ~",
+"meaning": "~이 많아요",
+"en": "I have a lot of work today.",
+"ko": "오늘 일이 많아요.",
+"blank": "lot",
+"note": "힘내!"
+},
+{
+"id": "nh-26",
+"topic": "work",
+"level": 1,
+"opic": "NH",
+"expression": "I'm late for ~",
+"meaning": "~에 늦었어요",
+"en": "I'm late for work.",
+"ko": "회사에 늦었어요.",
+"blank": "late",
+"note": "뛰어!"
+},
+{
+"id": "nh-27",
+"topic": "work",
+"level": 1,
+"opic": "NH",
+"expression": "I sent ~",
+"meaning": "~을 보냈어요",
+"en": "I sent the email this morning.",
+"ko": "오늘 아침에 메일을 보냈어요.",
+"blank": "sent",
+"note": "보냈어, 진짜!"
+},
+{
+"id": "nh-28",
+"topic": "work",
+"level": 1,
+"opic": "NH",
+"expression": "Please call me ~",
+"meaning": "~ 전화 주세요",
+"en": "Please call me after lunch.",
+"ko": "점심 후에 전화 주세요.",
+"blank": "call",
+"note": "부탁하기!"
+},
+{
+"id": "nh-29",
+"topic": "work",
+"level": 1,
+"opic": "NH",
+"expression": "My boss is ~",
+"meaning": "제 상사는 ~해요",
+"en": "My boss is very kind.",
+"ko": "제 상사는 정말 친절해요.",
+"blank": "boss",
+"note": "다행이다!"
+},
+{
+"id": "nh-30",
+"topic": "work",
+"level": 1,
+"opic": "NH",
+"expression": "We have a ~ today",
+"meaning": "오늘 ~이 있어요",
+"en": "We have a meeting today.",
+"ko": "오늘 회의가 있어요.",
+"blank": "meeting",
+"note": "일정 말하기!"
+},
+{
+"id": "al-01",
+"topic": "daily",
+"level": 3,
+"opic": "AL",
+"expression": "I can't help but feel ~",
+"meaning": "~라는 마음을 떨칠 수 없어요",
+"en": "I can't help but feel a little disappointed.",
+"ko": "조금 실망스러운 마음을 떨칠 수 없어요.",
+"blank": "disappointed",
+"note": "솔직한 마음!"
+},
+{
+"id": "al-02",
+"topic": "daily",
+"level": 3,
+"opic": "AL",
+"expression": "Looking back, ~",
+"meaning": "돌이켜 보면 ~",
+"en": "Looking back, I should have listened to her.",
+"ko": "돌이켜 보면 그녀 말을 들었어야 했어요.",
+"blank": "listened",
+"note": "회상할 때!"
+},
+{
+"id": "al-03",
+"topic": "daily",
+"level": 3,
+"opic": "AL",
+"expression": "It's not that ~, it's just that ...",
+"meaning": "~라서가 아니라 그냥 ...예요",
+"en": "It's not that I don't care, it's just that I'm tired.",
+"ko": "신경 안 쓰는 게 아니라 그냥 피곤해요.",
+"blank": "care",
+"note": "오해 풀기!"
+},
+{
+"id": "al-04",
+"topic": "daily",
+"level": 3,
+"opic": "AL",
+"expression": "What bothers me most is ~",
+"meaning": "제일 신경 쓰이는 건 ~예요",
+"en": "What bothers me most is the lack of sleep.",
+"ko": "제일 신경 쓰이는 건 수면 부족이에요.",
+"blank": "lack",
+"note": "고민 말하기!"
+},
+{
+"id": "al-05",
+"topic": "daily",
+"level": 3,
+"opic": "AL",
+"expression": "I've come to realize that ~",
+"meaning": "~라는 걸 깨닫게 됐어요",
+"en": "I've come to realize that health comes first.",
+"ko": "건강이 우선이라는 걸 깨닫게 됐어요.",
+"blank": "health",
+"note": "어른스러워!"
+},
+{
+"id": "al-06",
+"topic": "daily",
+"level": 3,
+"opic": "AL",
+"expression": "The older I get, the more ~",
+"meaning": "나이가 들수록 더 ~",
+"en": "The older I get, the more I value my time.",
+"ko": "나이가 들수록 시간을 더 소중히 여겨요.",
+"blank": "value",
+"note": "멋진 구조야!"
+},
+{
+"id": "al-07",
+"topic": "daily",
+"level": 3,
+"opic": "AL",
+"expression": "Had I known ~, I would have ...",
+"meaning": "~을 알았더라면 ...했을 거예요",
+"en": "Had I known earlier, I would have come.",
+"ko": "더 일찍 알았더라면 왔을 거예요.",
+"blank": "earlier",
+"note": "고급 문장!"
+},
+{
+"id": "al-08",
+"topic": "daily",
+"level": 3,
+"opic": "AL",
+"expression": "As far as I can tell, ~",
+"meaning": "제가 아는 한 ~",
+"en": "As far as I can tell, nothing has changed.",
+"ko": "제가 아는 한 달라진 건 없어요.",
+"blank": "nothing",
+"note": "조심스러운 말!"
+},
+{
+"id": "al-09",
+"topic": "daily",
+"level": 3,
+"opic": "AL",
+"expression": "It goes without saying that ~",
+"meaning": "~은 말할 것도 없어요",
+"en": "It goes without saying that family comes first.",
+"ko": "가족이 먼저라는 건 말할 것도 없어요.",
+"blank": "family",
+"note": "당연할 때!"
+},
+{
+"id": "al-10",
+"topic": "daily",
+"level": 3,
+"opic": "AL",
+"expression": "I'm torn between ~ and ...",
+"meaning": "~와 ... 사이에서 고민돼요",
+"en": "I'm torn between staying and leaving.",
+"ko": "남을지 떠날지 고민돼요.",
+"blank": "leaving",
+"note": "마음이 왔다 갔다!"
+},
+{
+"id": "al-11",
+"topic": "conversation",
+"level": 3,
+"opic": "AL",
+"expression": "That's easier said than done",
+"meaning": "말처럼 쉽지 않아요",
+"en": "Well, that's easier said than done.",
+"ko": "음, 말처럼 쉽지 않아요.",
+"blank": "easier",
+"note": "진짜 그래!"
+},
+{
+"id": "al-12",
+"topic": "conversation",
+"level": 3,
+"opic": "AL",
+"expression": "I see where you're coming from",
+"meaning": "왜 그렇게 말하는지 알겠어요",
+"en": "I see where you're coming from, but I disagree.",
+"ko": "왜 그렇게 말하는지 알겠지만 저는 생각이 달라요.",
+"blank": "disagree",
+"note": "품격 있는 반대!"
+},
+{
+"id": "al-13",
+"topic": "conversation",
+"level": 3,
+"opic": "AL",
+"expression": "Let me play devil's advocate",
+"meaning": "일부러 반대 입장에서 말해 볼게요",
+"en": "Let me play devil's advocate for a moment.",
+"ko": "잠깐 일부러 반대 입장에서 말해 볼게요.",
+"blank": "moment",
+"note": "토론 고수!"
+},
+{
+"id": "al-14",
+"topic": "conversation",
+"level": 3,
+"opic": "AL",
+"expression": "To put it simply, ~",
+"meaning": "간단히 말하면 ~",
+"en": "To put it simply, we can't afford it.",
+"ko": "간단히 말하면 우리는 그럴 여유가 없어요.",
+"blank": "afford",
+"note": "쉽게 정리!"
+},
+{
+"id": "al-15",
+"topic": "conversation",
+"level": 3,
+"opic": "AL",
+"expression": "What I'm getting at is ~",
+"meaning": "제 요점은 ~예요",
+"en": "What I'm getting at is that we need a plan.",
+"ko": "제 요점은 계획이 필요하다는 거예요.",
+"blank": "plan",
+"note": "본론으로!"
+},
+{
+"id": "al-16",
+"topic": "conversation",
+"level": 3,
+"opic": "AL",
+"expression": "That being said, ~",
+"meaning": "그렇긴 해도 ~",
+"en": "That being said, I still think it's worth trying.",
+"ko": "그렇긴 해도 해 볼 가치는 있다고 생각해요.",
+"blank": "worth",
+"note": "균형 잡힌 말!"
+},
+{
+"id": "al-17",
+"topic": "conversation",
+"level": 3,
+"opic": "AL",
+"expression": "On the other hand, ~",
+"meaning": "반면에 ~",
+"en": "On the other hand, it costs much less.",
+"ko": "반면에 비용은 훨씬 적게 들어요.",
+"blank": "costs",
+"note": "비교할 때!"
+},
+{
+"id": "al-18",
+"topic": "conversation",
+"level": 3,
+"opic": "AL",
+"expression": "It's not as simple as it sounds",
+"meaning": "들리는 것만큼 간단하지 않아요",
+"en": "Honestly, it's not as simple as it sounds.",
+"ko": "솔직히 들리는 것만큼 간단하지 않아요.",
+"blank": "simple",
+"note": "복잡할 때!"
+},
+{
+"id": "al-19",
+"topic": "conversation",
+"level": 3,
+"opic": "AL",
+"expression": "I'd argue that ~",
+"meaning": "저는 ~라고 봐요",
+"en": "I'd argue that experience matters more.",
+"ko": "저는 경험이 더 중요하다고 봐요.",
+"blank": "experience",
+"note": "주장 펼치기!"
+},
+{
+"id": "al-20",
+"topic": "conversation",
+"level": 3,
+"opic": "AL",
+"expression": "Let's not get ahead of ourselves",
+"meaning": "너무 앞서가지 말아요",
+"en": "Let's not get ahead of ourselves here.",
+"ko": "너무 앞서가지 말아요.",
+"blank": "ahead",
+"note": "진정시키는 말!"
+},
+{
+"id": "al-21",
+"topic": "work",
+"level": 3,
+"opic": "AL",
+"expression": "We need to weigh ~ against ...",
+"meaning": "~와 ...을 따져 봐야 해요",
+"en": "We need to weigh the cost against the benefits.",
+"ko": "비용과 이점을 따져 봐야 해요.",
+"blank": "benefits",
+"note": "결정 전에!"
+},
+{
+"id": "al-22",
+"topic": "work",
+"level": 3,
+"opic": "AL",
+"expression": "The bottom line is ~",
+"meaning": "결론은 ~예요",
+"en": "The bottom line is we need more staff.",
+"ko": "결론은 인력이 더 필요하다는 거예요.",
+"blank": "staff",
+"note": "회의 핵심!"
+},
+{
+"id": "al-23",
+"topic": "work",
+"level": 3,
+"opic": "AL",
+"expression": "I'd like to push back on ~",
+"meaning": "~에 대해 다른 의견을 내고 싶어요",
+"en": "I'd like to push back on that timeline.",
+"ko": "그 일정에 대해 다른 의견을 내고 싶어요.",
+"blank": "timeline",
+"note": "당당하게!"
+},
+{
+"id": "al-24",
+"topic": "work",
+"level": 3,
+"opic": "AL",
+"expression": "Let's circle back to ~",
+"meaning": "~로 다시 돌아가요",
+"en": "Let's circle back to this next week.",
+"ko": "다음 주에 이 얘기로 다시 돌아가요.",
+"blank": "week",
+"note": "회의 단골!"
+},
+{
+"id": "al-25",
+"topic": "work",
+"level": 3,
+"opic": "AL",
+"expression": "We can't afford to ~",
+"meaning": "~할 여유가 없어요",
+"en": "We can't afford to miss this deadline.",
+"ko": "이 마감을 놓칠 여유가 없어요.",
+"blank": "miss",
+"note": "긴장돼!"
+},
+{
+"id": "al-26",
+"topic": "work",
+"level": 3,
+"opic": "AL",
+"expression": "It's a matter of ~",
+"meaning": "~의 문제예요",
+"en": "It's a matter of priorities.",
+"ko": "우선순위의 문제예요.",
+"blank": "priorities",
+"note": "핵심 짚기!"
+},
+{
+"id": "al-27",
+"topic": "work",
+"level": 3,
+"opic": "AL",
+"expression": "From a ~ standpoint, ...",
+"meaning": "~ 관점에서 보면 ...",
+"en": "From a financial standpoint, it makes sense.",
+"ko": "재무적 관점에서 보면 타당해요.",
+"blank": "financial",
+"note": "전문가 같아!"
+},
+{
+"id": "al-28",
+"topic": "work",
+"level": 3,
+"opic": "AL",
+"expression": "I'm concerned that ~",
+"meaning": "~이 우려돼요",
+"en": "I'm concerned that we're moving too fast.",
+"ko": "너무 빨리 진행하는 게 우려돼요.",
+"blank": "fast",
+"note": "걱정을 정중하게!"
+},
+{
+"id": "al-29",
+"topic": "work",
+"level": 3,
+"opic": "AL",
+"expression": "Given the circumstances, ~",
+"meaning": "상황을 고려하면 ~",
+"en": "Given the circumstances, we did our best.",
+"ko": "상황을 고려하면 최선을 다했어요.",
+"blank": "best",
+"note": "잘했어!"
+},
+{
+"id": "al-30",
+"topic": "work",
+"level": 3,
+"opic": "AL",
+"expression": "We should align on ~",
+"meaning": "~에 대해 의견을 맞춰야 해요",
+"en": "We should align on the goals first.",
+"ko": "먼저 목표에 대해 의견을 맞춰야 해요.",
+"blank": "goals",
+"note": "같은 방향으로!"
+},
+{
+"id": "al-31",
+"topic": "travel",
+"level": 3,
+"opic": "AL",
+"expression": "I'd appreciate your help with ~",
+"meaning": "~을 도와주시면 감사하겠어요",
+"en": "I'd appreciate your help with my luggage.",
+"ko": "제 짐을 도와주시면 감사하겠어요.",
+"blank": "luggage",
+"note": "정중한 부탁!"
+},
+{
+"id": "al-32",
+"topic": "travel",
+"level": 3,
+"opic": "AL",
+"expression": "I was told that ~",
+"meaning": "~라고 안내받았어요",
+"en": "I was told that breakfast was free.",
+"ko": "조식이 무료라고 안내받았어요.",
+"blank": "breakfast",
+"note": "따질 때 침착하게!"
+},
+{
+"id": "al-33",
+"topic": "travel",
+"level": 3,
+"opic": "AL",
+"expression": "There must be some mistake",
+"meaning": "뭔가 착오가 있는 것 같아요",
+"en": "There must be some mistake with my booking.",
+"ko": "제 예약에 뭔가 착오가 있는 것 같아요.",
+"blank": "booking",
+"note": "화내지 말고!"
+},
+{
+"id": "al-34",
+"topic": "travel",
+"level": 3,
+"opic": "AL",
+"expression": "I understand it's not your fault, but ~",
+"meaning": "당신 잘못이 아닌 건 알지만 ~",
+"en": "I understand it's not your fault, but I need a solution.",
+"ko": "당신 잘못이 아닌 건 알지만 해결책이 필요해요.",
+"blank": "solution",
+"note": "품격 있는 항의!"
+},
+{
+"id": "al-35",
+"topic": "travel",
+"level": 3,
+"opic": "AL",
+"expression": "What are my options?",
+"meaning": "제가 어떤 선택을 할 수 있나요?",
+"en": "What are my options at this point?",
+"ko": "지금 제가 어떤 선택을 할 수 있나요?",
+"blank": "point",
+"note": "문제 해결!"
+},
+{
+"id": "al-36",
+"topic": "travel",
+"level": 3,
+"opic": "AL",
+"expression": "I'd like to speak with ~",
+"meaning": "~와 이야기하고 싶어요",
+"en": "I'd like to speak with the manager.",
+"ko": "매니저와 이야기하고 싶어요.",
+"blank": "manager",
+"note": "최후의 수단!"
+},
+{
+"id": "al-37",
+"topic": "travel",
+"level": 3,
+"opic": "AL",
+"expression": "Would you mind ~ing?",
+"meaning": "~해 주시겠어요?",
+"en": "Would you mind keeping my bags for a while?",
+"ko": "잠시 제 가방을 맡아 주시겠어요?",
+"blank": "bags",
+"note": "정중한 부탁!"
+},
+{
+"id": "al-38",
+"topic": "travel",
+"level": 3,
+"opic": "AL",
+"expression": "I'm afraid I have to ~",
+"meaning": "죄송하지만 ~해야 해요",
+"en": "I'm afraid I have to cancel my trip.",
+"ko": "죄송하지만 여행을 취소해야 해요.",
+"blank": "trip",
+"note": "아쉬운 소식!"
+},
+{
+"id": "al-39",
+"topic": "travel",
+"level": 3,
+"opic": "AL",
+"expression": "Is there anything you can do about ~?",
+"meaning": "~에 대해 해 주실 수 있는 게 있나요?",
+"en": "Is there anything you can do about the delay?",
+"ko": "지연에 대해 해 주실 수 있는 게 있나요?",
+"blank": "delay",
+"note": "해결 요청!"
+},
+{
+"id": "al-40",
+"topic": "travel",
+"level": 3,
+"opic": "AL",
+"expression": "I'd rather not ~ if I can avoid it",
+"meaning": "가능하면 ~하고 싶지 않아요",
+"en": "I'd rather not wait if I can avoid it.",
+"ko": "가능하면 기다리고 싶지 않아요.",
+"blank": "wait",
+"note": "부드러운 거절!"
 }
 ]
