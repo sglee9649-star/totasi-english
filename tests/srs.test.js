@@ -49,4 +49,11 @@ for(const i of items.filter(i=>['IL','IM1','IM2','IM3','IH'].includes(i.opic)))a
 const L=[...Array(8)].map((_,i)=>'s'+i);let rec=[];
 for(let n=0;n<40;n++){const r=S.pickExamples(L,rec,3);a.equal(r.picks.length,3);a.equal(new Set(r.picks).size,3);a.ok(r.picks.every(p=>!rec.includes(p)),'recent');rec=r.recent;a.ok(rec.length<=5)}
 a.equal(S.pickExamples(['a','b'],[0],3).picks.length,2);a.equal(S.pickExamples(['a','b','c'],[0,1],3).picks.length,3);a.equal(S.pickExamples([...Array(20)].map((_,i)=>i),[],3).recent.length,3)}
+{const base=o=>Object.assign({call:'오빠',cards:{},days:[],level:{current:'IL',passed:[],history:[]},exam:{lastAt:0,lastLevel:'',attempts:{}},settingsAt:0,savedAt:100,resetAt:0,autoplay:true,minutes:10,aiLimit:1,aiMonth:'',aiCost:0,voice:false},o);
+const A=base({cards:{a:{seen:5,reps:1},b:{seen:9,reps:4}},days:['2026-11-01'],voice:true,settingsAt:5,call:'언니'}),B=base({cards:{a:{seen:7,reps:2},c:{seen:3,reps:1}},days:['2026-11-02','2026-11-01'],settingsAt:9,level:{current:'IM1',passed:['IL'],history:[{from:'IL',to:'IM1',at:50,score:90}]},call:'오빠',aiMonth:'2026-11',aiCost:.2});
+const m=S.mergeState(A,B);a.equal(m.cards.a.reps,2);a.equal(m.cards.b.reps,4);a.equal(m.cards.c.reps,1);a.deepEqual(m.days,['2026-11-01','2026-11-02']);a.equal(m.level.current,'IM1');a.equal(m.call,'오빠');a.equal(m.voice,true);a.equal(m.aiCost,.2);
+const m2=S.mergeState(m,B);a.deepEqual(JSON.parse(JSON.stringify(m2.cards)),JSON.parse(JSON.stringify(m.cards)));a.deepEqual(m2.level,m.level);a.deepEqual(m2.days,m.days);a.deepEqual(S.mergeState(B,A).cards,m.cards);
+const wiped=base({resetAt:1000,savedAt:1000,cards:{},days:[]}),stale=base({savedAt:500,cards:{a:{seen:400,reps:3},n:{seen:1500,reps:1}},level:{current:'IH',passed:['IL'],history:[{from:'IL',to:'IM1',at:90,score:90}]}});
+const r=S.mergeState(stale,wiped);a.equal(r.cards.a,undefined);a.ok(r.cards.n);a.equal(r.level.current,'IL');a.equal(r.level.history.length,0);a.equal(r.resetAt,1000);
+a.equal(S.mergeState(A,null).cards.a.reps,1)}
 console.log('410 ok');

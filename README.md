@@ -4,4 +4,5 @@
 - 로직 테스트: `node tests/srs.test.js`
 - 파일을 바꾸면 `app.js`의 APP_VERSION과 `sw.js`의 CACHE 버전을 함께 올려 주세요.
 - 새 학습 모드는 `app.js`의 STUDY_MENU에 추가합니다.
+- 동기화: `sync.js`(Firebase Auth, Firestore). SDK는 `assets/vendor`에 firebase@13.0.0 compat 빌드(Apache-2.0)를 함께 배포합니다.
 - AI 교정은 Claude API(claude-haiku-5-5)를 브라우저에서 직접 호출하며, 키는 각 기기 설정에 저장됩니다.

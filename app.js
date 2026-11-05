@@ -1,11 +1,12 @@
-const APP_VERSION = '0.15.0', APP_DATE = '2026-11-04';
+const APP_VERSION = '1.0.0', APP_DATE = '2026-11-04';
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const KEY = 'totasi-english-v1';
-const FRESH_STATE = () => ({ call: '', cards: {}, days: [], input: 'type', autoplay: true, voice: false, voiceAsked: false, schema: 2, level: { current: 'IL', passed: [], history: [] }, studyLevel: '', exampleSeen: {}, exam: { lastAt: 0, lastLevel: '', attempts: {} }, minutes: 10, aiMonth: '', aiCost: 0, aiLimit: 1 });
+const FRESH_STATE = () => ({ call: '', cards: {}, days: [], input: 'type', autoplay: true, voice: false, voiceAsked: false, schema: 2, level: { current: 'IL', passed: [], history: [] }, studyLevel: '', resetAt: 0, settingsAt: 0, savedAt: 0, exampleSeen: {}, exam: { lastAt: 0, lastLevel: '', attempts: {} }, minutes: 10, aiMonth: '', aiCost: 0, aiLimit: 1 });
 let S = FRESH_STATE(), ITEMS = [], WORDS = [], session = null;
 let screen = { name: 'home', render: () => home() }, returnTo = null, curE = null;
 const TAB_OF = { home: 'home', done: 'home', menu: 'menu', records: 'records', settings: 'settings', dict: 'settings' };
+let backPending = false;
 const TAB_ORDER = ['home', 'menu', 'records', 'settings'];
 const setScreen = (name, render) => {
   screen = { name, render }; vcUI(); vcSync();
@@ -14,12 +15,13 @@ const setScreen = (name, render) => {
   if (cur) $('#tabs').style.setProperty('--i', TAB_ORDER.indexOf(cur));
   try {
     const guarded = history.state && history.state.guard;
-    if (name === 'home' && guarded) history.back();
-    else if (name !== 'home' && !guarded) history.pushState({ guard: 1 }, '');
+    if (name === 'home') { if (guarded && !backPending) { backPending = true; history.back(); } }
+    else if (!guarded && !backPending) history.pushState({ guard: 1 }, '');
   } catch {}
 };
 /* 안드로이드 뒤로 가기 버튼과 제스처를 앱 안의 뒤로 가기로 연결한다. */
 window.addEventListener('popstate', () => {
+  if (backPending) { backPending = false; if (screen.name !== 'home' && !(history.state && history.state.guard)) history.pushState({ guard: 1 }, ''); return; }
   if (screen.name === 'home') return;
   vcDo('back');
   try { if (screen.name !== 'home' && !(history.state && history.state.guard)) history.pushState({ guard: 1 }, ''); } catch {}
@@ -32,7 +34,9 @@ function migrate(raw) {
   S.schema = 2;
 }
 function load() { try { const v = JSON.parse(localStorage.getItem(KEY)); if (v) { const old = !v.schema; migrate(v); if (old) save(); } } catch {} }
-function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch {} }
+function saveLocal() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch {} }
+function save() { S.savedAt = Date.now(); saveLocal(); if (typeof Sync !== 'undefined') Sync.soon(); }
+const savePref = () => { S.settingsAt = Date.now(); save(); };
 
 /* ---------- 토타시 ---------- */
 const FACE = {
@@ -146,7 +150,7 @@ function welcome() {
   view('setup');
   say('안녕! 나 토타시야! 오늘부터 같이 영어 공부하는 거지? 내가 뭐라고 부르면 돼?', 'great');
   panel(`<h1>토타시가 뭐라고 부를까요?</h1><div class="row"><button class="btn cta" id="cUn">언니</button><button class="btn cta" id="cOp">오빠</button></div><p class="note">설정에서 언제든 바꿀 수 있어요.</p>`);
-  const pickCall = c => { S.call = c; save(); chooseControl(); };
+  const pickCall = c => { S.call = c; savePref(); chooseControl(); };
   $('#cUn').onclick = () => pickCall('언니'); $('#cOp').onclick = () => pickCall('오빠');
 }
 function chooseControl() {
@@ -197,7 +201,7 @@ function home() {
     </div>`);
   $('#goLevels').onclick = levels; if ($('#goExam')) $('#goExam').onclick = examIntro;
   $('#goSpeed').onclick = startSpeed; $('#goMake').onclick = () => make(); $('#goDict').onclick = dictionary;
-  document.querySelectorAll('[data-min]').forEach(b => b.onclick = () => { S.minutes = +b.dataset.min; save(); home(); });
+  document.querySelectorAll('[data-min]').forEach(b => b.onclick = () => { S.minutes = +b.dataset.min; savePref(); home(); });
   $('#startBtn').onclick = () => start(m);
   $('#vcToggle').onclick = () => { setVoice(!S.voice); home(); };
 }
@@ -404,7 +408,7 @@ function showResult(e, result, given, timedOut) {
   if ($('#rEasy')) { $('#rEasy').onclick = () => rate('easy'); $('#rHard').onclick = () => rate('hard'); }
 }
 function finish() {
-  clearQ(); const s = session; session = null;
+  clearQ(); const s = session; session = null; Sync.flush();
   if (!s || !(s.right + s.wrong)) return home();
   view('home'); setScreen('done', home);
   const n = s.right + s.wrong;
@@ -465,7 +469,7 @@ function examResult() {
     S.level.history.push({ from: cur, to: nx, at: now, score: r.pct });
     S.level.current = nx; S.studyLevel = '';
   } else wrong.forEach(m => { if (S.cards[m.item.id]) S.cards[m.item.id].due = now; });
-  markToday(now); save();
+  markToday(now); save(); Sync.flush();
   showExamResult(r, cur, nx, s.marks, wrong);
 }
 function showExamResult(r, cur, nx, marks, wrong) {
@@ -612,6 +616,22 @@ async function checkMine(item, text) {
 }
 
 /* ---------- 설정 ---------- */
+function drawSync() {
+  const b = $('#syncBox'); if (!b) return;
+  const u = Sync.user, st = Sync.state, t = st.lastAt ? new Date(st.lastAt).toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' }) : '';
+  b.innerHTML = `<h2>기기 동기화</h2>
+    ${u ? `<p class="note">${esc(u.email || 'Google 계정')}으로 로그인했어요.${t ? ` 마지막 동기화 ${esc(t)}` : ''}</p>${st.message ? `<p class="note">${esc(st.message)}</p>` : ''}
+      <div class="row"><button class="btn alt small" id="syncNow">지금 동기화</button><button class="btn ghost small" id="syncOut">로그아웃</button></div>
+      <p class="note">로그아웃해도 이 기기의 기록은 지워지지 않아요.</p>`
+    : `<p class="note">휴대폰과 태블릿에서 같은 Google 계정으로 로그인하면 학습 기록이 맞춰져요. 로그인하지 않아도 앱은 그대로 쓸 수 있어요. 학습 기록과 호칭은 Google Firebase에 저장되고, API 키는 저장되지 않아요.</p>
+      <button class="btn alt small" id="syncIn">Google로 로그인</button>`}
+    ${st.error ? `<p class="err">${esc(st.error)}</p>` : ''}`;
+  if ($('#syncIn')) $('#syncIn').onclick = async ev => { ev.target.disabled = true; ev.target.textContent = '로그인하는 중…'; try { await Sync.signIn(); } catch {} drawSync(); };
+  if ($('#syncNow')) $('#syncNow').onclick = async ev => { ev.target.disabled = true; ev.target.textContent = '동기화하는 중…'; await Sync.now(); drawSync(); };
+  if ($('#syncOut')) $('#syncOut').onclick = async () => { await Sync.signOut(); drawSync(); };
+}
+window.onSyncChange = () => { if (screen.name === 'settings') drawSync(); };
+window.onSyncMerged = () => { if (!session && ['home', 'menu', 'records', 'levels'].includes(screen.name)) screen.render(); };
 function settings() {
   clearQ(); view('home'); setScreen('settings', settings); returnTo = null;
   say('{호칭}, 뭐 바꿀 거야? 내 이름은 안 돼!', 'idle');
@@ -623,6 +643,7 @@ function settings() {
       <button class="item" id="vcSet" role="switch" aria-checked="${S.voice}" ${SR ? '' : 'disabled'}><span><b>음성 조작</b></span><i class="switchy"></i></button>
       <button class="item" id="setDict"><span><b>명령어 사전</b></span>${ICON.go}</button>
     </div>
+    <div class="sheet" id="syncBox"></div>
     <div class="sheet"><h2>AI 연결 (Claude API)</h2>
       <p class="note">${key ? 'API 키가 이 기기에 저장되어 있어요.' : 'Claude Console에서 만든 API 키를 넣어 주세요.'} 키는 백업 파일에 들어가지 않아요. 내가 쓴 문장은 교정을 위해 Anthropic으로 전송돼요.</p>
       <input class="field" id="key" type="password" autocomplete="off" aria-label="API 키" placeholder="${key ? '새 키로 바꾸려면 입력' : 'sk-ant-로 시작하는 키'}">
@@ -636,12 +657,13 @@ function settings() {
       <input type="file" id="file" accept="application/json,.json" hidden aria-label="백업 파일"><p class="note" id="msg" role="status"></p></div>
     <button class="btn ghost small danger" id="wipe">모든 학습 기록 지우기</button>
     <p class="note" id="ver" style="text-align:center">토타시 영어 버전 ${APP_VERSION} · ${APP_DATE}</p>`);
-  const setCall = c => { S.call = c; save(); settings(); };
+  drawSync();
+  const setCall = c => { S.call = c; savePref(); settings(); };
   $('#cUn').onclick = () => setCall('언니'); $('#cOp').onclick = () => setCall('오빠');
-  $('#auto').onclick = () => { S.autoplay = !S.autoplay; save(); settings(); };
+  $('#auto').onclick = () => { S.autoplay = !S.autoplay; savePref(); settings(); };
   $('#vcSet').onclick = () => { setVoice(!S.voice); settings(); };
   $('#setDict').onclick = dictionary;
-  $('#lim').onchange = ev => { const v = parseFloat(ev.target.value); if (v >= 0) { S.aiLimit = v; save(); } };
+  $('#lim').onchange = ev => { const v = parseFloat(ev.target.value); if (v >= 0) { S.aiLimit = v; savePref(); } };
   if ($('#keyDel')) $('#keyDel').onclick = () => { setKey(''); settings(); };
   $('#keySave').onclick = async () => {
     const v = $('#key').value.trim(), m = $('#keyMsg');
@@ -671,8 +693,8 @@ function settings() {
   };
   $('#wipe').onclick = () => {
     const w = $('#wipe');
-    if (w.dataset.sure) { const call = S.call; S = FRESH_STATE(); S.call = call; save(); home(); return; }
-    w.dataset.sure = '1'; w.textContent = '정말 지울까요? 한 번 더 누르면 지워져요';
+    if (w.dataset.sure) { const call = S.call, voice = S.voice; S = FRESH_STATE(); S.call = call; S.voice = voice; S.resetAt = Date.now(); save(); Sync.now(); home(); return; }
+    w.dataset.sure = '1'; w.textContent = Sync.user ? '다른 기기 기록도 함께 지워져요. 한 번 더 누르면 지워져요' : '정말 지울까요? 한 번 더 누르면 지워져요';
   };
 }
 
@@ -752,7 +774,7 @@ function vcDo(action) {
     easy() { $('#rEasy') ? click('#rEasy') : click('#nx'); }, hard() { $('#rHard') ? click('#rHard') : click('#nx'); },
     exOther() { click('#otherEx'); }, ex0() { click('#ex0'); }, ex1() { click('#ex1'); }, ex2() { click('#ex2'); },
     c0() { click('#opt0'); }, c1() { click('#opt1'); }, c2() { click('#opt2'); }, c3() { click('#opt3'); },
-    words() { startWords(); }, dictation() { startPractice('dictation', '받아쓰기'); }, shadow() { startPractice('shadow', '따라 말하기'); }, choose() { startPractice('choose', '표현 고르기'); },
+    words() { startWords(); }, sync() { settings(); if (Sync.user) Sync.now(); }, dictation() { startPractice('dictation', '받아쓰기'); }, shadow() { startPractice('shadow', '따라 말하기'); }, choose() { startPractice('choose', '표현 고르기'); },
     speed() { if (ITEMS.length > newCount()) startSpeed(); else say('{호칭}, 표현부터 배우고 하자!', 'think'); }, make() { if (ITEMS.length > newCount()) make(); else say('{호칭}, 표현부터 배우고 하자!', 'think'); },
     hint() { click('#hint'); }, pass() { click('#pass'); }, quit() { if (session && session.exam) return acts.back(); finish(); }, exam() { examIntro(); },
     listen() { const q = screen.name === 'quiz' && ['arrange', 'sentence', 'choose', 'wordRecall'].includes(curE.stage); speak(line(), q ? { lang: 'ko-KR', rate: 1 } : {}); }, slow() { const q = screen.name === 'quiz' && ['arrange', 'sentence', 'choose', 'wordRecall'].includes(curE.stage); speak(line(), q ? { lang: 'ko-KR', rate: .8 } : { rate: .65 }); },
@@ -786,6 +808,7 @@ function vcDo(action) {
   if (acts[action]) acts[action]();
 }
 document.addEventListener('visibilitychange', () => {
+  if (Sync.user) { if (document.hidden) Sync.flush(); else Sync.now(); }
   if (!S.voice) return;
   if (document.hidden) vcStop(); else if (!VC.rest) { VC.last = Date.now(); vcHold(); vcStart(); }
 });
@@ -795,6 +818,7 @@ const TAB_ICON = { home: ['home', 'blue'], menu: ['book', 'violet'], records: ['
 document.querySelectorAll('#tabs button').forEach(b => { b.insertAdjacentHTML('afterbegin', i3d(...TAB_ICON[b.dataset.tab])); b.onclick = () => ({ home, menu, records, settings })[b.dataset.tab](); });
 $('#toto').onclick = () => { if (!session) say(pick(LINES.poke), 'great', 'boing'); else bounce('boing'); };
 (async function boot() {
+  try { if (history.state && history.state.guard) history.replaceState(null, ''); } catch {}
   load(); draw();
   try { navigator.storage && navigator.storage.persist && navigator.storage.persist(); } catch {}
   try {
@@ -802,5 +826,6 @@ $('#toto').onclick = () => { if (!session) say(pick(LINES.poke), 'great', 'boing
     try { WORDS = (await (await fetch('data/words.json')).json()).map(w => ({ id: w.id, opic: w.opic, topic: w.topic, pos: w.pos, isWord: true, expression: w.word, meaning: w.ko, en: w.en, ko: w.enKo, blank: w.word, note: POS_KO[w.pos] || '' })); } catch {}
   } catch { say('{호칭}, 표현 파일을 못 찾았어… 인터넷에 연결한 뒤 다시 열어 줘!', 'wrong'); panel('<p class="err">학습 데이터를 불러오지 못했어요. 인터넷에 연결한 뒤 앱을 다시 열어 주세요.</p>'); return; }
   if (!S.call) welcome(); else { if (S.voice && SR) { VC.last = Date.now(); vcHold(); } home(); vcStart(); }
+  if (Sync.isOn()) Sync.load().catch(() => {});
   if ('serviceWorker' in navigator) { const had = !!navigator.serviceWorker.controller; navigator.serviceWorker.addEventListener('controllerchange', () => { if (had && !session) location.reload(); }); try { await navigator.serviceWorker.register('sw.js'); } catch {} }
 })();

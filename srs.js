@@ -83,6 +83,31 @@
     const picks = open.map(i => [r(), i]).sort((a, b) => a[0] - b[0]).slice(0, n).map(x => x[1]);
     return { picks, recent: block.concat(picks).slice(-Math.max(keep, n)) };
   }
+  /* 두 기기의 기록을 합친다. 같은 입력을 다시 합쳐도 결과가 같고, 학습 기록이 사라지는 쪽으로 합치지 않는다. */
+  function mergeState(local, remote) {
+    if (!remote) return Object.assign({}, local);
+    const L = local, R = remote, resetAt = Math.max(L.resetAt || 0, R.resetAt || 0);
+    const valid = x => (x.savedAt || 0) >= resetAt;
+    const cards = {};
+    [L, R].forEach(x => Object.entries(x.cards || {}).forEach(([k, c]) => {
+      if ((c.seen || 0) < resetAt) return;
+      if (!cards[k] || (c.seen || 0) > (cards[k].seen || 0)) cards[k] = c;
+    }));
+    const pad = n => String(n).padStart(2, '0'), rd = new Date(resetAt), from = resetAt ? `${rd.getFullYear()}-${pad(rd.getMonth() + 1)}-${pad(rd.getDate())}` : '';
+    const days = [...new Set([...(L.days || []), ...(R.days || [])])].filter(d => d >= from).sort();
+    const sides = [L, R].filter(valid), lvOf = x => LEVELS.indexOf(x.level && x.level.current);
+    const top = sides.reduce((a, b) => (lvOf(b) > lvOf(a) ? b : a), sides[0] || L);
+    const hist = new Map();
+    sides.forEach(x => ((x.level && x.level.history) || []).forEach(h => { if (h.at >= resetAt) hist.set(h.at + h.to, h); }));
+    const level = { current: (sides.length ? top : { level: { current: 'IL' } }).level.current, passed: [...new Set(sides.flatMap(x => (x.level && x.level.passed) || []))], history: [...hist.values()].sort((a, b) => a.at - b.at) };
+    const examLatest = sides.map(x => x.exam || {}).reduce((a, b) => ((b.lastAt || 0) > (a.lastAt || 0) ? b : a), {});
+    const attempts = {};
+    sides.forEach(x => Object.entries((x.exam && x.exam.attempts) || {}).forEach(([k, v]) => { attempts[k] = Math.max(attempts[k] || 0, v); }));
+    const exam = Object.assign({ lastAt: 0, lastLevel: '' }, examLatest, { attempts });
+    const pref = (R.settingsAt || 0) > (L.settingsAt || 0) ? R : L;
+    const mL = L.aiMonth || '', mR = R.aiMonth || '', aiMonth = mL > mR ? mL : mR, aiCost = mL === mR ? Math.max(L.aiCost || 0, R.aiCost || 0) : (mL > mR ? L.aiCost : R.aiCost) || 0;
+    return Object.assign({}, L, { cards, days, level, exam, resetAt, aiMonth, aiCost, call: pref.call || L.call, autoplay: pref.autoplay, minutes: pref.minutes, aiLimit: pref.aiLimit, settingsAt: Math.max(L.settingsAt || 0, R.settingsAt || 0), savedAt: Math.max(L.savedAt || 0, R.savedAt || 0) });
+  }
   const clean = s => String(s || '').toLowerCase().replace(/[’]/g, "'").replace(/[^a-z' ]+/g, ' ').trim();
   function dist(a, b) {
     const d = Array.from({ length: a.length + 1 }, (_, i) => [i]);
@@ -131,6 +156,6 @@
     return all.sort((a, b) => (b.r.ok - a.r.ok) || (a.r.missing.length - b.r.missing.length))[0];
   }
   const chipsOf = en => en.replace(/[.,?!]/g, '').split(/\s+/).map((w, i) => i === 0 ? w.replace(/^[A-Z](?=[a-z])/, c => c.toLowerCase()) : w);
-  const api = { pickExamples, PROMOTION, promotionStatus, EXAM_SECS, buildExam, examScore, wordStage, LEVELS, LEVEL_DESC, levelProgress, nextLevel, canStudyLevel, MODES, grade, buildSession, check, splitBlank, startOfDay, addDays, stageOf, rate, gradeSentence, bestSentence, chipsOf };
+  const api = { mergeState, pickExamples, PROMOTION, promotionStatus, EXAM_SECS, buildExam, examScore, wordStage, LEVELS, LEVEL_DESC, levelProgress, nextLevel, canStudyLevel, MODES, grade, buildSession, check, splitBlank, startOfDay, addDays, stageOf, rate, gradeSentence, bestSentence, chipsOf };
   if (typeof module !== 'undefined') module.exports = api; else root.SRS = api;
 })(this);

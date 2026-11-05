@@ -37,6 +37,7 @@
     { group: '화면 이동', action: 'back', label: '뒤로 가기', on: ALL, ko: ['뒤로', '뒤로 가기', '뒤로 가', '이전', '이전 화면', '돌아가기', '돌아가'], en: ['go back', 'back'] },
     { group: '화면 이동', action: 'homeGo', label: '홈으로', on: ALL, ko: ['홈', '홈으로', '홈 화면', '처음으로', '처음 화면', '메인'], en: ['go home'] },
     { group: '화면 이동', action: 'menu', label: '학습 탭', on: TABS, ko: ['학습 메뉴', '학습 탭', '학습 화면', '메뉴'], en: [] },
+    { group: '화면 이동', action: 'sync', label: '지금 동기화', on: TABS, ko: ['동기화', '지금 동기화', '동기화 해줘'], en: [] },
     { group: '화면 이동', action: 'exam', label: '승급 심사 보기', on: TABS, ko: ['승급 심사', '승급', '심사', '심사 보기', '심사 볼래'], en: [] },
     { group: '화면 이동', action: 'levels', label: '레벨 보기', on: TABS, ko: ['레벨', '내 레벨', '레벨 보기', '레벨 경로'], en: [] },
     { group: '화면 이동', action: 'records', label: '기록 탭', on: TABS, ko: ['기록', '기록 보기', '내 기록', '통계'], en: [] },
