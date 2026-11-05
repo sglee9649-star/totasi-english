@@ -1,4 +1,4 @@
-const APP_VERSION = '1.1.1', APP_DATE = '2026-11-04';
+const APP_VERSION = '1.1.2', APP_DATE = '2026-11-04';
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const KEY = 'totasi-english-v1';
@@ -834,20 +834,26 @@ function vcSync() { if (S.voice && VC.running && VC.lang !== vcLang()) { vcStop(
 function vcStop() { clearTimeout(VC.timer); if (VC.rec) { const r = VC.rec; VC.rec = null; VC.running = false; try { r.abort(); } catch {} } }
 function vcRest(note) { VC.rest = true; VC.note = note || ''; vcStop(); vcRelease(); vcUI(); }
 function vcPause() { if (!S.voice) return; VC.paused = true; vcStop(); vcUI(); }
-function vcResume() { if (!VC.paused) return; VC.paused = false; vcUI(); clearTimeout(VC.timer); VC.timer = setTimeout(vcStart, 300); }
+function vcResume() { if (!VC.paused) return; VC.paused = false; vcUI(); clearTimeout(VC.timer); VC.timer = setTimeout(vcStart, 120); }
 async function vcHold() { try { if (navigator.wakeLock && !VC.wake && !document.hidden) { VC.wake = await navigator.wakeLock.request('screen'); VC.wake.addEventListener('release', () => { VC.wake = null; }); } } catch {} }
 function vcRelease() { try { VC.wake && VC.wake.release(); } catch {} VC.wake = null; }
 function vcStart() {
   if (!S.voice || !SR || VC.running || VC.paused || VC.rest || document.hidden) return;
   if (Date.now() - VC.last > REST_AFTER) return vcRest('한동안 말이 없어서 쉬는 중이에요. 다시 들으려면 눌러 주세요.');
   try {
-    VC.lang = vcLang(); const r = new SR(); r.lang = VC.lang === 'en' ? 'en-US' : 'ko-KR'; r.continuous = false; r.interimResults = false; r.maxAlternatives = 5;
-    r.onresult = e => { VC.last = Date.now(); VC.fails = 0; vcHeard(Array.from(e.results[e.results.length - 1]).map(x => x.transcript)); };
+    VC.lang = vcLang(); const r = new SR(); r.lang = VC.lang === 'en' ? 'en-US' : 'ko-KR'; r.continuous = false; r.interimResults = true; r.maxAlternatives = 5;
+    r.onresult = e => {
+      VC.last = Date.now(); VC.fails = 0;
+      const res = e.results[e.results.length - 1], alts = Array.from(res).map(x => x.transcript);
+      if (VC.acted === r) return;
+      if (!res.isFinal) { if (vcInterim(alts)) { VC.acted = r; vcStop(); clearTimeout(VC.timer); VC.timer = setTimeout(vcStart, 80); } return; }
+      vcHeard(alts);
+    };
     r.onerror = e => {
       if (e.error === 'not-allowed' || e.error === 'service-not-allowed') return vcRest('마이크 권한을 허용한 뒤 눌러 주세요.');
       if (e.error === 'network' || e.error === 'audio-capture') { if (++VC.fails >= 3) vcRest(e.error === 'network' ? '음성 인식에 인터넷이 필요해요. 연결한 뒤 눌러 주세요.' : '마이크를 찾지 못했어요. 확인한 뒤 눌러 주세요.'); }
     };
-    r.onend = () => { if (VC.rec !== r) return; VC.rec = null; VC.running = false; if (VC.rest || VC.paused || !S.voice) return; clearTimeout(VC.timer); VC.timer = setTimeout(vcStart, VC.fails ? 1000 * 2 ** VC.fails : 250); };
+    r.onend = () => { if (VC.rec !== r) return; VC.rec = null; VC.running = false; if (VC.rest || VC.paused || !S.voice) return; clearTimeout(VC.timer); VC.timer = setTimeout(vcStart, VC.fails ? 1000 * 2 ** VC.fails : 80); };
     VC.rec = r; VC.running = true; r.start();
   } catch { VC.running = false; VC.rec = null; clearTimeout(VC.timer); VC.timer = setTimeout(vcStart, 1000); }
 }
@@ -861,6 +867,21 @@ function vcClearHold() { clearTimeout(VC.hold); VC.buf = ''; }
 function holdSpeech(list, finish) {
   VC.buf = list[0]; clearTimeout(VC.hold);
   VC.hold = setTimeout(() => { const t = VC.buf; VC.buf = ''; vcUI(); if (t) finish(t); }, 1500);
+}
+/* 말하는 도중의 인식 결과로 먼저 반응한다. 확실한 명령과 완전한 정답만 처리하고 나머지는 끝까지 듣는다. */
+function vcInterim(alts) {
+  const name = screen.name, q = name === 'quiz' && curE, stage = q ? curE.stage || 'blank' : '';
+  if (vcLang() === 'ko') {
+    for (const t of alts) { const act = VOICE.quickCommand(t, name); if (act) { VC.heard = t; vcUI(); vcClearHold(); vcDo(act); return true; } }
+    if (alts[0]) { VC.heard = alts[0]; vcUI(); }
+    return false;
+  }
+  if (q && stage !== 'choose') {
+    const joined = VC.buf ? alts.map(x => `${VC.buf} ${x}`) : alts, best = SRS.bestSpoken(joined, curE.item, stage);
+    VC.heard = joined[0] || ''; vcUI();
+    if (best.verdict === 'ok') { vcClearHold(); settleVoice(curE, joined); return true; }
+  }
+  return false;
 }
 function vcHeard(alts) {
   const q = screen.name === 'quiz' && curE, stage = q ? curE.stage || 'blank' : '', r = VOICE.interpret(alts, screen.name, q ? curE.item.blank : '', stage);

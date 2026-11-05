@@ -5,23 +5,23 @@
   const STUDY = ['intro', 'quiz', 'result', 'learn'];
   const langOf = (screen, stage) => (screen === 'quiz' && stage !== 'wordChoice') || screen === 'make' ? 'en' : 'ko';
   const COMMANDS = [
-    { group: '학습 진행', action: 'next', label: '다음으로, 문제 풀기', on: ['intro', 'result', 'done', 'makeres', 'examResult', 'learn'], ko: ['다음', '다음 문제', '다음으로', '다음 카드', '넘어가', '넘어가자', '넥스트', '오케이', '보통', '문제 풀기', '문제 풀자', '풀기'], en: [] },
-    { group: '학습 진행', action: 'pause', label: '자동 넘김 멈추기', on: ['intro', 'result', 'learn'], ko: ['잠깐', '멈춰', '일시정지', '정지', '스톱'], en: [] },
-    { group: '학습 진행', action: 'resume', label: '자동 넘김 다시 시작', on: ['intro', 'result', 'learn'], ko: ['계속', '계속해', '계속하기', '다시 시작'], en: [] },
+    { group: '학습 진행', action: 'next', label: '다음으로, 문제 풀기', on: ['intro', 'result', 'done', 'makeres', 'examResult', 'learn'], ko: ['다음요', '다음 거', '넘겨', '넘겨줘', '패스', '넘어갈게', '다음', '다음 문제', '다음으로', '다음 카드', '넘어가', '넘어가자', '넥스트', '오케이', '보통', '문제 풀기', '문제 풀자', '풀기'], en: ['next'] },
+    { group: '학습 진행', action: 'pause', label: '자동 넘김 멈추기', on: ['intro', 'result', 'learn'], ko: ['잠시만', '기다려', '스탑', '멈춰줘', '잠깐', '멈춰', '일시정지', '정지', '스톱'], en: [] },
+    { group: '학습 진행', action: 'resume', label: '자동 넘김 다시 시작', on: ['intro', 'result', 'learn'], ko: ['이어서', '계속 가자', '계속 해줘', '계속', '계속해', '계속하기', '다시 시작'], en: [] },
     { group: '학습 진행', action: 'prevCard', label: '이전 카드 보기', on: ['learn'], ko: ['이전 카드', '전 카드', '앞 카드'], en: [] },
-    { group: '학습 진행', action: 'easy', label: '쉬웠어요', on: ['result'], ko: ['쉬워', '쉬워요', '쉬웠어', '쉬웠어요', '쉬움'], en: [] },
-    { group: '학습 진행', action: 'hard', label: '어려웠어요', on: ['result'], ko: ['어려워', '어려워요', '어려웠어', '어려웠어요', '어려움'], en: [] },
+    { group: '학습 진행', action: 'easy', label: '쉬웠어요', on: ['result'], ko: ['쉬웠다', '쉽네', '쉽다', '쉬워', '쉬워요', '쉬웠어', '쉬웠어요', '쉬움'], en: [] },
+    { group: '학습 진행', action: 'hard', label: '어려웠어요', on: ['result'], ko: ['어렵다', '어려웠다', '어렵네', '어려워', '어려워요', '어려웠어', '어려웠어요', '어려움'], en: [] },
     { group: '학습 진행', action: 'hint', label: '힌트 보기', on: ['quiz'], ko: [], en: ['hint', 'give me a hint', 'clue', 'first letter', 'first word', 'help me'] },
     { group: '학습 진행', action: 'pass', label: '모르겠어요', on: ['quiz'], ko: [], en: ["i don't know", 'i do not know', 'i dont know', 'dunno', 'no idea', 'pass', 'skip', 'skip it', 'give up', 'i give up', 'show me the answer', 'show the answer'] },
     { group: '학습 진행', action: 'c0', label: '1번 고르기', on: ['quiz'], ko: ['1번', '일번', '첫 번째'], en: ['one', 'number one', 'first one', 'the first one'] },
     { group: '학습 진행', action: 'c1', label: '2번 고르기', on: ['quiz'], ko: ['2번', '이번', '두 번째'], en: ['two', 'number two', 'second one', 'the second one'] },
     { group: '학습 진행', action: 'c2', label: '3번 고르기', on: ['quiz'], ko: ['3번', '삼번', '세 번째'], en: ['three', 'number three', 'third one', 'the third one'] },
     { group: '학습 진행', action: 'c3', label: '4번 고르기', on: ['quiz'], ko: ['4번', '사번', '네 번째'], en: ['four', 'number four', 'fourth one', 'the fourth one'] },
-    { group: '학습 진행', action: 'quit', label: '오늘 공부 끝내기', on: STUDY, ko: ['그만', '그만하기', '그만할래', '끝내기', '끝낼래', '공부 끝', '오늘 끝', '종료', '나가기'], en: ['stop', 'finish', 'quit', "i'm done", 'stop studying'] },
-    { group: '듣기', action: 'listen', label: '다시 듣기', on: STUDY, ko: ['듣기', '들려줘', '다시', '다시 들려줘', '다시 듣기', '한 번 더', '읽어줘', '다시 읽어줘', '재생'], en: ['listen', 'say it again', 'repeat', 'one more time', 'read it', 'read it again', 'pardon'] },
-    { group: '듣기', action: 'slow', label: '천천히 듣기', on: STUDY, ko: ['천천히', '천천히 들려줘', '느리게', '천천히 읽어줘'], en: ['slowly', 'slower', 'say it slowly', 'slow down'] },
+    { group: '학습 진행', action: 'quit', label: '오늘 공부 끝내기', on: STUDY, ko: ['그만해', '끝', '끝내자', '끝낼게', '그만', '그만하기', '그만할래', '끝내기', '끝낼래', '공부 끝', '오늘 끝', '종료', '나가기'], en: ['stop', 'finish', 'quit', "i'm done", 'stop studying'] },
+    { group: '듣기', action: 'listen', label: '다시 듣기', on: STUDY, ko: ['한번 더', '또', '다시 한번', '리플레이', '다시 말해줘', '뭐라고', '듣기', '들려줘', '다시', '다시 들려줘', '다시 듣기', '한 번 더', '읽어줘', '다시 읽어줘', '재생'], en: ['listen', 'say it again', 'repeat', 'one more time', 'read it', 'read it again', 'pardon'] },
+    { group: '듣기', action: 'slow', label: '천천히 듣기', on: STUDY, ko: ['천천히 말해줘', '느리게 해줘', '천천히', '천천히 들려줘', '느리게', '천천히 읽어줘'], en: ['slowly', 'slower', 'say it slowly', 'slow down'] },
     { group: '듣기', action: 'meaning', label: '한국어 뜻 듣기', on: STUDY, ko: ['뜻', '뜻이 뭐야', '무슨 뜻', '한국어로', '해석', '번역'], en: ['meaning', "what's the meaning", 'translate', 'translation', 'in korean'] },
-    { group: '학습 시작', action: 'start', label: '학습이나 심사 시작', on: ['home', 'examIntro'], ko: ['시작', '시작하기', '공부 시작', '학습 시작', '공부하자', '오늘의 학습'], en: [] },
+    { group: '학습 시작', action: 'start', label: '학습이나 심사 시작', on: ['home', 'examIntro'], ko: ['시작해', '시작하자', '스타트', '공부할래', '시작', '시작하기', '공부 시작', '학습 시작', '공부하자', '오늘의 학습'], en: [] },
     { group: '학습 시작', action: 'm0', label: '5분 공부', on: ['home'], ko: ['5분', '오분', '5분 공부'], en: [] },
     { group: '학습 시작', action: 'm1', label: '10분 공부', on: ['home'], ko: ['10분', '십분', '10분 공부'], en: [] },
     { group: '학습 시작', action: 'm2', label: '20분 공부', on: ['home'], ko: ['20분', '이십분', '20분 공부'], en: [] },
@@ -39,8 +39,8 @@
     { group: '내 문장', action: 'ex1', label: '두 번째 예시 고르기', on: ['make'], ko: [], en: ['example two', 'second example'] },
     { group: '내 문장', action: 'ex2', label: '세 번째 예시 고르기', on: ['make'], ko: [], en: ['example three', 'third example'] },
     { group: '학습 시작', action: 'make', label: '내 문장 만들기', on: ['home', 'menu'], ko: ['내 문장', '내 문장 만들기', '문장 만들기'], en: [] },
-    { group: '화면 이동', action: 'back', label: '뒤로 가기', on: ALL, ko: ['뒤로', '뒤로 가기', '뒤로 가', '이전', '이전 화면', '돌아가기', '돌아가'], en: ['go back', 'back'] },
-    { group: '화면 이동', action: 'homeGo', label: '홈으로', on: ALL, ko: ['홈', '홈으로', '홈 화면', '처음으로', '처음 화면', '메인'], en: ['go home'] },
+    { group: '화면 이동', action: 'back', label: '뒤로 가기', on: ALL, ko: ['뒤로 가자', '이전으로', '뒤로', '뒤로 가기', '뒤로 가', '이전', '이전 화면', '돌아가기', '돌아가'], en: ['go back', 'back'] },
+    { group: '화면 이동', action: 'homeGo', label: '홈으로', on: ALL, ko: ['첫 화면', '메인 화면', '홈', '홈으로', '홈 화면', '처음으로', '처음 화면', '메인'], en: ['go home'] },
     { group: '화면 이동', action: 'menu', label: '학습 탭', on: TABS, ko: ['학습 메뉴', '학습 탭', '학습 화면', '메뉴'], en: [] },
     { group: '화면 이동', action: 'sync', label: '지금 동기화', on: TABS, ko: ['동기화', '지금 동기화', '동기화 해줘'], en: [] },
     { group: '화면 이동', action: 'exam', label: '승급 심사 보기', on: TABS, ko: ['승급 심사', '승급', '심사', '심사 보기', '심사 볼래'], en: [] },
@@ -77,7 +77,35 @@
     if (t.length > 16) return null;
     let best = null, len = 0, other = null;
     KO.forEach((c, p) => { if (p.length >= 2 && t.includes(p)) { if (!c.on.includes(screen)) { other = other || c; return; } if (p.length > len) { best = c; len = p.length; } } });
-    return best ? { c: best } : other ? { c: other } : null;
+    if (best) return { c: best };
+    const fz = fuzzyKo(t, screen);
+    return fz ? { c: fz } : other ? { c: other } : null;
+  }
+  /* 음성 인식이 살짝 잘못 들은 말(쉬어, 다은)도 알아듣도록 자모 단위로 비교한다. */
+  const CHO = 'ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ', JUNG = 'ㅏㅐㅑㅒㅓㅔㅕㅖㅗㅘㅙㅚㅛㅜㅝㅞㅟㅠㅡㅢㅣ', JONG = ' ㄱㄲㄳㄴㄵㄶㄷㄹㄺㄻㄼㄽㄾㄿㅀㅁㅂㅄㅅㅆㅇㅈㅊㅋㅌㅍㅎ';
+  const jamo = s => [...s].map(ch => { const c = ch.charCodeAt(0) - 0xac00; if (c < 0 || c > 11171) return ch; return CHO[Math.floor(c / 588)] + JUNG[Math.floor(c % 588 / 28)] + (c % 28 ? JONG[c % 28] : ''); }).join('');
+  function editDistance(a, b) {
+    const d = Array.from({ length: a.length + 1 }, (_, i) => [i]);
+    for (let j = 1; j <= b.length; j++) d[0][j] = j;
+    for (let i = 1; i <= a.length; i++) for (let j = 1; j <= b.length; j++) d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+    return d[a.length][b.length];
+  }
+  function fuzzyKo(t, screen) {
+    if (t.length < 2 || t.length > 8) return null;
+    const j = jamo(t); let best = null, tie = false, min = 2;
+    KO.forEach((c, p) => {
+      if (p.length < 2 || !c.on.includes(screen)) return;
+      const n = editDistance(j, jamo(p));
+      if (n < min) { min = n; best = c; tie = false; } else if (n === min && best && best !== c) tie = true;
+    });
+    return best && !tie ? best : null;
+  }
+  /* 말하는 도중에도 바로 실행해도 되는 명령인지 본다. 더 긴 다른 명령으로 이어질 수 있으면 끝까지 듣는다. */
+  function quickCommand(text, screen) {
+    const t = normKo(text), c = KO.get(t);
+    if (!c || !c.on.includes(screen)) return null;
+    for (const [p, o] of KO) if (p !== t && p.startsWith(t) && o !== c && o.on.includes(screen)) return null;
+    return c.action;
   }
   const wordsOf = s => normEn(s).split(' ').filter(Boolean);
   function interpret(alts, screen, blank, stage) {
@@ -87,6 +115,7 @@
         const f = findKo(a, screen);
         if (f) return f.c.on.includes(screen) ? { type: 'cmd', action: f.c.action, text: a } : { type: 'unavailable', action: f.c.action, text: a };
       }
+      for (const a of list) { const c = findEn(a); if (c && c.on.includes(screen)) return { type: 'cmd', action: c.action, text: a }; }
       return { type: 'unknown', text: list[0] || '' };
     }
     const b = blank && blank.toLowerCase(), sent = screen === 'quiz' && stage && !['blank', 'wordBlank', 'wordRecall'].includes(stage);
@@ -104,6 +133,6 @@
     }
     return { type: 'unknown', text: list[0] || '' };
   }
-  const api = { COMMANDS, HINTS, langOf, findEn, findKo, interpret };
+  const api = { COMMANDS, HINTS, langOf, findEn, findKo, fuzzyKo, quickCommand, interpret };
   if (typeof module !== 'undefined') module.exports = api; else root.VOICE = api;
 })(this);
