@@ -106,7 +106,24 @@
     const exam = Object.assign({ lastAt: 0, lastLevel: '' }, examLatest, { attempts });
     const pref = (R.settingsAt || 0) > (L.settingsAt || 0) ? R : L;
     const mL = L.aiMonth || '', mR = R.aiMonth || '', aiMonth = mL > mR ? mL : mR, aiCost = mL === mR ? Math.max(L.aiCost || 0, R.aiCost || 0) : (mL > mR ? L.aiCost : R.aiCost) || 0;
-    return Object.assign({}, L, { cards, days, level, exam, resetAt, aiMonth, aiCost, call: pref.call || L.call, autoplay: pref.autoplay, minutes: pref.minutes, aiLimit: pref.aiLimit, settingsAt: Math.max(L.settingsAt || 0, R.settingsAt || 0), savedAt: Math.max(L.savedAt || 0, R.savedAt || 0) });
+    return Object.assign({}, L, { cards, days, level, exam, resetAt, aiMonth, aiCost, call: pref.call || L.call, autoplay: pref.autoplay, auto: pref.auto || L.auto, minutes: pref.minutes, aiLimit: pref.aiLimit, settingsAt: Math.max(L.settingsAt || 0, R.settingsAt || 0), savedAt: Math.max(L.savedAt || 0, R.savedAt || 0) });
+  }
+  const FILLER = new Set(['um', 'uh', 'er', 'erm', 'ah', 'hmm', 'mm', 'uhm', 'oh', 'well', 'like']);
+  /* 음성 답을 판단한다. ok, close는 정답, partial은 문장이 덜 끝남, ignore는 잡음이나 머뭇거림, wrong은 오답 후보. */
+  function judgeSpoken(text, item, stage) {
+    const words = clean(text).split(/\s+/).filter(w => w && !FILLER.has(w));
+    if (!words.length) return 'ignore';
+    if (['blank', 'wordBlank', 'wordRecall'].includes(stage)) {
+      if (words.includes(clean(item.blank))) return 'ok';
+      return words.length === 1 && words[0].length < 3 ? 'ignore' : 'wrong';
+    }
+    const r = gradeSentence(words.join(' '), item.en, item.expression);
+    if (r.ok) return r.perfect ? 'ok' : 'close';
+    return words.length < Math.ceil(chipsOf(item.en).length * .5) ? 'partial' : 'wrong';
+  }
+  const SPOKEN_RANK = { ok: 4, close: 3, partial: 2, wrong: 1, ignore: 0 };
+  function bestSpoken(alts, item, stage) {
+    return alts.map(text => ({ text, verdict: judgeSpoken(text, item, stage) })).sort((a, b) => SPOKEN_RANK[b.verdict] - SPOKEN_RANK[a.verdict])[0];
   }
   const clean = s => String(s || '').toLowerCase().replace(/[’]/g, "'").replace(/[^a-z' ]+/g, ' ').trim();
   function dist(a, b) {
@@ -156,6 +173,6 @@
     return all.sort((a, b) => (b.r.ok - a.r.ok) || (a.r.missing.length - b.r.missing.length))[0];
   }
   const chipsOf = en => en.replace(/[.,?!]/g, '').split(/\s+/).map((w, i) => i === 0 ? w.replace(/^[A-Z](?=[a-z])/, c => c.toLowerCase()) : w);
-  const api = { mergeState, pickExamples, PROMOTION, promotionStatus, EXAM_SECS, buildExam, examScore, wordStage, LEVELS, LEVEL_DESC, levelProgress, nextLevel, canStudyLevel, MODES, grade, buildSession, check, splitBlank, startOfDay, addDays, stageOf, rate, gradeSentence, bestSentence, chipsOf };
+  const api = { judgeSpoken, bestSpoken, mergeState, pickExamples, PROMOTION, promotionStatus, EXAM_SECS, buildExam, examScore, wordStage, LEVELS, LEVEL_DESC, levelProgress, nextLevel, canStudyLevel, MODES, grade, buildSession, check, splitBlank, startOfDay, addDays, stageOf, rate, gradeSentence, bestSentence, chipsOf };
   if (typeof module !== 'undefined') module.exports = api; else root.SRS = api;
 })(this);

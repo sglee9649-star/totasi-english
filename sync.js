@@ -40,7 +40,7 @@ const Sync = (function () {
   }
   async function signOut() { if (auth) await auth.signOut(); user = null; setOn(false); st.lastAt = 0; st.message = ''; st.error = ''; }
   const shardOf = id => { let h = 0; for (let i = 0; i < id.length; i++) h = (h * 31 + id.charCodeAt(i)) >>> 0; return String(h % SHARDS); };
-  const meta = s => JSON.parse(JSON.stringify({ schema: s.schema, call: s.call, autoplay: s.autoplay, minutes: s.minutes, aiLimit: s.aiLimit, aiMonth: s.aiMonth, aiCost: s.aiCost, settingsAt: s.settingsAt, savedAt: s.savedAt, resetAt: s.resetAt, level: s.level, exam: s.exam, days: s.days }));
+  const meta = s => JSON.parse(JSON.stringify({ schema: s.schema, call: s.call, autoplay: s.autoplay, auto: s.auto, minutes: s.minutes, aiLimit: s.aiLimit, aiMonth: s.aiMonth, aiCost: s.aiCost, settingsAt: s.settingsAt, savedAt: s.savedAt, resetAt: s.resetAt, level: s.level, exam: s.exam, days: s.days }));
   const shards = cards => { const out = {}; for (let i = 0; i < SHARDS; i++) out[i] = {}; Object.entries(cards).forEach(([k, v]) => { out[shardOf(k)][k] = v; }); return out; };
   async function now() {
     if (!user || !db) return false;

@@ -56,4 +56,9 @@ const m2=S.mergeState(m,B);a.deepEqual(JSON.parse(JSON.stringify(m2.cards)),JSON
 const wiped=base({resetAt:1000,savedAt:1000,cards:{},days:[]}),stale=base({savedAt:500,cards:{a:{seen:400,reps:3},n:{seen:1500,reps:1}},level:{current:'IH',passed:['IL'],history:[{from:'IL',to:'IM1',at:90,score:90}]}});
 const r=S.mergeState(stale,wiped);a.equal(r.cards.a,undefined);a.ok(r.cards.n);a.equal(r.level.current,'IL');a.equal(r.level.history.length,0);a.equal(r.resetAt,1000);
 a.equal(S.mergeState(A,null).cards.a.reps,1)}
+{const it={blank:'window',en:"Can I get a window seat?",expression:'Can I get ~?'},J=S.judgeSpoken;
+a.equal(J('window',it,'blank'),'ok');a.equal(J('um uh',it,'blank'),'ignore');a.equal(J('door',it,'blank'),'wrong');a.equal(J('ok',it,'blank'),'ignore');
+a.equal(J('Can I get a window seat',it,'sentence'),'ok');a.equal(J('um can I get window seat',it,'sentence'),'close');a.equal(J('window',it,'sentence'),'partial');a.equal(J('Can I',it,'sentence'),'partial');a.equal(J('I want to buy a nice door',it,'sentence'),'wrong');a.equal(J('hmm',it,'sentence'),'ignore');
+a.equal(S.bestSpoken(['door','window'],it,'blank').verdict,'ok');
+const m=S.mergeState({cards:{},days:[],level:{current:'IL'},auto:{on:true},settingsAt:1,savedAt:1},{cards:{},days:[],level:{current:'IL'},auto:{on:false},settingsAt:2,savedAt:1});a.equal(m.auto.on,false)}
 console.log('410 ok');

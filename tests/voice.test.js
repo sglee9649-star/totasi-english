@@ -1,6 +1,6 @@
 const a=require('assert'),V=require('../voice.js'),items=require('../data/expressions.json'),fs=require('fs');
 const I=V.interpret;
-a.equal(V.langOf('quiz','wordChoice'),'ko');a.equal(V.langOf('quiz','wordRecall'),'en');a.equal(I(['2번'],'quiz','x','wordChoice').action,'c1');a.equal(I(['appointment'],'quiz','appointment','wordRecall').ok,true);a.equal(I(['단어 공부'],'menu').action,'words');a.equal(V.langOf('home'),'ko');a.equal(V.langOf('result'),'ko');a.equal(V.langOf('quiz'),'en');a.equal(V.langOf('make'),'en');
+a.equal(V.langOf('quiz','wordChoice'),'ko');a.equal(V.langOf('quiz','wordRecall'),'en');a.equal(I(['2번'],'quiz','x','wordChoice').action,'c1');a.equal(I(['appointment'],'quiz','appointment','wordRecall').ok,true);a.equal(I(['단어 공부'],'menu').action,'words');a.equal(I(['잠깐만요'],'result').action,'pause');a.equal(I(['계속'],'result').action,'resume');a.equal(I(['다시 시작'],'learn').action,'resume');a.equal(I(['이전 카드'],'learn').action,'prevCard');a.equal(I(['다음'],'learn').action,'next');a.equal(V.langOf('learn'),'ko');a.equal(V.langOf('home'),'ko');a.equal(V.langOf('result'),'ko');a.equal(V.langOf('quiz'),'en');a.equal(V.langOf('make'),'en');
 a.equal(I(['다음'],'result').action,'next');a.equal(I(['다음으로 넘어가 줘'],'result').action,'next');a.equal(I(['토타시야 다음 문제'],'result').action,'next');
 a.equal(I(['다시 들려줘'],'result').action,'listen');a.equal(I(['천천히 읽어 주세요'],'intro').action,'slow');a.equal(I(['쉬웠어요'],'result').action,'easy');
 a.equal(I(['10분'],'home').action,'m1');a.equal(I(['십 분'],'home').action,'m1');a.equal(I(['공부 시작할게'],'home').action,'start');
