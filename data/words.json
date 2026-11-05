@@ -4498,5 +4498,1505 @@
 "en": "I'll consider your offer.",
 "enKo": "제안을 고려해 볼게요.",
 "topic": "work"
+},
+{
+"id": "w-im3-001",
+"opic": "IM3",
+"word": "household",
+"pos": "noun",
+"ko": "가정, 가구",
+"en": "Every household pays this tax.",
+"enKo": "모든 가구가 이 세금을 내요.",
+"topic": "daily"
+},
+{
+"id": "w-im3-002",
+"opic": "IM3",
+"word": "landlord",
+"pos": "noun",
+"ko": "집주인",
+"en": "My landlord raised the rent.",
+"enKo": "집주인이 월세를 올렸어요.",
+"topic": "daily"
+},
+{
+"id": "w-im3-003",
+"opic": "IM3",
+"word": "tenant",
+"pos": "noun",
+"ko": "세입자",
+"en": "The tenant moved out last month.",
+"enKo": "세입자가 지난달에 이사 나갔어요.",
+"topic": "daily"
+},
+{
+"id": "w-im3-004",
+"opic": "IM3",
+"word": "renovation",
+"pos": "noun",
+"ko": "수리, 개조",
+"en": "The renovation took three months.",
+"enKo": "집 수리에 석 달이 걸렸어요.",
+"topic": "daily"
+},
+{
+"id": "w-im3-005",
+"opic": "IM3",
+"word": "leak",
+"pos": "noun",
+"ko": "누수",
+"en": "There is a leak in the ceiling.",
+"enKo": "천장에 누수가 있어요.",
+"topic": "daily"
+},
+{
+"id": "w-im3-006",
+"opic": "IM3",
+"word": "plumber",
+"pos": "noun",
+"ko": "배관공",
+"en": "We need to call a plumber.",
+"enKo": "배관공을 불러야 해요.",
+"topic": "daily"
+},
+{
+"id": "w-im3-007",
+"opic": "IM3",
+"word": "parenting",
+"pos": "noun",
+"ko": "육아",
+"en": "Parenting is harder than I thought.",
+"enKo": "육아는 생각보다 어려워요.",
+"topic": "daily"
+},
+{
+"id": "w-im3-008",
+"opic": "IM3",
+"word": "toddler",
+"pos": "noun",
+"ko": "유아",
+"en": "Our toddler started walking last week.",
+"enKo": "우리 아이가 지난주에 걷기 시작했어요.",
+"topic": "daily"
+},
+{
+"id": "w-im3-009",
+"opic": "IM3",
+"word": "sibling",
+"pos": "noun",
+"ko": "형제자매",
+"en": "Do you have a sibling?",
+"enKo": "형제자매가 있어요?",
+"topic": "daily"
+},
+{
+"id": "w-im3-010",
+"opic": "IM3",
+"word": "acquaintance",
+"pos": "noun",
+"ko": "아는 사람",
+"en": "He is just an acquaintance.",
+"enKo": "그는 그냥 아는 사람이에요.",
+"topic": "daily"
+},
+{
+"id": "w-im3-011",
+"opic": "IM3",
+"word": "nutrition",
+"pos": "noun",
+"ko": "영양",
+"en": "Good nutrition is important for kids.",
+"enKo": "아이들에게 좋은 영양은 중요해요.",
+"topic": "daily"
+},
+{
+"id": "w-im3-012",
+"opic": "IM3",
+"word": "calorie",
+"pos": "noun",
+"ko": "칼로리",
+"en": "I don't count every calorie.",
+"enKo": "칼로리를 일일이 세지는 않아요.",
+"topic": "daily"
+},
+{
+"id": "w-im3-013",
+"opic": "IM3",
+"word": "workout",
+"pos": "noun",
+"ko": "운동",
+"en": "I had a great workout today.",
+"enKo": "오늘 운동을 제대로 했어요.",
+"topic": "daily"
+},
+{
+"id": "w-im3-014",
+"opic": "IM3",
+"word": "insomnia",
+"pos": "noun",
+"ko": "불면증",
+"en": "I've had insomnia since last year.",
+"enKo": "작년부터 불면증이 있어요.",
+"topic": "daily"
+},
+{
+"id": "w-im3-015",
+"opic": "IM3",
+"word": "anxiety",
+"pos": "noun",
+"ko": "불안",
+"en": "Exams give me a lot of anxiety.",
+"enKo": "시험을 보면 불안이 커요.",
+"topic": "daily"
+},
+{
+"id": "w-im3-016",
+"opic": "IM3",
+"word": "therapy",
+"pos": "noun",
+"ko": "치료, 상담",
+"en": "Therapy helped me a lot.",
+"enKo": "상담이 큰 도움이 됐어요.",
+"topic": "daily"
+},
+{
+"id": "w-im3-017",
+"opic": "IM3",
+"word": "surgery",
+"pos": "noun",
+"ko": "수술",
+"en": "My father had surgery last week.",
+"enKo": "아버지가 지난주에 수술을 받으셨어요.",
+"topic": "daily"
+},
+{
+"id": "w-im3-018",
+"opic": "IM3",
+"word": "checkup",
+"pos": "noun",
+"ko": "건강 검진",
+"en": "I have a checkup next Monday.",
+"enKo": "다음 주 월요일에 건강 검진이 있어요.",
+"topic": "daily"
+},
+{
+"id": "w-im3-019",
+"opic": "IM3",
+"word": "debt",
+"pos": "noun",
+"ko": "빚",
+"en": "I finally paid off my debt.",
+"enKo": "마침내 빚을 다 갚았어요.",
+"topic": "daily"
+},
+{
+"id": "w-im3-020",
+"opic": "IM3",
+"word": "inflation",
+"pos": "noun",
+"ko": "물가 상승",
+"en": "Inflation makes everything more expensive.",
+"enKo": "물가 상승으로 모든 게 더 비싸져요.",
+"topic": "daily"
+},
+{
+"id": "w-im3-021",
+"opic": "IM3",
+"word": "purchase",
+"pos": "noun",
+"ko": "구매",
+"en": "This was my best purchase this year.",
+"enKo": "이건 올해 최고의 구매였어요.",
+"topic": "daily"
+},
+{
+"id": "w-im3-022",
+"opic": "IM3",
+"word": "warranty",
+"pos": "noun",
+"ko": "품질 보증",
+"en": "Is it still under warranty?",
+"enKo": "아직 품질 보증 기간인가요?",
+"topic": "daily"
+},
+{
+"id": "w-im3-023",
+"opic": "IM3",
+"word": "commitment",
+"pos": "noun",
+"ko": "약속, 전념",
+"en": "Learning English takes real commitment.",
+"enKo": "영어를 배우려면 진짜 전념이 필요해요.",
+"topic": "daily"
+},
+{
+"id": "w-im3-024",
+"opic": "IM3",
+"word": "achievement",
+"pos": "noun",
+"ko": "성취",
+"en": "This is my biggest achievement.",
+"enKo": "이건 제 가장 큰 성취예요.",
+"topic": "daily"
+},
+{
+"id": "w-im3-025",
+"opic": "IM3",
+"word": "challenge",
+"pos": "noun",
+"ko": "도전, 어려움",
+"en": "Moving abroad was a big challenge.",
+"enKo": "해외로 이사한 건 큰 도전이었어요.",
+"topic": "daily"
+},
+{
+"id": "w-im3-026",
+"opic": "IM3",
+"word": "opportunity",
+"pos": "noun",
+"ko": "기회",
+"en": "This is a great opportunity for me.",
+"enKo": "저에게 아주 좋은 기회예요.",
+"topic": "daily"
+},
+{
+"id": "w-im3-027",
+"opic": "IM3",
+"word": "consequence",
+"pos": "noun",
+"ko": "결과",
+"en": "Every choice has a consequence.",
+"enKo": "모든 선택에는 결과가 따라요.",
+"topic": "daily"
+},
+{
+"id": "w-im3-028",
+"opic": "IM3",
+"word": "influence",
+"pos": "verb",
+"ko": "영향을 주다",
+"en": "My teacher helped influence my career.",
+"enKo": "선생님이 제 진로에 영향을 주셨어요.",
+"topic": "daily"
+},
+{
+"id": "w-im3-029",
+"opic": "IM3",
+"word": "inherit",
+"pos": "verb",
+"ko": "물려받다",
+"en": "She will inherit the family house.",
+"enKo": "그녀가 가족의 집을 물려받을 거예요.",
+"topic": "daily"
+},
+{
+"id": "w-im3-030",
+"opic": "IM3",
+"word": "maintain",
+"pos": "verb",
+"ko": "유지하다",
+"en": "It's hard to maintain a healthy weight.",
+"enKo": "건강한 체중을 유지하기 어려워요.",
+"topic": "daily"
+},
+{
+"id": "w-im3-031",
+"opic": "IM3",
+"word": "overcome",
+"pos": "verb",
+"ko": "극복하다",
+"en": "I want to overcome my fear of speaking.",
+"enKo": "말하기 두려움을 극복하고 싶어요.",
+"topic": "daily"
+},
+{
+"id": "w-im3-032",
+"opic": "IM3",
+"word": "cope",
+"pos": "verb",
+"ko": "대처하다",
+"en": "How do you cope with stress?",
+"enKo": "스트레스에 어떻게 대처해요?",
+"topic": "daily"
+},
+{
+"id": "w-im3-033",
+"opic": "IM3",
+"word": "hesitate",
+"pos": "verb",
+"ko": "망설이다",
+"en": "Don't hesitate to call me.",
+"enKo": "망설이지 말고 전화 주세요.",
+"topic": "daily"
+},
+{
+"id": "w-im3-034",
+"opic": "IM3",
+"word": "stressful",
+"pos": "adjective",
+"ko": "스트레스가 많은",
+"en": "My job is very stressful.",
+"enKo": "제 일은 스트레스가 많아요.",
+"topic": "daily"
+},
+{
+"id": "w-im3-035",
+"opic": "IM3",
+"word": "exhausting",
+"pos": "adjective",
+"ko": "진을 빼는",
+"en": "The long trip was exhausting.",
+"enKo": "긴 여행은 진이 빠졌어요.",
+"topic": "daily"
+},
+{
+"id": "w-im3-036",
+"opic": "IM3",
+"word": "rewarding",
+"pos": "adjective",
+"ko": "보람 있는",
+"en": "Teaching children is very rewarding.",
+"enKo": "아이들을 가르치는 일은 아주 보람 있어요.",
+"topic": "daily"
+},
+{
+"id": "w-im3-037",
+"opic": "IM3",
+"word": "tough",
+"pos": "adjective",
+"ko": "힘든",
+"en": "It was a tough year for us.",
+"enKo": "우리에게 힘든 한 해였어요.",
+"topic": "daily"
+},
+{
+"id": "w-im3-038",
+"opic": "IM3",
+"word": "harmful",
+"pos": "adjective",
+"ko": "해로운",
+"en": "Smoking is harmful to your health.",
+"enKo": "흡연은 건강에 해로워요.",
+"topic": "daily"
+},
+{
+"id": "w-im3-039",
+"opic": "IM3",
+"word": "reception",
+"pos": "noun",
+"ko": "접수처, 프런트",
+"en": "Please ask at the reception desk.",
+"enKo": "프런트에 문의해 주세요.",
+"topic": "travel"
+},
+{
+"id": "w-im3-040",
+"opic": "IM3",
+"word": "lobby",
+"pos": "noun",
+"ko": "로비",
+"en": "Let's meet in the hotel lobby.",
+"enKo": "호텔 로비에서 만나요.",
+"topic": "travel"
+},
+{
+"id": "w-im3-041",
+"opic": "IM3",
+"word": "suitcase",
+"pos": "noun",
+"ko": "여행 가방",
+"en": "My suitcase is too heavy.",
+"enKo": "제 여행 가방이 너무 무거워요.",
+"topic": "travel"
+},
+{
+"id": "w-im3-042",
+"opic": "IM3",
+"word": "backpack",
+"pos": "noun",
+"ko": "배낭",
+"en": "I only brought a small backpack.",
+"enKo": "작은 배낭만 가져왔어요.",
+"topic": "travel"
+},
+{
+"id": "w-im3-043",
+"opic": "IM3",
+"word": "tour",
+"pos": "noun",
+"ko": "투어, 관광",
+"en": "We joined a walking tour.",
+"enKo": "걷기 투어에 참여했어요.",
+"topic": "travel"
+},
+{
+"id": "w-im3-044",
+"opic": "IM3",
+"word": "ferry",
+"pos": "noun",
+"ko": "여객선",
+"en": "We took a ferry to the island.",
+"enKo": "섬까지 여객선을 탔어요.",
+"topic": "travel"
+},
+{
+"id": "w-im3-045",
+"opic": "IM3",
+"word": "cabin",
+"pos": "noun",
+"ko": "객실",
+"en": "It's cold in the cabin.",
+"enKo": "객실이 추워요.",
+"topic": "travel"
+},
+{
+"id": "w-im3-046",
+"opic": "IM3",
+"word": "turbulence",
+"pos": "noun",
+"ko": "난기류",
+"en": "We hit some turbulence over the ocean.",
+"enKo": "바다 위에서 난기류를 만났어요.",
+"topic": "travel"
+},
+{
+"id": "w-im3-047",
+"opic": "IM3",
+"word": "connection",
+"pos": "noun",
+"ko": "연결편, 연결",
+"en": "I missed my connection in Dubai.",
+"enKo": "두바이에서 연결편을 놓쳤어요.",
+"topic": "travel"
+},
+{
+"id": "w-im3-048",
+"opic": "IM3",
+"word": "compensation",
+"pos": "noun",
+"ko": "보상",
+"en": "We asked for compensation for the delay.",
+"enKo": "지연에 대한 보상을 요청했어요.",
+"topic": "travel"
+},
+{
+"id": "w-im3-049",
+"opic": "IM3",
+"word": "emergency",
+"pos": "noun",
+"ko": "비상 상황",
+"en": "Call this number in an emergency.",
+"enKo": "비상시에 이 번호로 전화하세요.",
+"topic": "travel"
+},
+{
+"id": "w-im3-050",
+"opic": "IM3",
+"word": "exit",
+"pos": "noun",
+"ko": "출구",
+"en": "Where is the nearest exit?",
+"enKo": "가장 가까운 출구가 어디예요?",
+"topic": "travel"
+},
+{
+"id": "w-im3-051",
+"opic": "IM3",
+"word": "wildlife",
+"pos": "noun",
+"ko": "야생 동물",
+"en": "We saw a lot of wildlife.",
+"enKo": "야생 동물을 많이 봤어요.",
+"topic": "travel"
+},
+{
+"id": "w-im3-052",
+"opic": "IM3",
+"word": "scenery",
+"pos": "noun",
+"ko": "풍경",
+"en": "The scenery here is beautiful.",
+"enKo": "여기 풍경이 아름다워요.",
+"topic": "travel"
+},
+{
+"id": "w-im3-053",
+"opic": "IM3",
+"word": "canyon",
+"pos": "noun",
+"ko": "협곡",
+"en": "We hiked through a deep canyon.",
+"enKo": "깊은 협곡을 걸었어요.",
+"topic": "travel"
+},
+{
+"id": "w-im3-054",
+"opic": "IM3",
+"word": "harbor",
+"pos": "noun",
+"ko": "항구",
+"en": "The boats stay in the harbor.",
+"enKo": "배들이 항구에 머물러요.",
+"topic": "travel"
+},
+{
+"id": "w-im3-055",
+"opic": "IM3",
+"word": "toll",
+"pos": "noun",
+"ko": "통행료",
+"en": "How much is the toll here?",
+"enKo": "여기 통행료가 얼마예요?",
+"topic": "travel"
+},
+{
+"id": "w-im3-056",
+"opic": "IM3",
+"word": "detour",
+"pos": "noun",
+"ko": "우회로",
+"en": "We took a detour because of traffic.",
+"enKo": "교통 체증 때문에 우회로로 갔어요.",
+"topic": "travel"
+},
+{
+"id": "w-im3-057",
+"opic": "IM3",
+"word": "navigate",
+"pos": "verb",
+"ko": "길을 찾다",
+"en": "It's hard to navigate this city.",
+"enKo": "이 도시는 길 찾기가 어려워요.",
+"topic": "travel"
+},
+{
+"id": "w-im3-058",
+"opic": "IM3",
+"word": "sprain",
+"pos": "verb",
+"ko": "삐다",
+"en": "Did you sprain your ankle?",
+"enKo": "발목을 삐었어요?",
+"topic": "travel"
+},
+{
+"id": "w-im3-059",
+"opic": "IM3",
+"word": "stunning",
+"pos": "adjective",
+"ko": "아주 멋진",
+"en": "The view was absolutely stunning.",
+"enKo": "경치가 정말 멋졌어요.",
+"topic": "travel"
+},
+{
+"id": "w-im3-060",
+"opic": "IM3",
+"word": "exotic",
+"pos": "adjective",
+"ko": "이국적인",
+"en": "I love exotic fruit.",
+"enKo": "저는 이국적인 과일을 좋아해요.",
+"topic": "travel"
+},
+{
+"id": "w-im3-061",
+"opic": "IM3",
+"word": "spacious",
+"pos": "adjective",
+"ko": "널찍한",
+"en": "The room was clean and spacious.",
+"enKo": "방이 깨끗하고 널찍했어요.",
+"topic": "travel"
+},
+{
+"id": "w-im3-062",
+"opic": "IM3",
+"word": "cozy",
+"pos": "adjective",
+"ko": "아늑한",
+"en": "We found a cozy little cafe.",
+"enKo": "아늑한 작은 카페를 찾았어요.",
+"topic": "travel"
+},
+{
+"id": "w-im3-063",
+"opic": "IM3",
+"word": "shareholder",
+"pos": "noun",
+"ko": "주주",
+"en": "Each shareholder received a letter.",
+"enKo": "주주 모두가 서한을 받았어요.",
+"topic": "work"
+},
+{
+"id": "w-im3-064",
+"opic": "IM3",
+"word": "stakeholder",
+"pos": "noun",
+"ko": "이해관계자",
+"en": "We asked each stakeholder for input.",
+"enKo": "이해관계자마다 의견을 물었어요.",
+"topic": "work"
+},
+{
+"id": "w-im3-065",
+"opic": "IM3",
+"word": "vendor",
+"pos": "noun",
+"ko": "판매업체",
+"en": "We changed our software vendor.",
+"enKo": "소프트웨어 판매업체를 바꿨어요.",
+"topic": "work"
+},
+{
+"id": "w-im3-066",
+"opic": "IM3",
+"word": "headquarters",
+"pos": "noun",
+"ko": "본사",
+"en": "Our headquarters is in Seoul.",
+"enKo": "우리 본사는 서울에 있어요.",
+"topic": "work"
+},
+{
+"id": "w-im3-067",
+"opic": "IM3",
+"word": "startup",
+"pos": "noun",
+"ko": "신생 기업",
+"en": "I work at a small startup.",
+"enKo": "저는 작은 신생 기업에서 일해요.",
+"topic": "work"
+},
+{
+"id": "w-im3-068",
+"opic": "IM3",
+"word": "merger",
+"pos": "noun",
+"ko": "합병",
+"en": "The merger surprised everyone.",
+"enKo": "합병은 모두를 놀라게 했어요.",
+"topic": "work"
+},
+{
+"id": "w-im3-069",
+"opic": "IM3",
+"word": "contractor",
+"pos": "noun",
+"ko": "계약 업체",
+"en": "We hired a contractor for this job.",
+"enKo": "이 일을 위해 계약 업체를 고용했어요.",
+"topic": "work"
+},
+{
+"id": "w-im3-070",
+"opic": "IM3",
+"word": "payroll",
+"pos": "noun",
+"ko": "급여 대장",
+"en": "Who handles payroll here?",
+"enKo": "여기 급여 업무는 누가 맡아요?",
+"topic": "work"
+},
+{
+"id": "w-im3-071",
+"opic": "IM3",
+"word": "quarter",
+"pos": "noun",
+"ko": "분기",
+"en": "Sales rose in the last quarter.",
+"enKo": "지난 분기에 매출이 올랐어요.",
+"topic": "work"
+},
+{
+"id": "w-im3-072",
+"opic": "IM3",
+"word": "forecast",
+"pos": "noun",
+"ko": "예측",
+"en": "The sales forecast looks good.",
+"enKo": "매출 예측이 좋아 보여요.",
+"topic": "work"
+},
+{
+"id": "w-im3-073",
+"opic": "IM3",
+"word": "target",
+"pos": "noun",
+"ko": "목표치",
+"en": "We reached our sales target.",
+"enKo": "매출 목표치를 달성했어요.",
+"topic": "work"
+},
+{
+"id": "w-im3-074",
+"opic": "IM3",
+"word": "milestone",
+"pos": "noun",
+"ko": "중요한 단계",
+"en": "We reached a big milestone today.",
+"enKo": "오늘 중요한 단계에 도달했어요.",
+"topic": "work"
+},
+{
+"id": "w-im3-075",
+"opic": "IM3",
+"word": "bottleneck",
+"pos": "noun",
+"ko": "병목 지점",
+"en": "This step is the main bottleneck.",
+"enKo": "이 단계가 주요 병목 지점이에요.",
+"topic": "work"
+},
+{
+"id": "w-im3-076",
+"opic": "IM3",
+"word": "transparency",
+"pos": "noun",
+"ko": "투명성",
+"en": "Our team values transparency.",
+"enKo": "우리 팀은 투명성을 중시해요.",
+"topic": "work"
+},
+{
+"id": "w-im3-077",
+"opic": "IM3",
+"word": "incentive",
+"pos": "noun",
+"ko": "성과급, 유인책",
+"en": "Sales staff get an extra incentive.",
+"enKo": "영업 직원은 추가 성과급을 받아요.",
+"topic": "work"
+},
+{
+"id": "w-im3-078",
+"opic": "IM3",
+"word": "evaluation",
+"pos": "noun",
+"ko": "평가",
+"en": "I have my evaluation next week.",
+"enKo": "다음 주에 평가가 있어요.",
+"topic": "work"
+},
+{
+"id": "w-im3-079",
+"opic": "IM3",
+"word": "compliance",
+"pos": "noun",
+"ko": "규정 준수",
+"en": "Compliance is very important here.",
+"enKo": "여기서는 규정 준수가 아주 중요해요.",
+"topic": "work"
+},
+{
+"id": "w-im3-080",
+"opic": "IM3",
+"word": "outsource",
+"pos": "verb",
+"ko": "외주를 주다",
+"en": "We plan to outsource this work.",
+"enKo": "이 일은 외주를 줄 계획이에요.",
+"topic": "work"
+},
+{
+"id": "w-im3-081",
+"opic": "IM3",
+"word": "streamline",
+"pos": "verb",
+"ko": "간소화하다",
+"en": "We want to streamline the process.",
+"enKo": "절차를 간소화하고 싶어요.",
+"topic": "work"
+},
+{
+"id": "w-im3-082",
+"opic": "IM3",
+"word": "brainstorm",
+"pos": "verb",
+"ko": "아이디어를 모으다",
+"en": "Let's brainstorm some new ideas.",
+"enKo": "새 아이디어를 모아 봐요.",
+"topic": "work"
+},
+{
+"id": "w-im3-083",
+"opic": "IM3",
+"word": "summarize",
+"pos": "verb",
+"ko": "요약하다",
+"en": "Can you summarize the report?",
+"enKo": "보고서를 요약해 줄 수 있어요?",
+"topic": "work"
+},
+{
+"id": "w-im3-084",
+"opic": "IM3",
+"word": "reimburse",
+"pos": "verb",
+"ko": "비용을 돌려주다",
+"en": "The company will reimburse your travel costs.",
+"enKo": "회사가 출장비를 돌려줄 거예요.",
+"topic": "work"
+},
+{
+"id": "w-im3-085",
+"opic": "IM3",
+"word": "terminate",
+"pos": "verb",
+"ko": "종료하다, 해지하다",
+"en": "They chose to terminate the contract.",
+"enKo": "그들은 계약을 해지하기로 했어요.",
+"topic": "work"
+},
+{
+"id": "w-im3-086",
+"opic": "IM3",
+"word": "renew",
+"pos": "verb",
+"ko": "갱신하다",
+"en": "I need to renew my contract.",
+"enKo": "계약을 갱신해야 해요.",
+"topic": "work"
+},
+{
+"id": "w-im3-087",
+"opic": "IM3",
+"word": "oversee",
+"pos": "verb",
+"ko": "감독하다",
+"en": "I oversee three projects.",
+"enKo": "저는 세 개의 프로젝트를 감독해요.",
+"topic": "work"
+},
+{
+"id": "w-im3-088",
+"opic": "IM3",
+"word": "allocate",
+"pos": "verb",
+"ko": "배분하다",
+"en": "How should we allocate the budget?",
+"enKo": "예산을 어떻게 배분해야 할까요?",
+"topic": "work"
+},
+{
+"id": "w-im3-089",
+"opic": "IM3",
+"word": "acknowledge",
+"pos": "verb",
+"ko": "인정하다, 수신을 알리다",
+"en": "Please acknowledge this email.",
+"enKo": "이 메일 수신을 알려 주세요.",
+"topic": "work"
+},
+{
+"id": "w-im3-090",
+"opic": "IM3",
+"word": "exceed",
+"pos": "verb",
+"ko": "넘어서다",
+"en": "Costs may exceed our budget.",
+"enKo": "비용이 예산을 넘을 수 있어요.",
+"topic": "work"
+},
+{
+"id": "w-im3-091",
+"opic": "IM3",
+"word": "accurate",
+"pos": "adjective",
+"ko": "정확한",
+"en": "This data is not accurate.",
+"enKo": "이 데이터는 정확하지 않아요.",
+"topic": "work"
+},
+{
+"id": "w-im3-092",
+"opic": "IM3",
+"word": "relevant",
+"pos": "adjective",
+"ko": "관련 있는",
+"en": "That's not relevant to this project.",
+"enKo": "그건 이 프로젝트와 관련이 없어요.",
+"topic": "work"
+},
+{
+"id": "w-im3-093",
+"opic": "IM3",
+"word": "feasible",
+"pos": "adjective",
+"ko": "실현 가능한",
+"en": "Is this plan really feasible?",
+"enKo": "이 계획이 정말 실현 가능한가요?",
+"topic": "work"
+},
+{
+"id": "w-im3-094",
+"opic": "IM3",
+"word": "competitive",
+"pos": "adjective",
+"ko": "경쟁이 치열한",
+"en": "This market is very competitive.",
+"enKo": "이 시장은 경쟁이 아주 치열해요.",
+"topic": "work"
+},
+{
+"id": "w-im3-095",
+"opic": "IM3",
+"word": "experienced",
+"pos": "adjective",
+"ko": "경험 많은",
+"en": "We need an experienced manager.",
+"enKo": "경험 많은 매니저가 필요해요.",
+"topic": "work"
+},
+{
+"id": "w-im3-096",
+"opic": "IM3",
+"word": "preliminary",
+"pos": "adjective",
+"ko": "예비의",
+"en": "These are only preliminary results.",
+"enKo": "이건 예비 결과일 뿐이에요.",
+"topic": "work"
+},
+{
+"id": "w-im3-097",
+"opic": "IM3",
+"word": "remotely",
+"pos": "adverb",
+"ko": "원격으로",
+"en": "Most of us work remotely now.",
+"enKo": "지금은 대부분 원격으로 일해요.",
+"topic": "work"
+},
+{
+"id": "w-im3-098",
+"opic": "IM3",
+"word": "tentatively",
+"pos": "adverb",
+"ko": "잠정적으로",
+"en": "The meeting is tentatively set for Monday.",
+"enKo": "회의는 잠정적으로 월요일이에요.",
+"topic": "work"
+},
+{
+"id": "w-im3-099",
+"opic": "IM3",
+"word": "explanation",
+"pos": "noun",
+"ko": "설명",
+"en": "I need a better explanation.",
+"enKo": "더 나은 설명이 필요해요.",
+"topic": "conversation"
+},
+{
+"id": "w-im3-100",
+"opic": "IM3",
+"word": "comparison",
+"pos": "noun",
+"ko": "비교",
+"en": "That's not a fair comparison.",
+"enKo": "그건 공정한 비교가 아니에요.",
+"topic": "conversation"
+},
+{
+"id": "w-im3-101",
+"opic": "IM3",
+"word": "exception",
+"pos": "noun",
+"ko": "예외",
+"en": "There is always an exception.",
+"enKo": "언제나 예외는 있어요.",
+"topic": "conversation"
+},
+{
+"id": "w-im3-102",
+"opic": "IM3",
+"word": "coincidence",
+"pos": "noun",
+"ko": "우연의 일치",
+"en": "What a nice coincidence!",
+"enKo": "정말 좋은 우연이네요!",
+"topic": "conversation"
+},
+{
+"id": "w-im3-103",
+"opic": "IM3",
+"word": "contradiction",
+"pos": "noun",
+"ko": "모순",
+"en": "That sounds like a contradiction.",
+"enKo": "그건 모순처럼 들려요.",
+"topic": "conversation"
+},
+{
+"id": "w-im3-104",
+"opic": "IM3",
+"word": "tendency",
+"pos": "noun",
+"ko": "경향",
+"en": "I have a tendency to worry.",
+"enKo": "저는 걱정하는 경향이 있어요.",
+"topic": "conversation"
+},
+{
+"id": "w-im3-105",
+"opic": "IM3",
+"word": "preference",
+"pos": "noun",
+"ko": "선호",
+"en": "Do you have a preference?",
+"enKo": "선호하는 게 있어요?",
+"topic": "conversation"
+},
+{
+"id": "w-im3-106",
+"opic": "IM3",
+"word": "belief",
+"pos": "noun",
+"ko": "믿음",
+"en": "That's a common belief here.",
+"enKo": "그건 여기서 흔한 믿음이에요.",
+"topic": "conversation"
+},
+{
+"id": "w-im3-107",
+"opic": "IM3",
+"word": "value",
+"pos": "noun",
+"ko": "가치",
+"en": "Honesty is an important value.",
+"enKo": "정직은 중요한 가치예요.",
+"topic": "conversation"
+},
+{
+"id": "w-im3-108",
+"opic": "IM3",
+"word": "sympathy",
+"pos": "noun",
+"ko": "동정, 공감",
+"en": "I have a lot of sympathy for her.",
+"enKo": "그녀에게 깊이 공감해요.",
+"topic": "conversation"
+},
+{
+"id": "w-im3-109",
+"opic": "IM3",
+"word": "gesture",
+"pos": "noun",
+"ko": "몸짓, 표시",
+"en": "That was a kind gesture.",
+"enKo": "그건 친절한 표시였어요.",
+"topic": "conversation"
+},
+{
+"id": "w-im3-110",
+"opic": "IM3",
+"word": "silence",
+"pos": "noun",
+"ko": "침묵",
+"en": "There was an awkward silence.",
+"enKo": "어색한 침묵이 흘렀어요.",
+"topic": "conversation"
+},
+{
+"id": "w-im3-111",
+"opic": "IM3",
+"word": "nonsense",
+"pos": "noun",
+"ko": "말도 안 되는 소리",
+"en": "That's complete nonsense.",
+"enKo": "그건 완전히 말도 안 되는 소리예요.",
+"topic": "conversation"
+},
+{
+"id": "w-im3-112",
+"opic": "IM3",
+"word": "clarify",
+"pos": "verb",
+"ko": "명확히 하다",
+"en": "Let me clarify one thing.",
+"enKo": "한 가지를 명확히 할게요.",
+"topic": "conversation"
+},
+{
+"id": "w-im3-113",
+"opic": "IM3",
+"word": "emphasize",
+"pos": "verb",
+"ko": "강조하다",
+"en": "I want to emphasize this point.",
+"enKo": "이 점을 강조하고 싶어요.",
+"topic": "conversation"
+},
+{
+"id": "w-im3-114",
+"opic": "IM3",
+"word": "imply",
+"pos": "verb",
+"ko": "암시하다",
+"en": "What are you trying to imply?",
+"enKo": "뭘 암시하려는 거예요?",
+"topic": "conversation"
+},
+{
+"id": "w-im3-115",
+"opic": "IM3",
+"word": "contradict",
+"pos": "verb",
+"ko": "모순되다, 반박하다",
+"en": "Don't contradict me in public.",
+"enKo": "사람들 앞에서 제 말을 반박하지 마세요.",
+"topic": "conversation"
+},
+{
+"id": "w-im3-116",
+"opic": "IM3",
+"word": "overreact",
+"pos": "verb",
+"ko": "과민 반응하다",
+"en": "I think you overreact sometimes.",
+"enKo": "가끔 과민 반응하는 것 같아요.",
+"topic": "conversation"
+},
+{
+"id": "w-im3-117",
+"opic": "IM3",
+"word": "blame",
+"pos": "verb",
+"ko": "탓하다",
+"en": "Don't blame yourself for this.",
+"enKo": "이 일로 자신을 탓하지 마세요.",
+"topic": "conversation"
+},
+{
+"id": "w-im3-118",
+"opic": "IM3",
+"word": "forgive",
+"pos": "verb",
+"ko": "용서하다",
+"en": "I can't forgive him yet.",
+"enKo": "아직 그를 용서할 수 없어요.",
+"topic": "conversation"
+},
+{
+"id": "w-im3-119",
+"opic": "IM3",
+"word": "comfort",
+"pos": "verb",
+"ko": "위로하다",
+"en": "I tried to comfort my friend.",
+"enKo": "친구를 위로하려고 했어요.",
+"topic": "conversation"
+},
+{
+"id": "w-im3-120",
+"opic": "IM3",
+"word": "compromise",
+"pos": "verb",
+"ko": "타협하다",
+"en": "We both need to compromise.",
+"enKo": "우리 둘 다 타협해야 해요.",
+"topic": "conversation"
+},
+{
+"id": "w-im3-121",
+"opic": "IM3",
+"word": "hint",
+"pos": "verb",
+"ko": "넌지시 말하다",
+"en": "He tried to hint at the answer.",
+"enKo": "그는 답을 넌지시 알려 주려 했어요.",
+"topic": "conversation"
+},
+{
+"id": "w-im3-122",
+"opic": "IM3",
+"word": "vague",
+"pos": "adjective",
+"ko": "모호한",
+"en": "Your answer is a bit vague.",
+"enKo": "대답이 조금 모호해요.",
+"topic": "conversation"
+},
+{
+"id": "w-im3-123",
+"opic": "IM3",
+"word": "biased",
+"pos": "adjective",
+"ko": "편향된",
+"en": "That article seems biased.",
+"enKo": "그 기사는 편향된 것 같아요.",
+"topic": "conversation"
+},
+{
+"id": "w-im3-124",
+"opic": "IM3",
+"word": "logical",
+"pos": "adjective",
+"ko": "논리적인",
+"en": "That sounds logical to me.",
+"enKo": "제게는 논리적으로 들려요.",
+"topic": "conversation"
+},
+{
+"id": "w-im3-125",
+"opic": "IM3",
+"word": "realistic",
+"pos": "adjective",
+"ko": "현실적인",
+"en": "Let's be realistic about this.",
+"enKo": "이 일에는 현실적으로 생각해요.",
+"topic": "conversation"
+},
+{
+"id": "w-im3-126",
+"opic": "IM3",
+"word": "optimistic",
+"pos": "adjective",
+"ko": "낙관적인",
+"en": "I'm optimistic about next year.",
+"enKo": "내년에 대해 낙관적이에요.",
+"topic": "conversation"
+},
+{
+"id": "w-im3-127",
+"opic": "IM3",
+"word": "pessimistic",
+"pos": "adjective",
+"ko": "비관적인",
+"en": "Don't be so pessimistic.",
+"enKo": "너무 비관적으로 보지 마세요.",
+"topic": "conversation"
+},
+{
+"id": "w-im3-128",
+"opic": "IM3",
+"word": "skeptical",
+"pos": "adjective",
+"ko": "회의적인",
+"en": "I'm a little skeptical about that.",
+"enKo": "그것에 조금 회의적이에요.",
+"topic": "conversation"
+},
+{
+"id": "w-im3-129",
+"opic": "IM3",
+"word": "arrogant",
+"pos": "adjective",
+"ko": "거만한",
+"en": "He can be a bit arrogant.",
+"enKo": "그는 조금 거만할 때가 있어요.",
+"topic": "conversation"
+},
+{
+"id": "w-im3-130",
+"opic": "IM3",
+"word": "humble",
+"pos": "adjective",
+"ko": "겸손한",
+"en": "She is very humble about her success.",
+"enKo": "그녀는 자신의 성공에 아주 겸손해요.",
+"topic": "conversation"
+},
+{
+"id": "w-im3-131",
+"opic": "IM3",
+"word": "patient",
+"pos": "adjective",
+"ko": "참을성 있는",
+"en": "Please be patient with me.",
+"enKo": "저에게 조금만 참아 주세요.",
+"topic": "conversation"
+},
+{
+"id": "w-im3-132",
+"opic": "IM3",
+"word": "considerate",
+"pos": "adjective",
+"ko": "배려심 있는",
+"en": "It was very considerate of you.",
+"enKo": "정말 배려심이 깊으시네요.",
+"topic": "conversation"
+},
+{
+"id": "w-im3-133",
+"opic": "IM3",
+"word": "clumsy",
+"pos": "adjective",
+"ko": "서투른, 덤벙대는",
+"en": "I'm so clumsy in the morning.",
+"enKo": "저는 아침에 정말 덤벙대요.",
+"topic": "conversation"
+},
+{
+"id": "w-im3-134",
+"opic": "IM3",
+"word": "absolutely",
+"pos": "adverb",
+"ko": "전적으로",
+"en": "You're absolutely right.",
+"enKo": "전적으로 맞는 말이에요.",
+"topic": "conversation"
+},
+{
+"id": "w-im3-135",
+"opic": "IM3",
+"word": "generally",
+"pos": "adverb",
+"ko": "일반적으로",
+"en": "I generally agree with you.",
+"enKo": "일반적으로 당신 말에 동의해요.",
+"topic": "conversation"
+},
+{
+"id": "w-im3-136",
+"opic": "IM3",
+"word": "mostly",
+"pos": "adverb",
+"ko": "대부분",
+"en": "I mostly work from home.",
+"enKo": "저는 대부분 집에서 일해요.",
+"topic": "conversation"
+},
+{
+"id": "w-im3-137",
+"opic": "IM3",
+"word": "nowadays",
+"pos": "adverb",
+"ko": "요즘에는",
+"en": "Nowadays, everyone has a smartphone.",
+"enKo": "요즘에는 모두가 스마트폰을 가지고 있어요.",
+"topic": "conversation"
+},
+{
+"id": "w-im3-138",
+"opic": "IM3",
+"word": "somehow",
+"pos": "adverb",
+"ko": "어떻게든",
+"en": "We somehow finished on time.",
+"enKo": "어떻게든 제시간에 끝냈어요.",
+"topic": "conversation"
+},
+{
+"id": "w-im3-139",
+"opic": "IM3",
+"word": "perhaps",
+"pos": "adverb",
+"ko": "아마도",
+"en": "Perhaps we should wait.",
+"enKo": "아마 기다리는 게 좋겠어요.",
+"topic": "conversation"
+},
+{
+"id": "w-im3-140",
+"opic": "IM3",
+"word": "fortunately",
+"pos": "adverb",
+"ko": "다행히",
+"en": "Fortunately, nobody was hurt.",
+"enKo": "다행히 아무도 다치지 않았어요.",
+"topic": "conversation"
+},
+{
+"id": "w-im3-141",
+"opic": "IM3",
+"word": "surprisingly",
+"pos": "adverb",
+"ko": "놀랍게도",
+"en": "Surprisingly, the test was easy.",
+"enKo": "놀랍게도 시험이 쉬웠어요.",
+"topic": "conversation"
+},
+{
+"id": "w-im3-142",
+"opic": "IM3",
+"word": "seriously",
+"pos": "adverb",
+"ko": "진지하게",
+"en": "Are you seriously leaving?",
+"enKo": "정말로 떠나는 거예요?",
+"topic": "conversation"
+},
+{
+"id": "w-im3-143",
+"opic": "IM3",
+"word": "reminder",
+"pos": "noun",
+"ko": "알림, 상기시키는 것",
+"en": "I set a reminder on my phone.",
+"enKo": "휴대폰에 알림을 설정했어요.",
+"topic": "daily"
+},
+{
+"id": "w-im3-144",
+"opic": "IM3",
+"word": "shortcut",
+"pos": "noun",
+"ko": "지름길",
+"en": "We took a shortcut through the park.",
+"enKo": "공원을 지나는 지름길로 갔어요.",
+"topic": "travel"
+},
+{
+"id": "w-im3-145",
+"opic": "IM3",
+"word": "backup",
+"pos": "noun",
+"ko": "예비, 백업",
+"en": "Do you have a backup plan?",
+"enKo": "예비 계획이 있어요?",
+"topic": "work"
+},
+{
+"id": "w-im3-146",
+"opic": "IM3",
+"word": "overview",
+"pos": "noun",
+"ko": "개요",
+"en": "Let me give you a quick overview.",
+"enKo": "간단히 개요를 말씀드릴게요.",
+"topic": "work"
+},
+{
+"id": "w-im3-147",
+"opic": "IM3",
+"word": "drawback",
+"pos": "noun",
+"ko": "단점",
+"en": "The only drawback is the price.",
+"enKo": "유일한 단점은 가격이에요.",
+"topic": "conversation"
+},
+{
+"id": "w-im3-148",
+"opic": "IM3",
+"word": "advantage",
+"pos": "noun",
+"ko": "장점",
+"en": "What's the main advantage of this?",
+"enKo": "이것의 주된 장점이 뭐예요?",
+"topic": "conversation"
+},
+{
+"id": "w-im3-149",
+"opic": "IM3",
+"word": "routinely",
+"pos": "adverb",
+"ko": "일상적으로",
+"en": "We routinely check the system.",
+"enKo": "우리는 일상적으로 시스템을 점검해요.",
+"topic": "work"
+},
+{
+"id": "w-im3-150",
+"opic": "IM3",
+"word": "appropriate",
+"pos": "adjective",
+"ko": "적절한",
+"en": "Is this dress appropriate for work?",
+"enKo": "이 원피스가 직장에 적절한가요?",
+"topic": "conversation"
 }
 ]
