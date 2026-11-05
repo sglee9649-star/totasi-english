@@ -1,4 +1,4 @@
-const APP_VERSION = '0.14.0', APP_DATE = '2026-11-04';
+const APP_VERSION = '0.15.0', APP_DATE = '2026-11-04';
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const KEY = 'totasi-english-v1';
